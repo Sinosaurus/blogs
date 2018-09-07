@@ -78,6 +78,15 @@ const router = new VueRouter({
 + `v-if`
 <img src="./../images/v-if_vur-router/v-if.gif" width="800px" />
 
+
+> 静态页面没区别，现在考虑传参，进行数据请求渲染
+
++ `vue-router`  进行参数传递
+```
+//修改上述代码
+
+```
+
 > 总结： 
 + 目前看起来，效果没有很大区别，代码量也没有减少
 + 使用原生，可能是用索引进行关联，在vue中推荐使用 数据进行驱动
