@@ -73,9 +73,11 @@ const router = new VueRouter({
 > 目前看起来效果一致。那就从另一个角度考虑，页面结构。
 
 + `vue-router`
+
 <img src="./../images/v-if_vur-router/vue-router.gif" width="800px" />
 
 + `v-if`
+
 <img src="./../images/v-if_vur-router/v-if.gif" width="800px" />
 
 
@@ -83,11 +85,117 @@ const router = new VueRouter({
 
 + `vue-router`  进行参数传递
 ```
-//修改上述代码
+//修改上述代码 
+<!-- router -->
+{path: '/tab1', name: 'tab1', component: Tab1},
+{path: '/tab2', name: 'tab2', component: Tab2},
+{path: '/tab3', name: 'tab3', component: Tab3},
+{path: '/tab4', name: 'tab4', component: Tab4}
+<!-- .vue -->
+<button @click="jump(1)">tab1</button>
+<button @click="jump(2)">tab2</button>
+<button @click="jump(3)">tab3</button>
+<button @click="jump(4)">tab4</button>
+<router-view></router-view>
+<!-- script -->
+jump (n) {
+  this.$router.push(
+    {
+    name: 'tab'+n, 
+    params: {
+      id: n, 
+      data: {
+        a: 1, 
+        b: 2, 
+        c: 3}
+      }
+    }
+  )
+}
+```
+> 效果图
+<img src="./../images/v-if_vur-router/v-routeparams.png" />
+
+> 在修改router中代码时，需要修改为**命名式路由**才可以，这样有利于传参而不会在url地址中显示
 
 ```
+<!-- demo -->
+<!-- router -->
+{path: '/ke/:id', name: 'ke', component: Tab1}
+<!-- script -->
+this.$router.push({
+  name: 'ke',
+  params: {
+    id: 1,
+    val: 'url中看不见我'
+  }
+})
+```
+> 效果
 
-> 总结： 
-+ 目前看起来，效果没有很大区别，代码量也没有减少
+<img src="./../images/v-if_vur-router/test.png" />
+
+
+> 使用v-if结合vuex实现
+```
+<!-- vuex -->
+import Vue from 'vue'
+import Vuex from 'vuex'
+Vue.use(Vuex)
+const store = new Vuex.Store({
+    state: {
+        tab: {
+            tab1: {},
+            tab2: {},
+            tab3: {},
+            tab4: {}
+        }
+    },
+    mutations: {
+        setTabData (state, data) {
+            state.tab[data.type] = data.data
+        }
+    }
+})
+export default store
+
+<!-- 传值到vuex -->
+...mapMutations([
+  'setTabData'
+]),
+handleTab (v) {
+  this.isShow = v
+  const data = {
+    type: 'tab'+v,
+    data: {
+      a: 1,
+      b: 2,
+      c: 3
+    }
+  }
+  this.setTabData(data)
+}
+
+<!-- 具体组件中使用 -->
+<!-- template -->
+<ul>
+  <li v-for="(v, key, i) in tab" :key="i" >
+    {{v}} === {{key}}
+  </li>
+</ul>
+<!-- script -->
+computed: mapState({
+  tab: state => state.tab.tab1
+})
+```
+> 结果
+
+<img src="./../images/v-if_vur-router/v-ifvuex.gif"/>
+
+> 因而在tab中使用 vue-router的方式进行传参，会相对比较方便，而使用v-if时，则需要借助vuex，每次都需要尽所有指定的参数放到vuex中，在下一个组件中，再去vuex中进行获取。这样而言，导致代码量多一些。当然使用得当也很好。特别是现在有些公司不许使用vuex，只能使用EventBUS 那是不是在使用v-if方式实现时，更加麻烦呢？
+
+> 总结
+
++ 目前看来可能使用vue-router会更加好一些（但是依旧值得深究）
 + 使用原生，可能是用索引进行关联，在vue中推荐使用 数据进行驱动
 + 暂且记录一笔，以待后期继续研究
