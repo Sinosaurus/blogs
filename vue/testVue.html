@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	var Dep = {
+			target: null
+		}
+
+	function defineVUEProperty (obj, key, val) {
+		var deps = []
+		Object.defineProperty (obj, key, {
+			get: function () {
+				// Dep.target // 是否有值
+				// deps.indexOf(Dep.taget) === -1 // 是不是里面已经包含该值
+
+				if (Dep.target && deps.indexOf(Dep.target) == -1) {
+					deps.push(Dep.target)
+				}
+				return val
+			},
+
+			set: function (newVal) {
+				val = newVal
+				for (var i = 0; i < deps.length; i ++) {
+					// 执行数组里面的方法
+					deps[i]()
+				}
+			}
+		})
+	}
+
+	function defineVUEComputed (obj, key, computeFunc) {
+		var onDependencyUpdated = function () {
+			var value = computeFunc() // 已经是一个值
+			// 函数
+			console.log('dependence value:' + value)
+		}
+
+	    Object.defineProperty (obj, key, {
+	    	get: function () {
+	    		Dep.target = onDependencyUpdated
+	    		var value = computeFunc()
+	    		Dep.target = null
+	    		return value
+	    	}
+	    })
+	}
+
+	var bank = {}
+	defineVUEProperty(bank, 'money', 1)
+	defineVUEComputed(bank, 'RMB', function () {
+		return '￥' + bank.money
+	})
+	console.log(bank.money, bank.RMB)
+	bank.money = 22
+
+
+
+	</script>
+</body>
+</html>
