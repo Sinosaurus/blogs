@@ -79,54 +79,56 @@
 </blockquote>
 <h3 id="es6"><a href="http://es6.ruanyifeng.com/">es6</a></h3>
 <ul>
-<li>let / const
-<code>`</code>
-let num = 1
-num = 2</li>
-</ul>
-<p>const n = 1</p>
-<pre><code>+ 箭头函数
-</code></pre><p>//=================================
+<li><p>let / const</p>
+<pre><code>let num = 1
+num = 2
+const n = 1
+</code></pre></li>
+<li><p>箭头函数</p>
+<pre><code>//=================================
 setTimeout(function () {
-  console.log(this) // window
-}, 1000)</p>
-<p>//===============================
+console.log(this) // window
+}, 1000)
+//===============================
 var _this = this
 setTimeout(function () {
-  console.log(_this)
-}, 1000)</p>
-<p>//==============================
+console.log(_this)
+}, 1000)
+//==============================
 setTimeout(() =&gt; {
-  console.log(this)
-}, 1000)</p>
-<pre><code>+ promise  ===&gt; async/await
-</code></pre><p>$(&#39;.col1&#39;).animate({left: 200}, 2000, function () {
+console.log(this)
+}, 1000)
+</code></pre></li>
+<li>promise  ===&gt; async/await</li>
+</ul>
+<pre><code>$(&#39;.col1&#39;).animate({left: 200}, 2000, function () {
    $(&#39;.col2&#39;).animate({left: 300}, 1500, function () {
      $(&#39;.col3&#39;).animate({left: 400}, 2000, function () {
        console.log(34567890)
      })
    })
- })</p>
-<pre><code>&gt; &lt;img src=&quot;./vueinfo/oldAnimate.gif&quot; /&gt;
-
-</code></pre><p> //======================
+ })
+</code></pre><blockquote>
+<p><img src="./vueinfo/oldAnimate.gif" /></p>
+</blockquote>
+<pre><code> //======================
   function ani(el) {
       return new Promise((resolve, reject) =&gt; {
         $(el).animate({
           left: 200
         }, 2000, () =&gt; {
           resolve()
-        })</p>
-<pre><code>  })
-}
+        })
 
-ani(&#39;.col1&#39;).then(() =&gt; {
-  return ani(&#39;.col2&#39;)
-}).then(() =&gt; {
-  return ani(&#39;.col3&#39;)
-}).catch(error =&gt; {})
-</code></pre><p><code>`</code></p>
-<blockquote>
+      })
+    }
+    ani(&#39;.col1&#39;).then(() =&gt; {
+      return ani(&#39;.col2&#39;)
+    }).then(() =&gt; {
+      return ani(&#39;.col3&#39;)
+    }).catch(error =&gt; {})
+
+</code></pre><blockquote>
 <p><img src="./vueinfo/newAnimate.gif" /></p>
 </blockquote>
 <h2 id="mvvm">mvvm</h2>

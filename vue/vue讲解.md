@@ -14,29 +14,27 @@
 ```
 let num = 1
 num = 2
-
 const n = 1
-
 ```
+
 + 箭头函数
 ```
 //=================================
 setTimeout(function () {
   console.log(this) // window
 }, 1000)
-
 //===============================
 var _this = this
 setTimeout(function () {
   console.log(_this)
 }, 1000)
-
 //==============================
 setTimeout(() => {
   console.log(this)
 }, 1000)
 ```
 + promise  ===> async/await
+
 ```
 $('.col1').animate({left: 200}, 2000, function () {
    $('.col2').animate({left: 300}, 1500, function () {
@@ -60,7 +58,6 @@ $('.col1').animate({left: 200}, 2000, function () {
 
       })
     }
-
     ani('.col1').then(() => {
       return ani('.col2')
     }).then(() => {
