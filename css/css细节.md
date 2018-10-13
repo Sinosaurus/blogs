@@ -6,3 +6,5 @@
 
 > + position: fixed / position: device-fixed / position: sticky/ postion: -webkit-sticky
 > + 子绝父相   html、body设置高度100% 内容滚动，底部或者顶部 固定，这样就好
+
+table 表格换行问题
