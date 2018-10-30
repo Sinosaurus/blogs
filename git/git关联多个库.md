@@ -7,10 +7,10 @@
 git remote -v
 
 // λ git remote -v
-// gitlab  git@172.16.0.83:devops/CRM.git (fetch)
-// gitlab  git@172.16.0.83:devops/CRM.git (push)
-// origin  git@gitee.com:sinnet-cloud/halo_cloud_crm.git (fetch)
-// origin  git@gitee.com:sinnet-cloud/halo_cloud_crm.git (push)
+// gitlab  git@github:b.git (fetch)
+// gitlab  git@github:b.git (push)
+// origin  git@gitee.com:a.git (fetch)
+// origin  git@gitee.com:a.git (push)
 ```
 + 拉取远程主机名，同时修改名
 > 克隆版本库的时候，所使用的远程主机自动被Git命名为origin。如果想用其他的主机名，需要用git clone命令的-o选项指定。
@@ -149,6 +149,24 @@ git push github --all
 
 #### 总结
 + 推送时，无法同时推送两个库，需要一个个推，但是这样可以拉取自己想要库的内容
+> 之前操作是可以同时推送多个库，但是却无法拉取某个库的内容，在想是否可以将两者进行结合呢，那这样是否就可以按需进行操作了
+```
+git push all
+
+修改**.git**里的 *config* 配置即可
+原理是，同时将两个库名名为同一个名字
+/ ** eg **/
+origin git@github.com:b.git
+origin git@gitee.com:a.git
+
+git push -u origin // -u 默认第一次进行本地远程关联
+
+git push origin // 之后的命令
+```
+
+> 总结
++ 内容很多是参考阮老师的，以及自己尝试和网友的各种办法
++ 最起码加深了我对git的进一步了解了
 
 
 
