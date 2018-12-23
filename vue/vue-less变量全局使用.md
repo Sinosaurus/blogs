@@ -4,7 +4,7 @@
 
 + [借助换肤这个功能](https://blog.csdn.net/u013884068/article/details/78186798)
 + [sass-resources-loader](https://github.com/shakacode/sass-resources-loader)
-```111111111111
+```
 /** vue-cli3.0 **
 // vue.config.js
 module.exports = {
