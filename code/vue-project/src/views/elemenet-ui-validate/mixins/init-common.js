@@ -13,10 +13,14 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert('submit!')
+          // this.$Loading.start()
+          // const timerId = setTimeout(() => {
+          //   this.$Loading.finish()
+          //   clearTimeout(timerId)
+          // }, 3000)
+          this.$Message.success('success')
         } else {
-          console.log('error submit!!')
-          return false
+          this.$Message.error('error')
         }
       })
     },

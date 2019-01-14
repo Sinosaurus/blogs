@@ -4,7 +4,7 @@
     <el-scrollbar ref="scrollbar" class="sc-scrollbar" wrapClass="sc-warp" viewClass="sc-view">
       <div class="layout">
         <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}">
-          <Menu active-name="1-1" theme="dark" width="auto" :open-names="['1']">
+          <Menu :active-name="actived" theme="dark" width="auto" :open-names="['1']">
             <Submenu name="1">
               <template slot="title">
                 <Icon type="ios-navigate"></Icon>element表单校验
@@ -46,9 +46,18 @@ export default {
     }),
     titleName () {
       return this.$route.matched.length === 1 ? this.$route.matched[0].meta.title : ''
+    },
+    actived () {
+      let activeRouter = ''
+      this.validateMenuList.map(item => {
+        if (this.$route.name === item.router) {
+          activeRouter = item.name
+        }
+      })
+      return activeRouter
     }
   },
-  mounted() {
+  mounted () {
     /* 窗口变化修改滚动条高度 */
     window.onresize = () => {
       this.$refs.scrollbar.update()
@@ -103,7 +112,6 @@ body {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 .sc-container {
-  margin: 0 auto;
   min-height: 600px;
 }
 </style>
