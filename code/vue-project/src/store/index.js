@@ -27,6 +27,23 @@ export default new Vuex.Store({
         router: 'is-r'
       }
     ],
+    cssMunuList: [
+      {
+        name: '2-1',
+        title: 'css张鑫旭测试',
+        router: 'css-zxx'
+      }
+    ],
+    titleType: [
+      {
+        type: '1',
+        title: 'element-ui表单校验系列'
+      },
+      {
+        type: '2',
+        title: 'css测试'
+      }
+    ],
     formInitData: {
       areaList: [
         {

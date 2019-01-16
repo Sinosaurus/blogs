@@ -7,5 +7,6 @@ module.exports = {
     config.resolve.alias
       .set("$", resolve("src/views"))
       .set('$e', resolve("src/views/elemenet-ui-validate"))
+      .set('$c', resolve("src/views/css-test"))
   }
-};
+}
