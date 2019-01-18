@@ -32,5 +32,6 @@ entry: {
   include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client'), resolve('node_modules/element-ui-verify/dist')]
 },
 ```
-
+## 总结
++ 需要考虑很多，虽然vue是支持ie9，但是引用的库，并不一定考虑ie9。
 

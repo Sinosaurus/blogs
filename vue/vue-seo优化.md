@@ -43,7 +43,7 @@ new Router({
   routes
 })
 ```
-> 参考资料[1](https://www.imooc.com/article/75016)
+> 参考资料[1](https://www.imooc.com/article/75016)，[2](https://juejin.im/post/59d49d976fb9a00a571d651d)
 
 ##总结
 + 打包时间真心长，很不适合做seo
