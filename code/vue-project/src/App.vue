@@ -37,6 +37,17 @@
                 :to="{name: item.router}"
               >{{item.title}}</MenuItem>
             </Submenu>
+            <Submenu name="3">
+              <template slot="title">
+                <Icon type="md-briefcase" />webpack测试
+              </template>
+              <MenuItem
+                v-for="item in webpackList"
+                :key="item.name"
+                :name="item.name"
+                :to="{name: item.router}"
+              >{{item.title}}</MenuItem>
+            </Submenu>
           </Menu>
         </Sider>
         <Layout :style="{marginLeft: '200px'}">
@@ -66,14 +77,15 @@ export default {
     ...mapState({
       validateMenuList: state => state.validateMenuList,
       cssMunuList: state => state.cssMunuList,
-      titleType: state => state.titleType
+      titleType: state => state.titleType,
+      webpackList: state => state.webpackList
     }),
-    titleName() {
+    titleName () {
       return this.$route.matched.length === 1 ? this.$route.matched[0].meta.title : ''
     },
-    actived() {
+    actived () {
       let activeRouter = ''
-      const MENU_LIST = [...this.validateMenuList, ...this.cssMunuList]
+      const MENU_LIST = [...this.validateMenuList, ...this.cssMunuList, ...this.webpackList]
       MENU_LIST.map(item => {
         if (this.$route.name === item.router) {
           activeRouter = item.name
@@ -82,7 +94,7 @@ export default {
       return activeRouter
     }
   },
-  mounted() {
+  mounted () {
     /* 窗口变化修改滚动条高度 */
     window.onresize = () => {
       this.$refs.scrollbar.update()
@@ -105,6 +117,7 @@ export default {
 </script>
 
 <style lang="less">
+@import url('~@/less/base.less');
 html,
 body {
   height: 100%;

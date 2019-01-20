@@ -4,7 +4,7 @@
 import { mapState } from 'vuex'
 export default {
   computed: {
-    ...mapState({
+    ...mapState('formData', {
       areaList: state => state.formInitData.areaList,
       typeList: state => state.formInitData.typeList
     })

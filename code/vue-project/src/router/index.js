@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import { LoadingBar } from 'iview'
 import elValidate from './routes/element-ui-validate'
 import css from './routes/css'
+import webpack from './routes/webpack'
 import home from './routes/home'
 import about from './routes/about'
 Vue.use(Router)
@@ -11,7 +12,8 @@ let routes = [
   home,
   about,
   ...elValidate,
-  ...css
+  ...css,
+  ...webpack
 ]
 
 const router = new Router({

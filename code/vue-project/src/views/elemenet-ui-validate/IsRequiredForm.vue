@@ -40,52 +40,52 @@
 import mix from './mixins/init-common'
 export default {
   mixins: [mix],
-  data() {
+  data () {
     return {
       ruleForm: {
-        name: "",
-        region: "",
+        name: '',
+        region: '',
         type: [],
-        resource: "",
-        desc: ""
+        resource: '',
+        desc: ''
       },
       rules: {
         name: [
-          { required: true, message: "请输入活动名称", trigger: "blur" },
-          { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" }
+          { required: true, message: '请输入活动名称', trigger: 'blur' },
+          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
         ],
         region: [
-          { required: true, message: "请选择活动区域", trigger: "change" }
+          { required: true, message: '请选择活动区域', trigger: 'change' }
         ],
         type: [
           {
-            type: "array",
+            type: 'array',
             required: true,
-            message: "请至少选择一个活动性质",
-            trigger: "change"
+            message: '请至少选择一个活动性质',
+            trigger: 'change'
           }
         ],
         resource: [
-          { required: true, message: "请选择活动资源", trigger: "change" }
+          { required: true, message: '请选择活动资源', trigger: 'change' }
         ],
-        desc: [{ required: true, message: "请填写活动形式", trigger: "blur" }]
+        desc: [{ required: true, message: '请填写活动形式', trigger: 'blur' }]
       }
     }
   },
   methods: {
-    setFormData() {
+    setFormData () {
       setTimeout(() => {
         this.ruleForm = {
-          name: "测试项目",
+          name: '测试项目',
           region: 2,
           type: [1, 2],
           resource: 1,
-          desc: "测试数据回显时校验颜色变化问题 "
+          desc: '测试数据回显时校验颜色变化问题 '
         }
       }, 1500)
     }
   },
-  mounted() {
+  mounted () {
     this.setFormData()
   }
 }

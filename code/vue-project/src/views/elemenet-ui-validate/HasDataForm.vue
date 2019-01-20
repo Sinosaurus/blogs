@@ -75,20 +75,20 @@ import mix from './mixins/init-common'
 import el from './mixins/el/el-new'
 export default {
   mixins: [mix, el],
-  data() {
+  data () {
     return {
       ruleForm: {
-        name: "",
-        region: "",
+        name: '',
+        region: '',
         type: [],
-        resource: "",
-        desc: ""
+        resource: '',
+        desc: ''
       },
       timerId: null
     }
   },
   methods: {
-    setFormData() {
+    setFormData () {
       this.timerId = setTimeout(() => {
         this.ruleForm = {
           name: '测试项目',
@@ -97,17 +97,17 @@ export default {
           resource: 1,
           desc: '测试数据回显时校验颜色变化问题'
         }
-        this.$nextTick( () => {
+        this.$nextTick(() => {
           // 为了回显时，不只是el-select 校验被触发
           this.$refs.ruleForm.validate()
         })
       }, 1500)
     }
   },
-  beforeDestroy() {
+  beforeDestroy () {
     clearTimeout(this.timerId)
   },
-  mounted() {
+  mounted () {
     this.setFormData()
   }
 }
