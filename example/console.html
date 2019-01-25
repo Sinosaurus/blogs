@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>console的各种奇技淫巧</h1>
+</body>
+</html>
+<script>
+    console.assert(false,'我是不是出来了')
+
+    // let count = 1
+    // let timerId = setInterval(() => {
+       
+    //    console.count('当时明月在，'+count+'曾照彩云归')
+    //    count++
+    //    if (count > 50) {
+    //        clearInterval(timerId)
+    //    }
+    // }, 200)
+     console.error('堆栈', '堆栈的区别')
+
+     console.group('第一组')
+       console.log('1111111')
+       console.log('1111111')
+       console.log('1111111')
+       console.log('1111111')
+       console.log('1111111') 
+       console.group('第二组')
+           console.log(2222222222)  
+           console.log(2222222222)  
+           console.log(2222222222)  
+           console.log(2222222222)  
+           console.log(2222222222)  
+       console.groupEnd()    
+     console.groupEnd()
+
+     let obj = {
+        a: {num: 123},
+        b: {num: 456},
+        c: {num: 789},
+     }
+     console.table(obj)
+     let arr = [
+         {zhen: '花无泪'},
+         {zhen: '叶无心'}
+     ]
+     console.table(arr)
+
+     console.time('time')
+     for (let item of arr) {
+         console.info(item)
+     }
+     console.timeEnd('time')
+</script>

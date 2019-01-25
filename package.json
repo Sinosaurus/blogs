@@ -1,0 +1,28 @@
+{
+  "name": "myBlogs",
+  "version": "1.0.0",
+  "description": "take nodes\r ## 新随笔 \r   - javascript\r   - vue\r ## `example`",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sinosaurus/myBlogs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sinosaurus/myBlogs/issues"
+  },
+  "homepage": "https://github.com/Sinosaurus/myBlogs#readme",
+  "dependencies": {
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  }
+}

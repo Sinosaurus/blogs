@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-router--NAME</title>
+    <script src="./../node_modules/vue/dist/vue.js"></script>
+    <script src="./../node_modules/vue-router/dist/vue-router.js"></script>
+    <style>
+        h1 {
+            border-ra
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/p1">点击显示p1</router-link>
+        <router-link to="/p2">点击显示p2</router-link>
+       <router-view></router-view>
+    </div>
+    <!-- 组件p1 -->
+    <template id="p1">
+        <div>
+            <h1>我是组件<span style="color: red">p1</span></h1>
+            <p v-text="msg"></p>            
+        </div>
+    </template>
+    <!-- 组件p2 -->
+    <template id="p2">
+        <div>
+            <h1>我是组件<span style="color: blue">p2</span></h1>
+            <p v-text="msg"></p>
+        </div>
+    </template>
+    <script>
+        // 组件
+        const p1 = {
+            template: '#p1',
+            data() {
+                return {
+                    msg: 'p1组件'
+                }
+            }
+        }
+        const p2 = {
+            template: '#p2',
+            data() {
+                return {
+                    msg: 'p2组件'
+                }
+            }
+        }
+       
+
+        const router = new VueRouter({
+            routes: [
+                {path: '/p1', component: p1},
+                {path: '/p2', component: p2}
+            ]
+        })
+        new Vue({
+            el: '#app',
+            data: {
+                msg: '测试vue-router'
+            },
+            router,
+
+        })
+    </script>
+</body>
+</html>
