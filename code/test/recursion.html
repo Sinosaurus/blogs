@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta content="telephone=no" name="format-detection">
+  <title>递归测试</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    const selectedData = [
+      {
+        label: 'hubei',
+        value: 'hubei',
+        children: [
+          {
+            label: 'wuhan',
+            value: 'wuhan',
+            children: [
+              {
+                label: 'huangmei',
+                value: 'huangmei'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+    /**
+     *  label === var 拿到所有value值
+     */
+    let res = []
+    const obj = {
+      0: 'hubei',
+      1: 'wuhan',
+      2: 'huangmei'
+    }
+
+    let count = 0
+    function getValue (list = []) {
+      list.forEach(item => {
+        if (item.label === obj[count]) {
+          count++
+          res.push(item.value)
+          getValue(item.children)
+        } 
+      })
+    } 
+
+    getValue(selectedData)
+    console.log(res)
+  </script>
+</body>
+
+</html>
