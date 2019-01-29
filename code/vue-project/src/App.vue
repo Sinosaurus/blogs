@@ -13,7 +13,7 @@
             :active-name="actived"
             theme="dark"
             width="auto"
-            :open-names="['1']"
+            :open-names="[]"
           >
             <Submenu name="1">
               <template slot="title">

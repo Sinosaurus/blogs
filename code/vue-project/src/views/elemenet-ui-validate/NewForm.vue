@@ -51,12 +51,28 @@
       </el-form-item>
       <el-form-item
         label="活动形式"
-        prop="desc"
-      >
+        prop="desc">
         <el-input
           type="textarea"
           v-model="ruleForm.desc"
         ></el-input>
+      </el-form-item>
+      <el-form-item
+        label="数据"
+        :rules="[
+          {required: true, message: '数据', trigger: ['change', 'blur']},
+          {validator: isNum, trigger: ['change', 'blur']}
+        ]"
+        prop="num">
+        <el-input v-model.number="ruleForm.num" maxlength="20"></el-input>
+        <pre>
+          1. v-model.number="ruleForm.num"
+          2. maxlength="20"
+          
+          原因：
+          1. num 最大数据不可能超过 −9007199254740992  --- 9007199254740992 （即正负2的53次方）最长16位
+          2. 超过16位就自动补 0
+        </pre>
       </el-form-item>
       <el-form-item>
         <el-button
@@ -75,14 +91,25 @@ import el from './mixins/el/el-new'
 export default {
   mixins: [mix, el],
   data () {
+    const isNum = (rule, value, callback) => {
+      console.log(value)
+      let reg = /^[0-9]{5,20}$/;
+      if (reg.test(value)) {
+        callback();
+      } else {
+        callback(new Error("不是数据"));
+      }
+    };
     return {
       ruleForm: {
         name: '',
         region: '',
         type: [],
         resource: '',
-        desc: ''
-      }
+        desc: '',
+        num: 0
+      },
+      isNum
     }
   },
   methods: {
