@@ -85,5 +85,5 @@
 至此，就差不多了，只是一些细节问题罢了，比如切换输入法啊
 + 由于每个版本不同，导致差异性很大，有些方法明显不合，只能不断采坑，才可以
 + [共享文件](https://jingyan.baidu.com/article/54b6b9c0b6a4cd2d583b47eb.html) ，我还在研究中
-+ [输入法](http://baijiahao.baidu.com/s?id=1602795097404487516&wfr=spider&for=pc)
++ [输入法](http://baijiahao.baidu.com/s?id=1602795097404487516&wfr=spider&for=pc)，[搜狗输入法](https://blog.csdn.net/fx_yzjy101/article/details/80243710)
 + 还有很多在研究中，不过终于可以正常使用了，练习linux指令了

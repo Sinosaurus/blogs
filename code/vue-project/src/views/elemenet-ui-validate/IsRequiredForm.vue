@@ -1,11 +1,25 @@
 <template>
   <div class="el-validate">
-    <el-form :model="ruleForm" ref="ruleForm" label-width="100px">
-      <el-form-item label="活动名称" prop="name" verify>
+    <el-form
+      :model="ruleForm"
+      ref="ruleForm"
+      :rules="rules"
+      label-width="100px"
+    >
+      <el-form-item
+        label="活动名称"
+        prop="name"
+      >
         <el-input v-model="ruleForm.name"></el-input>
       </el-form-item>
-      <el-form-item label="活动区域" prop="region" verify>
-        <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
+      <el-form-item
+        label="活动区域"
+        prop="region"
+      >
+        <el-select
+          v-model="ruleForm.region"
+          placeholder="请选择活动区域"
+        >
           <el-option
             v-for="(item, index) in areaList"
             :key="index"
@@ -14,22 +28,53 @@
           ></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="活动性质" prop="type">
+      <el-form-item
+        label="活动性质"
+        prop="type"
+      >
         <el-checkbox-group v-model="ruleForm.type">
-          <el-checkbox v-for="(item, index) in typeList" :key="index" :label="item.id">{{item.name}}</el-checkbox>
+          <el-checkbox
+            v-for="(item, index) in typeList"
+            :key="index"
+            :label="item.id"
+          >{{item.name}}</el-checkbox>
         </el-checkbox-group>
       </el-form-item>
-      <el-form-item label="特殊资源" prop="resource" verify>
+      
+      <el-form-item label="是否必填">
+        <el-button @click="isRequire = !isRequire">{{ isRequire ? '必填' : '选填' }}</el-button>
+      </el-form-item>
+      <el-form-item
+        label="是不是必填"
+        prop="isRequire"
+        :rules="[
+          {required: isRequire, message: '请填写', trigger: 'blur'}
+        ]">
+        <el-input v-model="ruleForm.isRequire"></el-input>
+      </el-form-item>
+      <el-form-item
+        label="特殊资源"
+        prop="resource"
+      >
         <el-radio-group v-model="ruleForm.resource">
           <el-radio :label="1">线上品牌商赞助</el-radio>
           <el-radio :label="2">线下场地免费</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="活动形式" prop="desc" verify>
-        <el-input type="textarea" v-model="ruleForm.desc"></el-input>
+      <el-form-item
+        label="活动形式"
+        prop="desc"
+      >
+        <el-input
+          type="textarea"
+          v-model="ruleForm.desc"
+        ></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+        <el-button
+          type="primary"
+          @click="submitForm('ruleForm')"
+        >立即创建</el-button>
         <el-button @click="resetForm('ruleForm')">重置</el-button>
       </el-form-item>
     </el-form>
@@ -40,9 +85,11 @@
 import mix from './mixins/init-common'
 export default {
   mixins: [mix],
-  data () {
+  data() {
     return {
+      isRequire: true,
       ruleForm: {
+        isRequire: '',
         name: '',
         region: '',
         type: [],
@@ -73,7 +120,7 @@ export default {
     }
   },
   methods: {
-    setFormData () {
+    setFormData() {
       setTimeout(() => {
         this.ruleForm = {
           name: '测试项目',
@@ -82,15 +129,18 @@ export default {
           resource: 1,
           desc: '测试数据回显时校验颜色变化问题 '
         }
+        this.$nextTick(() => {
+          this.$refs.ruleForm.validate()
+        })
       }, 1500)
     }
   },
-  mounted () {
+  mounted() {
     this.setFormData()
   }
 }
 </script>
 
 <style lang="less">
-@import url('~@/less/el-validate.less');
+@import url("~@/less/el-validate.less");
 </style>

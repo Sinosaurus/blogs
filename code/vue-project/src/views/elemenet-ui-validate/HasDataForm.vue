@@ -89,7 +89,7 @@ export default {
   },
   methods: {
     setFormData () {
-      this.timerId = setTimeout(() => {
+      setTimeout(() => {
         this.ruleForm = {
           name: '测试项目',
           region: 2,
@@ -97,15 +97,13 @@ export default {
           resource: 1,
           desc: '测试数据回显时校验颜色变化问题'
         }
+
         this.$nextTick(() => {
           // 为了回显时，不只是el-select 校验被触发
           this.$refs.ruleForm.validate()
         })
       }, 1500)
     }
-  },
-  beforeDestroy () {
-    clearTimeout(this.timerId)
   },
   mounted () {
     this.setFormData()

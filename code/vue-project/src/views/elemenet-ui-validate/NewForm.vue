@@ -65,14 +65,14 @@
         ]"
         prop="num">
         <el-input v-model.number="ruleForm.num" maxlength="20"></el-input>
-        <pre>
+        <!-- <pre>
           1. v-model.number="ruleForm.num"
           2. maxlength="20"
           
           原因：
           1. num 最大数据不可能超过 −9007199254740992  --- 9007199254740992 （即正负2的53次方）最长16位
           2. 超过16位就自动补 0
-        </pre>
+        </pre> -->
       </el-form-item>
       <el-form-item>
         <el-button
@@ -92,7 +92,6 @@ export default {
   mixins: [mix, el],
   data () {
     const isNum = (rule, value, callback) => {
-      console.log(value)
       let reg = /^[0-9]{5,20}$/;
       if (reg.test(value)) {
         callback();
@@ -107,7 +106,7 @@ export default {
         type: [],
         resource: '',
         desc: '',
-        num: 0
+        num: ''
       },
       isNum
     }
