@@ -48,6 +48,17 @@
                 :to="{name: item.router}"
               >{{item.title}}</MenuItem>
             </Submenu>
+            <Submenu name="4">
+              <template slot="title">
+                <Icon type="md-bonfire" />vue--slot使用
+              </template>
+              <MenuItem
+                v-for="item in vueSlotList"
+                :key="item.name"
+                :name="item.name"
+                :to="{name: item.router}"
+              >{{item.title}}</MenuItem>
+            </Submenu>
           </Menu>
         </Sider>
         <Layout :style="{marginLeft: '200px'}">
@@ -78,14 +89,15 @@ export default {
       validateMenuList: state => state.validateMenuList,
       cssMunuList: state => state.cssMunuList,
       titleType: state => state.titleType,
-      webpackList: state => state.webpackList
+      webpackList: state => state.webpackList,
+      vueSlotList: state => state.vueSlotList
     }),
     titleName () {
       return this.$route.matched.length === 1 ? this.$route.matched[0].meta.title : ''
     },
     actived () {
       let activeRouter = ''
-      const MENU_LIST = [...this.validateMenuList, ...this.cssMunuList, ...this.webpackList]
+      const MENU_LIST = [...this.validateMenuList, ...this.cssMunuList, ...this.webpackList, ...this.vueSlotList]
       MENU_LIST.map(item => {
         if (this.$route.name === item.router) {
           activeRouter = item.name

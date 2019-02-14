@@ -42,6 +42,13 @@ export default new Vuex.Store({
         router: 'webpack-test'
       }
     ],
+    vueSlotList: [
+      {
+        name: '4-1',
+        title: 'vue--slot使用',
+        router: 'slot-vue'
+      }
+    ],
     titleType: [
       {
         type: '1',
@@ -54,6 +61,10 @@ export default new Vuex.Store({
       {
         type: '3',
         title: 'webpack添加多个变量'
+      },
+      {
+        type: '4',
+        title: 'vue--slot使用'
       }
     ]
   },

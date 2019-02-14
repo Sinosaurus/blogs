@@ -6,6 +6,8 @@ import css from './routes/css'
 import webpack from './routes/webpack'
 import home from './routes/home'
 import about from './routes/about'
+import slot from './routes/slot'
+
 Vue.use(Router)
 
 let routes = [
@@ -13,7 +15,8 @@ let routes = [
   about,
   ...elValidate,
   ...css,
-  ...webpack
+  ...webpack,
+  ...slot
 ]
 
 const router = new Router({

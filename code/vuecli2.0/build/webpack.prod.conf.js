@@ -11,7 +11,23 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const env = require('../config/prod.env')
+
+const PARAMS = process.argv.splice(2)
+function getKeyValue (params = []) {
+  if (!Array.isArray(params)) throw new Error('请传入数组格式参数')
+  const obj = {}
+  params.forEach(item => {
+    const o = item.slice(2).split('=')
+    obj[o[0]] = o[1]
+  })
+  return obj
+}
+const r = getKeyValue(PARAMS)
+
+
+
+// 用来判断是否是test 进而选择不同的参数
+const env = process.env.npm_lifecycle_event === 'build' ? require('../config/prod.env') : require('../config/prod.env.test')
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {

@@ -149,3 +149,52 @@ module.exports = merge(prodEnv, {
 + 开发环境依旧是两种 `development` `production`,只是在这两种基础上进行具体指定不同变量罢了，因而所谓的测试环境只是在生产环境中，另外列出一种变量，这样用于区分生产与测试的不同而已
 + 目前vue-cli2和vue-cli3就都可以使用了，细节肯定都需要更多优化
 + 对应的代码[码云](https://gitee.com/private_sheet/blogs/tree/master/code)
+
+### vuecli2 补充
+> `package.json`
+```
+"scripts": {
+  "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+  "test-dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.test.js",
+  "start": "npm run dev",
+  "lint": "eslint --ext .js,.vue src",
+  "build": "node build/build.js",
+  "test": "node build/build.js --test=123 --build=12346"
+}
+```
+
+
++ 方式一
+> 查了一些资料，对`package.json`有了更多的一些了解，才发现其实通过环境变量会有更加简洁的方案。[npm_lifecycle_event](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
+
+修改之前的方案
+> prod.env.js
+```
+const env = process.env.npm_lifecycle_event === 'build' ? require('../config/prod.env') : require('../config/prod.env.test')
+```
++ 方式二
+> 通过传参模式进行判断 `process.argv` `--`表示传参，我添加`=`是为了表示传参方便，便于识别
+```
+"test": "node build/build.js --test=123 --build=12346"
+```
+
+> 获取参数
+```
+const PARAMS = process.argv.splice(2)
+function getKeyValue (params = []) {
+  if (!Array.isArray(params)) throw new Error('请传入数组格式参数')
+  const obj = {}
+  params.forEach(item => {
+    const o = item.slice(2).split('=')
+    obj[o[0]] = o[1]
+  })
+  return obj
+}
+const r = getKeyValue(PARAMS) // { test: '123', build: '12346' }
+```
+如此便可以在`require`时进行判断，具体选择哪一个即可
+
+### 总结，这样就又多了几种方式，如此便更好使用
+
+
+

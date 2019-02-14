@@ -40,7 +40,6 @@
           >{{item.name}}</el-checkbox>
         </el-checkbox-group>
       </el-form-item>
-      
       <el-form-item label="是否必填">
         <el-button @click="isRequire = !isRequire">{{ isRequire ? '必填' : '选填' }}</el-button>
       </el-form-item>
@@ -85,7 +84,7 @@
 import mix from './mixins/init-common'
 export default {
   mixins: [mix],
-  data() {
+  data () {
     return {
       isRequire: true,
       ruleForm: {
@@ -120,7 +119,7 @@ export default {
     }
   },
   methods: {
-    setFormData() {
+    setFormData () {
       setTimeout(() => {
         this.ruleForm = {
           name: '测试项目',
@@ -135,7 +134,7 @@ export default {
       }, 1500)
     }
   },
-  mounted() {
+  mounted () {
     this.setFormData()
   }
 }
