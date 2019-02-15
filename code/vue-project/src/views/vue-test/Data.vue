@@ -18,6 +18,12 @@
     <div class="item">
       <Store />
     </div>
+    <div class="item">
+      <h1>测试 provide/inject</h1>
+      <h3>{{inject_data}}</h3>
+      <input type="text" v-model="inject_data">
+      <DataTest />
+    </div>
   </div>
 </template>
 
@@ -32,18 +38,40 @@ import STextarea from '@/components/input/textarea'
 /* vuex 的使用提升 */
 import Store from './DataTransmission/Store'
 
+/* 测试 provide/inject */
+import DataTest from './DataTransmission/DataTest'
+
 export default {
   components: {
     PropTest,
     STextarea,
     SInput,
-    Store
+    Store,
+    DataTest
   },
   data () {
     return {
       input: '',
-      textarea: ''
+      textarea: '',
+      inject_data: '我是通过 provide / inject 的方式进行传递参数的'
     }
+  },
+  provide () {
+    return {
+      data: this,
+      aa: this.inject_data
+    }
+  },
+  mounted () {
+    const itemList = Array.from(document.querySelectorAll('.item'))
+    itemList.forEach(item => {
+      item.onmouseenter = function () {
+        item.classList.add('hover')
+      }
+      item.onmouseleave = function () {
+        item.classList.remove('hover')
+      }
+    })
   }
 }
 </script>
@@ -54,10 +82,12 @@ export default {
     padding: 15px;
     min-height: 200px;
     border-radius: 10px;
-    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, .2);
-    transition: .3s linear;
-    &:hover {
-      box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, .5);
+    border: 1px solid #ebebeb;
+    transition: .2s;
+    &.hover {
+      // box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, .5);
+      box-shadow: 0 0 8px 0 rgba(232, 237, 250, .6),
+                  0 2px 4px 0 rgba(232, 237, 250, .5)
     }
     & + .item {
       margin-top: 30px;
