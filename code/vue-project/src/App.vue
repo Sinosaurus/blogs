@@ -50,7 +50,7 @@
             </Submenu>
             <Submenu name="4">
               <template slot="title">
-                <Icon type="md-bonfire" />vue--slot使用
+                <Icon type="md-bonfire" />vue 使用
               </template>
               <MenuItem
                 v-for="item in vueSlotList"

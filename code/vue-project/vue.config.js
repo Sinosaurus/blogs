@@ -10,6 +10,6 @@ module.exports = {
       .set('$e', resolve('src/views/elemenet-ui-validate'))
       .set('$c', resolve('src/views/css-test'))
       .set('$w', resolve('src/views/webpack-test'))
-      .set('$s', resolve('src/views/slot-test'))
+      .set('$s', resolve('src/views/vue-test'))
   }
 }

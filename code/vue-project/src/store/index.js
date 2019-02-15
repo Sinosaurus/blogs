@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import formData from './modules/form_data'
+import test from './modules/test_store'
 
 Vue.use(Vuex)
 
@@ -47,6 +48,11 @@ export default new Vuex.Store({
         name: '4-1',
         title: 'vue--slot使用',
         router: 'slot-vue'
+      },
+      {
+        name: '4-2',
+        title: 'vue-数据传递',
+        router: 'data-vue'
       }
     ],
     titleType: [
@@ -64,7 +70,7 @@ export default new Vuex.Store({
       },
       {
         type: '4',
-        title: 'vue--slot使用'
+        title: 'vue使用'
       }
     ]
   },
@@ -75,6 +81,7 @@ export default new Vuex.Store({
 
   },
   modules: {
-    formData
+    formData,
+    test
   }
 })
