@@ -1,12 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>经典布局</title>
+  <style>
+    .clearfix::after {
+      content: '';
+      height: 0;
+      line-height: 0;
+      visibility: hidden;
+      clear: both;
+    }
+
+    /* .container {
+      display: flex;
+      flex-direction: column;
+    } */
+
+    .item {
+      border: 2px dashed #666;
+    }
+
+    .item + .item {
+      margin-top: 50px;
+    }
+
+    .left {
+      width: 100px;
+      height: 150px;
+      background-color: #ffb5bf;
+    }
+
+    .right {
+      height: 150px;
+      background-color: #94e8ff;
+    }
+
+    /* display inline-block */
+    .item1 {
+      font-size: 0;
+      /* 清除间距 */
+    }
+
+    .item1 .left {
+      font-size: 12px;
+      vertical-align: top;
+      display: inline-block;
+    }
+
+    .item1 .right {
+      font-size: 12px;
+      vertical-align: top;
+      display: inline-block;
+      width: calc(100% - 100px);
+      overflow: auto;
+    }
+
+    /* float */
+    /* float 1 */
+    .item2 {
+      /* overflow: hidden; */
+      /* 清除浮动 */
+    }
+
+    .item2 .left {
+      float: left;
+    }
+
+    .item2 .right {
+      margin-left: 100px;
+    }
+
+    /* float 2 */
+    .item3 .left,
+    .item3 .right {
+      float: left;
+    }
+
+    .item3 .right {
+      width: calc(100% - 100px);
+    }
+
+    /* float 3 */
+    .item4 .left {
+      float: left;
+    }
+
+    .item4 .right {
+      overflow: auto;
+      /* 形成 BFC 因为 BFC 不会忽视 浮动元素 */
+    }
+
+    /* 定位 absolute */
+    .item5 {
+      position: relative;
+    }
+
+    .item5 .left {
+      position: absolute;
+    }
+
+    .item5 .right {
+      margin-left: 100px;
+    }
+
+    /* flex */
+    .item6 {
+      display: flex;
+    }
+    .item6 .right {
+      flex: 1;
+    }
+  </style>
 </head>
+
 <body>
-  
+  <section class="container">
+    <section class="item">
+      <p>此处只要不添加内容没问题，添加了内容就会错位，这是何解 应该是使用 <code>font-size: 0</code></p>
+      <div class="content item1" style="overflow: hidden">
+        <div class="left"></div>
+        <div class="right">
+          <p>对左右 div 添加 font-size: 12px 主要用来覆盖父元素的 font-size: 0 ，同时添加了 vertical-align: top 是因为发现盒子对称是按照文字基线来的，加上是行内块，因而考虑如此做</p>
+          <pre>.item1 {
+              font-size: 0;
+              /* 清除间距 */
+            }
+            .item1 .left {
+              font-size: 12px;
+              vertical-align: top;
+              display: inline-block;
+            }
+            .item1 .right {
+              font-size: 12px;
+              vertical-align: top;
+              display: inline-block;
+              width: calc(100% - 100px);
+            }</pre>
+        </div>
+      </div>
+    </section>
+    <section class="item">
+      <div class="content item2 clearfix">
+        <div class="left">item2</div>
+        <div class="right">
+        </div>
+      </div>
+    </section>
+    <section class="item">
+      <div class="content item3 clearfix"  style="overflow: hidden">
+        <div class="left">item3</div>
+        <div class="right">
+            此处清除浮动无效，需要开启BFC
+        </div>
+      </div>
+    </section>
+    <section class="item">
+      <div class="content item4 clearfix">
+        <div class="left">item4</div>
+        <div class="right" ></div>
+      </div>
+    </section>
+    <section class="item">
+      <div class="content item5">
+        <div class="left">item5</div>
+        <div class="right">
+        </div>
+      </div>
+    </section>
+    <section class="item">
+      <div class="content item6">
+        <div class="left">item6</div>
+        <div class="right">
+        </div>
+      </div>
+    </section>
+  </section>
 </body>
+
 </html>

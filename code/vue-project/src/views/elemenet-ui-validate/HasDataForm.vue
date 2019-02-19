@@ -67,6 +67,11 @@
         <el-button @click="resetForm('ruleForm')">重置</el-button>
       </el-form-item>
     </el-form>
+    <div v-for="(item, i) in students" :key="i">
+      {{item.id}}
+      {{item.name}}
+      <img :src="item.src" />
+    </div>
   </div>
 </template>
 
