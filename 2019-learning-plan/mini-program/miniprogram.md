@@ -158,6 +158,8 @@ module.exports = {
      >**`<block/>`** 并不是一个组件，它仅仅是一个包装元素，不会在页面中做任何渲染，只接受控制属性。
      
      > `wx:if vs hidden` 类似  `vue` 中  `v-if` 和 `v-show`
+     
+     > `hidden` 无法作用在 `<block>` 元素上，会无效
   - 模板 `template`  
     使用流程
     1. 定义模板 `name` 属性作为 模板 的名字
@@ -202,36 +204,76 @@ module.exports = {
       <template is="{{item % 2 == 0 ? 'even' : 'odd'}}" />
     </block>
     ```
+    3. 调用模板传参 `data`
+    ```
+    <template is="{{item % 2 === 0 ? 'even' : 'odd'}}" data="{{item}}"></template>  
+    ``` 
+      + 传递对象, 注意最后倒数第三个 `}` 要和最后两个有空格，不然报错
+      ```
+      <template is="item" data="{{ ...{item: 1224} }}"></template>  
+      ```
+
     **模板有自己的作用域**
   - 事件
-    - 在组件中绑定一个事件处理函数。
-    ```bindtap
-    // wxml
-    <view bindtap="tapName">Click me!</view>
-    // js
-    Page({
-      tapName(event) {
-        console.log(event)
+    + 简单介绍
+        - 在组件中绑定一个事件处理函数。
+        ```bindtap
+        // wxml
+        <view bindtap="tapName">Click me!</view>
+        // js
+        Page({
+          tapName(event) {
+            console.log(event)
+          }
+        })
+        ```
+        - 使用 `WXS` 函数响应事件
+        > WXS函数接受2个参数，第一个是 `event`，在原有的 ` event` 的基础上加了 `event.instance` 对象，第二个参数是 `ownerInstance`，和 `event.instance` 一样是一个 `ComponentDescriptor` 对象。
+        + 在组件中绑定和注册事件处理的 `WXS函数`。
+        ```
+        <wxs module="wxs" src="./test.wxs"></wxs>
+        <view bindtap="{{wxs.tapName}}">Click me!</view>
+        **注：绑定的WXS函数必须用{{}}括起来**
+        ```
+        + `test.wxs` 文件实现 `tapName函数`
+        ```
+        function tapName(event, ownerInstance) {
+          console.log('tap wechat', JSON.stringify(event))
+        }
+        module.exports = {
+          tapName
+        }
+        ```
+        + 事件绑定和冒泡
+        > `bind`事件绑定不会阻止冒泡事件向上冒泡，`catch`事件绑定可以阻止冒泡事件向上冒泡。
+    
+
+    + 重点介绍
+      + 点击传参 `event.target.dataset` , 通过 `data-*` 来进行
+      ```
+      // wxml
+      <view
+        id="tap-1"
+        bindtap="tapWX"
+        data-userid="123456"
+        data-user-name="sinosaurus"
+      >
+        btn
+      </view>
+      // js
+      tapWX (event) {
+        console.log(event, 'tap事件')
+        console.log(event.target.dataset) // {userName: "sinosaurus", userid: "123456"}
       }
-    })
-    ```
-    - 使用 `WXS` 函数响应事件
-    > WXS函数接受2个参数，第一个是 `event`，在原有的 ` event` 的基础上加了 `event.instance` 对象，第二个参数是 `ownerInstance`，和 `event.instance` 一样是一个 `ComponentDescriptor` 对象。
-    + 在组件中绑定和注册事件处理的 `WXS函数`。
-    ```
-    <wxs module="wxs" src="./test.wxs"></wxs>
-    <view bindtap="{{wxs.tapName}}">Click me!</view>
-    **注：绑定的WXS函数必须用{{}}括起来**
-    ```
-    + `test.wxs` 文件实现 `tapName函数`
-    ```
-    function tapName(event, ownerInstance) {
-      console.log('tap wechat', JSON.stringify(event))
-    }
-    module.exports = {
-      tapName
-    }
-    ```
-    + 事件绑定和冒泡
-    > `bind`事件绑定不会阻止冒泡事件向上冒泡，`catch`事件绑定可以阻止冒泡事件向上冒泡。
-    <!-- todo -->
+      ```
+      **注意**：在 `wxml` 中 `data-*` 都只能是小写，即使大写也会转为小写，若想获取参数是大写，可以通过 添加 `-` (eg: `data-name-user`) 类型进行设置
+  - 引用
+    - `import`
+    - `include`
+
+    **注意**
+
+    1. `include` 可以引用其他 `*.wxml`中 除了 `template`以外的所有代码 *用于组件*
+    2. `import` 引用其他 `*.wxml` 中含 `template` 的代码
+    > 两者互补
+      
