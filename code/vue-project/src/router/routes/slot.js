@@ -6,4 +6,8 @@ export default [{
   path: '/data-vue',
   name: 'data-vue',
   component: () => import('$s/Data.vue')
+}, {
+  path: '/el-table',
+  name: 'el-table',
+  component: () => import('$s/ElementTable.vue')
 }]

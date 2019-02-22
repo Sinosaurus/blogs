@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import formData from './modules/form_data'
 import test from './modules/test_store'
+import elTable from './modules/el-table'
 
 Vue.use(Vuex)
 
@@ -53,6 +54,11 @@ export default new Vuex.Store({
         name: '4-2',
         title: 'vue-数据传递',
         router: 'data-vue'
+      },
+      {
+        name: '4-3',
+        title: 'element表格筛选排序',
+        router: 'el-table'
       }
     ],
     titleType: [
@@ -82,6 +88,7 @@ export default new Vuex.Store({
   },
   modules: {
     formData,
-    test
+    test,
+    elTable
   }
 })
