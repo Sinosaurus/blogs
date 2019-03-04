@@ -14,3 +14,6 @@ test  测试
   + [ryf](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
   + [zhihu](https://zhuanlan.zhihu.com/p/34223150)
   + [juejin](https://juejin.im/entry/5b429be75188251ac85830ff)
+
+## 使用流程
++ 初步尝试  
