@@ -56,7 +56,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
-  data () {
+  data() {
     return {
       title: `
       <h2>基于element-ui table组件 进行开发</h2> 
@@ -94,23 +94,22 @@ export default {
       'setFilters_tag',
       'clear'
     ]),
-     
-     handleFilter (filter) {
-       // 拿到 key
-       /**
-        * 命名技巧罢了，只是关联
-        */
+    handleFilter(filter) {
+      // 拿到 key
+      /**
+       * 命名技巧罢了，只是关联
+       */
       const key = Object.keys(filter)[0]
       this['setFilters_' + key](filter[key])
-     },
-     handleSort (column, prop, order) {
-       console.log(column, prop, order)
-     },
-     clearAll () {
-       this.$refs.tb.clearFilter()
-       this.$refs.tb.clearSort()
-       this.clear()
-     }
+    },
+    handleSort(column, prop, order) {
+      console.log(column, prop, order)
+    },
+    clearAll() {
+      this.$refs.tb.clearFilter()
+      this.$refs.tb.clearSort()
+      this.clear()
+    }
   },
   computed: mapState('elTable', [
     'flagList',

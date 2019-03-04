@@ -4,7 +4,6 @@
       :model="ruleForm"
       ref="ruleForm"
       label-width="100px"
-      :rules="rules"
     >
       <el-form-item
         label="活动名称"
