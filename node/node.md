@@ -14,3 +14,6 @@
 > + `node run serve & node run view`
 > + `node run serve && node run view`
 > + `node ./nodeServe/index.js | \"./nodeView/index.js\"` 此处使用 \"\" window下需要进行转义才能被读取，这样都可以启动命令了， 使用 "" 主要是为了包路径，后面附带的参数不用囊括在内 `"node ./build/express-dev-server.js | \"./server/node_modules/.bin/bunyan\" -l 10"` 类似这里的`\"./server/node_modules/.bin/bunyan\" **-l 10**`
+
+
+### [nrm](https://www.jianshu.com/p/084f3cf550b3)
