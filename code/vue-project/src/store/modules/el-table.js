@@ -22,7 +22,7 @@ export default {
       value: '2016-05-04'
     }],
     // 请求数据
-    filtersDate: [],
+    filtersDate: ['2016-05-04'],
     filtersTag: [],
     sort: {
       order: '',
