@@ -3,7 +3,9 @@
   <div class="sin-table">
     <div v-html="title"></div>
     <el-button @click="clearAll">清除</el-button>
+    <el-button @click="triggerUpdate">触发update</el-button>
     <el-table
+      v-if="isShow"
       ref="tb"
       :data="tableData"
       style="width: 100%"
@@ -56,14 +58,17 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
+  
   data () {
     return {
+      isShow: true,
       title: `
       <h2>基于element-ui table组件 进行开发</h2> 
       <strong>需求</strong> <br />
       1. 排序 筛选 是对后台整个数据进行操作，而不是对当前页面的数据进行操作 <br />
       2. 若是其关联的下一级页面，（eg：点击查看编辑时，再返回当前页面时，保留之前筛选，或排序条件），否则清空
       `,
+      tableData1: [],
       tableData: [{
         date: '2016-05-02',
         name: '王小虎',
@@ -87,6 +92,15 @@ export default {
       }]
     }
   },
+  beforeUpdate () {
+    console.log(this.tableData,11111111111)
+  },
+  updated () {
+    console.log(345678)
+    // if (this.tableData.length) {
+    //   this.isShow = true
+    // }
+  },
   methods: {
     ...mapMutations('elTable', [
       'setFilters_date',
@@ -94,6 +108,18 @@ export default {
       'setFilters_tag',
       'clear'
     ]),
+    triggerUpdate () {
+      this.isShow = !this.isShow
+      if (this.isShow) {
+        this.$nextTick(() => {
+      this.clearAll()
+
+        })
+      }
+      this.tableData1.forEach(item => {
+        this.tableData.push(item)
+      })
+    },
     handleFilter (filter) {
       // 拿到 key
       /**
@@ -106,10 +132,14 @@ export default {
       console.log(column, prop, order)
     },
     clearAll () {
+      this.isShow = false
       this.$refs.tb.clearFilter()
       this.$refs.tb.clearSort()
       this.clear()
-      this._table()
+      this.$nextTick(() => {
+        this.isShow = true
+      })
+      // this._table()
     },
     _table () {
       const COLUMNS_LIST = this.$refs.tb.columns
@@ -131,7 +161,16 @@ export default {
     'filtersDate',
     'filtersFlag',
     'sort'
-  ])
+  ]),
+  watch: {
+    tableData: {
+      handler () {
+        console.log(this.tableData)
+        console.log(this.isShow)
+      },
+      immediate: true
+    }
+  }
 }
 </script>
 
