@@ -52,6 +52,44 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <div>
+      <el-button
+        v-for="item in btnList"
+        :key="item.id"
+        :loading="!!load[item.id]"
+        @click="handleBTN(item.id)"
+      >点击</el-button>
+
+      data () {
+        return {
+          btnList: [
+            {
+              id: '1'
+            },
+            {
+              id: '2'
+            }
+          ],
+          load: {
+          },
+        }
+      }
+      /**
+       * TODO: 值什么时候回来，写在那里即可
+       */
+      created (){
+        this.btnList.forEach(item => {
+          this.$set(this.load, item.id, false)
+        })
+      },
+      methods: {
+         handleBTN (id) {
+          this.$set(this.load, id, 1)
+          console.log(this.load)
+        },
+      }
+    </div>
   </div>
 </template>
 
@@ -61,6 +99,16 @@ export default {
   
   data () {
     return {
+      btnList: [
+        {
+          id: '1'
+        },
+        {
+          id: '2'
+        }
+      ],
+      load: {
+      },
       isShow: true,
       title: `
       <h2>基于element-ui table组件 进行开发</h2> 
@@ -101,6 +149,11 @@ export default {
     //   this.isShow = true
     // }
   },
+  created (){
+    this.btnList.forEach(item => {
+      this.$set(this.load, item.id, false)
+    })
+  },
   methods: {
     ...mapMutations('elTable', [
       'setFilters_date',
@@ -108,6 +161,10 @@ export default {
       'setFilters_tag',
       'clear'
     ]),
+    handleBTN (id) {
+      this.$set(this.load, id, 1)
+      console.log(this.load)
+    },
     triggerUpdate () {
       this.isShow = !this.isShow
       if (this.isShow) {
@@ -155,13 +212,15 @@ export default {
       })
     }
   },
-  computed: mapState('elTable', [
-    'flagList',
-    'dateList',
-    'filtersDate',
-    'filtersFlag',
-    'sort'
-  ]),
+  computed: {
+    ...mapState('elTable', [
+      'flagList',
+      'dateList',
+      'filtersDate',
+      'filtersFlag',
+      'sort'
+    ])
+  },
   watch: {
     tableData: {
       handler () {
@@ -169,6 +228,12 @@ export default {
         console.log(this.isShow)
       },
       immediate: true
+    },
+    load: {
+      handler() {
+        console.log(this.load, 22222)
+      },
+      deep: true
     }
   }
 }
