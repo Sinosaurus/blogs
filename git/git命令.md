@@ -19,3 +19,13 @@ git checkout -b dev1.0
   ![gitlab设置顺序](./../images/git/gitlab2.png)
   ![具体细节](./../images/git/gitlab3.png)
   
+
++ git 刪除文件包括历史记录中的文件[可用](https://blog.kongfanjian.com/2015/03/02/%E6%B0%B8%E4%B9%85%E5%88%A0%E9%99%A4git%E4%BB%93%E5%BA%93%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%8E%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95/)
+```
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path-of-remove-file' --prune-empty --tag-name-filter cat -- --all
+```  
+> `path-of-remove-fil`便是文件路径，可以写成 `*/**/.env*` 便会去查找其下的所有 `.env`文件，测试成功
+
+```
+git push origin master --force #强制覆盖
+```
