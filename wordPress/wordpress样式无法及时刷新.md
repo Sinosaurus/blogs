@@ -67,4 +67,139 @@ style.less
 + `gulp` 利用对应的插件进行操作
 + `less-watch-compiler` less的一个插件（这个真是无心插柳柳成荫，却成了解决当前 问题的关键）
 
-### [nodemon code]()
+### [nodemon code](https://gitee.com/private_sheet/blogs/tree/master/code/2019-learning-plan/less/node)
+利用 node 的 `child_process` 来执行系统命令，同时利用 `nodemon` 来监听文件变化
+
+> code 
+
+index.js
+```
+// 
+const exec = require('child_process').exec
+const path = require('path')
+
+// const cmd = 'node_modules/less/bin/lessc less/style.less style.css'
+// const cmd = `${path.join(__dirname + 'node_modules\//less\/bin\/lessc')} ${path.join(__dirname + 'less\/style.less')} style.css`
+const cmd = 'start.sh'
+exec(cmd, (err, stdout, stderr) => {
+  console.log(err)
+})
+```
+nodemon.json
+
+```
+...
+"watch": ["less", "index.js"], // 需要监听的文件
+...
+```
+
+start.sh
+```
+node_modules/less/bin/lessc less/style.less style.css
+```
+> 总是哪里缺点，因为相当于监听多个了。`index.js` 和 `less`变化，各自行动，无法在 `less`变化，同时执行`index.js` ，[改配置](https://www.bbsmax.com/A/gAJG2rwgzZ/)
+```
+nodemon.json
+...
+ "events": {
+    "start": "start.sh",
+    "restart": "start.sh"
+  },
+```
+依旧无法生效，总是无法进行关联，先放弃了
+
++ 注意 
+  - window无法直接通过运行命令，需要周转一下 [说明](http://nodejs.cn/api/child_process.html#child_process_spawning_bat_and_cmd_files_on_windows)
+
+### [gulp](https://gitee.com/private_sheet/blogs/tree/master/code/2019-learning-plan/less/gulp_test)
+本来是想利用`gulp-less-changed`这个插件来进行处理，可花费最长的时间，却并没有什么用
+
+code
+```gulpfile.js
+const gulp = require('gulp');
+
+const lessChanged = require('gulp-less-changed');
+const less = require('gulp-less');
+
+const autoprefixer = require('gulp-autoprefixer')
+const watchPath = require('gulp-watch-path')
+const gutil = require('gulp-util')
+// 避免错误时停止
+const combiner = require('stream-combiner2')
+
+const handleError = function (err) {
+  const colors = gutil.colors;
+  console.log('\n')
+  gutil.log(colors.red('Error!'))
+  gutil.log('fileName: ' + colors.red(err.fileName))
+  gutil.log('lineNumber: ' + colors.red(err.lineNumber))
+  gutil.log('message: ' + err.message)
+  gutil.log('plugin: ' + colors.yellow(err.plugin))
+}
+
+gulp.task('lesscss', () => {
+  const combined = combiner.obj([
+    gulp.src('less/*.less'),
+    lessChanged(),
+    autoprefixer({
+      browsers: 'last 2 versions'
+    }),
+    less(),
+    gulp.dest('less/')
+  ])
+  combined.on('error', handleError)
+})
+
+gulp.task('wathcless', () => {
+  const watcher = gulp.watch('less/*.less', event => {
+    const paths = watchPath(event, 'less/', 'less/')
+    gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
+    gutil.log('Dist' + paths.distPath)
+    const combined = combiner.obj([
+      gulp.src(paths.srcPath),
+      lessChanged(),
+      autoprefixer({
+        browsers: 'last 2 versions'
+      }),
+      less(),
+      gulp.dest(paths.distDir)
+    ])
+    combined.on('error', handleError)
+  })
+  watcher.on('change', event => {
+    console.log('file' + event.path + 'was' + event.type)
+    if (event.type === 'changed') {
+      gulp.src(['less/style.less'])
+      .pipe(lessChanged())
+      .pipe(less())
+      .pipe(gulp.dest('dist/style.css'))
+    }
+  })
+})
+// 执行多个任务
+gulp.task('default', ['lesscss', 'wathcless'])
+```
+less某个文件变了，却并没有引起其他引入文件的变化，又得放弃，无奈的狠啊
+
+### [less-watch-compiler](https://gitee.com/private_sheet/blogs/tree/master/code/2019-learning-plan/less/less-compiler-watch)
+这个使用起来相当简单，有点类似`nodemon`，只是别人已经用不同的解决了上述的问题
+
+package.json
+```
+"scripts": {
+    "dev": "less-watch-compiler src dist style.less"
+  },
+```
+
+执行命令
+```
+npm run dev // 可以一直监听改变
+```
+
+同时利用 `vscode autoprefixer` 就可以解决兼容问题，以及文件变化，重新进行编译，而我也在wordpress中测试成功了，算是暂时解决了吧
+
+## 总结
++ 耗费好长时间才算解决，还是要多了解挺好的
++ window的命令执行确实有弊端，有点hold不住了
++ gulp虽然有点日薄西山，但是确实有其独到之处，学起来比webpack快多了，想想webpack一脸...
++ 后期还得想想 gulp这个解决方案，避免有人做出来了，只是没有找到了而已
