@@ -1,0 +1,15 @@
+{
+  "name": "less-compiler-watch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "less-watch-compiler src dist style.less"
+  },
+  "author": "juejin",
+  "license": "ISC",
+  "dependencies": {
+    "less-watch-compiler": "^1.13.0"
+  }
+}
