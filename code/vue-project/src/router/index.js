@@ -7,6 +7,7 @@ import webpack from './routes/webpack'
 import home from './routes/home'
 import about from './routes/about'
 import slot from './routes/slot'
+import jsonp from './routes/jsonp'
 
 Vue.use(Router)
 
@@ -16,7 +17,8 @@ let routes = [
   ...elValidate,
   ...css,
   ...webpack,
-  ...slot
+  ...slot,
+  ...jsonp
 ]
 
 const router = new Router({

@@ -59,6 +59,11 @@ export default new Vuex.Store({
         name: '4-3',
         title: 'element表格筛选排序',
         router: 'el-table'
+      },
+      {
+        name: '4-4',
+        title: 'JSONP',
+        router: 'jsonp'
       }
     ],
     titleType: [

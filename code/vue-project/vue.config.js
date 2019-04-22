@@ -1,5 +1,7 @@
 const path = require('path')
-function resolve (dir) {
+const webpack = require('webpack')
+
+function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
@@ -11,5 +13,15 @@ module.exports = {
       .set('$c', resolve('src/views/css-test'))
       .set('$w', resolve('src/views/webpack-test'))
       .set('$s', resolve('src/views/vue-test'))
-  }
+  },
+
+  // configureWebpack: {
+  //   plugins: [
+  //     new webpack.ProvidePlugin({
+  //       $: "jquery",
+  //       jQuery: "jquery",
+  //       "windows.jQuery": "jquery"
+  //     })
+  //   ]
+  // }
 }
