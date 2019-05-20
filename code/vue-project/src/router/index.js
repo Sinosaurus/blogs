@@ -8,6 +8,7 @@ import home from './routes/home'
 import about from './routes/about'
 import slot from './routes/slot'
 import jsonp from './routes/jsonp'
+import vuexAlong from './routes/vuex-along'
 
 Vue.use(Router)
 
@@ -18,7 +19,8 @@ let routes = [
   ...css,
   ...webpack,
   ...slot,
-  ...jsonp
+  ...jsonp,
+  ...vuexAlong
 ]
 
 const router = new Router({
