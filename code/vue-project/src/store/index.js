@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import formData from './modules/form_data'
 import test from './modules/test_store'
 import elTable from './modules/el-table'
+// import VuexAlong from 'vuex-along'
+
 
 Vue.use(Vuex)
 
@@ -69,6 +71,11 @@ export default new Vuex.Store({
         name: '4-5',
         title: 'El-Scrollbar',
         router: 'scroll'
+      },
+      {
+        name: '4-6',
+        title: 'vuex-along',
+        router: 'vuex-along'
       }
     ],
     titleType: [
@@ -100,5 +107,13 @@ export default new Vuex.Store({
     formData,
     test,
     elTable
-  }
+  },
+  // plugins: [
+  //   VuexAlong({
+  //     name: 'vuex-along-one',
+  //     session: {
+  //       list: ['formData']
+  //     }
+  //   })
+  // ]
 })

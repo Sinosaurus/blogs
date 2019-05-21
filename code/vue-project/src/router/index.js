@@ -9,6 +9,7 @@ import about from './routes/about'
 import slot from './routes/slot'
 import jsonp from './routes/jsonp'
 import vueTest from './routes/vue_test'
+// import vuexAlong from './routes/vuex-along'
 
 Vue.use(Router)
 
@@ -21,6 +22,7 @@ let routes = [
   ...slot,
   ...jsonp,
   ...vueTest
+  // ...vuexAlong
 ]
 
 const router = new Router({
