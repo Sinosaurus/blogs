@@ -64,6 +64,11 @@ export default new Vuex.Store({
         name: '4-4',
         title: 'JSONP',
         router: 'jsonp'
+      },
+      {
+        name: '4-5',
+        title: 'El-Scrollbar',
+        router: 'scroll'
       }
     ],
     titleType: [

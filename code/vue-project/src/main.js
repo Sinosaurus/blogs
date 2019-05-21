@@ -8,8 +8,8 @@ import './plugins/iview'
 /**
  * 使用方案 jsonp
  */
-import VueJsonp from 'vue-jsonp'
-Vue.use(VueJsonp)
+// import VueJsonp from 'vue-jsonp'
+// Vue.use(VueJsonp)
 
 Vue.config.productionTip = false
 

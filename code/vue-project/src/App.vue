@@ -178,6 +178,6 @@ body {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 .sc-container {
-  min-height: 600px;
+  min-height: 200px;
 }
 </style>
