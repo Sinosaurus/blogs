@@ -85,6 +85,18 @@
         <el-button @click="resetForm('ruleForm')">重置</el-button>
       </el-form-item>
     </el-form>
+    <h2>测试el-radio 多个渲染结果</h2>
+    <div>
+      <p>area: {{area}}</p>
+      <el-radio-group v-model="area">
+        <el-radio
+          border
+          v-for="(item, index) in areaList"
+          :key="index"
+          :lable="item.data_id"
+        >{{item.value}}</el-radio>
+      </el-radio-group>
+    </div>
   </div>
 </template>
 
@@ -111,7 +123,18 @@ export default {
         desc: '',
         num: ''
       },
-      isNum
+      isNum,
+      area: 'A',
+      areaList: [
+        {
+          data_id: 'A',
+          value: 'Aa'
+        },
+        {
+          data_id: 'B',
+          value: 'Bb'
+        }
+      ]
     }
   },
   methods: {
