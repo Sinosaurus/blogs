@@ -148,9 +148,11 @@ body {
 .sc-scrollbar {
   height: 100%;
   .el-scrollbar__wrap {
+    scroll-behavior:smooth;
     overflow-x: hidden;
   }
   .sc-warp {
+    scroll-behavior:smooth;
     // 父盒子
     // background-color: red;
   }
