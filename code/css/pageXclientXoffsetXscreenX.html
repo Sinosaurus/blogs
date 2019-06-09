@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 150vh;
+        }
+        main {
+            width: 30vw;
+            margin: 80vh auto;
+            padding: 2em;
+            border: 20px solid #333;
+        }
+        span {
+            font-size: 2em;
+            font-weight: bold;
+            color: red;
+            transition: all .1s;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>测试</h1>
+        <a href="https://img-blog.csdn.net/20150502134126249?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHpkaW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">https://img-blog.csdn.net/20150502134126249?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbHpkaW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center</a>
+        <h3>
+            client
+            page
+            offset
+            screen
+            scroll
+            x,y
+            layer
+            movement
+            pageXoffset === scrollX
+            pageYoffset === scrollY
+
+        </h3>
+        <p>client <span data-type="client">1</span></p>
+        <p>page <span data-type="page">2</span></p>
+        <p>screen <span data-type="screen">3</span></p>
+        <p>offset <span data-type="offset">4</span></p>
+        <p>scroll <span data-type="scroll">4</span></p>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('main').addEventListener('click', f, false)
+        }, false)
+        function f (e) {
+            // 需要的数据
+            const NeedData = [
+                'client',
+                'page',
+                'screen',
+                'offset',
+                'scroll'
+            ]
+            let Data = {}
+            console.log(e)
+            NeedData.forEach(item => {
+                if (item === 'scroll') {
+                    Data[item + 'Top'] = e[item + 'Top']
+                    Data[item + 'Left'] = e[item + 'Left']
+                    return
+                }
+                Data[item + 'X'] = e[item + 'X']
+                Data[item + 'Y'] = e[item + 'Y']
+            })
+
+            Array.from(document.querySelectorAll('span')).forEach(item => {
+                const Type = item.dataset.type
+                console.log(Type)
+                if (Type === 'scroll') {
+                    item.innerText = `Top: ${Data[Type + 'Top']}; Left: ${Data[Type + 'Left']}`
+                    return;
+                }
+                item.innerText = `X: ${Data[Type + 'X']}; Y: ${Data[Type + 'Y']}`
+            })
+        }
+    </script>
+</body>
+</html>

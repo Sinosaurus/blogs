@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: skyblue;
+            height: 2000px;
+        }
+
+        .sc-button {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .sc-button:hover {
+            box-shadow: 0 0 2px #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>测试scroll如何运动</h1>
+    <button id="top" class="sc-button">Top</button>
+    <script>
+        // 兼容性处理
+        if (!window.requestAnimationFrame) {
+            requestAnimationFrame = function (fn) {
+                setTimeout(fn, 17)
+            }
+        }
+        /**
+         * @description: 滚到顶部
+         * @param {number} rate 缓动速率
+         */
+        const BackToTop = (rate = 2) => {
+
+            const doc = document.body.scrollTop ? document.body : document.documentElement
+            // 距离顶部的值
+            let scrollTop = doc.scrollTop
+            // 此处不适合使用箭头函数？？？
+            const top = function () {
+                scrollTop = scrollTop + (0 - scrollTop) / (rate || 2);
+
+                // 临界判断，终止动画
+                if (scrollTop < 1) {
+                    doc.scrollTop = 0;
+                    return;
+                }
+                doc.scrollTop = scrollTop;
+                // 动画gogogo!
+                requestAnimationFrame(top);
+            };
+            top();
+        }
+
+    </script>
+    <script>
+        const T = document.getElementById('top')
+        T.onclick = function () {
+            BackToTop()
+        }
+    </script>
+</body>
+
+</html>
