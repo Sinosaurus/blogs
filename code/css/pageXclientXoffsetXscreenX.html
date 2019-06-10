@@ -49,6 +49,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('main').addEventListener('click', f, false)
+            window.addEventListener('scroll', s, false)
         }, false)
         function f (e) {
             // 需要的数据
@@ -80,6 +81,14 @@
                 }
                 item.innerText = `X: ${Data[Type + 'X']}; Y: ${Data[Type + 'Y']}`
             })
+        }
+        function s (e) {
+            const ScrollElement = e.target.scrollingElement
+            const { scrollHeight = 0, scrollTop = 0, clientHeight = 0 } = ScrollElement
+            const CHeight = scrollHeight - scrollTop
+            // 判定元素是否滚动到底 https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollHeight
+            console.log(CHeight, clientHeight, 999)
+
         }
     </script>
 </body>
