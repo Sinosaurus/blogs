@@ -46,6 +46,49 @@
         <p>offset <span data-type="offset">4</span></p>
         <p>scroll <span data-type="scroll">4</span></p>
     </main>
+    <section>
+        <ul>
+            <li>
+                <h2>client</h2>
+                <ul>
+                    <li>
+                        <h3>clientTop</h3>
+                        <p>
+                            <style>
+                                .clienTop {
+                                    height: 200px;
+                                    width: 300px;
+                                    border: 20px solid rgba(20, 100, 255, .5)
+                                }
+                            </style>
+                            <div class="clienTop">
+                            </div>
+                            <script>
+                                const clienTop = document.querySelector('.clienTop')
+                                const Style = window.getComputedStyle(clienTop, null)
+                                const Rect = clienTop.getBoundingClientRect()
+                                console.log(Style)
+                                console.dir(clienTop)
+                                console.log(Rect)
+
+                                clienTop.innerText = `
+                                    clienTop = ${clienTop.clientTop}
+                                    border = ${Style.border}
+                                `
+                            </script>
+                        </p>
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+
+            </li>
+            <li></li>
+            <li></li>
+        </ul>
+    </section>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('main').addEventListener('click', f, false)
