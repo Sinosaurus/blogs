@@ -13,6 +13,18 @@
     <el-input v-model="form.accout" @input="changeInputValue"></el-input>
     <p>iview</p>
     <Input v-model="form.accout" @input="changeInputValue" />
+    <h1>手机归属地查询</h1>
+    <p>
+      https://www.iteblog.com/archives/1725.html
+    </p>
+    <ul class="sc-button-groups">
+      <li
+        v-for="(item, index) in PhoneLocationList"
+        :key="index"
+      >
+        <button class="sc-button" @click="getPhoneLocation(item)">{{item.name}}</button>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -25,7 +37,35 @@ export default {
       value: '',
       form: {
         accout: 0,
-      }
+      },
+      PhoneLocationList: [
+        {
+          id: '1',
+          name: 'iteblog',
+          url: 'https://www.iteblog.com/api/mobile.php?mobile='
+        },
+        {
+          // 可用
+          id: '2',
+          name: '淘宝',
+          url: 'http://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel='
+        },
+        {
+          id: '3',
+          name: '财付通',
+          url: 'http://life.tenpay.com/cgi-bin/mobile/MobileQueryAttribution.cgi?chgmobile='
+        },
+        {
+          id: '4',
+          name: '360',
+          url: 'http://cx.shouji.360.cn/phonearea.php?number='
+        },
+        {
+          id: '5',
+          name: '百付宝',
+          url: 'https://www.baifubao.com/callback?cmd=1059&callback=iteblog&phone='
+        }
+      ]
     }
   },
   mounted () {
@@ -59,6 +99,19 @@ export default {
       // console.log(v.replace(/[^0-9]/ig,""), 'new')
       this.form.accout = v.replace(/\s/g, '')
       this.value = v.replace(/(\d{4})(?=\d)/g, '$1 ')
+    },
+    getPhoneLocation (item) {
+      console.log(item)
+      this.$jsonp(item.url + '15549446040').then(res => {
+
+      }).catch(err => {
+        
+      })
+      // this.$fetch.get(item.url + '15549446040').then(res => {
+      //   console.log(res)
+      // }).catch(err => {
+      //   console.log(err)
+      // })
     }
   },
   created() {
@@ -71,3 +124,27 @@ export default {
   }
 }
 </script>
+<style lang="less">
+.sc-button-groups {
+  padding-top: 10px; 
+  display: flex;
+  li + li {
+    margin-left: 20px;
+  }
+  .sc-button {
+    border-radius: 4px;
+    padding: 2px 10px;
+    cursor: pointer;
+    transition: all .1s;
+    outline: 0;
+    &:focus {
+      background-color: skyblue;
+      color: #fff;
+    }
+    &:hover {
+      background-color: pink;
+      color: #333
+    }
+  }
+}
+</style>
