@@ -24,6 +24,12 @@ var y = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.docu
 + `scrollHeight`
 + `scrollY`
 
+#### `scrollTop`
+一个元素的 scrollTop 值是这个元素的顶部到视口可见内容（的顶部）的距离的度量。当一个元素的内容没有产生垂直方向的滚动条，那么它的 scrollTop 值为0。
+
+
+
+
 ### `function`
 + `scrollBy` 在窗口中按指定的偏移量滚动文档。 [links](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/scrollBy)
   > 参数

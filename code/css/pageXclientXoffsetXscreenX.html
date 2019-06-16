@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,11 +8,11 @@
     <title>Document</title>
     <style>
         body {
-            height: 150vh;
+            min-height: 150vh;
         }
         main {
             width: 30vw;
-            margin: 80vh auto;
+            margin: 20vh auto;
             padding: 2em;
             border: 20px solid #333;
         }
@@ -88,6 +89,49 @@
             <li></li>
             <li></li>
         </ul>
+        <style>
+            .scroll {
+                margin: auto;
+                width: 50vw;
+                height: 20vh;
+                border: 30px solid #ccc;
+                overflow-y: scroll;
+            }
+        </style>
+        <section class="scroll">
+            <div>
+                <p>scroll</p>
+                <p>scroll</p>
+                <p>scroll</p>
+                <p>scroll</p>
+                <p>scroll</p>
+                <p>scroll</p>
+                <p>scroll</p>
+                <p>scroll</p>
+                <p>scroll</p>
+                <p>scroll</p>
+                <p>scroll</p>
+                <p>scroll</p>
+                <p>scroll</p>
+            </div>
+        </section>
+        <script>
+            // https://wo13145219.iteye.com/blog/2001598
+           const S = document.querySelector('.scroll')
+           const D = Array.from(S.children)[0]
+        //    document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;  
+            const scr = window.scrollY || window.pageYOffset || document.body.scrollTop + (document.documentElement && document.documentElement.scrollTop || 0)
+            let scrollHeight = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop; 
+            S.addEventListener('scroll', function () {
+                console.log(scr, scrollHeight)
+            }, false)
+            // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_element_scrollleft2
+            /**
+             * scrollTop 可以对其赋值并生效，却无法很好的获取值
+             * 
+            */
+
+        </script>
     </section>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
