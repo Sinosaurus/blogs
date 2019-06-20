@@ -18,7 +18,7 @@
 
         .sc-select-content {
             position: relative;
-            margin: 100px auto;
+            display: inline-block;
             width: 200px;
         }
 
@@ -90,20 +90,18 @@
 </head>
 
 <body>
-    <div class="sc-select-content">
-        <div class="sc-select-content">
-            <div class="sc-input--item">
-                <input id="input" type="text" class="sc-input" readonly="readonly" autocomplete="off" placeholder="请选择">
-            </div>
-            <div class="sc-select-item">
-                <ul class="select-container">
-                    <li class="select-item select-item--1">1</li>
-                    <li class="select-item">2</li>
-                    <li class="select-item">3</li>
-                    <li class="select-item">4</li>
-                    <li class="select-item">5</li>
-                </ul>
-            </div>
+    <div class="sc-select-content" id="sc-select">
+        <div class="sc-input--item">
+            <input id="input" type="text" class="sc-input" readonly="readonly" autocomplete="off" placeholder="请选择">
+        </div>
+        <div class="sc-select-item">
+            <ul class="select-container">
+                <li class="select-item select-item--1">1</li>
+                <li class="select-item">2</li>
+                <li class="select-item">3</li>
+                <li class="select-item">4</li>
+                <li class="select-item">5</li>
+            </ul>
         </div>
     </div>
     <script>
@@ -140,7 +138,7 @@
             }
         }
 
-        function findChild (node, className) {
+        function findChild(node, className) {
             const Childrens = [].slice.call(node.children)
             let children = null
             if (Childrens.length > 0) {
@@ -157,41 +155,59 @@
             }
             return children
         }
-
-        function findChilds (node, className) {
-            const Childrens = [].slice.call(node.children)
-
+        /**
+         * @description: 由于考虑的太多，暂时先不做了
+         * 1. 是不是节点
+         * 2.子元素没有，但是孙元素有，因而也得考虑进去
+         * 3. 当前的做法明显依赖于class类名，若是没有则不显示
+         * @param {type} 
+         * @return: 
+         */
+        function findChilds(node, className) {
             let childrens = []
-            if (Childrens.length > 0) {
-                // for ()
-                Childrens.forEach(item => {
-                    console.log(item, [].slice.call(item.classList).indexOf(className))
-                    if (item.classList && [].slice.call(item.classList).indexOf(className) > -1) {
-                        childrens.push(item)
-                    }
-                    return childrens.concat(findChilds(item, className))
-                })
-            } else { 
-                return childrens
-            }
+            // const children = node.children
+            // debugger
+            // if (children && children.classList) {
+            //     if ([].slice.call(children.classList).indexOf(className) > -1) {
+            //         childrens.push(children)
+            //     }
+            //     return childrens.concat(findChilds(children, className))
+            // } else {
+            //     return []
+            // }
         }
     </script>
     <script>
         const input = document.getElementById('input')
         const item = document.querySelectorAll('.sc-select-item')[0]
-        input.addEventListener('click', function () {
-            item.classList.toggle('active')
-        })
-        input.addEventListener('blur', function () {
-            item.classList.remove('active')
-        }, false)
+        // input.addEventListener('click', function () {
+        //     item.classList.toggle('active')
+        // })
+        // input.addEventListener('blur', function () {
+        //     item.classList.remove('active')
+        // }, false)
 
-        const P = findParent(input, 'sc-select-content')
-        const Ps = findParents(input, 'sc-select-content')
-        const c = findChild(item, 'select-item')
-        console.log(c, 999)
-        const Cs = findChilds(item, 'select-item')
-        console.log(Cs, 9999)
+        // const P = findParent(input, 'sc-select-content')
+        // const Ps = findParents(input, 'sc-select-content')
+        // const c = findChild(item, 'select-item')
+        // console.log(c, 999)
+        // const Cs = findChilds(item, 'select-item')
+        // console.log(Cs, 9999)
+
+        const select = document.getElementById('sc-select')
+        select.addEventListener('click', function (e) {
+            const input = findChild(this, 'sc-input')
+            const list = findChild(this, 'sc-select-item')
+            // animate
+            list.classList.add('active')
+            if (Array.from(e.target.classList).indexOf('select-item') > -1) {
+                input.value = e.target.innerText
+                // animate
+                setTimeout(function () {
+                    list.classList.remove('active')
+                }, 200)
+            }
+        }, false)
     </script>
 </body>
 

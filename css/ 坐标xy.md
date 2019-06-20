@@ -43,3 +43,7 @@ var y = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.docu
       - auto 默认 等同于 instant
 + `scrollByLines`
 + `scrollByPages`
+
+
+## `page`
+
