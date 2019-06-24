@@ -8,17 +8,20 @@
   <style>
     .client-xyz {
       margin: auto;
-      margin-top: 30vh;
-      width: 300px;
+      width: 40vw;
+      margin: 10vw;
+      /* margin-top: 30vh;
       padding: 30px;
       height: 200px;
       border: 20px solid;
-      overflow: auto;
+      overflow: auto; */
     }
     p {
       margin: 20px;
-      width: auto;
       padding: 20px;
+      /* border: 30px solid #333; */
+      /* border: 10vw solid #333; */
+      /* border: calc(100px - 70px) solid #333; */
       border: 30px solid #333;
       word-break: keep-all;
       overflow-y: scroll;
@@ -59,12 +62,18 @@
     needWidth.forEach(item => {
       obj[item] = Box[item]
     })
-    console.dir(Box)
-    const Style = window.getComputedStyle(Box, null)
+
+    let border = 0
+    const style = window.getComputedStyle(Box, null)
+      // 最终获取的都是px
+    border = parseFloat(style['borderRightWidth'].replace('px', '')) + parseFloat(style['borderLeftWidth'].replace('px', ''))
+
     Array.from(document.querySelectorAll('span')).forEach(item => {
       const type = item.dataset.params
-      const style = window.getComputedStyle(Box, null)
       item.innerText = style[type] || obj[type]
+      if (type === 'scrollbar') {
+        item.innerText = obj.offsetWidth - obj.clientWidth - border
+      }
     })
   </script>
 </body>

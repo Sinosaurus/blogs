@@ -252,8 +252,8 @@ export default {
        if (!ChildHasError.length) throw new Error('有错误，但是找不到错误位置')
        const FirstErrorNode = ChildHasError[0]
        const scrollToTop = Math.abs(FirstErrorNode.offsetTop) - 40
-       console.log(FirstErrorNode.getBoundingClientRect())
-       while ()
+       console.log(FirstErrorNode.getBoundingClientRect(:webkitRequestAnimationFrame))
+      //  while ()
        // 计算的数据有问题
 
        scrollTop(2, scrollToTop, scrollNode[0])
