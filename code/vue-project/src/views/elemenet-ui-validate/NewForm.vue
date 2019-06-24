@@ -134,6 +134,7 @@
 <script>
 import mix from './mixins/init-common'
 import el from './mixins/el/el-new'
+import scrollTop from './../../utils/scrollTop'
 export default {
   mixins: [mix, el],
   data () {
@@ -250,10 +251,13 @@ export default {
        const ChildHasError = Array.from(node.querySelectorAll('.is-error'))
        if (!ChildHasError.length) throw new Error('有错误，但是找不到错误位置')
        const FirstErrorNode = ChildHasError[0]
-       console.dir(FirstErrorNode)
-      //  https://www.zhangxinxu.com/wordpress/2018/10/scroll-behavior-scrollintoview-%E5%B9%B3%E6%BB%91%E6%BB%9A%E5%8A%A8/
-       FirstErrorNode.scrollIntoView()
+       const scrollToTop = Math.abs(FirstErrorNode.offsetTop) - 40
+       console.log(FirstErrorNode.getBoundingClientRect())
+       // 计算的数据有问题
 
+       scrollTop(2, scrollToTop, scrollNode[0])
+      //  https://www.zhangxinxu.com/wordpress/2018/10/scroll-behavior-scrollintoview-%E5%B9%B3%E6%BB%91%E6%BB%9A%E5%8A%A8/
+      //  FirstErrorNode.scrollIntoView()
      },
     submitForm1 () {
       this.$refs['ruleForm'].validate(valid => {

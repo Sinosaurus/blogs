@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Select</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        .sc-select-content {
+            position: relative;
+            display: inline-block;
+            width: 200px;
+        }
+
+        .sc-input {
+            width: 100%;
+            height: 38px;
+            outline: none;
+            padding: 0 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+        }
+
+        .sc-input:focus {
+            border: 1px solid #FF9310;
+            box-shadow: 0 0 0 2px rgba(255, 197, 37, 1);
+        }
+
+        .sc-select-item {
+            width: 100%;
+            display: none;
+        }
+
+        .sc-select-item.active {
+            display: block;
+            position: absolute;
+            height: auto;
+            padding-top: 10px;
+            transition: all .3s ease-in-out;
+        }
+
+        .select-container {
+            will-change: '';
+            position: relative;
+            padding: 6px 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            border-radius: 4px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+        }
+
+        .select-container:before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            display: block;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 6px;
+            border-bottom-color: red;
+        }
+
+        .select-item {
+            padding: 0 15px;
+            height: 38px;
+            line-height: 38px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .select-item:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sc-select-content" id="sc-select">
+        <div class="sc-input--item">
+            <input id="input" type="text" class="sc-input" readonly="readonly" autocomplete="off" placeholder="请选择">
+        </div>
+        <div class="sc-select-item">
+            <ul class="select-container">
+                <li class="select-item select-item--1">1</li>
+                <li class="select-item">2</li>
+                <li class="select-item">3</li>
+                <li class="select-item">4</li>
+                <li class="select-item">5</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        /**
+         * @description: 找到一个符合的parent
+         * @param {Note} node 元素 
+         * @param {string} className 元素class类名 
+         * @return: Node
+         */
+        function findParent(node, className) {
+            let parent = node.parentNode
+            while (parent && parent.classList && [].slice.call(parent.classList).indexOf(className) < 0) {
+                parent = parent.parentNode
+            }
+            return parent
+        }
+        /**
+         * @description: 找到所有符合parent
+         * @param {Node} node 元素 
+         * @param {string} className class类名 
+         * @return: Nodes
+         */
+        function findParents(node, className) {
+            let parents = []
+            const parent = node.parentNode
+
+            if (parent && parent.classList) {
+                if ([].slice.call(parent.classList).indexOf(className) > -1) {
+                    parents.push(parent)
+                }
+                return parents.concat(findParents(parent, className))
+            } else {
+                return []
+            }
+        }
+
+        function findChild(node, className) {
+            const Childrens = [].slice.call(node.children)
+            let children = null
+            if (Childrens.length > 0) {
+                for (let i = 0, leng = Childrens.length; i < leng; i++) {
+                    const item = Childrens[i]
+                    if (item.classList && [].slice.call(item.classList).indexOf(className) > -1) {
+                        children = item
+                        break;
+                    } else {
+                        children = findChild(item, className)
+                        if (children) break
+                    }
+                }
+            }
+            return children
+        }
+        /**
+         * @description: 由于考虑的太多，暂时先不做了
+         * 1. 是不是节点
+         * 2.子元素没有，但是孙元素有，因而也得考虑进去
+         * 3. 当前的做法明显依赖于class类名，若是没有则不显示
+         * @param {type} 
+         * @return: 
+         */
+        function findChilds(node, className) {
+            let childrens = []
+            // const children = node.children
+            // debugger
+            // if (children && children.classList) {
+            //     if ([].slice.call(children.classList).indexOf(className) > -1) {
+            //         childrens.push(children)
+            //     }
+            //     return childrens.concat(findChilds(children, className))
+            // } else {
+            //     return []
+            // }
+        }
+    </script>
+    <script>
+        const input = document.getElementById('input')
+        const item = document.querySelectorAll('.sc-select-item')[0]
+        // input.addEventListener('click', function () {
+        //     item.classList.toggle('active')
+        // })
+        // input.addEventListener('blur', function () {
+        //     item.classList.remove('active')
+        // }, false)
+
+        // const P = findParent(input, 'sc-select-content')
+        // const Ps = findParents(input, 'sc-select-content')
+        // const c = findChild(item, 'select-item')
+        // console.log(c, 999)
+        // const Cs = findChilds(item, 'select-item')
+        // console.log(Cs, 9999)
+
+        const select = document.getElementById('sc-select')
+        select.addEventListener('click', function (e) {
+            const input = findChild(this, 'sc-input')
+            const list = findChild(this, 'sc-select-item')
+            // animate
+            list.classList.add('active')
+            if (Array.from(e.target.classList).indexOf('select-item') > -1) {
+                input.value = e.target.innerText
+                // animate
+                setTimeout(function () {
+                    list.classList.remove('active')
+                }, 200)
+            }
+        }, false)
+    </script>
+</body>
+
+</html>

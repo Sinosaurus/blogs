@@ -4,12 +4,13 @@ import router from './router/index.js'
 import store from './store/index.js'
 import './plugins/element-uiAndVerify'
 import './plugins/iview'
+import './plugins/axios'
 
 /**
  * 使用方案 jsonp
  */
-// import VueJsonp from 'vue-jsonp'
-// Vue.use(VueJsonp)
+import VueJsonp from 'vue-jsonp'
+Vue.use(VueJsonp)
 
 Vue.config.productionTip = false
 

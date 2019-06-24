@@ -16,6 +16,9 @@
             padding: 2em;
             border: 20px solid #333;
         }
+        a {
+            word-break: break-all;
+        }
         span {
             font-size: 2em;
             font-weight: bold;
@@ -48,6 +51,47 @@
         <p>scroll <span data-type="scroll">4</span></p>
     </main>
     <section>
+        <ul>
+            <li>
+                <h2>client</h2>
+                <ul>
+                    <li>
+                        <h3>clientTop</h3>
+                        <p>
+                            <style>
+                                .clienTop {
+                                    height: 200px;
+                                    width: 300px;
+                                    border: 20px solid rgba(20, 100, 255, .5)
+                                }
+                            </style>
+                            <div class="clienTop">
+                            </div>
+                            <script>
+                                const clienTop = document.querySelector('.clienTop')
+                                const Style = window.getComputedStyle(clienTop, null)
+                                const Rect = clienTop.getBoundingClientRect()
+                                console.log(Style)
+                                console.dir(clienTop)
+                                console.log(Rect)
+
+                                clienTop.innerText = `
+                                    clienTop = ${clienTop.clientTop}
+                                    border = ${Style.border}
+                                `
+                            </script>
+                        </p>
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+
+            </li>
+            <li></li>
+            <li></li>
+        </ul>
         <style>
             .scroll {
                 margin: auto;
@@ -81,9 +125,14 @@
         //    document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;  
             const scr = window.scrollY || window.pageYOffset || document.body.scrollTop + (document.documentElement && document.documentElement.scrollTop || 0)
             let scrollHeight = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop; 
-            console.log(scrollHeight, scr, 999)
-           console.dir(D)
-           console.dir(S)
+            S.addEventListener('scroll', function () {
+                console.log(scr, scrollHeight)
+            }, false)
+            // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_element_scrollleft2
+            /**
+             * scrollTop 可以对其赋值并生效，却无法很好的获取值
+             * 
+            */
 
         </script>
     </section>
