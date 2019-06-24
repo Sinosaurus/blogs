@@ -42,30 +42,29 @@
       <li>margin: <span data-params="margin"></span></li>
       <li>border: <span data-params="border"></span></li>
       <li>scrollbar: <span data-params="scrollbar"></span></li>
+      <li>clientWidth: <span data-params="clientWidth"></span></li>
+      <li>offsetWidth: <span data-params="offsetWidth"></span></li>
+      <li>scrollWidth: <span data-params="scrollWidth"></span></li>
     </ul>
   </div>
   <script>
     const Box = document.querySelector('p')
-    const {
-      clientWidth,
-      offsetWidth,
-      scrollWidth
-    } = Box
-    console.log(clientWidth, offsetWidth, scrollWidth)
+    const needWidth = [
+     'clientWidth',
+     'offsetWidth',
+     'scrollWidth'
+    ]
+    
+    let obj = {}
+    needWidth.forEach(item => {
+      obj[item] = Box[item]
+    })
     console.dir(Box)
     const Style = window.getComputedStyle(Box, null)
-    const num = [
-      'width',
-      'height',
-      'padding',
-      'border',
-      'scrollbar',
-      'margin'
-    ]
     Array.from(document.querySelectorAll('span')).forEach(item => {
       const type = item.dataset.params
       const style = window.getComputedStyle(Box, null)
-      item.innerText = style[type]
+      item.innerText = style[type] || obj[type]
     })
   </script>
 </body>
