@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Function</title>
+  <style>
+    .common {
+      position: relative;
+      max-width: 40vw;
+      margin: auto;
+    }
+    .scroll-container {
+      padding: 10px;
+      height: 20vh;
+      overflow: auto;
+      border: 4px solid #ccc;
+    }
+
+    .scroll-item {
+      min-height: 80vh;
+      background-color: skyblue;
+    }
+    
+    #num_s {
+      position: absolute;
+      top: 0;
+      font-weight: bold;
+      font-size: 26px;
+      color: #333;
+      /* top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) */
+    }
+    .scroll-horizontal {
+      padding: 10px;
+      margin: auto;
+      margin-top: 20px;
+      height: 20vh;
+      width: 50vw;
+      border: 4px solid #ccc;
+      overflow: auto;
+    }
+
+    .scroll-item--h {
+      width: 100vw;
+      height: 100%;
+      background: linear-gradient(217deg, rgba(255, 0, 0, .8), rgba(255, 0, 0, 0) 70.71%),
+                  linear-gradient(127deg, rgba(0, 255, 0, .8), rgba(0, 255, 0, 0) 70.71%),
+                  linear-gradient(336deg, rgba(0, 0, 255, .8), rgba(0, 0, 255, 0) 70.71%);
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <h1>header</h1>
+    <nav>
+      link
+    </nav>
+  </header>
+  <main>
+    <h3>modules</h3>
+    <section class="common">
+        <section class="scroll-container">
+          <div class="scroll-item">
+          </div>
+        </section>
+        <span id="num_s"></span>
+    </section>
+    <section class="scroll-horizontal">
+      <div class="scroll-item--h">
+        <span id="num_h"></span>
+      </div>
+    </section>
+  </main>
+  <footer>footer</footer>
+  <!-- 
+    工具函数
+   -->
+  <script>
+    /**
+     * @description: 防抖函数
+     * 使用了闭包来保存变量
+     *
+     * @param {function} fn
+     * @param {number} wait 间隔时间 
+     * @return: function
+     */
+    //  https://github.com/lodash/lodash/blob/master/debounce.js
+    function debounce(fn, wait) {
+      let timerId = null
+      return function (...args) {
+        clearTimeout(timerId)
+        // 第一次就可以触发
+        !timerId && fn.apply(this, args)
+        timerId = setTimeout(() => {
+          timerId = null
+        }, wait)
+      }
+    }
+    /**
+     * @description: 节流函数
+     * 更多的是在防抖函数基础上做进一步处理
+     *
+     * @param {function} fn
+     * @param {number} wati
+     * @return: function
+     */
+    // https://github.com/lodash/lodash/blob/master/throttle.js
+    function throttle(fn, wait) {
+      let timerId = null
+      return function (...args) {
+        if (!timerId) {
+          fn.apply(this, args)
+          timerId = setTimeout(() => {
+            timerId = null
+            // 先触发就需要提到外面去
+            // fn.apply(this, args)
+          }, wait)
+        }
+      }
+    }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const Scroll = document.querySelector('.scroll-container')
+      const NumS = document.getElementById('num_s')
+      const ScrollHorizontal = document.querySelector('.scroll-horizontal')
+      // 防抖函数
+      let s_i = 0
+      let h_i = 0
+      Scroll.addEventListener('scroll', debounce(function () {
+        NumS.innerText = s_i
+        s_i ++
+      }, 500), false)
+      // 节流函数
+      ScrollHorizontal.addEventListener('scroll', throttle(function () {
+        console.log(this)
+      }, 500), false)
+    })
+  </script>
+</body>
+
+</html>

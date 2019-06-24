@@ -47,3 +47,22 @@ var y = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.docu
 
 ## `page`
 
+
+# `client *`
+`clientHeight` , `clientWdith` 元素内容`content` + `padding` 的视觉面积，不包括`border和滚动条占用的空间`
+
++ 兼容性
+  ```
+    // document元素
+    const doc = document.documentElement || document.body
+    const clientHeight = doc.clientHeight
+  ```
++ 计算滚动条的大小
+  ```
+
+  ```
+> clientWidth, offsetWidht, scrollWidth
+元素 content -- padding --scroll -- border -- margin
++ clientWidth = content + padding-left + padding-right
++ offsetWidht = content + padding-left + padding-right + border-left + border-right + scrollbar-width
++ scrollWidth = content + padding-left + padding-right + 滚动的内容

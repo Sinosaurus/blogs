@@ -253,6 +253,7 @@ export default {
        const FirstErrorNode = ChildHasError[0]
        const scrollToTop = Math.abs(FirstErrorNode.offsetTop) - 40
        console.log(FirstErrorNode.getBoundingClientRect())
+       while ()
        // 计算的数据有问题
 
        scrollTop(2, scrollToTop, scrollNode[0])
