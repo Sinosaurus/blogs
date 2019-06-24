@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>scroll</title>
+  <style>
+    .client-xyz {
+      margin: auto;
+      margin-top: 30vh;
+      width: 300px;
+      padding: 30px;
+      height: 200px;
+      border: 20px solid;
+      overflow: auto;
+    }
+    p {
+      margin: 20px;
+      width: auto;
+      padding: 20px;
+      border: 30px solid #333;
+      word-break: keep-all;
+      overflow-y: scroll;
+    }
+    .box {
+      width: 25vw;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+    <!-- https://juejin.im/post/5b8905456fb9a01a105966b4 -->
+  <section class="client-xyz">
+    <p>我是很长很长的内容我是很长很长的内容我是很长很长的内容我是很长很长的内容我是很长很长的内容我是很长很长的内容</p>
+  </section>
+  <div class="box">
+    <ul>
+      <li>width: <span data-params="width"></span></li>
+      <li>height: <span data-params="height"></span></li>
+      <li>padding: <span data-params="padding"></span></li>
+      <li>margin: <span data-params="margin"></span></li>
+      <li>border: <span data-params="border"></span></li>
+      <li>scrollbar: <span data-params="scrollbar"></span></li>
+    </ul>
+  </div>
+  <script>
+    const Box = document.querySelector('p')
+    const {
+      clientWidth,
+      offsetWidth,
+      scrollWidth
+    } = Box
+    console.log(clientWidth, offsetWidth, scrollWidth)
+    console.dir(Box)
+    const Style = window.getComputedStyle(Box, null)
+    const num = [
+      'width',
+      'height',
+      'padding',
+      'border',
+      'scrollbar',
+      'margin'
+    ]
+    Array.from(document.querySelectorAll('span')).forEach(item => {
+      const type = item.dataset.params
+      const style = window.getComputedStyle(Box, null)
+      item.innerText = style[type]
+    })
+  </script>
+</body>
+</html>
