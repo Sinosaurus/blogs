@@ -13,7 +13,7 @@
           { required: true, message: '必须填写', trigger: 'blur'}
         ]"
       >
-        <el-input v-model="ruleForm.name"></el-input>
+        <el-input v-model.trim="ruleForm.name"></el-input>
       </el-form-item>
       <el-form-item
         label="活动区域"
@@ -253,7 +253,7 @@ export default {
        const FirstErrorNode = ChildHasError[0]
        const scrollToTop = Math.abs(FirstErrorNode.offsetTop) - 40
        console.log(FirstErrorNode.getBoundingClientRect())
-       while ()
+      //  while ()
        // 计算的数据有问题
 
        scrollTop(2, scrollToTop, scrollNode[0])
