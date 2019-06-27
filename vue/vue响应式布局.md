@@ -1,15 +1,14 @@
-# vue 响应式布局 [1](https://www.mdui.org/design/layout/responsive-ui.html#responsive-ui-patterns)
+# vue 响应式布局 [1](https://www.mdui.org/design/layout/responsive-ui.html#responsive-ui-patterns) [2](https://mediaqueri.es/)
 ![响应式布局](https://pic4.zhimg.com/80/v2-5238330b35593079b2ce6451cd1e4f1f_hd.jpg)
 
 可使网站在不同的设备（从桌面计算机显示器到移动电话或其他移动产品设备）上浏览时对应不同分辨率皆有适合的呈现，减少用户进行缩放、平移和滚动等操作行为
 
 ## 效果图
 + [media](https://mediaqueri.es/)
++ [material.io](https://material.io/tools/resizer/#device=window)
 ![演示](./../images/vue/rwd/rwd.gif) [link](http://www.liquidapsive.com/)
 
 ## 响应式布局的要求 （Responsive Web Design ＝ RWD， Adaptive Web Design ＝ AWD）
-
-> 第一种
 
 + 响应式界面的四个层次
     + 同一页面在不同大小和比例上看起来都应该是舒适的；
