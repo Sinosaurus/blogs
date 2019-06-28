@@ -34,7 +34,7 @@
 
         .sc-input:focus {
             border: 1px solid #FF9310;
-            box-shadow: 0 0 0 2px rgba(255, 197, 37, 1);
+            /* box-shadow: 0 0 0 2px rgba(255, 197, 37, 1); */
         }
 
         .sc-select-item {
@@ -46,7 +46,6 @@
             display: block;
             visibility: hidden;
             opacity: 0;
-            height: 0;
             transform: translateY(10px);
             transition: all .3s cubic-bezier(.55,0,.1,1);
 
@@ -56,7 +55,6 @@
         .sc-select-item.active2 {
             visibility: visible;
             opacity: 1;
-            height: 100px;
             transform: translateY(0);
         }
 
@@ -67,19 +65,36 @@
             display: flex;
             flex-direction: column;
             border-radius: 4px;
+            border: 1px solid #e4e7ed;
             box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
         }
 
-        .select-container:before {
-            content: '';
+        .sc-select-item .arrow {
             position: absolute;
-            top: -12px;
-            left: 20px;
-            display: block;
+            width: 0;
+            height: 0;
             border-color: transparent;
             border-style: solid;
             border-width: 6px;
-            border-bottom-color: red;
+            filter: drop-shadow(0 2px 12px rgba(0,0,0,.03));
+            top: 6px;
+            left: 20px;
+            border-bottom-color: #ebeef5;
+            border-top-width: 0;
+        }
+        .sc-select-item .arrow::after {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            content: " ";
+            border-width: 6px;
+            top: 1px;
+            margin-left: -6px;
+            border-bottom-color: #fff;
+            border-top-width: 0;
         }
 
         .select-item {
@@ -112,6 +127,7 @@
                 <li class="select-item">4</li>
                 <li class="select-item">5</li>
             </ul>
+            <div class="arrow"></div>
         </div>
     </div>
     <script>
@@ -208,30 +224,30 @@
         // const Cs = findChilds(item, 'select-item')
         // console.log(Cs, 9999)
 
-        const select = document.getElementById('sc-select')
-        select.addEventListener('click', function (e) {
+        // const select = document.getElementById('sc-select')
+        // select.addEventListener('click', function (e) {
 
-            e.stopPropagation()
-            const input = findChild(this, 'sc-input')
-            const list = findChild(this, 'sc-select-item')
-            // 一进来便清空 因为 使用setTimeout 会导致 先取出了 active2 之后又加进去了
-            list.classList.remove('active2', 'active')
+        //     e.stopPropagation()
+        //     const input = findChild(this, 'sc-input')
+        //     const list = findChild(this, 'sc-select-item')
+        //     // 一进来便清空 因为 使用setTimeout 会导致 先取出了 active2 之后又加进去了
+        //     list.classList.remove('active2', 'active')
 
-            // animate
-            list.classList.add('active')
-            setTimeout(function () {
-                list.classList.add('active2')
-            }, 16)
-            if (Array.from(e.target.classList).indexOf('select-item') > -1) {
-                input.value = e.target.innerText
-                list.classList.remove('active2')
-                console.log(999)
-                setTimeout(function () {
-                    list.classList.remove('active')
-                    // 时间需要与 transition的时间相同为好
-                }, 100)
-            }
-        }, false)
+        //     // animate
+        //     list.classList.add('active')
+        //     setTimeout(function () {
+        //         list.classList.add('active2')
+        //     }, 16)
+        //     if (Array.from(e.target.classList).indexOf('select-item') > -1) {
+        //         input.value = e.target.innerText
+        //         list.classList.remove('active2')
+        //         console.log(999)
+        //         setTimeout(function () {
+        //             list.classList.remove('active')
+        //             // 时间需要与 transition的时间相同为好
+        //         }, 100)
+        //     }
+        // }, false)
         // document.addEventListener('click', function (e) {
         //     const select = Array.from(document.querySelectorAll('.sc-select-item'))
         //     const p1 = findParent(e.target, 'sc-select-content')
@@ -242,11 +258,63 @@
         //     }
         // }, false)
 
-        document.getElementById('input').addEventListener('focus', function (e) {
-            console.log(e.target, 8888)
+        // document.getElementById('input').addEventListener('focus', function (e) {
+        //     console.log(e.target, 8888)
+        // }, false)
+        // document.getElementById('input').addEventListener('blur', function (e) {
+        //     console.log(e.target, 999)
+        // }, false)
+        let toggle = false // 放到属性中
+        const Input = document.getElementById('input')
+        // Input.addEventListener('focus', function (e) {
+        //     const P = findParent(this, 'sc-select-content')
+        //     const Select = findChild(P, 'sc-select-item')
+        //     Select.classList.add('active')
+        //     setTimeout(function () {
+        //         Select.classList.add('active2')
+        //     }, 16)
+        // }, false)
+        Input.addEventListener('click', function (e) {
+            const P = findParent(this, 'sc-select-content')
+            const Select = findChild(P, 'sc-select-item')
+            if (toggle) {
+                Select.classList.remove('active2')
+                setTimeout(function () {
+                    Select.classList.remove('active')
+                    toggle = false
+                }, 100)
+            } else {
+                Select.classList.add('active')
+                setTimeout(function () {
+                    Select.classList.add('active2')
+                    toggle = true
+                }, 16)
+            }
         }, false)
-        document.getElementById('input').addEventListener('blur', function (e) {
-            console.log(e.target, 999)
+        Input.addEventListener('blur', function (e) {
+            const that = this
+            const P = findParent(this, 'sc-select-content')
+            const Select = findChild(P, 'sc-select-item')
+            document.addEventListener('click', function (e) {
+                const isP = findParent(e.target, 'sc-select-content') === P
+                if (!isP) {
+                    Select.classList.remove('active2')
+                    setTimeout(function () {
+                        Select.classList.remove('active')
+                        // 时间需要与 transition的时间相同为好
+                        toggle = false
+                    }, 100)
+                }
+            }, false)
+            Select.addEventListener('click', function (e) {
+                that.value = e.target.innerText
+                Select.classList.remove('active2')
+                setTimeout(function () {
+                    Select.classList.remove('active')
+                    // 时间需要与 transition的时间相同为好
+                    toggle = false
+                }, 100)
+            }, false)
         }, false)
     </script>
 </body>
