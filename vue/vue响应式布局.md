@@ -43,10 +43,22 @@
   ![分辨率占比](./../images/vue/rwd/ratio.jpg) [link](http://gs.statcounter.com/screen-resolution-stats/all/china)
   
   + [切割点 -- bootstrap](https://getbootstrap.com/docs/4.3/layout/overview/); [掘金](https://juejin.im/post/5caaa230e51d452b672f9703)
-    + 576px 手机
-    + 768px 平板
-    + 992px 桌面
-    + 1200px 大桌面
+    + bootstrap
+        + 576px 手机
+        + 768px 平板
+        + 992px 桌面
+        + 1200px 大桌面
+    + Material Design
+        + 480
+        + 600
+        + 840
+        + 960
+        + 1280
+        + 1440
+        + 1600
+        ![material design](https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptive_breakpoints_01.png) 
+
+
    > [张鑫旭](https://www.zhangxinxu.com/wordpress/2016/08/vw-viewport-responsive-layout-typography/) 
 
 ## 适合vue的 响应式框架
