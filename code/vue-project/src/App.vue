@@ -1,12 +1,12 @@
 
 <template>
   <div id="app">
-    <el-scrollbar
+    <!-- <el-scrollbar
       ref="scrollbar"
       class="sc-scrollbar"
       wrapClass="sc-warp"
       viewClass="sc-view"
-    >
+    > -->
       <div class="layout">
         <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}">
           <Menu
@@ -78,7 +78,7 @@
           </Content>
         </Layout>
       </div>
-    </el-scrollbar>
+    <!-- </el-scrollbar> -->
   </div>
 </template>
 <script>
@@ -134,19 +134,19 @@ export default {
 @import url('~@/less/base.less');
 html,
 body {
-  height: 100%;
-  width: 100%;
+  // height: 100%;
+  // width: 100%;
   overflow: hidden;
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 #app {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+  // height: 100%;
+  // width: 100%;
+  // overflow: hidden;
 }
 .sc-scrollbar {
-  height: 100%;
+  // height: 100%;
   .el-scrollbar__wrap {
     scroll-behavior:smooth;
     overflow-x: hidden;

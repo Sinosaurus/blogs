@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: skyblue;
+    }
+    .animate {
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+      display: none;
+    }
+    .animate1 {
+      display: block;
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all .2s cubic-bezier(.645,.045,.355,1);
+    }
+    .animate2 {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* https://www.zhangxinxu.com/wordpress/2016/05/css3-filter-drop-shadow-vs-box-shadow/ */
+
+    /* B arrow */
+    .arrow {
+      margin: auto;
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border-radius: 4px;
+      border: 1px solid #e4e7ed;
+      background-color: #fff;
+      /* box-shadow: 0 2px 12px 0 rgba(0,0,0,.1); */
+      filter: drop-shadow(0 2px 12px rgba(0,0,0,.03));
+    }
+    .arrow_item {
+      position: absolute;
+      bottom: -10px;
+      display: block;
+    }
+    .arrow_item::after {
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+      content: " ";
+      border-width: 10px;
+
+      bottom: 1px;
+      margin-left: -6px;
+      border-top-color: #fff;
+      border-bottom-width: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="animate"></div>
+  <button>点击触发</button>
+  <div class="arrow">
+    <div class="arrow_item"></div>
+  </div>
+
+  <div class="arraw-t-container">
+      <style>
+        .arraw-t-container {
+          max-width: 240px;
+          height: 200px;
+          position: relative;
+          border: 1px solid #e4e7ed;
+          border-radius: 4px;
+          background-color: #fff;
+          box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+          box-sizing: border-box;
+          margin: 5px 0;
+        }
+        .arrow-t {
+          position: absolute;
+          display: block;
+          width: 0;
+          height: 0;
+          border-color: transparent;
+          border-style: solid;
+          border-width: 6px;
+          filter: drop-shadow(0 2px 12px rgba(0,0,0,.03));
+          /* 指定位置 箭头方位 */
+          bottom: -6px;
+          left: 50%;
+          margin-right: 3px;
+          border-top-color: #ebeef5;
+          border-bottom-width: 0;
+        }
+        .arrow-t::after {
+          position: absolute;
+          display: block;
+          width: 0;
+          height: 0;
+          border-color: transparent;
+          border-style: solid;
+          content: " ";
+          border-width: 6px;
+          bottom: 1px;
+          margin-left: -6px;
+          border-top-color: #fff;
+          border-bottom-width: 0;
+        }
+      </style>
+
+      <div class="arrow-t">
+          <div class="arrow-t_item"></div>
+      </div>
+  </div>
+
+  <h3>drop-shadow</h3>
+  <div>
+    <style>
+      .arraw-test {
+        width: 100px;
+        height: 100px;
+        border: 10px dashed #beceeb; filter: drop-shadow(5px 5px 10px black);
+      }
+    </style>
+    <div class="arraw-test"></div>
+  </div>
+  <script>
+    const animate = document.querySelector('.animate')
+    const btn = document.querySelector('button')
+    btn.onclick = function (e) {
+      animate.classList.add('animate1')
+      setTimeout(() => {
+        animate.classList.add('animate2')
+      }, 16);
+    }
+    document.onclick = function (e) {
+      if (e.target === btn) return
+      animate.classList.remove('animate2')
+      setTimeout(function () {
+        animate.classList.remove('animate1')
+      }, 200)
+    }
+  </script>
+</body>
+</html>

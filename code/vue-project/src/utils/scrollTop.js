@@ -1,5 +1,5 @@
 const BackToTop = (rate = 2, num = 0, el = document.body) => {
-
+    console.log(rate, num, el)
     // const doc = document.body.scrollTop ? document.body : document.documentElement
     const doc = el
     // 距离顶部的值

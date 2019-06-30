@@ -247,16 +247,21 @@ export default {
       * 但是在window下却无法显示，很奇怪
       */
      scrollToTop (node) {
-       const scrollNode = document.querySelectorAll('div.sc-warp.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default')
+      //  const scrollNode = document.querySelectorAll('div.sc-warp.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default')[0]
+       const scrollNode = document.body || document.documentElement
        const ChildHasError = Array.from(node.querySelectorAll('.is-error'))
        if (!ChildHasError.length) throw new Error('有错误，但是找不到错误位置')
        const FirstErrorNode = ChildHasError[0]
-       const scrollToTop = Math.abs(FirstErrorNode.offsetTop) - 40
+
+       const Top = FirstErrorNode.getBoundingClientRect().top
+       const scrollToTop = Top + window.pageYOffset - 60
+      //  const scrollToTop = Math.abs(FirstErrorNode.offsetTop) - 40
+      // console.dir(FirstErrorNode)
        console.log(FirstErrorNode.getBoundingClientRect())
       //  while ()
        // 计算的数据有问题
-
-       scrollTop(2, scrollToTop, scrollNode[0])
+      
+       scrollTop(2, scrollToTop, {})
       //  https://www.zhangxinxu.com/wordpress/2018/10/scroll-behavior-scrollintoview-%E5%B9%B3%E6%BB%91%E6%BB%9A%E5%8A%A8/
       //  FirstErrorNode.scrollIntoView()
      },

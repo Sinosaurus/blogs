@@ -28,13 +28,36 @@
             outline: none;
             padding: 0 15px;
             border-radius: 4px;
-            border: 1px solid #ccc;
             transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+            border: 1px solid #ccc;
+            padding-right: 34px;
         }
-
+        .sc-input--item {
+            position: relative;
+        }
+        .sc-select-icon {
+            position: absolute;
+            right: 8px;
+            top: 16px;
+            box-sizing: content-box;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+            border-top: 10px solid #ccc;
+        }
+        .sc-select-icon::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            bottom: 2px;
+            box-sizing: content-box;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+            border-top: 10px solid #fff;
+        }
+    
         .sc-input:focus {
             border: 1px solid #FF9310;
-            box-shadow: 0 0 0 2px rgba(255, 197, 37, 1);
+            /* box-shadow: 0 0 0 2px rgba(255, 197, 37, 1); */
         }
 
         .sc-select-item {
@@ -44,33 +67,57 @@
 
         .sc-select-item.active {
             display: block;
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all .3s cubic-bezier(.55,0,.1,1);
+
             position: absolute;
-            height: auto;
             padding-top: 10px;
-            transition: all .3s ease-in-out;
+        }
+        .sc-select-item.active2 {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .select-container {
-            will-change: '';
             position: relative;
             padding: 6px 0;
             margin: 0;
             display: flex;
             flex-direction: column;
             border-radius: 4px;
+            border: 1px solid #e4e7ed;
             box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
         }
 
-        .select-container:before {
-            content: '';
+        .sc-select-item .arrow {
             position: absolute;
-            top: -12px;
-            left: 20px;
-            display: block;
+            width: 0;
+            height: 0;
             border-color: transparent;
             border-style: solid;
             border-width: 6px;
-            border-bottom-color: red;
+            filter: drop-shadow(0 2px 12px rgba(0,0,0,.03));
+            top: 6px;
+            left: 20px;
+            border-bottom-color: #ebeef5;
+            border-top-width: 0;
+        }
+        .sc-select-item .arrow::after {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            content: " ";
+            border-width: 6px;
+            top: 1px;
+            margin-left: -6px;
+            border-bottom-color: #fff;
+            border-top-width: 0;
         }
 
         .select-item {
@@ -90,9 +137,12 @@
 </head>
 
 <body>
-    <div class="sc-select-content" id="sc-select">
+    <!-- https://www.cnblogs.com/yangzhou33/p/9119596.html -->
+    <div class="sc-select-content" id="sc-select" data-toggle="false">
+        <label for="" class="sc-select--label">下拉框</label>
         <div class="sc-input--item">
-            <input id="input" type="text" class="sc-input" readonly="readonly" autocomplete="off" placeholder="请选择">
+            <input id="input" type="text" class="sc-input" readonly autocomplete="off" placeholder="请选择">
+            <i class="sc-select-icon"></i>
         </div>
         <div class="sc-select-item">
             <ul class="select-container">
@@ -102,6 +152,7 @@
                 <li class="select-item">4</li>
                 <li class="select-item">5</li>
             </ul>
+            <div class="arrow"></div>
         </div>
     </div>
     <script>
@@ -116,7 +167,18 @@
             while (parent && parent.classList && [].slice.call(parent.classList).indexOf(className) < 0) {
                 parent = parent.parentNode
             }
-            return parent
+            if (parent && parent.classList && [].slice.call(parent.classList).indexOf(className) > -1) {
+                return parent
+            }
+        }
+        const catIn = function (target, parent) {
+            let path = []
+            let parentNode = target
+            while (parentNode && parentNode !== document.body) {
+                path.push(parentNode)
+                parentNode = parentNode.parentNode
+            }
+            return path.indexOf(parent) !== -1
         }
         /**
          * @description: 找到所有符合parent
@@ -127,7 +189,6 @@
         function findParents(node, className) {
             let parents = []
             const parent = node.parentNode
-
             if (parent && parent.classList) {
                 if ([].slice.call(parent.classList).indexOf(className) > -1) {
                     parents.push(parent)
@@ -178,6 +239,9 @@
         }
     </script>
     <script>
+        /*
+         * 点击获取焦点
+        */
         const input = document.getElementById('input')
         const item = document.querySelectorAll('.sc-select-item')[0]
         // input.addEventListener('click', function () {
@@ -194,19 +258,104 @@
         // const Cs = findChilds(item, 'select-item')
         // console.log(Cs, 9999)
 
-        const select = document.getElementById('sc-select')
-        select.addEventListener('click', function (e) {
-            const input = findChild(this, 'sc-input')
-            const list = findChild(this, 'sc-select-item')
-            // animate
-            list.classList.add('active')
-            if (Array.from(e.target.classList).indexOf('select-item') > -1) {
-                input.value = e.target.innerText
-                // animate
+        // const select = document.getElementById('sc-select')
+        // select.addEventListener('click', function (e) {
+
+        //     e.stopPropagation()
+        //     const input = findChild(this, 'sc-input')
+        //     const list = findChild(this, 'sc-select-item')
+        //     // 一进来便清空 因为 使用setTimeout 会导致 先取出了 active2 之后又加进去了
+        //     list.classList.remove('active2', 'active')
+
+        //     // animate
+        //     list.classList.add('active')
+        //     setTimeout(function () {
+        //         list.classList.add('active2')
+        //     }, 16)
+        //     if (Array.from(e.target.classList).indexOf('select-item') > -1) {
+        //         input.value = e.target.innerText
+        //         list.classList.remove('active2')
+        //         console.log(999)
+        //         setTimeout(function () {
+        //             list.classList.remove('active')
+        //             // 时间需要与 transition的时间相同为好
+        //         }, 100)
+        //     }
+        // }, false)
+        // document.addEventListener('click', function (e) {
+        //     const select = Array.from(document.querySelectorAll('.sc-select-item'))
+        //     const p1 = findParent(e.target, 'sc-select-content')
+        //     if (!p1) {
+        //         select.forEach(item => {
+        //             item.classList.remove('active')
+        //         })
+        //     }
+        // }, false)
+
+        // document.getElementById('input').addEventListener('focus', function (e) {
+        //     console.log(e.target, 8888)
+        // }, false)
+        // document.getElementById('input').addEventListener('blur', function (e) {
+        //     console.log(e.target, 999)
+        // }, false)
+        // let toggle = false // 放到属性中
+        const Input = document.getElementById('input')
+        // Input.addEventListener('focus', function (e) {
+        //     const P = findParent(this, 'sc-select-content')
+        //     const Select = findChild(P, 'sc-select-item')
+        //     Select.classList.add('active')
+        //     setTimeout(function () {
+        //         Select.classList.add('active2')
+        //     }, 16)
+        // }, false)
+        Input.addEventListener('click', function (e) {
+            const P = findParent(this, 'sc-select-content')
+            const Select = findChild(P, 'sc-select-item')
+            const toggle = P.dataset.toggle
+            if (toggle === 'true') {
+                Select.classList.remove('active2')
                 setTimeout(function () {
-                    list.classList.remove('active')
-                }, 200)
+                    Select.classList.remove('active')
+                    // toggle = false
+                    P.dataset.toggle = false
+                }, 100)
+            } else {
+                console.log(22)
+                Select.classList.add('active')
+                setTimeout(function () {
+                    Select.classList.add('active2')
+                    // toggle = true
+                    P.dataset.toggle = true
+                }, 16)
             }
+        }, false)
+        Input.addEventListener('blur', function (e) {
+            const that = this
+            const P = findParent(this, 'sc-select-content')
+            const Select = findChild(P, 'sc-select-item')
+            document.addEventListener('click', function (e) {
+                const isP = findParent(e.target, 'sc-select-content') === P
+                if (!isP) {
+                    Select.classList.remove('active2')
+                    setTimeout(function () {
+                        Select.classList.remove('active')
+                        // 时间需要与 transition的时间相同为好
+                        P.dataset.toggle = false
+                    }, 100)
+                }
+            }, false)
+            Select.addEventListener('click', function (e) {
+                if (e.target.tagName.toLowerCase() === 'li') {
+                    that.value =  e.target.innerText
+                }
+                Select.classList.remove('active2')
+                setTimeout(function () {
+                    Select.classList.remove('active')
+                    // 时间需要与 transition的时间相同为好
+                    // toggle = false
+                    P.dataset.toggle = false
+                }, 100)
+            }, false)
         }, false)
     </script>
 </body>
