@@ -1,7 +1,8 @@
 const BackToTop = (rate = 2, num = 0, el = document.body) => {
-    console.log(rate, num, el)
-    // const doc = document.body.scrollTop ? document.body : document.documentElement
-    const doc = el
+    const doc = document.body.scrollTop ? document.body : document.documentElement
+    // console.log(el)
+    // const doc = el
+    // console.log(el)
     // 距离顶部的值
     let scrollTop = doc.scrollTop
     // 此处不适合使用箭头函数？？？

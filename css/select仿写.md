@@ -262,7 +262,7 @@ Input.addEventListener('blur', function (e) {
 + document事件放在里面，是为了拿到上面点击的元素
 + 使用`data`来存储是否打开还是关闭的`boolean`
 
-![效果图](https://s33.aconvert.com/convert/p3r68-cdx67/q1w7p-3jwxo.gif)
+![效果图](./../images/css/select.gif)
 
 ## 总结
 + 虽然实现的很粗糙，但是更多的是为了了解其他ui是如何实现的
