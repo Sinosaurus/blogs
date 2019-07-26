@@ -128,6 +128,19 @@
         <el-button @click="resetForm('ruleForm')">重置</el-button>
       </el-form-item>
     </el-form>
+    <h2>测试 下拉框三角形 无法点击问题</h2>
+    <el-form>
+      <el-form-item label="下拉框">
+        <el-select v-model="selectform.select" filterable>
+          <el-option
+            v-for="(item, index) in selectlist"
+            :key="index"
+            :label="item.name"
+            :value="item.name"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
@@ -157,6 +170,10 @@ export default {
       },
       isNum,
       area: 'A',
+      selectform: {
+        select: ''
+      },
+      selectlist: []
       // areaList: [
       //   {
       //     data_id: 'A',
@@ -294,4 +311,7 @@ export default {
 
 <style lang="less">
 @import url("~@/less/el-validate.less");
+.el-validate {
+  margin-bottom: 20vh;
+}
 </style>

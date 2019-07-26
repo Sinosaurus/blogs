@@ -4,15 +4,28 @@
     <!-- <input type="text" v-model="h"> -->
     <br>
     <p>原生输入框</p>
-    <input v-model="value" type="text" @input="setValue($event.target)">
+    <input
+      v-model="value"
+      type="text"
+      @input="setValue($event.target)"
+    >
 
     <p>不适用v-model</p>
-    <input type="text" @input="setValueNotWidthVModel($event.target)">
+    <input
+      type="text"
+      @input="setValueNotWidthVModel($event.target)"
+    >
     <h3>组件化</h3>
     <p>element-ui</p>
-    <el-input v-model="form.accout" @input="changeInputValue"></el-input>
+    <el-input
+      v-model="form.accout"
+      @input="changeInputValue"
+    ></el-input>
     <p>iview</p>
-    <Input v-model="form.accout" @input="changeInputValue" />
+    <Input
+      v-model="form.accout"
+      @input="changeInputValue"
+    />
     <h1>手机归属地查询</h1>
     <p>
       https://www.iteblog.com/archives/1725.html
@@ -22,21 +35,31 @@
         v-for="(item, index) in PhoneLocationList"
         :key="index"
       >
-        <button class="sc-button" @click="getPhoneLocation(item)">{{item.name}}</button>
+        <button
+          class="sc-button"
+          @click="getPhoneLocation(item)"
+        >{{item.name}}</button>
       </li>
     </ul>
+
+    <iframe
+      src="http://localhost:7070/index.html"
+      width="100%"
+      height="800px"
+      frameborder="0"
+    ></iframe>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       url: 'http://www.gov.cn/pushinfo/v150203/pushinfo.jsonp',
       h: 111,
       value: '',
       form: {
-        accout: 0,
+        accout: 0
       },
       PhoneLocationList: [
         {
@@ -53,7 +76,8 @@ export default {
         {
           id: '3',
           name: '财付通',
-          url: 'http://life.tenpay.com/cgi-bin/mobile/MobileQueryAttribution.cgi?chgmobile='
+          url:
+            'http://life.tenpay.com/cgi-bin/mobile/MobileQueryAttribution.cgi?chgmobile='
         },
         {
           id: '4',
@@ -63,7 +87,8 @@ export default {
         {
           id: '5',
           name: '百付宝',
-          url: 'https://www.baifubao.com/callback?cmd=1059&callback=iteblog&phone='
+          url:
+            'https://www.baifubao.com/callback?cmd=1059&callback=iteblog&phone='
         }
       ]
     }
@@ -77,7 +102,7 @@ export default {
     changeInputValue (val) {
       console.log(val)
       // return
-      const v = val.toString().replace(/[^0-9]/ig,"")
+      const v = val.toString().replace(/[^0-9]/gi, '')
       console.log(v)
       this.$nextTick(() => {
         // https://segmentfault.com/q/1010000009840451/a-1020000010449110
@@ -85,14 +110,14 @@ export default {
       })
     },
     setValueNotWidthVModel (target) {
-      const v = target.value.toString().replace(/[^0-9]/ig,"")
+      const v = target.value.toString().replace(/[^0-9]/gi, '')
       this.form.accout = v.replace(/\s/g, '')
       target.value = v.replace(/(\d{4})(?=\d)/g, '$1 ')
     },
     setValue (target) {
       // https://blog.csdn.net/wangming520liwei/article/details/53037951
       // https://blog.csdn.net/xutongbao/article/details/79287376
-      const v = target.value.toString().replace(/[^0-9]/ig,"")
+      const v = target.value.toString().replace(/[^0-9]/gi, '')
       console.log(v, 'old')
 
       // console.log(v.replace('/\D/g', ''), 'new')
@@ -102,11 +127,11 @@ export default {
     },
     getPhoneLocation (item) {
       console.log(item)
-      this.$jsonp(item.url + '15549446040').then(res => {
-
-      }).catch(err => {
-        
-      })
+      this.$jsonp(item.url + '15549446040')
+        .then(res => {})
+        .catch(err => {
+          console.log(err)
+        })
       // this.$fetch.get(item.url + '15549446040').then(res => {
       //   console.log(res)
       // }).catch(err => {
@@ -114,7 +139,7 @@ export default {
       // })
     }
   },
-  created() {
+  created () {
     // console.log(this.$jsonp)
     // this.$jsonp(this.url, { callbackQuery: 'callback', callbackName: 'pushInfoJsonpCallBack' }).then(res => {
     //   console.log(res, 111111111111)
@@ -126,7 +151,7 @@ export default {
 </script>
 <style lang="less">
 .sc-button-groups {
-  padding-top: 10px; 
+  padding-top: 10px;
   display: flex;
   li + li {
     margin-left: 20px;
@@ -135,7 +160,7 @@ export default {
     border-radius: 4px;
     padding: 2px 10px;
     cursor: pointer;
-    transition: all .1s;
+    transition: all 0.1s;
     outline: 0;
     &:focus {
       background-color: skyblue;
@@ -143,7 +168,7 @@ export default {
     }
     &:hover {
       background-color: pink;
-      color: #333
+      color: #333;
     }
   }
 }
