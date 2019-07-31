@@ -83,7 +83,7 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-function pushInfoJsonpCallBack (data) {console.log(data)}
+function pushInfoJsonpCallBack (data) { console.log(data) }
 
 export default {
   computed: {
