@@ -1,7 +1,7 @@
 const path = require('path')
-const webpack = require('webpack')
+// const webpack = require('webpack')
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
@@ -14,6 +14,15 @@ module.exports = {
       .set('$w', resolve('src/views/webpack-test'))
       .set('$s', resolve('src/views/vue-test'))
   },
+  // eslint
+  lintOnSave: process.env.NODE_ENV !== 'production',
+  devServer: {
+    // 直接在浏览器上显示错误信息
+    overlay: {
+      warnings: true,
+      errors: true
+    }
+  }
 
   // configureWebpack: {
   //   plugins: [

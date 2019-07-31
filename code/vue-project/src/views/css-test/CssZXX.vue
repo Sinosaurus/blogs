@@ -7,9 +7,9 @@
     >
     <div class="css-code-views">
       <dl>
-        <template v-for="item in infoList">
-          <dt>{{item.title}}</dt>
-          <dd>{{item.info}}</dd>
+        <template v-for="(item, index) in infoList">
+          <dt :key="index">{{item.title}}</dt>
+          <dd :key="index">{{item.info}}</dd>
         </template>
       </dl>
     </div>
