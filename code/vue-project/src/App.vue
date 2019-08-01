@@ -1,12 +1,12 @@
 
 <template>
   <div id="app">
-    <!-- <el-scrollbar
+    <el-scrollbar
       ref="scrollbar"
       class="sc-scrollbar"
       wrapClass="sc-warp"
       viewClass="sc-view"
-    > -->
+    >
       <div class="layout">
         <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}">
           <Menu
@@ -78,12 +78,11 @@
           </Content>
         </Layout>
       </div>
-    <!-- </el-scrollbar> -->
+    </el-scrollbar>
   </div>
 </template>
 <script>
 import { mapState } from 'vuex'
-function pushInfoJsonpCallBack (data) { console.log(data) }
 
 export default {
   computed: {
@@ -95,11 +94,18 @@ export default {
       vueSlotList: state => state.vueSlotList
     }),
     titleName () {
-      return this.$route.matched.length === 1 ? this.$route.matched[0].meta.title : ''
+      return this.$route.matched.length === 1
+        ? this.$route.matched[0].meta.title
+        : ''
     },
     actived () {
       let activeRouter = ''
-      const MENU_LIST = [...this.validateMenuList, ...this.cssMunuList, ...this.webpackList, ...this.vueSlotList]
+      const MENU_LIST = [
+        ...this.validateMenuList,
+        ...this.cssMunuList,
+        ...this.webpackList,
+        ...this.vueSlotList
+      ]
       MENU_LIST.map(item => {
         if (this.$route.name === item.router) {
           activeRouter = item.name
@@ -131,12 +137,12 @@ export default {
 </script>
 
 <style lang="less">
-@import url('~@/less/base.less');
+@import url("~@/less/base.less");
 html,
 body {
   // height: 100%;
   // width: 100%;
-  overflow: hidden;
+  // overflow: hidden;
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
@@ -146,19 +152,15 @@ body {
   // overflow: hidden;
 }
 .sc-scrollbar {
-  // height: 100%;
+  height: 100%;
   .el-scrollbar__wrap {
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
     overflow-x: hidden;
   }
   .sc-warp {
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
     // 父盒子
     // background-color: red;
-  }
-  .sc-view {
-    // 子盒子
-    // background-color: blue;
   }
   // is-vertical 垂直滚动条 可以设置宽度以及背景色
   .el-scrollbar__bar.is-vertical {

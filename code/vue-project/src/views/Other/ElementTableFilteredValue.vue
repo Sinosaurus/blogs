@@ -22,13 +22,13 @@ const getQuesCheckList = _ => {
   return [0, 2, 3]
 }
 export default {
-  data() {
+  data () {
     return {
       quesCheckList: getQuesCheckList()
     }
   },
   methods: {
-    filterTagTable(filters) {
+    filterTagTable (filters) {
       let atype = filters.aType
       if (atype === 0) {
         const arr = getQuesCheckList()
