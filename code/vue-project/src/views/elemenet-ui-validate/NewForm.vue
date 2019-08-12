@@ -4,7 +4,6 @@
       :model="ruleForm"
       ref="ruleForm"
       label-width="100px"
-      
     >
       <el-form-item
         label="活动名称"
@@ -131,7 +130,10 @@
     <h2>测试 下拉框三角形 无法点击问题</h2>
     <el-form>
       <el-form-item label="下拉框">
-        <el-select v-model="selectform.select" filterable>
+        <el-select
+          v-model="selectform.select"
+          filterable
+        >
           <el-option
             v-for="(item, index) in selectlist"
             :key="index"
@@ -141,6 +143,27 @@
         </el-select>
       </el-form-item>
     </el-form>
+
+    <form
+      action=""
+      method="post"
+    >
+      <fieldset>
+        <legend>Title</legend>
+        <input
+          type="radio"
+          name="radio"
+          id="radio"
+        >
+        <label for="radio">Click me</label>
+      </fieldset>
+    </form>
+    <h1>总结</h1>
+    <p>使用mac时，无法有效监听到toggle的触发情况，目前而言：</p>
+    <code>
+      <pre> 无模拟的select 下，可以使用input和change进行处理</pre>
+      <pre> 有模拟的select 下，需要结合 mousedown mouseup click 等进行结合处理，可以同时配合 节流函数进行处理，以提升性能</pre>
+    </code>
   </div>
 </template>
 
@@ -174,112 +197,67 @@ export default {
         select: ''
       },
       selectlist: []
-      // areaList: [
-      //   {
-      //     data_id: 'A',
-      //     value: 'Aa'
-      //   },
-      //   {
-      //     data_id: 'B',
-      //     value: 'Bb'
-      //   }
-      // ]
     }
   },
   methods: {
     /**
      * 1. 数据输入时，便进行存储
      * 2. 不适用定时器进行填写
-     * 
+     *
      * TODO:
      * 当前问题，如何监听到 select框的事件，之前在window下可以通过toggle进行监听，但是现在却实现不了
-     * 
+     *
      * mac下 chrome 、 safari 都无法监听
      */
-     addEventToSaveFormData (node = {}) {
-       const Events = [
-         'input',
-         'toggle',
-         'close',
-         'select',
-         'change',
-         'focus',
-         'blur',
-         'click',
-         'compositionstart',
-         'mouseup',
-         'mousedown'
-       ]
-       Events.forEach(item => {
-         node.addEventListener(item, e => {
-           console.log(e.target, item)
-         }, false)
-         window.addEventListener(item, e => {
-           console.log(e.target, item, 'window')
-         }, false)
-         
-       })
-      //  node.addEventListener('input', (e) => {
-      //    console.log(e.target, 'input')
-      //  }, false)
-      //  node.addEventListener('toggle', (e) => {
-      //    console.log(e.target, 'toggle')
-      //  }, false)
-      //  window.addEventListener('toggle', (e) => {
-      //    console.log(e.target, 'toggle')
-      //  }, false)
-      //  node.addEventListener('close', e => {
-      //    console.log(e, 'close')
-      //  }, false)
-      //  node.addEventListener('compositionstart', e => {
-      //    console.log(e, 'compositionstart')
-      //  }, false)
-
-      //  node.addEventListener('select', (e) => {
-      //    console.log(e.target, 'select')
-      //  }, false)
-      //  node.addEventListener('change', (e) => {
-      //    console.log(e.target, 'changex')
-      //  }, false)
-      //  node.addEventListener('focus', e => {
-      //    console.log(e.target, 'focus')
-      //  }, false)
-      //  node.addEventListener('blur', e => {
-      //    console.log(e.target, 'blur')
-      //  }, false)
-      //  node.addEventListener('click', e => {
-      //    console.log(e.target, 'click')
-      //  })
-      //  node.addEventListener('touch', e => {
-      //    console.log(e.target, 'touch')
-      //  }, false)
-     },
-     remvoeEvent () {
-       window.removeEventListener('input')
-       window.removeEventListener('toggle')
-     },
-     /**
+    addEventToSaveFormData (node = {}) {
+      const Events = [
+        'input',
+        'toggle',
+        'close',
+        'select',
+        'change',
+        'focus',
+        'blur',
+        'click',
+        'compositionstart',
+        'mouseup',
+        'mousedown'
+      ]
+      Events.forEach(item => {
+        node.addEventListener(item, e => {
+          console.log(e.target, item)
+        }, false)
+        // window.addEventListener(item, e => {
+        //   console.log(e.target, item, 'window')
+        // }, false)
+      })
+    },
+    remvoeEvent () {
+      window.removeEventListener('input')
+      window.removeEventListener('toggle')
+    },
+    /**
       * 获取错误信息，并滚动到指定位置
       * chrome 在 mac下可以同过 performance 下的task查看scroll，通过定位到那个节点在滚动，
       * 但是在window下却无法显示，很奇怪
       */
-     scrollToTop (node) {
+    scrollToTop (node) {
       //  const scrollNode = document.querySelectorAll('div.sc-warp.el-scrollbar__wrap')[0]
       //  const scrollNode = document.body || document.documentElement
-       const ChildHasError = Array.from(node.querySelectorAll('.is-error'))
-       if (!ChildHasError.length) throw new Error('有错误，但是找不到错误位置')
-       const FirstErrorNode = ChildHasError[0]
+      const ChildHasError = Array.from(node.querySelectorAll('.is-error'))
+      if (!ChildHasError.length) throw new Error('有错误，但是找不到错误位置')
+      const FirstErrorNode = ChildHasError[0]
 
-       const Top = FirstErrorNode.getBoundingClientRect().top
-       const scrollToTop = Top + ( window.pageYOffset || document.documentElement.scrollTop ) - ( document.documentElement.clientTop || 0 ) - 40
+      const Top = FirstErrorNode.getBoundingClientRect().top
+      const scrollToTop = Top + (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0) - 40
       //  const scrollToTop = Math.abs(FirstErrorNode.offsetTop) - 40
       // console.dir(FirstErrorNode)
       //  while ()
-       // 计算的数据有问题
-       scrollTop(2, scrollToTop, {})
+      // 计算的数据有问题
+      scrollTop(2, scrollToTop, {})
       //  https://www.zhangxinxu.com/wordpress/2018/10/scroll-behavior-scrollintoview-%E5%B9%B3%E6%BB%91%E6%BB%9A%E5%8A%A8/
       //  FirstErrorNode.scrollIntoView()
-     },
+    },
     submitForm1 () {
       this.$refs['ruleForm'].validate(valid => {
         console.log(valid)
@@ -298,13 +276,13 @@ export default {
   mounted () {
     this.$nextTick(() => {
       const Note = this.$refs.ruleForm.$el
-      // this.addEventToSaveFormData(Note)
+      this.addEventToSaveFormData(Note)
     })
     // console.log(this.$refs.ruleForm.$el, 9999)
     // this.addEventToSaveFormData()
   },
   beforeDestory () {
-    //this.removeEvent()
+    // this.removeEvent()
   }
 }
 </script>
