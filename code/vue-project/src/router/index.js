@@ -10,7 +10,7 @@ import slot from './routes/slot'
 import jsonp from './routes/jsonp'
 import vueTest from './routes/vue_test'
 // import vuexAlong from './routes/vuex-along'
-
+import child from './routes/childeComponents'
 Vue.use(Router)
 
 let routes = [
@@ -21,7 +21,8 @@ let routes = [
   ...webpack,
   ...slot,
   ...jsonp,
-  ...vueTest
+  ...vueTest,
+  ...child
   // ...vuexAlong
 ]
 
