@@ -104,6 +104,14 @@
         >当时明月在，<br /> 曾照彩云归</div>
       </animateAcco>
     </section>
+    <section class="item">
+      <button @click="isItemOther2 = !isItemOther2">isItemOther2</button>
+      <AccordionAnimate>
+        <div
+          v-show="isItemOther2"
+        >当时明月在，<br /> 曾照彩云归</div>
+      </AccordionAnimate>
+    </section>
   </div>
 </template>
 
@@ -124,7 +132,8 @@ export default {
       show: false,
       isShow: true,
       isItemShow: false,
-      isItemOther: false
+      isItemOther: false,
+      isItemOther2: false
     }
   },
   directives: {
