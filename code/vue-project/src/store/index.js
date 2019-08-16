@@ -36,6 +36,11 @@ export default new Vuex.Store({
         name: '2-1',
         title: 'css张鑫旭测试',
         router: 'css-zxx'
+      },
+      {
+        name: '2-2',
+        title: '文字底部横线',
+        router: 'css-line'
       }
     ],
     webpackList: [
@@ -77,6 +82,13 @@ export default new Vuex.Store({
         router: 'vuex-along'
       }
     ],
+    vueTest: [
+      {
+        name: '5-1',
+        title: 'vue动画',
+        router: 'vue-animate'
+      }
+    ],
     titleType: [
       {
         type: '1',
@@ -93,6 +105,10 @@ export default new Vuex.Store({
       {
         type: '4',
         title: 'vue使用'
+      },
+      {
+        type: '5',
+        title: 'vue动画'
       }
     ]
   },

@@ -9,11 +9,12 @@ import about from './routes/about'
 import slot from './routes/slot'
 import jsonp from './routes/jsonp'
 import vueTest from './routes/vue_test'
+import vueAnimate from './routes/vue-animate'
 // import vuexAlong from './routes/vuex-along'
 import child from './routes/childeComponents'
 Vue.use(Router)
 
-let routes = [
+const routes = [
   home,
   about,
   ...elValidate,
@@ -22,7 +23,8 @@ let routes = [
   ...slot,
   ...jsonp,
   ...vueTest,
-  ...child
+  ...child,
+  ...vueAnimate
   // ...vuexAlong
 ]
 

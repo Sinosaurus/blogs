@@ -6,7 +6,7 @@
         <slot1>
           <h2>slot1</h2>
           <template v-slot="{slot1}">
-            slot1 传递的参数 === {{slot1}} <br /> 
+            slot1 传递的参数 === {{slot1}} <br />
             当前组件 === {{parent}}
           </template>
         </slot1>
@@ -22,7 +22,7 @@
             {{foot}}
           </template>
         </slot2>
-        
+
       </el-col>
       <el-col :span="8"></el-col>
     </el-row>
