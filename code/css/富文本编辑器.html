@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body contentEditable="true">
+  <h1>富文本编辑</h1>
+  <!-- <iframe id="richEdit" src="./富文本.html" frameborder="0" name="richEdit" width="200px" height="300px"></iframe> -->
+  <script>
+    // EventUtil.addHandler(window, 'load', function () {
+    //   frames['richEdit'].document.designMode = 'on'
+    // })
+    document.addEventListener('DOMContentLoaded', function () {
+      console.log(frames)
+      // window.frames['richEdit'].document.designMode = 'on'
+      console.dir(document.getElementById('richEdit'))
+      // document.getElementById('richEdit').contentWindow.document.designMode = 'on'
+      console.log(frames)
+      window.document.designMode = "On";
+    }, false)
+  </script>
+</body>
+</html>

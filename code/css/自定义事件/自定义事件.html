@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自定义事件</title>
+  <link rel="stylesheet" href="./prism.css">
+</head>
+<body>
+  <details>
+    <summary>点击是否隐藏</summary>
+    <p>我是被隐藏的内容</p>
+  </details>
+
+  <pre id="pre">
+    <code class="language-json">
+        
+    </code>
+  </pre>
+  <script>
+    function customClick () {
+      const event = new MouseEvent('customClick', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+      })
+      const det = document.querySelector('details')
+      const cancelled = !det.dispatchEvent(event)
+      const res = cancelled ? 'yes' : 'no'
+      console.log(res)
+    }
+    customClick()
+  </script>
+  <script src="./prism.js"></script>
+  <script>
+    const event = document.createEvent('Event')
+    event.initEvent(
+      'build',
+      true,
+      true
+    )
+    const pre = document.getElementById('pre')
+    pre.addEventListener('build', function (e) {
+      console.log(e)
+    })
+    pre.dispatchEvent(event)
+  </script>
+</body>
+</html>
