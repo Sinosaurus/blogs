@@ -59,6 +59,17 @@
                 :to="{name: item.router}"
               >{{item.title}}</MenuItem>
             </Submenu>
+            <Submenu name="5">
+              <template slot="title">
+                <Icon type="md-bonfire" />vue 动画
+              </template>
+              <MenuItem
+                v-for="item in vueTest"
+                :key="item.name"
+                :name="item.name"
+                :to="{name: item.router}"
+              >{{item.title}}</MenuItem>
+            </Submenu>
           </Menu>
         </Sider>
         <Layout :style="{marginLeft: '200px'}">
@@ -91,7 +102,8 @@ export default {
       cssMunuList: state => state.cssMunuList,
       titleType: state => state.titleType,
       webpackList: state => state.webpackList,
-      vueSlotList: state => state.vueSlotList
+      vueSlotList: state => state.vueSlotList,
+      vueTest: state => state.vueTest
     }),
     titleName () {
       return this.$route.matched.length === 1
@@ -104,7 +116,8 @@ export default {
         ...this.validateMenuList,
         ...this.cssMunuList,
         ...this.webpackList,
-        ...this.vueSlotList
+        ...this.vueSlotList,
+        ...this.vueTest
       ]
       MENU_LIST.map(item => {
         if (this.$route.name === item.router) {
@@ -146,11 +159,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
-#app {
-  // height: 100%;
-  // width: 100%;
-  // overflow: hidden;
-}
+
 .sc-scrollbar {
   height: 100%;
   .el-scrollbar__wrap {

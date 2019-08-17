@@ -19,8 +19,8 @@ module.exports = {
   devServer: {
     // 直接在浏览器上显示错误信息
     overlay: {
-      warnings: true,
-      errors: true
+      warnings: false,
+      errors: false
     }
   }
 

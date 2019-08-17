@@ -17,3 +17,8 @@
 
 
 ### [nrm](https://www.jianshu.com/p/084f3cf550b3)
+
++ npm 更新包 [link](https://segmentfault.com/a/1190000005857342)
+```
+npm-check
+```
