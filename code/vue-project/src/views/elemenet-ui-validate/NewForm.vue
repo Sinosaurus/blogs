@@ -221,7 +221,9 @@ export default {
         'click',
         'compositionstart',
         'mouseup',
-        'mousedown'
+        'mousedown',
+        'formchange',
+        'forminput'
       ]
       Events.forEach(item => {
         node.addEventListener(item, e => {
@@ -270,6 +272,12 @@ export default {
           })
         }
       })
+    },
+    listenFormValueChange () {
+      console.dir(HTMLInputElement, 999)
+      // HTMLInputElement.addEventListener('input', function (evt) {
+      //   console.log(this.value)
+      // })
     }
 
   },
@@ -278,6 +286,7 @@ export default {
       const Note = this.$refs.ruleForm.$el
       this.addEventToSaveFormData(Note)
     })
+    this.listenFormValueChange()
     // console.log(this.$refs.ruleForm.$el, 9999)
     // this.addEventToSaveFormData()
   },
