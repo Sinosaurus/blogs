@@ -1,11 +1,13 @@
+// https://juejin.im/post/5cd1b28e6fb9a03235587493
 const path = require('path')
 // const webpack = require('webpack')
+// const nodeExternals = require('webpack-node-externals')
 
 function resolve (dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
-  baseUrl: './',
+  publicPath: './',
   chainWebpack: config => {
     config.resolve.alias
       .set('$', resolve('src/views'))
@@ -24,13 +26,14 @@ module.exports = {
     }
   }
 
-  // configureWebpack: {
-  //   plugins: [
-  //     new webpack.ProvidePlugin({
-  //       $: "jquery",
-  //       jQuery: "jquery",
-  //       "windows.jQuery": "jquery"
-  //     })
-  //   ]
+  // configureWebpack: config => {
+  //   config.externals = [nodeExternals()]
+  //   // plugins: [
+  //   //   new webpack.ProvidePlugin({
+  //   //     $: "jquery",
+  //   //     jQuery: "jquery",
+  //   //     "windows.jQuery": "jquery"
+  //   //   })
+  //   // ]
   // }
 }
