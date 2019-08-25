@@ -34,3 +34,11 @@ git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path-
 ```
 git push origin master --force #强制覆盖
 ```
+
+## git 开发
++ [ryf](http://www.ruanyifeng.com/blog/2012/07/git.html)
++ [lxf](https://www.liaoxuefeng.com/wiki/896043488029600/900005860592480)
+
++ 日志 `git log --graph --pretty=oneline --abbrev-commit`
+
+ ![git-log](./../images/git/20190823101026.jpg)
