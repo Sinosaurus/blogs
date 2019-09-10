@@ -42,12 +42,18 @@
       </li>
     </ul>
 
-    <iframe
+    <!-- <iframe
       src="http://localhost:7070/index.html"
       width="100%"
       height="800px"
       frameborder="0"
-    ></iframe>
+    ></iframe> -->
+    <br />
+    <h2>computed ==> get/set</h2>
+    <section>
+      输入9和输入a都会输出a
+      <input type="text" v-model="computeValue">
+    </section>
   </div>
 </template>
 
@@ -59,7 +65,8 @@ export default {
       h: 111,
       value: '',
       form: {
-        accout: 0
+        accout: 0,
+        computeValue: ''
       },
       PhoneLocationList: [
         {
@@ -91,6 +98,16 @@ export default {
             'https://www.baifubao.com/callback?cmd=1059&callback=iteblog&phone='
         }
       ]
+    }
+  },
+  computed: {
+    computeValue: {
+      get () {
+        return this.form.computeValue
+      },
+      set (val) {
+        this.form.computeValue = val.replace(/[9]/g, 'a')
+      }
     }
   },
   mounted () {
