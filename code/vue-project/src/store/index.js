@@ -87,6 +87,11 @@ export default new Vuex.Store({
         name: '5-1',
         title: 'vue动画',
         router: 'vue-animate'
+      },
+      {
+        name: '5-2',
+        title: 'render',
+        router: 'render'
       }
     ],
     titleType: [

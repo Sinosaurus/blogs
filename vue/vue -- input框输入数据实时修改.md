@@ -86,3 +86,34 @@ changeInputValue (v) {
 
 ## 总结
 + 依旧不知道使用`computed`是如何实现的，上述方法，通过`input`时间，便可以一直拿到值，不用额外进行处理，因为`v-model`进行了绑定
+
+### 2019-09-10
+无意间看到[vue-admin-element作者的掘金文章](https://juejin.im/post/5c92ff94f265da6128275a85),参考之下，完成了`computed`进行修改输入的参数
+
+> code
+```
+// template
+<input type="text" v-model="computeValue">
+
+// js
+data () {
+    return {
+        form: {
+            computeValue: ''
+        }
+    }
+}
+computed: {
+    computeValue: {
+      get () {
+        return this.form.computeValue
+      },
+      set (val) {
+        this.form.computeValue = val.replace(/[9]/g, 'a')
+      }
+    }
+}
+```
+
+效果图
+![computed](./../images/vue/input/computed.gif)

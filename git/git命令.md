@@ -42,3 +42,16 @@ git push origin master --force #强制覆盖
 + 日志 `git log --graph --pretty=oneline --abbrev-commit`
 
  ![git-log](./../images/git/20190823101026.jpg)
+
++ `fatal: sha1 file '<stdout>' write error: Broken Pipe ` 上传文件超过预定大小
+  - [github](https://github.com/git-lfs/git-lfs/issues/2428)
+  - [知乎](https://zhuanlan.zhihu.com/p/40634410)
+
+  ```
+    // 修改限制大小
+    git config --global http.postBuffer 157286400
+  ```
++ `fatal: write error: No space left on device` git服务器没有空间了
+  - [link](https://blog.csdn.net/jia4525036/article/details/52094763)
+  
+  > 运维是删除了备份文件，解决的
