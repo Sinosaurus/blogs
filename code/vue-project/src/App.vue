@@ -83,7 +83,9 @@
             </Breadcrumb>
             <Card>
               <div class="sc-container">
-                <router-view></router-view>
+                <keep-alive :include="cachedViews">
+                  <router-view></router-view>
+                </keep-alive>
               </div>
             </Card>
           </Content>
@@ -103,7 +105,8 @@ export default {
       titleType: state => state.titleType,
       webpackList: state => state.webpackList,
       vueSlotList: state => state.vueSlotList,
-      vueTest: state => state.vueTest
+      vueTest: state => state.vueTest,
+      cachedViews: state => state.cache.cachedViews
     }),
     titleName () {
       return this.$route.matched.length === 1
@@ -132,6 +135,7 @@ export default {
     window.onresize = () => {
       this.$refs.scrollbar.update()
     }
+    this.setInitActiveViews()
   },
   methods: {
     /**
@@ -144,7 +148,29 @@ export default {
       return this.titleType.filter(item => {
         return item.type === N
       })[0].title
+    },
+    getInitActiveViews (routes) {
+      let views = []
+      routes.forEach(route => {
+        if (route.meta && route.meta.alive) {
+          views.push(route.name)
+        }
+        if (route.children) {
+          const childViews = this.getInitActiveViews(route.children)
+          if (childViews.length) {
+            views = [...views, ...childViews]
+          }
+        }
+      })
+      return views
+    },
+    setInitActiveViews () {
+      const alives = this.getInitActiveViews(this.$router.options.routes)
+      alives.forEach(item => {
+        this.$store.commit('cache/addCacheViews', item)
+      })
     }
+
   }
 }
 </script>

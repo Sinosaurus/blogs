@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import formData from './modules/form_data'
 import test from './modules/test_store'
 import elTable from './modules/el-table'
+import keep from './modules/keep'
+import cache from './modules/cache-views'
 // import VuexAlong from 'vuex-along'
 
 Vue.use(Vuex)
@@ -80,6 +82,11 @@ export default new Vuex.Store({
         name: '4-6',
         title: 'vuex-along',
         router: 'vuex-along'
+      },
+      {
+        name: '4-7',
+        title: 'keep-alive',
+        router: 'Keep'
       }
     ],
     vueTest: [
@@ -126,7 +133,9 @@ export default new Vuex.Store({
   modules: {
     formData,
     test,
-    elTable
+    elTable,
+    keep,
+    cache
   }
   // plugins: [
   //   VuexAlong({
