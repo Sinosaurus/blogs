@@ -115,12 +115,12 @@ beforeRouteLeave (to, from, next) {
 
 
 ### 总结
-+ 使用`beforeRouteLeave`时，需要是在路由被注册的，也就是`compoents: **.vue`该组件方可有效
++ 使用`beforeRouteLeave`时，需要是在路由被注册的，也就是`component: **.vue`该组件方可有效
 + 由于动态缓存组件一直在改动，目前只有这样实现可以满足需求，后期若是有更好的再进行处理
 + 条件尽可以缓存起来，使用vuex最方便了
 + 页面数据既可以实时刷新又可以保留条件
 + 解决了页面数据缓存，而不是粗暴地通过 `v-if`来触发组件重新走一遍
-+ [当前项目地址]()
++ [当前项目地址](https://github.com/Sinosaurus/blogs/tree/master/code/vue-project)
 
 ## 参考
 + [路由独享的守卫](https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#路由独享的守卫)

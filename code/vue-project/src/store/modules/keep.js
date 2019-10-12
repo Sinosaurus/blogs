@@ -3,7 +3,7 @@ export default {
   state: {
     count: 0,
     params: {
-      
+
     }
   },
   mutations: {
@@ -36,7 +36,8 @@ export default {
 }
 
 function type (val) {
-  const res = Object.prototype.toString.call(val).slice(8).replace(']', '').toLocaleLowerCase()
+  // const res = Object.prototype.toString.call(val).slice(8).replace(']', '').toLocaleLowerCase()
+  const res = Object.prototype.toString.call(val).slice(8, -1).toLocaleLowerCase()
   if (res === 'object' && val === null) {
     return null
   } else {
