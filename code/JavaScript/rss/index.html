@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="node_modules/rss-parser/dist/rss-parser.min.js"></script>
+  <script>
+    const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"
+
+    let parser = new RSSParser();
+    console.dir(parser)
+    parser.parseURL('https://blog.502.li/feed', function (err, feed) {
+      console.log(err, feed)
+      if (err) throw err;
+      console.log(feed.title);
+      feed.items.forEach(function (entry) {
+        console.log(entry.title + ':' + entry.link);
+      })
+    })
+  </script>
+</body>
+
+</html>
