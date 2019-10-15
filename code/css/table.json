@@ -1,0 +1,914 @@
+[
+  {
+    "area": "华北",
+    "id": "1",
+    "city": "北京",
+    "resourceAddress": "北京市朝阳区酒仙桥北路甲10号电子城IT产业园德信大厦"
+  },
+  {
+    "area": "华北",
+    "id": "2",
+    "city": "北京",
+    "resourceAddress": "北京市丰台区成寿寺中路18号楼1层商业2号"
+  },
+  {
+    "area": "华中",
+    "id": "3",
+    "city": "武汉",
+    "resourceAddress": "武汉市洪山区文秀街8号天宇创意大厦一号楼8F"
+  },
+  {
+    "area": "华东",
+    "id": "4",
+    "city": "合肥",
+    "resourceAddress": "安徽省合肥市包河区徽州大道968号与望江东路交叉口金三角建材市场一期B区三楼"
+  },
+  {
+    "area": "华东",
+    "id": "5",
+    "city": "上海",
+    "resourceAddress": "上海市徐汇区田林路418号乐业天地D座102室/110室"
+  },
+  {
+    "area": "华东",
+    "id": "6",
+    "city": "广州",
+    "resourceAddress": "广州市天河区燕岭路25号银燕大厦102A室"
+  },
+  {
+    "area": "华南",
+    "id": "7",
+    "city": "深圳",
+    "resourceAddress": "广东省深圳市罗湖区红岗路红岗大厦413室"
+  },
+  {
+    "area": "华南",
+    "id": "8",
+    "city": "深圳",
+    "resourceAddress": "广东省深圳市罗湖区红岗路红岗大厦416室"
+  },
+  {
+    "area": "华东",
+    "id": "9",
+    "city": "杭州",
+    "resourceAddress": "杭州市江干区采荷嘉业1号楼306"
+  },
+  {
+    "area": "华东",
+    "id": "10",
+    "city": "杭州",
+    "resourceAddress": "杭州市庆春路新塘路（路口）采荷嘉叶大厦1号楼408室"
+  },
+  {
+    "area": "华东",
+    "id": "11",
+    "city": "苏州",
+    "resourceAddress": "苏州市高新区泰山路6号博济科技创业园D座503室"
+  },
+  {
+    "area": "华中",
+    "id": "12",
+    "city": "郑州",
+    "resourceAddress": "郑州市金水区经三路北32号财富广场3号楼702"
+  },
+  {
+    "area": "华东",
+    "id": "13",
+    "city": "济南",
+    "resourceAddress": "济南市槐荫区南辛庄中街70号泉景商务大厦503/516室"
+  },
+  {
+    "area": "华中",
+    "id": "14",
+    "city": "长沙",
+    "resourceAddress": "湖南省长沙市雨花区人民东路46号铭诚国际806"
+  },
+  {
+    "area": "华中",
+    "id": "15",
+    "city": "长沙",
+    "resourceAddress": "长沙市雨花区人民东路46号铭城国际819-820室"
+  },
+  {
+    "area": "华南",
+    "id": "16",
+    "city": "福州",
+    "resourceAddress": "福建省鼓楼区西洪路518号恩特楼A栋207室"
+  },
+  {
+    "area": "西北",
+    "id": "17",
+    "city": "西安",
+    "resourceAddress": "新城区新城科技产业园华企大厦6层606室"
+  },
+  {
+    "area": "西南",
+    "id": "18",
+    "city": "成都",
+    "resourceAddress": "金牛区乡农寺街51-129号2栋1单元2层4号"
+  },
+  {
+    "area": "西南",
+    "id": "19",
+    "city": "重庆",
+    "resourceAddress": "重庆市渝中区两路口街道皇冠大厦701"
+  },
+  {
+    "area": "华东",
+    "id": "20",
+    "city": "南京",
+    "resourceAddress": "南京市鼓楼区建宁路30号6楼"
+  },
+  {
+    "area": "华东",
+    "id": "21",
+    "city": "无锡",
+    "resourceAddress": "无锡市五爱路水车湾小区43单元102室"
+  },
+  {
+    "area": "华东",
+    "id": "22",
+    "city": "苏州",
+    "resourceAddress": "江苏省苏州市高新区泰山路2号博济科技园d栋503"
+  },
+  {
+    "area": "华南",
+    "id": "23",
+    "city": "厦门",
+    "resourceAddress": "厦门市备选节点：厦门市万寿路文园公寓79-206"
+  },
+  {
+    "area": "华南",
+    "id": "24",
+    "city": "厦门",
+    "resourceAddress": "厦门市主选节点：集美区孙坂北路前进村中保里118号一、二层"
+  },
+  {
+    "area": "华东",
+    "id": "25",
+    "city": "宁波",
+    "resourceAddress": "浙江省宁波市鄞奉路964号"
+  },
+  {
+    "area": "华东",
+    "id": "26",
+    "city": "上海",
+    "resourceAddress": "上海市闸北区江场西路387号数据港大厦"
+  },
+  {
+    "area": "华东",
+    "id": "27",
+    "city": "上海",
+    "resourceAddress": "上海市浦东新区外高桥保税区华京路6号"
+  },
+  {
+    "area": "华东",
+    "id": "28",
+    "city": "上海",
+    "resourceAddress": "上海市浦东新区金豫路700号4号楼"
+  },
+  {
+    "area": "华东",
+    "id": "29",
+    "city": "上海",
+    "resourceAddress": "上海浦东新区张江高科技园方春路400号蓝光科技园4号楼"
+  },
+  {
+    "area": "华东",
+    "id": "30",
+    "city": "上海",
+    "resourceAddress": "上海市浦东新区芳春路400号4号楼"
+  },
+  {
+    "area": "华东",
+    "id": "31",
+    "city": "上海",
+    "resourceAddress": "上海市浦东新区芳春路700号3号楼"
+  },
+  {
+    "area": "华东",
+    "id": "32",
+    "city": "上海",
+    "resourceAddress": "上海市杨浦区隆昌路619号9号楼"
+  },
+  {
+    "area": "华东",
+    "id": "33",
+    "city": "上海",
+    "resourceAddress": "上海浦东新区自贸区新灵路898号"
+  },
+  {
+    "area": "华东",
+    "id": "34",
+    "city": "上海",
+    "resourceAddress": "上海浦东新区外高桥保税区"
+  },
+  {
+    "area": "华东",
+    "id": "35",
+    "city": "上海",
+    "resourceAddress": "上海浦东新区外高桥90号"
+  },
+  {
+    "area": "华东",
+    "id": "36",
+    "city": "上海",
+    "resourceAddress": "上海市浦东新区外高桥保税区华京路6号"
+  },
+  {
+    "area": "华东",
+    "id": "37",
+    "city": "上海",
+    "resourceAddress": "上海市日樱南路248号"
+  },
+  {
+    "area": "华东",
+    "id": "38",
+    "city": "上海",
+    "resourceAddress": "上海市长江西路101号"
+  },
+  {
+    "area": "华东",
+    "id": "39",
+    "city": "上海",
+    "resourceAddress": "上海市宜山路757号"
+  },
+  {
+    "area": "华东",
+    "id": "40",
+    "city": "上海",
+    "resourceAddress": "上海市郭守敬路498号4号1楼"
+  },
+  {
+    "area": "华东",
+    "id": "41",
+    "city": "上海",
+    "resourceAddress": "上海市浦东新区秦桥路368号"
+  },
+  {
+    "area": "华东",
+    "id": "42",
+    "city": "上海",
+    "resourceAddress": "上海市浦东福山路455号6楼"
+  },
+  {
+    "area": "华东",
+    "id": "43",
+    "city": "上海",
+    "resourceAddress": "上海市日京路118号"
+  },
+  {
+    "area": "华东",
+    "id": "44",
+    "city": "苏州",
+    "resourceAddress": "苏州市太仓人民路162号机房"
+  },
+  {
+    "area": "华东",
+    "id": "45",
+    "city": "苏州",
+    "resourceAddress": "苏州市吴中区工业园区苏虹东路388号主楼（东大门进楼）2楼4号机房"
+  },
+  {
+    "area": "华东",
+    "id": "46",
+    "city": "苏州",
+    "resourceAddress": "苏州市工业园区星湖街328号创意产业园A2栋"
+  },
+  {
+    "area": "华东",
+    "id": "47",
+    "city": "无锡",
+    "resourceAddress": "无锡市锦西路100号太湖云中心科教创业园10号楼2层"
+  },
+  {
+    "area": "华东",
+    "id": "48",
+    "city": "无锡",
+    "resourceAddress": "无锡市清扬路27号601"
+  },
+  {
+    "area": "华东",
+    "id": "49",
+    "city": "无锡",
+    "resourceAddress": "无锡市锡士路79号"
+  },
+  {
+    "area": "华东",
+    "id": "50",
+    "city": "南京",
+    "resourceAddress": "南京市玄武区园牌路东南大学自动化学院1楼"
+  },
+  {
+    "area": "华东",
+    "id": "51",
+    "city": "南京",
+    "resourceAddress": "南京市郭家山路张王庙88号1楼凤凰机房"
+  },
+  {
+    "area": "华东",
+    "id": "52",
+    "city": "南京",
+    "resourceAddress": "南京经济技术开发区恒泰路3号"
+  },
+  {
+    "area": "华东",
+    "id": "53",
+    "city": "嘉兴",
+    "resourceAddress": "中国浙江省嘉兴市南湖区亚太路1177号"
+  },
+  {
+    "area": "华东",
+    "id": "54",
+    "city": "杭州",
+    "resourceAddress": "杭州市下沙经济开发区4号大厦28-2号"
+  },
+  {
+    "area": "华东",
+    "id": "55",
+    "city": "杭州",
+    "resourceAddress": "杭州市江干区秋涛路176号交运大厦14楼1429室"
+  },
+  {
+    "area": "华东",
+    "id": "56",
+    "city": "杭州",
+    "resourceAddress": "杭州市宋都采荷嘉业1号楼4楼408房间"
+  },
+  {
+    "area": "华北",
+    "id": "57",
+    "city": "北京",
+    "resourceAddress": "北京市朝阳区建外大街8号IFC大厦B2"
+  },
+  {
+    "area": "华东",
+    "id": "58",
+    "city": "苏州",
+    "resourceAddress": "苏州工业园区星湖街328号创意产业园A2栋苏州国科综合数据中心"
+  },
+  {
+    "area": "华东",
+    "id": "59",
+    "city": "苏州",
+    "resourceAddress": "苏州工业园区苏虹东路388号新海宜数据中心2楼"
+  },
+  {
+    "area": "华东",
+    "id": "60",
+    "city": "上海",
+    "resourceAddress": "芳春路数讯机房"
+  },
+  {
+    "area": "华东",
+    "id": "61",
+    "city": "上海",
+    "resourceAddress": "万国GDS机房"
+  },
+  {
+    "area": "华东",
+    "id": "62",
+    "city": "上海",
+    "resourceAddress": "上海市漕宝路1600号"
+  },
+  {
+    "area": "华东",
+    "id": "63",
+    "city": "上海",
+    "resourceAddress": "平江路48号1号楼5楼机房"
+  },
+  {
+    "area": "华东",
+    "id": "64",
+    "city": "上海",
+    "resourceAddress": "闸北区洛川东路487号一楼"
+  },
+  {
+    "area": "华东",
+    "id": "65",
+    "city": "上海",
+    "resourceAddress": "江场西路389号"
+  },
+  {
+    "area": "华东",
+    "id": "66",
+    "city": "上海",
+    "resourceAddress": "上海市宜山路757号"
+  },
+  {
+    "area": "华北",
+    "id": "67",
+    "city": "北京",
+    "resourceAddress": "北京市亦庄经济技术开发区兴盛街15号铁通IDC-T3数据中心"
+  },
+  {
+    "area": "华北",
+    "id": "68",
+    "city": "北京",
+    "resourceAddress": "北京亦庄经济技术开发区同济中路15号"
+  },
+  {
+    "area": "华北",
+    "id": "69",
+    "city": "北京",
+    "resourceAddress": "大族企业湾"
+  },
+  {
+    "area": "华北",
+    "id": "70",
+    "city": "北京",
+    "resourceAddress": "金创大厦"
+  },
+  {
+    "area": "华北",
+    "id": "71",
+    "city": "北京",
+    "resourceAddress": "北京市朝阳区工人体育场北路1号"
+  },
+  {
+    "area": "华北",
+    "id": "72",
+    "city": "北京",
+    "resourceAddress": "北京市丰台区大红门久敬庄路甲56号院16号楼CNIX机房"
+  },
+  {
+    "area": "华北",
+    "id": "73",
+    "city": "北京",
+    "resourceAddress": "北京电信工程局二层乙方机房"
+  },
+  {
+    "area": "华东",
+    "id": "74",
+    "city": "杭州",
+    "resourceAddress": " 杭州市下城区华丰路移动石桥机房"
+  },
+  {
+    "area": "华东",
+    "id": "75",
+    "city": "哈尔滨",
+    "resourceAddress": "哈尔滨市平房区松花路9号A7"
+  },
+  {
+    "area": "华东",
+    "id": "76",
+    "city": "合肥",
+    "resourceAddress": "安徽省合肥长江西路669号"
+  },
+  {
+    "area": "华东",
+    "id": "77",
+    "city": "石家庄",
+    "resourceAddress": "新石中路377号"
+  },
+  {
+    "area": "华中",
+    "id": "78",
+    "city": "武汉",
+    "resourceAddress": "武汉市洪山区光谷软件园C4"
+  },
+  {
+    "area": "华东",
+    "id": "79",
+    "city": "济南",
+    "resourceAddress": "山东济南山大路华强电子世界多点可达"
+  },
+  {
+    "area": "华中",
+    "id": "80",
+    "city": "郑州",
+    "resourceAddress": "郑州市高新区翠竹街1号总部企业基地125号亿恩科技大厦"
+  },
+  {
+    "area": "华中",
+    "id": "81",
+    "city": "郑州",
+    "resourceAddress": "郑州市经济开发区经北三路第五大街交叉口通信产业园二层"
+  },
+  {
+    "area": "华东",
+    "id": "82",
+    "city": "南宁",
+    "resourceAddress": "南宁市青秀区东葛路118号青秀万达广场写字楼b座4403室"
+  },
+  {
+    "area": "华东",
+    "id": "83",
+    "city": "南京",
+    "resourceAddress": "南京经济技术开发区恒泰路3号"
+  },
+  {
+    "area": "华北",
+    "id": "84",
+    "city": "北京",
+    "resourceAddress": "北京市朝阳区酒仙桥北路7号电通创意广场三号楼A区"
+  },
+  {
+    "area": "华北",
+    "id": "85",
+    "city": "北京",
+    "resourceAddress": "北京市朝阳区望京西路甲50-1号卷石天地大厦a座地下一层"
+  },
+  {
+    "area": "华北",
+    "id": "86",
+    "city": "北京",
+    "resourceAddress": "北京市北京经济技术开发区博兴八路1号"
+  },
+  {
+    "area": "华北",
+    "id": "87",
+    "city": "北京",
+    "resourceAddress": "北京市朝阳区酒仙桥东路1号M5楼三层"
+  },
+  {
+    "area": "华北",
+    "id": "88",
+    "city": "北京",
+    "resourceAddress": "北京市海淀区丹棱街1号院1号楼互联网金融中心11层"
+  },
+  {
+    "area": "华东",
+    "id": "89",
+    "city": "无锡",
+    "resourceAddress": "无锡市高新技术开发区锡士路79-A（XDC+）"
+  },
+  {
+    "area": "华东",
+    "id": "90",
+    "city": "宁波",
+    "resourceAddress": "浙江省宁波市鄞州区南部商务区中基大厦1204室"
+  },
+  {
+    "area": "华东",
+    "id": "91",
+    "city": "金华",
+    "resourceAddress": "浙江省金华市婺城区四联路398号金华网络经济中心大楼402室"
+  },
+  {
+    "area": "华东",
+    "id": "92",
+    "city": "杭州",
+    "resourceAddress": "杭州市西湖区文二路391号(西湖国际科技大厦)3004-2室"
+  },
+  {
+    "area": "华东",
+    "id": "93",
+    "city": "杭州",
+    "resourceAddress": "杭州市西斗门路3号天堂软件园 E幢4层"
+  },
+  {
+    "area": "华东",
+    "id": "94",
+    "city": "南昌",
+    "resourceAddress": "南昌市火炬大街566号江西省联通分公司4楼idc机房"
+  },
+  {
+    "area": "西南",
+    "id": "95",
+    "city": "成都",
+    "resourceAddress": "成都市成华区二环路北四段2号附104号1层"
+  },
+  {
+    "area": "华北",
+    "id": "96",
+    "city": "北京",
+    "resourceAddress": "北京通州光机电一体化成业基地嘉创一路21号"
+  },
+  {
+    "area": "华北",
+    "id": "97",
+    "city": "北京",
+    "resourceAddress": "北京经济技术开发区荣华中路11号"
+  },
+  {
+    "area": "华北",
+    "id": "98",
+    "city": "北京",
+    "resourceAddress": "东城区天坛东路31号1层"
+  },
+  {
+    "area": "华北",
+    "id": "99",
+    "city": "北京",
+    "resourceAddress": "北京市丰台区南方庄1号院方安苑9号楼103室"
+  },
+  {
+    "area": "华北",
+    "id": "100",
+    "city": "北京",
+    "resourceAddress": "天津市武清商务区高村科技创新园汇海路8号"
+  },
+  {
+    "area": "华北",
+    "id": "101",
+    "city": "北京",
+    "resourceAddress": "北京朝阳区酒仙桥路10号京东方科技园B28楼"
+  },
+  {
+    "area": "华北",
+    "id": "102",
+    "city": "北京",
+    "resourceAddress": "北京市朝阳区酒仙桥东路1号M5楼"
+  },
+  {
+    "area": "华北",
+    "id": "103",
+    "city": "北京",
+    "resourceAddress": "亦庄同济中路8号"
+  },
+  {
+    "area": "华北",
+    "id": "104",
+    "city": "北京",
+    "resourceAddress": "大兴区北兴路"
+  },
+  {
+    "area": "华北",
+    "id": "105",
+    "city": "北京",
+    "resourceAddress": "亦庄博兴六路兴海一街"
+  },
+  {
+    "area": "华北",
+    "id": "106",
+    "city": "北京",
+    "resourceAddress": "北京市朝阳区酒仙桥数据中心"
+  },
+  {
+    "area": "华北",
+    "id": "107",
+    "city": "北京",
+    "resourceAddress": "大兴区亦庄开发区瑞合二街"
+  },
+  {
+    "area": "华北",
+    "id": "108",
+    "city": "北京",
+    "resourceAddress": "东直门东环广场机房"
+  },
+  {
+    "area": "华北",
+    "id": "109",
+    "city": "北京",
+    "resourceAddress": "神威北大街"
+  },
+  {
+    "area": "华北",
+    "id": "110",
+    "city": "北京",
+    "resourceAddress": "西坝河商务中心"
+  },
+  {
+    "area": "华北",
+    "id": "111",
+    "city": "北京",
+    "resourceAddress": "望京鹿港地下一层机房"
+  },
+  {
+    "area": "华北",
+    "id": "112",
+    "city": "北京",
+    "resourceAddress": "海淀区北坞村路甲25号静芯园D座一层"
+  },
+  {
+    "area": "华北",
+    "id": "113",
+    "city": "北京",
+    "resourceAddress": "顺义区保税区内"
+  },
+  {
+    "area": "华北",
+    "id": "114",
+    "city": "北京",
+    "resourceAddress": "酒仙桥北路"
+  },
+  {
+    "area": "华北",
+    "id": "115",
+    "city": "北京",
+    "resourceAddress": "兆维工业园小黑屋"
+  },
+  {
+    "area": "华北",
+    "id": "116",
+    "city": "北京",
+    "resourceAddress": "朝阳区酒仙桥中路10"
+  },
+  {
+    "area": "华北",
+    "id": "117",
+    "city": "北京",
+    "resourceAddress": "新源南路京城大厦地下一层机房"
+  },
+  {
+    "area": "华北",
+    "id": "118",
+    "city": "北京",
+    "resourceAddress": "朝阳区工体北路春秀路"
+  },
+  {
+    "area": "华北",
+    "id": "119",
+    "city": "北京",
+    "resourceAddress": "海淀区上地九街"
+  },
+  {
+    "area": "华北",
+    "id": "120",
+    "city": "北京",
+    "resourceAddress": "上地软件园二期"
+  },
+  {
+    "area": "华北",
+    "id": "121",
+    "city": "北京",
+    "resourceAddress": "太和桥瑞合二街南"
+  },
+  {
+    "area": "华北",
+    "id": "122",
+    "city": "北京",
+    "resourceAddress": "丰台区富丰路8号"
+  },
+  {
+    "area": "华北",
+    "id": "123",
+    "city": "北京",
+    "resourceAddress": "北蜂窝路铁路总局大厦6层"
+  },
+  {
+    "area": "华北",
+    "id": "124",
+    "city": "北京",
+    "resourceAddress": "海淀新技术大厦地下一层"
+  },
+  {
+    "area": "华北",
+    "id": "125",
+    "city": "北京",
+    "resourceAddress": "燕莎桥平安大厦地下一层机房"
+  },
+  {
+    "area": "华北",
+    "id": "126",
+    "city": "北京",
+    "resourceAddress": "静安东街静安东里8号楼3层"
+  },
+  {
+    "area": "华北",
+    "id": "127",
+    "city": "北京",
+    "resourceAddress": "航天桥航天信息机房"
+  },
+  {
+    "area": "华北",
+    "id": "128",
+    "city": "北京",
+    "resourceAddress": "通州廓马路"
+  },
+  {
+    "area": "华北",
+    "id": "129",
+    "city": "北京",
+    "resourceAddress": "廊坊楼庄路"
+  },
+  {
+    "area": "华北",
+    "id": "130",
+    "city": "北京",
+    "resourceAddress": "酒仙桥北街"
+  },
+  {
+    "area": "华北",
+    "id": "131",
+    "city": "北京",
+    "resourceAddress": "亦庄同济中路10号"
+  },
+  {
+    "area": "华北",
+    "id": "132",
+    "city": "北京",
+    "resourceAddress": "雍和宫航星园3号楼"
+  },
+  {
+    "area": "华北",
+    "id": "133",
+    "city": "北京",
+    "resourceAddress": "海淀区白颐路中关村科技发展大厦3层"
+  },
+  {
+    "area": "华北",
+    "id": "134",
+    "city": "北京",
+    "resourceAddress": "亦庄兴海一街"
+  },
+  {
+    "area": "华北",
+    "id": "135",
+    "city": "北京",
+    "resourceAddress": "望京绿地大厦"
+  },
+  {
+    "area": "华北",
+    "id": "136",
+    "city": "北京",
+    "resourceAddress": "夕照寺电信工程局3层机房"
+  },
+  {
+    "area": "华北",
+    "id": "137",
+    "city": "北京",
+    "resourceAddress": "亦庄大族弯工业园机房"
+  },
+  {
+    "area": "华北",
+    "id": "138",
+    "city": "北京",
+    "resourceAddress": "亦庄经海三路机房"
+  },
+  {
+    "area": "华北",
+    "id": "139",
+    "city": "北京",
+    "resourceAddress": "亦庄经海九街"
+  },
+  {
+    "area": "华北",
+    "id": "140",
+    "city": "北京",
+    "resourceAddress": "亦庄博兴八路1号"
+  },
+  {
+    "area": "华北",
+    "id": "141",
+    "city": "北京",
+    "resourceAddress": "中关村南四街中国科学院软件园大厦3层"
+  },
+  {
+    "area": "华北",
+    "id": "142",
+    "city": "北京",
+    "resourceAddress": "怀柔杨燕路中科院基地信息中心"
+  },
+  {
+    "area": "华北",
+    "id": "143",
+    "city": "北京",
+    "resourceAddress": "清华大学主楼206、306、111、101室"
+  },
+  {
+    "area": "华北",
+    "id": "144",
+    "city": "北京",
+    "resourceAddress": "西三环中路中央电视塔"
+  },
+  {
+    "area": "华东",
+    "id": "145",
+    "city": "杭州",
+    "resourceAddress": "杭州市余杭区文一西路969号阿里巴巴2号楼"
+  },
+  {
+    "area": "华东",
+    "id": "146",
+    "city": "上海",
+    "resourceAddress": "浦东新区金桥出口加工区金港路565号"
+  },
+  {
+    "area": "华东",
+    "id": "147",
+    "city": "上海",
+    "resourceAddress": "上海市宝山区纪蕴路588号智力产业园1号楼A5-4机房"
+  },
+  {
+    "area": "华南",
+    "id": "148",
+    "city": "深圳",
+    "resourceAddress": "深圳市龙华新区环观中路观澜锦绣大地工业园5号楼"
+  },
+  {
+    "area": "华南",
+    "id": "149",
+    "city": "深圳",
+    "resourceAddress": "深圳市福田区福田保税区桃花路5号万国数据机房"
+  },
+  {
+    "area": "华东",
+    "id": "150",
+    "city": "北京",
+    "resourceAddress": "亦庄东环北路11号东宝制药"
+  },
+  {
+    "area": "华东",
+    "id": "151",
+    "city": "北京",
+    "resourceAddress": "北京市海淀区海淀大街38号银科大厦16楼"
+  },
+  {
+    "area": "华东",
+    "id": "152",
+    "city": "上海",
+    "resourceAddress": "上海市虹梅路1801号C座腾讯大厦（近宜山路）"
+  }
+]

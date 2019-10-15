@@ -12,6 +12,7 @@ import vueTest from './routes/vue_test'
 import vueAnimate from './routes/vue-animate'
 // import vuexAlong from './routes/vuex-along'
 import child from './routes/childeComponents'
+import keep from './routes/keep-alive'
 Vue.use(Router)
 
 const routes = [
@@ -24,7 +25,8 @@ const routes = [
   ...jsonp,
   ...vueTest,
   ...child,
-  ...vueAnimate
+  ...vueAnimate,
+  ...keep
   // ...vuexAlong
 ]
 
