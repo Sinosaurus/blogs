@@ -48,6 +48,10 @@ puppeteer.launch().then(async browser => {
 
 + goto
 + waitForSelector
++ waitForNavigation({
+    // 跳转页面，等待加载完
+    waitUntil: 'load'
+  })
 + content
 + evaluate
 
@@ -82,6 +86,8 @@ puppeteer.launch().then(async browser => {
 + [api](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md)
 + [github1](https://zhaoqize.github.io/puppeteer-api-zh_CN/#/)
 + [看云](https://www.kancloud.cn/luponu/puppeteer/870136)
++ [齐客谷](https://www.qikegu.com/docs/4539)
++ [cookie](https://juejin.im/post/5b5b15e9e51d4519202e3714)
 
 
 ## 如何使用当前浏览器的文件
@@ -103,6 +109,25 @@ puppeteer.launch().then(async browser => {
 > 依旧不行，看选择的路径吧，原来是我的路径使用错误，利用 `chrome://version`可以查看到
 
 + [登录信息不能马上反映到data数据中](http://imhxl.com/post/puppeteer.html)
++ [看起来可以](https://guozh.net/puppeteer-cookie-login/)
 
 https://www.cnblogs.com/tianfang/p/9027187.html
 
+
+## args
++ [1](https://kapeli.com/cheat_sheets/Chromium_Command_Line_Switches.docset/Contents/Resources/Documents/index)
++ [2](https://peter.sh/experiments/chromium-command-line-switches/#load-extension)
+
+
+## project
++ [图灵书](https://github.com/laispace/puppeteer-explore/blob/master/demo/download-ituring-books.js)
++ [typescript 编写](https://zhuanlan.zhihu.com/p/35758104)
++ [ts1](https://github.com/bWhirring/puppeteer-examples/blob/master/examples/cas.ts)
++ [autologin-facebook](https://github.com/aofdev/autologin-facebook)
+
+## 谷歌插件 [puppeteer recorder](https://chrome.google.com/webstore/search/puppeteer?utm_source=chrome-ntp-icon)
+> 可以快速生成选择的元素以及操作步骤
+
+
+### write cookie
++ [1](https://github.com/GoogleChrome/puppeteer/issues/717)
