@@ -7,7 +7,9 @@
     "example": "example"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -27,5 +29,8 @@
     "vue-jsonp": "^0.1.8",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "vuepress": "^1.2.0"
   }
 }
