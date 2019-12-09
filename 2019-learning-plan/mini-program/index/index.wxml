@@ -1,0 +1,3 @@
+<view class="intro">这是实时日志的代码片段，在onLoad里面会打上一条日志</view>
+<view class="intro">此功能在2.7.1有效，开发者工具必须把基础库调到2.7.1</view>
+<button class='btn' bindtap="gotoPage2" url='../page2'>点击跳转到page2，日志会汇聚再批量上传</button>
