@@ -15,58 +15,57 @@
 //   const params = url.spli
 // }
 
-
 // 别人封装的
 
 const config = {
-  callback: 'callback',
+  callback: 'callback'
 }
 
-function generateCB() {
-  return `jsonp${Math.ceil(Math.random() * 1000000)}`;
+function generateCB () {
+  return `jsonp${Math.ceil(Math.random() * 1000000)}`
 }
 
-function removeCB(_name) {
+function removeCB (_name) {
   try {
-    delete window[_name];
+    delete window[_name]
   } catch (e) {
-    window[_name] = undefined;
+    window[_name] = undefined
   }
 }
 
-function createScript(_url, _id) {
-  const script = document.createElement('script');
-  script.setAttribute('src', _url);
-  script.id = _id;
-  document.getElementById('app').appendChild(script);
+function createScript (_url, _id) {
+  const script = document.createElement('script')
+  script.setAttribute('src', _url)
+  script.id = _id
+  document.getElementById('app').appendChild(script)
 }
 
-function removeScipt(_id) {
-  const script = document.getElementById(_id);
-  document.getElementById('app').removeChild(script);
+function removeScipt (_id) {
+  const script = document.getElementById(_id)
+  document.getElementById('app').removeChild(script)
 }
 
-function fetchJsonp(_url, params = {}, options = {}) {
+function fetchJsonp (_url, params = {}, options = {}) {
   return new Promise((resolve, reject) => {
-    const jsonp = options.callback || config.callback,
-      cb = generateCB(), // get callback function name
-      scriptId = cb;
+    const jsonp = options.callback || config.callback
+    const cb = generateCB() // get callback function name
+    const scriptId = cb
 
-    let query = [];
+    let query = []
     Object.keys(params).forEach(key => {
-      query.push(`${key}=${params[key]}`);
+      query.push(`${key}=${params[key]}`)
     })
-    _url += (query.elngth === 0) ? '?' : `?${query.join('&')}`;
-    _url += `&${jsonp}=${cb}`;
+    _url += (query.elngth === 0) ? '?' : `?${query.join('&')}`
+    _url += `&${jsonp}=${cb}`
 
     // register the callback function
     window[cb] = (res) => {
-      resolve(res);
-      removeScipt(scriptId);
-      removeCB(cb);
+      resolve(res)
+      removeScipt(scriptId)
+      removeCB(cb)
     }
 
-    createScript(_url, scriptId);
+    createScript(_url, scriptId)
   })
 }
 

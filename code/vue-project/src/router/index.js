@@ -13,6 +13,7 @@ import vueAnimate from './routes/vue-animate'
 // import vuexAlong from './routes/vuex-along'
 import child from './routes/childeComponents'
 import keep from './routes/keep-alive'
+import xml from './routes/xmlToJson'
 Vue.use(Router)
 
 const routes = [
@@ -26,7 +27,8 @@ const routes = [
   ...vueTest,
   ...child,
   ...vueAnimate,
-  ...keep
+  ...keep,
+  ...xml
   // ...vuexAlong
 ]
 
