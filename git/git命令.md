@@ -22,6 +22,7 @@ git checkout -b dev1.0
 + 删除远端分支
  - `git push -delete origin branch-name`
  - `git push -d library-name branch-name` 
+ - git branch -r -d branch-name
 + 删除本地分支
  - `git branch -d branch-name`
 
@@ -55,3 +56,29 @@ git push origin master --force #强制覆盖
   - [link](https://blog.csdn.net/jia4525036/article/details/52094763)
   
   > 运维是删除了备份文件，解决的
+
+## git tag
+
++ 新建
+
+```
+git tag v1.0 -m '备注'
+```
+
++ 删除
+
+```
+git tag --delete v1.0
+```
+
++ 查看
+
+```
+git show v1.0
+```
+  
+  - 查看所有
+
+  ```
+    git tag -l -n
+  ```

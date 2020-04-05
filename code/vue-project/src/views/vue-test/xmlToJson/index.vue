@@ -29,7 +29,7 @@ export default {
       const objTreeJson = newObjTree.parseXML(xml)
       console.log(json, '=======', objTreeJson)
       const result = json.elements[0].elements[0].elements
-      console.log(result)
+      // console.log(result)
       const items = result.filter(item => item.name === 'item')
       console.log(items)
     }).catch(err => {

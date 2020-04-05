@@ -18,7 +18,7 @@
 export default {
   inject: ['data', 'aa'],
   created () {
-    console.log(this.data)
+    // console.log(this.data)
   }
 }
 </script>
@@ -34,7 +34,7 @@ export default {
     padding: 50px;
     min-height: 150px;
     border-radius: 50px;
-    border: 1px solid rgba(125, 0, 0, .8);  
+    border: 1px solid rgba(125, 0, 0, .8);
   }
 }
 </style>

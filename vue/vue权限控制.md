@@ -153,3 +153,8 @@
 + `cloneNode(true)` 使用深度克隆是由于父元素因为实时变化才是用的，可以保留子节点
 + `isEqualNode` 用来判断两个子节点是否相同（长知识了）
 + `update`时，需要将节点添加到父节点上，此时 `vnode, oldVnode` 的 `parent`都没有值
+
+## 补充
+目前权限最好做成下面这种，这样可以进行动态配置，方便维护。目前 confluence，七牛 ... 都是如此做的
+
+![七牛](../images/vue/auth.png)

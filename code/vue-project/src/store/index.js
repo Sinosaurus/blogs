@@ -92,6 +92,11 @@ export default new Vuex.Store({
         name: '4-8',
         title: 'xmToJson',
         router: 'xml2Json'
+      },
+      {
+        name: '4-9',
+        title: 'pdfjs',
+        router: 'pdfjs'
       }
     ],
     vueTest: [

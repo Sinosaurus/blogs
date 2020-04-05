@@ -14,21 +14,23 @@ import vueAnimate from './routes/vue-animate'
 import child from './routes/childeComponents'
 import keep from './routes/keep-alive'
 import xml from './routes/xmlToJson'
+import pdfjs from './routes/pdf'
 Vue.use(Router)
 
-const routes = [
+export const routes = [
   home,
   about,
-  ...elValidate,
-  ...css,
-  ...webpack,
-  ...slot,
-  ...jsonp,
-  ...vueTest,
-  ...child,
-  ...vueAnimate,
-  ...keep,
-  ...xml
+  elValidate,
+  css,
+  webpack,
+  slot,
+  jsonp,
+  vueTest,
+  child,
+  vueAnimate,
+  keep,
+  xml,
+  pdfjs
   // ...vuexAlong
 ]
 

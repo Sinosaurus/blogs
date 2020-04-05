@@ -147,10 +147,10 @@ export default {
   },
   methods: {
     getHeight (e) {
-      console.log(e, 222222)
+      // console.log(e, 222222)
     },
     tran (el) {
-      console.log(el, 11111111111111)
+      // console.log(el, 11111111111111)
     },
     // --------
     // 进入中

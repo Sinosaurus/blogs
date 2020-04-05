@@ -8,7 +8,7 @@
 
 ### page
 
-```
+```js
 const puppeteer = require('puppeteer')
 puppeteer.launch().then(async browser => {
   // page
@@ -20,20 +20,20 @@ puppeteer.launch().then(async browser => {
 可以调用 node原生事件[`EventEmitter`](https://nodejs.org/api/events.html#events_class_eventemitter)
 
 + `on`
-  ```
+  ```js
     page.on('request', fn)
   ```
   > 事件列表
     `close, console, dialog, domcontentloaded, error, frameattached, framedetached, framenavigated, load, metrics, pageerror, request, requestfailed, requestfinished, response, workercreated, workerdestroyed`
 
 + `once`
-  ```
+  ```js
     page.once('load', () => console.log('page loaded'))
   ```
   > 在使用`await`时，会导致`load`无法触发，`await page.goto(url)`，因为await已经有了load的效果
     
 + `removeListener` 注销事件
-  ```
+  ```js
     page.removeListener('request', fn)
   ```    
 
@@ -60,8 +60,9 @@ puppeteer.launch().then(async browser => {
 + click 点击
 + type 输入
 
-##### $、$$、$evel、$$evel
-```
+##### `$、$$、$evel、$$evel`
+
+```js
   $ => querySelector
   $$ => qyuerSelectorAll
   $evel => selector.$evel(select, node => console.log('拿到当前元素'))
@@ -88,6 +89,7 @@ puppeteer.launch().then(async browser => {
 + [看云](https://www.kancloud.cn/luponu/puppeteer/870136)
 + [齐客谷](https://www.qikegu.com/docs/4539)
 + [cookie](https://juejin.im/post/5b5b15e9e51d4519202e3714)
++ [冰山工作室](http://www.bingshangroup.com/blog2/action2/iamor%EF%BC%9A%E5%BC%A0%E8%B6%8A/puppeteer.html#%E5%92%8Ccheerio%E7%9A%84%E5%8C%BA%E5%88%AB)
 
 
 ## 如何使用当前浏览器的文件
