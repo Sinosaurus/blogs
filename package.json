@@ -27,6 +27,7 @@
     "axios": "^0.19.0",
     "chalk": "^4.0.0",
     "express": "^4.16.4",
+    "husky": "^4.2.5",
     "lint-staged": "^10.2.2",
     "prettier": "^2.0.5",
     "vue": "^2.6.10",
@@ -38,8 +39,8 @@
     "vuepress": "^1.2.0"
   },
   "gitHooks": {
-    "pre-commit": "ls-lint && lint-staged",
-    "commit-msg": "node ./verifyCommit.js"
+    "precommit": "ls-lint && lint-staged",
+    "commitmsg": "node ./verifyCommit.js"
   },
   "lint-staged": {
     "*.js": [
