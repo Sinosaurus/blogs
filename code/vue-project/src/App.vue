@@ -77,9 +77,9 @@ import { mapState } from 'vuex'
 import { routes } from '@/router'
 export default {
   name: 'App',
-  data() {
+  data () {
     return {
-      routes,
+      routes
     }
   },
   computed: {
@@ -90,23 +90,23 @@ export default {
       webpackList: (state) => state.webpackList,
       vueSlotList: (state) => state.vueSlotList,
       vueTest: (state) => state.vueTest,
-      cachedViews: (state) => state.cache.cachedViews,
+      cachedViews: (state) => state.cache.cachedViews
     }),
 
-    titleName() {
+    titleName () {
       // return this.$route.matched.length === 1
       //   ? this.$route.matched[0].title
       //   : ''
       return this.$route.meta && this.$route.meta.title
     },
-    actived() {
+    actived () {
       let activeRouter = ''
       const MENU_LIST = [
         ...this.validateMenuList,
         ...this.cssMunuList,
         ...this.webpackList,
         ...this.vueSlotList,
-        ...this.vueTest,
+        ...this.vueTest
       ]
       MENU_LIST.map((item) => {
         if (this.$route.name === item.router) {
@@ -114,9 +114,9 @@ export default {
         }
       })
       return activeRouter
-    },
+    }
   },
-  mounted() {
+  mounted () {
     /* 窗口变化修改滚动条高度 */
     window.onresize = () => {
       this.$refs.scrollbar.update()
@@ -128,14 +128,14 @@ export default {
      * @description: 计算title显示
      * @return: string title
      */
-    handleTilte() {
+    handleTilte () {
       if (!this.actived) return ''
       const N = this.actived.slice(0, 1)
       return this.titleType.filter((item) => {
         return item.type === N
       })[0].title
     },
-    getInitActiveViews(routes) {
+    getInitActiveViews (routes) {
       let views = []
       routes.forEach((route) => {
         if (route.meta && route.meta.alive) {
@@ -150,14 +150,14 @@ export default {
       })
       return views
     },
-    setInitActiveViews() {
+    setInitActiveViews () {
       const alives = this.getInitActiveViews(this.$router.options.routes)
 
       alives.forEach((item) => {
         this.$store.commit('cache/addCacheViews', item)
       })
-    },
-  },
+    }
+  }
 }
 </script>
 
