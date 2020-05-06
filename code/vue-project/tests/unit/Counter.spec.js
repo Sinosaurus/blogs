@@ -5,7 +5,7 @@ describe('Counter.vue', () => {
   it('点击自增按钮', () => {
     const wrapper = shallowMount(Counter)
     wrapper.find('button').trigger('click')
-    expect(wrapper.find('div').text()).to.satisfy(num => {
+    expect(wrapper.find('div').text()).to.satisfy((num) => {
       num = num.replace('自增', '')
       return num > 0
     })

@@ -1,155 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <style>
-        body {
-            height: 2000px;
-            margin: 0;
-            background-color: skyblue;
-            border-top: 20px solid red;
-        }
+      body {
+        height: 2000px;
+        margin: 0;
+        background-color: skyblue;
+        border-top: 20px solid red;
+      }
 
-        h1 {
-            margin: 0;
-            background-color: green;
-        }
+      h1 {
+        margin: 0;
+        background-color: green;
+      }
 
-        .sc-button {
-            position: fixed;
-            right: 10px;
-            bottom: 10px;
-            border: 1px solid #eee;
-            border-radius: 6px;
-            outline: none;
-            cursor: pointer;
-        }
+      .sc-button {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        border: 1px solid #eee;
+        border-radius: 6px;
+        outline: none;
+        cursor: pointer;
+      }
 
-        .sc-button:hover {
-            box-shadow: 0 0 2px #ddd;
-        }
+      .sc-button:hover {
+        box-shadow: 0 0 2px #ddd;
+      }
 
-        li {
-            height: 80px;
-            border-bottom: 5px solid #333;
-        }
+      li {
+        height: 80px;
+        border-bottom: 5px solid #333;
+      }
 
-        li+li {
-            margin-top: 10px;
-        }
+      li + li {
+        margin-top: 10px;
+      }
 
-        li:nth-child(odd) {
-            background: linear-gradient(217deg, rgba(255, 0, 0, .8), rgba(255, 0, 0, 0) 70.71%),
-                linear-gradient(127deg, rgba(0, 255, 0, .8), rgba(0, 255, 0, 0) 70.71%),
-                linear-gradient(336deg, rgba(0, 0, 255, .8), rgba(0, 0, 255, 0) 70.71%);
-        }
+      li:nth-child(odd) {
+        background: linear-gradient(
+            217deg,
+            rgba(255, 0, 0, 0.8),
+            rgba(255, 0, 0, 0) 70.71%
+          ),
+          linear-gradient(
+            127deg,
+            rgba(0, 255, 0, 0.8),
+            rgba(0, 255, 0, 0) 70.71%
+          ),
+          linear-gradient(
+            336deg,
+            rgba(0, 0, 255, 0.8),
+            rgba(0, 0, 255, 0) 70.71%
+          );
+      }
 
-        li:nth-child(even) {
-            background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
-        }
+      li:nth-child(even) {
+        background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>测试scroll如何运动</h1>
     <ul>
-        <li></li>
-        <li></li>
-        <li class="red" style="background: red !important;"></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+      <li></li>
+      <li></li>
+      <li class="red" style="background: red !important;"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
     </ul>
     <button id="top" class="sc-button">Top</button>
     <script>
-        // 兼容性处理
-        if (!window.requestAnimationFrame) {
-            requestAnimationFrame = function (fn) {
-                setTimeout(fn, 17)
-            }
+      // 兼容性处理
+      if (!window.requestAnimationFrame) {
+        requestAnimationFrame = function (fn) {
+          setTimeout(fn, 17)
         }
-        /**
-         * @description: 滚到顶部
-         * @param {number} rate 缓动速率
-         */
-        const BackToTop = (rate = 2, num = 0) => {
+      }
+      /**
+       * @description: 滚到顶部
+       * @param {number} rate 缓动速率
+       */
+      const BackToTop = (rate = 2, num = 0) => {
+        const doc = document.body.scrollTop
+          ? document.body
+          : document.documentElement
+        // 距离顶部的值
+        let scrollTop = doc.scrollTop
+        // 此处不适合使用箭头函数？？？
+        const top = function () {
+          scrollTop = scrollTop + (num - scrollTop) / (rate || 2)
 
-            const doc = document.body.scrollTop ? document.body : document.documentElement
-            // 距离顶部的值
-            let scrollTop = doc.scrollTop
-            // 此处不适合使用箭头函数？？？
-            const top = function () {
-                scrollTop = scrollTop + (num - scrollTop) / (rate || 2);
-
-                // 临界判断，终止动画
-                if (scrollTop < (num + 1)) {
-                    doc.scrollTop = num;
-                    return;
-                }
-                doc.scrollTop = scrollTop;
-                // 动画gogogo!
-                requestAnimationFrame(top);
-            };
-            top();
+          // 临界判断，终止动画
+          if (scrollTop < num + 1) {
+            doc.scrollTop = num
+            return
+          }
+          doc.scrollTop = scrollTop
+          // 动画gogogo!
+          requestAnimationFrame(top)
         }
-
-    
+        top()
+      }
     </script>
     <script>
-        const T = document.getElementById('top')
-        T.onclick = function () {
-            BackToTop()
-        }
-        const ul = document.querySelector('ul')
+      const T = document.getElementById('top')
+      T.onclick = function () {
+        BackToTop()
+      }
+      const ul = document.querySelector('ul')
 
-
-        ul.addEventListener('click', function (e) {
-            if (e.target.nodeName.toLowerCase() === 'li') {
-                const red = document.querySelector('.red')
-                const child = e.target
-                const {
-                    left,
-                    top
-                } = child.getBoundingClientRect()
-                console.log(red.getBoundingClientRect())
-                // offsetTop 距离顶部的距离
-                console.log(red.offsetTop)
-                const {
-                    scrollLeft,
-                    scrollTop
-                } = document.body.scrollLeft ? document.body : document.documentElement
-                const RelactiveTop = scrollTop + top
-                const RelactiveLeft = scrollLeft + left
-                /** 
-                 * 1. 已经拿到了当前元素的绝对位置
-                 * 2. 计算滚动到顶部需要多高的距离
-                 * 
-                 * 元素距离页面顶部的距离  offsetTop
-                 * 元素相对视口的距离  getBoundingClientRect().top
-                 * 
-                 * 现在需要元素相对视口的距离为40即可 现在需要计算滚入的距离该是多少
-                 * 
-                 * 40 + 需要滚入的距离 = offsetTop
-                */
-                const Top = red.offsetTop - 40
-                BackToTop(2, Top)
-                setTimeout(function () {
-                    console.log(red.offsetTop, 9999)
-                    console.log(red.getBoundingClientRect())
-                }, 500)
-                
-
-            }
-        }, false)
+      ul.addEventListener(
+        'click',
+        function (e) {
+          if (e.target.nodeName.toLowerCase() === 'li') {
+            const red = document.querySelector('.red')
+            const child = e.target
+            const { left, top } = child.getBoundingClientRect()
+            console.log(red.getBoundingClientRect())
+            // offsetTop 距离顶部的距离
+            console.log(red.offsetTop)
+            const { scrollLeft, scrollTop } = document.body.scrollLeft
+              ? document.body
+              : document.documentElement
+            const RelactiveTop = scrollTop + top
+            const RelactiveLeft = scrollLeft + left
+            /**
+             * 1. 已经拿到了当前元素的绝对位置
+             * 2. 计算滚动到顶部需要多高的距离
+             *
+             * 元素距离页面顶部的距离  offsetTop
+             * 元素相对视口的距离  getBoundingClientRect().top
+             *
+             * 现在需要元素相对视口的距离为40即可 现在需要计算滚入的距离该是多少
+             *
+             * 40 + 需要滚入的距离 = offsetTop
+             */
+            const Top = red.offsetTop - 40
+            BackToTop(2, Top)
+            setTimeout(function () {
+              console.log(red.offsetTop, 9999)
+              console.log(red.getBoundingClientRect())
+            }, 500)
+          }
+        },
+        false
+      )
     </script>
-</body>
-
+  </body>
 </html>

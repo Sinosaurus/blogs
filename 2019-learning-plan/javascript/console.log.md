@@ -1,5 +1,7 @@
 # console.log
-+ placeholders `%s`
+
+- placeholders `%s`
+
 ```
 var greet = 'Hello'
 console.log('%s', greet)

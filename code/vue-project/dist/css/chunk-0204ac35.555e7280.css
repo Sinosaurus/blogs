@@ -1,1 +1,33 @@
-.webpack .wb-development{background-color:#adc6ff}.webpack .wb-production{background-color:#d3adf7}.webpack .wb-test{background-color:#ffadd2}.webpack .wb-title{display:-webkit-box;display:-ms-flexbox;display:flex}.webpack .wb-title li{color:#fff;padding:0 20px;font-size:16px;border-radius:4px}.webpack .wb-title li+li{margin-left:20px}.webpack .wb-main{margin-top:20px}.webpack .wb-main .wb-main-title{margin-bottom:10px}.webpack .wb-main section{padding:20px;border-radius:4px}
+.webpack .wb-development {
+  background-color: #adc6ff;
+}
+.webpack .wb-production {
+  background-color: #d3adf7;
+}
+.webpack .wb-test {
+  background-color: #ffadd2;
+}
+.webpack .wb-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.webpack .wb-title li {
+  color: #fff;
+  padding: 0 20px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.webpack .wb-title li + li {
+  margin-left: 20px;
+}
+.webpack .wb-main {
+  margin-top: 20px;
+}
+.webpack .wb-main .wb-main-title {
+  margin-bottom: 10px;
+}
+.webpack .wb-main section {
+  padding: 20px;
+  border-radius: 4px;
+}

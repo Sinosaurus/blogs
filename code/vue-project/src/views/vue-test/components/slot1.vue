@@ -13,13 +13,13 @@
 import slotCom from './SlotCommon'
 export default {
   components: {
-    slotCom
+    slotCom,
   },
   methods: {
-    handleTestSlot () {
+    handleTestSlot() {
       this.$message.success('教室里打开房间里就是风大')
-    }
-  }
+    },
+  },
 }
 </script>
 

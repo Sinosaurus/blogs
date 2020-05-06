@@ -13,9 +13,19 @@ module.exports = {
     // ['link', { rel: 'icon', href: `/images/favicon.png` }],
     ['meta', { name: 'theme-color', content: '#00adb5' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    [
+      'meta',
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+    ],
     ['meta', { name: 'msapplication-TileColor', content: '#00adb5' }],
-    ['meta', {name:'description', itemprop: 'description', content: '常用的js方法，js_tricks' }],
+    [
+      'meta',
+      {
+        name: 'description',
+        itemprop: 'description',
+        content: '常用的js方法，js_tricks',
+      },
+    ],
     ['meta', { itemprop: 'name', content: 'js_trick' }],
     // ['meta', { itemprop: 'image', content: '/js_tricks/images/favicon.png' }],
   ],
@@ -67,10 +77,10 @@ module.exports = {
     // 你可以省略 .md 拓展名，同时以 / 结尾的路径将会被视为 */README.md
     /**
      * 如果你想要显示地指定链接的文字，使用一个格式为 [link, text] 的数组
-     * 会覆盖  displayAllHeaders: true 该设定的值 
-     * 
-     */ 
-     
+     * 会覆盖  displayAllHeaders: true 该设定的值
+     *
+     */
+
     /**
      * 侧边栏分组
      * sidebar: [
@@ -84,7 +94,8 @@ module.exports = {
         ]
       },
      * 
-     *  */ 
+     *  */
+
     sidebar: [
       '/sinnet/',
       ['/cloud/', '秀儿是你吗'],
@@ -95,7 +106,7 @@ module.exports = {
         // sidebarDepath: 1,
         /** 此处时不时会出现bug https://github.com/vuejs/vuepress/issues?utf8=%E2%9C%93&q=Unknown+Custom+Element+
          * 此处不太好弄，children时常出错，需要修改下
-         * 1. 命名不要重了， 
+         * 1. 命名不要重了，
          *   sinnet
          *   sinnet-cloud
          * 2. children 需要写全路径
@@ -105,13 +116,12 @@ module.exports = {
         children: [
           ['/aaa/one', 'one'],
           ['/bbb/', 'bbb'],
-        ]
-      }
+        ],
+      },
     ],
     // 自动生成 动态变化，用的几率不大
     // sidebar: 'auto'
     // 显示所有页面的标题链接
     // displayAllHeaders: true
-  }
+  },
 }
-

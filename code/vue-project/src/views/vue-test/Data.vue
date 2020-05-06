@@ -8,7 +8,7 @@
       <el-row :gutter="20">
         <el-col :span="12">
           <SInput v-model="input" />
-          <p>{{input}}</p>
+          <p>{{ input }}</p>
         </el-col>
         <el-col :span="12">
           <STextarea v-model="textarea" />
@@ -20,8 +20,8 @@
     </div>
     <div class="item">
       <h1>测试 provide/inject</h1>
-      <h3>{{inject_data}}</h3>
-      <input type="text" v-model="inject_data">
+      <h3>{{ inject_data }}</h3>
+      <input type="text" v-model="inject_data" />
       <DataTest />
     </div>
   </div>
@@ -47,24 +47,24 @@ export default {
     STextarea,
     SInput,
     Store,
-    DataTest
+    DataTest,
   },
-  data () {
+  data() {
     return {
       input: '',
       textarea: '',
-      inject_data: '我是通过 provide / inject 的方式进行传递参数的'
+      inject_data: '我是通过 provide / inject 的方式进行传递参数的',
     }
   },
-  provide () {
+  provide() {
     return {
       data: this,
-      aa: this.inject_data
+      aa: this.inject_data,
     }
   },
-  mounted () {
+  mounted() {
     const itemList = Array.from(document.querySelectorAll('.item'))
-    itemList.forEach(item => {
+    itemList.forEach((item) => {
       item.onmouseenter = function () {
         item.classList.add('hover')
       }
@@ -72,7 +72,7 @@ export default {
         item.classList.remove('hover')
       }
     })
-  }
+  },
 }
 </script>
 
@@ -83,11 +83,11 @@ export default {
     min-height: 200px;
     border-radius: 10px;
     border: 1px solid #ebebeb;
-    transition: .2s;
+    transition: 0.2s;
     &.hover {
       // box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, .5);
-      box-shadow: 0 0 8px 0 rgba(232, 237, 250, .6),
-                  0 2px 4px 0 rgba(232, 237, 250, .5)
+      box-shadow: 0 0 8px 0 rgba(232, 237, 250, 0.6),
+        0 2px 4px 0 rgba(232, 237, 250, 0.5);
     }
     & + .item {
       margin-top: 30px;

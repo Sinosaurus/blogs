@@ -1,19 +1,17 @@
 <template>
   <div class="css-zxx">
-    <img
-      src="@/assets/css-test/css-quiz-1.jpg"
-      alt=""
-      class="zxx-img"
-    >
+    <img src="@/assets/css-test/css-quiz-1.jpg" alt="" class="zxx-img" />
     <div class="css-code-views">
       <dl>
         <template v-for="(item, index) in infoList">
-          <dt :key="index">{{item.title}}</dt>
-          <dd :key="index">{{item.info}}</dd>
+          <dt :key="index">{{ item.title }}</dt>
+          <dd :key="index">{{ item.info }}</dd>
         </template>
       </dl>
     </div>
-    <a href="https://www.zhangxinxu.com/wordpress/2019/01/css-quiz-1/">https://www.zhangxinxu.com/wordpress/2019/01/css-quiz-1/</a>
+    <a href="https://www.zhangxinxu.com/wordpress/2019/01/css-quiz-1/"
+      >https://www.zhangxinxu.com/wordpress/2019/01/css-quiz-1/</a
+    >
     <pre>
       <div v-for="(item, index) in codeList" :key="index" v-text="item"></div>
     </pre>
@@ -22,25 +20,25 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       infoList: [
         {
           title: '手机系统',
-          info: 'Android'
+          info: 'Android',
         },
         {
           title: '登录方式',
-          info: ''
+          info: '',
         },
         {
           title: '绑定事件',
-          info: new Date().toLocaleTimeString()
+          info: new Date().toLocaleTimeString(),
         },
         {
           title: '绑定状态',
-          info: ''
-        }
+          info: '',
+        },
       ],
       codeList: [
         `
@@ -62,10 +60,10 @@ export default {
           content: "------";
           color: #999;
           background-color: red;
-        }`
-      ]
+        }`,
+      ],
     }
-  }
+  },
 }
 </script>
 
@@ -102,8 +100,9 @@ export default {
     dd {
       margin: -1.5em 0 0 5em;
       text-align: right;
-      &:empty::before { // 没有值时进行占位
-        content: "------";
+      &:empty::before {
+        // 没有值时进行占位
+        content: '------';
         color: #999;
         background-color: red;
       }

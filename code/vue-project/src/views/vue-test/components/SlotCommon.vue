@@ -8,20 +8,20 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        test: ''
-      }
+export default {
+  data() {
+    return {
+      test: '',
     }
-  }
+  },
+}
 </script>
 
 <style lang="less">
 .slot-common {
   padding: 15px;
   .title {
-    color: #5c0011
+    color: #5c0011;
   }
 }
 </style>

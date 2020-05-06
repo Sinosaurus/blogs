@@ -1,1 +1,12 @@
-.item+.item[data-v-5be813b2]{margin-top:20px}.link[data-v-5be813b2]{text-decoration:underline}.item-1[data-v-5be813b2]{max-width:150px}.link1[data-v-5be813b2]{border-bottom:2px solid #ccc}
+.item + .item[data-v-5be813b2] {
+  margin-top: 20px;
+}
+.link[data-v-5be813b2] {
+  text-decoration: underline;
+}
+.item-1[data-v-5be813b2] {
+  max-width: 150px;
+}
+.link1[data-v-5be813b2] {
+  border-bottom: 2px solid #ccc;
+}

@@ -1,30 +1,35 @@
 # 权限控制（vue）
+
 经常会遇到，角色权限控制问题，若是页面控制，倒好说，可如果是当前页面部分可见不可见，这就有些麻烦，如果加上条件就更加苛刻。之前只是简单的`v-if`进行控制，如今想试试指令（网上一直有这些操作方式）
 
 ## 参考
+
 参考了[vue-element-admin -- 指令](https://github.com/PanJiaChen/vue-element-admin/tree/master/src/directive/permission)
 
 ## 应用场景
-+ 权限控制
-  - dom隐藏（不推荐）
-  - 直接从dom节点删除
-+ 依据传入的数据动态进行修改
+
+- 权限控制
+  - dom 隐藏（不推荐）
+  - 直接从 dom 节点删除
+- 依据传入的数据动态进行修改
 
 ## 代码
+
 需求：需要实现一个依据动态参数进行修改的模块
 
-+ test.vue
+- test.vue
+
   > template
-  
+
   ```
   <div class="test-height">
     <!-- 指令调用，status是动态参数 -->
     <h1 v-permission="{ role: ['so'], status }">test</h1>
   </div>
   ```
-  
+
   > js
-  
+
   ```
     import permission from '@/directives/permission'
     export default {
@@ -44,10 +49,8 @@
     }
   ```
 
+* permission.js
 
-
-+ permission.js
-  
   ```
     import store from '@/store'
     const permission = (el, binding, vnode, oldVnode) => {
@@ -93,8 +96,8 @@
       update: permission
     }
   ```
- 
-  - 随机生成id
+
+  - 随机生成 id
     ```
       function getRandomId () {
         var randomId = 'yxyxyxxyxyy'.replace(/[xy]/g, function (item) {
@@ -120,41 +123,46 @@
         })
         return key
       }
-    ```  
+    ```
 
 > 效果图
-  + 默认不显示，数据回来显示
-    - 单个元素
 
-      ![一个元素](../images/vue/2.gif)
+- 默认不显示，数据回来显示
 
-    - 多个元素
+  - 单个元素
 
-      ![一个元素](../images/vue/4.gif)
+    ![一个元素](../images/vue/2.gif)
 
-  + 默认显示，数据回来不显示
-    - 单个元素
+  - 多个元素
 
-      ![一个元素](../images/vue/1.gif)
+    ![一个元素](../images/vue/4.gif)
 
-    - 多个元素
+- 默认显示，数据回来不显示
 
-      ![一个元素](../images/vue/3.gif)
+  - 单个元素
 
+    ![一个元素](../images/vue/1.gif)
+
+  - 多个元素
+
+    ![一个元素](../images/vue/3.gif)
 
 ## 总结
-+ 虽然可以解决基本需求，但是还是有问题，若是**兄弟元素**都有权限控制，恐怕回显时，会错位
-+ 因而推荐还是使用`v-if`
-+ 上述方式，只能是应付简单的，复杂的依旧有些吃力
-+ 在指令执行时，提前拿到父节点和子节点的对应关系，然后在`update`时，进行全局获取，因而生成的`id`必须唯一
-+ 若是想使用，适用于其他场景，需要给需要权限控制的添加一个父元素，同时保证子元素唯一即可
+
+- 虽然可以解决基本需求，但是还是有问题，若是**兄弟元素**都有权限控制，恐怕回显时，会错位
+- 因而推荐还是使用`v-if`
+- 上述方式，只能是应付简单的，复杂的依旧有些吃力
+- 在指令执行时，提前拿到父节点和子节点的对应关系，然后在`update`时，进行全局获取，因而生成的`id`必须唯一
+- 若是想使用，适用于其他场景，需要给需要权限控制的添加一个父元素，同时保证子元素唯一即可
 
 ## 知识点
-+ `cloneNode(true)` 使用深度克隆是由于父元素因为实时变化才是用的，可以保留子节点
-+ `isEqualNode` 用来判断两个子节点是否相同（长知识了）
-+ `update`时，需要将节点添加到父节点上，此时 `vnode, oldVnode` 的 `parent`都没有值
+
+- `cloneNode(true)` 使用深度克隆是由于父元素因为实时变化才是用的，可以保留子节点
+- `isEqualNode` 用来判断两个子节点是否相同（长知识了）
+- `update`时，需要将节点添加到父节点上，此时 `vnode, oldVnode` 的 `parent`都没有值
 
 ## 补充
+
 目前权限最好做成下面这种，这样可以进行动态配置，方便维护。目前 confluence，七牛 ... 都是如此做的
 
 ![七牛](../images/vue/auth.png)

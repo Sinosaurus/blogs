@@ -9,7 +9,7 @@ const BackToTop = (rate = 2, num = 0, el = document.body) => {
   const top = function () {
     scrollTop = scrollTop + (num - scrollTop) / (rate || 2)
     // 临界判断，终止动画
-    if (scrollTop < (num + 1)) {
+    if (scrollTop < num + 1) {
       doc.scrollTop = num
       return
     }

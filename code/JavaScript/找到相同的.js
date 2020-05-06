@@ -1,35 +1,31 @@
 const arr = [
   {
     a: 1,
-    b: 'aaaa'
+    b: 'aaaa',
   },
   {
     a: 2,
-    b: 'aaaa'
-
+    b: 'aaaa',
   },
   {
     a: 1,
-    b: 'aaaa'
-
+    b: 'aaaa',
   },
   {
     a: 4,
-    b: 'aaaa'
-
+    b: 'aaaa',
   },
   {
     a: 1,
-    b: 'aaaa'
-
-  }
+    b: 'aaaa',
+  },
 ]
 
 console.time('time')
 const m = {}
-for (let i = 0; i < arr.length; i ++) {
+for (let i = 0; i < arr.length; i++) {
   const { a } = arr[i]
-  const objS = JSON.stringify({a})
+  const objS = JSON.stringify({ a })
   if (m[objS]) {
     m[objS].children.push(arr[i])
   } else {
@@ -38,7 +34,7 @@ for (let i = 0; i < arr.length; i ++) {
   }
 }
 let newData = []
-Object.values(m).forEach(item => {
+Object.values(m).forEach((item) => {
   if (item.children.length) {
     const n = JSON.parse(JSON.stringify(item))
     n.children = []

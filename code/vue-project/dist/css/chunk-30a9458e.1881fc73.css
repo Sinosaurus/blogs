@@ -1,1 +1,30 @@
-.css-zxx .zxx-img{height:400px}.css-zxx pre{padding:10px;border:1px dotted #785;background:#f5f5f5;line-height:1.4;font-family:Consolas}.css-zxx .css-code-views{margin:20px 0;min-height:300px;border-radius:6px;background-color:#d9f7be}.css-zxx .css-code-views dl{max-width:300px;border:1px solid #000;position:relative}.css-zxx .css-code-views dd{margin:-1.5em 0 0 5em;text-align:right}.css-zxx .css-code-views dd:empty:before{content:"------";color:#999;background-color:red}
+.css-zxx .zxx-img {
+  height: 400px;
+}
+.css-zxx pre {
+  padding: 10px;
+  border: 1px dotted #785;
+  background: #f5f5f5;
+  line-height: 1.4;
+  font-family: Consolas;
+}
+.css-zxx .css-code-views {
+  margin: 20px 0;
+  min-height: 300px;
+  border-radius: 6px;
+  background-color: #d9f7be;
+}
+.css-zxx .css-code-views dl {
+  max-width: 300px;
+  border: 1px solid #000;
+  position: relative;
+}
+.css-zxx .css-code-views dd {
+  margin: -1.5em 0 0 5em;
+  text-align: right;
+}
+.css-zxx .css-code-views dd:empty:before {
+  content: '------';
+  color: #999;
+  background-color: red;
+}

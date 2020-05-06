@@ -5,11 +5,8 @@
 <script>
 import vueExtend from './components/extends'
 export default {
-  extends: vueExtend
+  extends: vueExtend,
 }
-
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>

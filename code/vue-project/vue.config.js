@@ -3,12 +3,12 @@ const path = require('path')
 // const webpack = require('webpack')
 // const nodeExternals = require('webpack-node-externals')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
   publicPath: './',
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.resolve.alias
       .set('$', resolve('src/views'))
       .set('$e', resolve('src/views/elemenet-ui-validate'))
@@ -22,7 +22,7 @@ module.exports = {
     // 直接在浏览器上显示错误信息
     overlay: {
       warnings: false,
-      errors: false
+      errors: false,
     },
     proxy: {
       '/feed': {
@@ -30,11 +30,11 @@ module.exports = {
         secure: false,
         changeOrigin: true,
         pathRewrite: {
-          '^/feed': ''
-        }
-      }
-    }
-  }
+          '^/feed': '',
+        },
+      },
+    },
+  },
 
   // configureWebpack: config => {
   //   config.externals = [nodeExternals()]

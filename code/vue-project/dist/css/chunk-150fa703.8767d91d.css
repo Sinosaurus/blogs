@@ -1,1 +1,18 @@
-.sin-table{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.sin-table .el-table{margin-top:80px;max-width:1200px;border:1px solid #eee;border-radius:4px}
+.sin-table {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.sin-table .el-table {
+  margin-top: 80px;
+  max-width: 1200px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}

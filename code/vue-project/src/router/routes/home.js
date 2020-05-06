@@ -4,6 +4,6 @@ export default {
   component: () => import('@/views/Home.vue'),
   meta: {
     title: '首页',
-    icon: 'ios-home'
-  }
+    icon: 'ios-home',
+  },
 }

@@ -2,7 +2,7 @@
 
 // var
 
-console.log(a)  //undefined
+console.log(a) //undefined
 var a = 1
 console.log(a) //1
 
@@ -22,8 +22,6 @@ console.log(c) //2
 // c = 5
 // console.log(c) //TypeError: Assignment to constant variable
 
-
 // 解构赋值  ===============================
 let [a1, b1, c1] = [1, 2, 3]
 console.log(a1, b1, c1) // 1, 2, 3
-

@@ -4,23 +4,23 @@
 <template>
   <div>
     <h1>I'm extends component!</h1>
-    <img src="./WechatIMG2.jpeg" alt="">
+    <img src="./WechatIMG2.jpeg" alt="" />
   </div>
 </template>
 
 <script>
 export default {
   name: 'vue-test-extends',
-  data () {
+  data() {
     return {
-      msg: 'test'
+      msg: 'test',
     }
-  }
+  },
 }
 </script>
 
 <style lang="less">
-  h1 {
-    color: red;
-  }
+h1 {
+  color: red;
+}
 </style>

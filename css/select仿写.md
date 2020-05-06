@@ -2,38 +2,41 @@
 
 目前仿写`select`的方式
 
-+ 给`tableIndex` 来使 `div`（无法获取焦点的元素）来获取元素，这样便可以在失去焦点时，是否将下拉框收回
-+ 通过 `document`的点击，来判断是否点击了当前元素
-+ 利用 `input` 的自带 `click/blur` 来处理
+- 给`tableIndex` 来使 `div`（无法获取焦点的元素）来获取元素，这样便可以在失去焦点时，是否将下拉框收回
+- 通过 `document`的点击，来判断是否点击了当前元素
+- 利用 `input` 的自带 `click/blur` 来处理
 
 ## ui
-+ [heyui](https://github.com/heyui/heyui/blob/master/src/components/select/select.vue)
-+ [iview](https://github.com/iview/iview/blob/2.0/src/components/select/select.vue)
-+ [element-ui](https://github.com/ElemeFE/element/blob/dev/packages/select/src/select.vue)
-+ [fish-ui](https://github.com/myliang/fish-ui/blob/master/src/components/Select.vue)
-+ [radon-ui](https://github.com/luojilab/radon-ui/blob/master/src/components/form/select.vue)
-+ [mdui](https://github.com/zdhxiong/mdui/blob/master/src/select/js/select.js)
 
+- [heyui](https://github.com/heyui/heyui/blob/master/src/components/select/select.vue)
+- [iview](https://github.com/iview/iview/blob/2.0/src/components/select/select.vue)
+- [element-ui](https://github.com/ElemeFE/element/blob/dev/packages/select/src/select.vue)
+- [fish-ui](https://github.com/myliang/fish-ui/blob/master/src/components/Select.vue)
+- [radon-ui](https://github.com/luojilab/radon-ui/blob/master/src/components/form/select.vue)
+- [mdui](https://github.com/zdhxiong/mdui/blob/master/src/select/js/select.js)
 
 > 看了这么多实现方式，我更好奇具体有什么实现方式
 
-| ui | 实现方式 |
-| -- | -- |
-| heyui | document -- click/contextmenu |
-| iview | tableIndex/document |
-| element-ui | document -- mouse |
-| fish-ui | document -- click |
-| radon-ui | window -- click |
-| mdui | document -- click | 
+| ui         | 实现方式                      |
+| ---------- | ----------------------------- |
+| heyui      | document -- click/contextmenu |
+| iview      | tableIndex/document           |
+| element-ui | document -- mouse             |
+| fish-ui    | document -- click             |
+| radon-ui   | window -- click               |
+| mdui       | document -- click             |
 
 ## 开始仿写
+
 > 要求
-+ 只实现单选
-+ 用原生实现，不基于框架
-+ 没有使用上述中将下拉框独立出来
-+ 只做向下下拉，没有高度不够时，可以向上或向下
+
+- 只实现单选
+- 用原生实现，不基于框架
+- 没有使用上述中将下拉框独立出来
+- 只做向下下拉，没有高度不够时，可以向上或向下
 
 > html
+
 ```
 <div class="sc-select-content" data-toggle="false">
     <label for="" class="sc-select--label">下拉框</label>
@@ -55,6 +58,7 @@
 ```
 
 > css
+
 ```
 * {
     box-sizing: border-box;
@@ -183,16 +187,19 @@
     background-color: #ddd;
 }
 ```
-**注意* **：
-+ [display:none如何实现动画](https://www.cnblogs.com/yangzhou33/p/9119596.html)
-+ [filter: drop-shadow](https://www.zhangxinxu.com/wordpress/2016/05/css3-filter-drop-shadow-vs-box-shadow/)
+
+**注意\* **：
+
+- [display:none 如何实现动画](https://www.cnblogs.com/yangzhou33/p/9119596.html)
+- [filter: drop-shadow](https://www.zhangxinxu.com/wordpress/2016/05/css3-filter-drop-shadow-vs-box-shadow/)
 
 > js
+
 ```
 /**
   * @description: 找到一个符合的parent
-  * @param {Note} node 元素 
-  * @param {string} className 元素class类名 
+  * @param {Note} node 元素
+  * @param {string} className 元素class类名
   * @return: Node
   */
 function findParent(node, className) {
@@ -256,14 +263,16 @@ Input.addEventListener('blur', function (e) {
 ```
 
 > 上述方式
-+ 虽然很low，很多方法可以提出来，偷个懒，先如此写
-+ 点击，打开关闭
-+ 主要利用input的`focus`和`blur`方法
-+ document事件放在里面，是为了拿到上面点击的元素
-+ 使用`data`来存储是否打开还是关闭的`boolean`
+
+- 虽然很 low，很多方法可以提出来，偷个懒，先如此写
+- 点击，打开关闭
+- 主要利用 input 的`focus`和`blur`方法
+- document 事件放在里面，是为了拿到上面点击的元素
+- 使用`data`来存储是否打开还是关闭的`boolean`
 
 ![效果图](./../images/css/select.gif)
 
 ## 总结
-+ 虽然实现的很粗糙，但是更多的是为了了解其他ui是如何实现的
-+ 有机会再细细优化了
+
+- 虽然实现的很粗糙，但是更多的是为了了解其他 ui 是如何实现的
+- 有机会再细细优化了

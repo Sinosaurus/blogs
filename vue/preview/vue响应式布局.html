@@ -1,216 +1,433 @@
 <html>
   <head>
-	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>i5ting_ztree_toc:</title>
-		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
-		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
-		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
-	  <style>
-		pre {
-		    counter-reset: line-numbering;
-		    border: solid 1px #d9d9d9;
-		    border-radius: 0;
-		    background: #fff;
-		    padding: 0;
-		    line-height: 23px;
-		    margin-bottom: 30px;
-		    white-space: pre;
-		    overflow-x: auto;
-		    word-break: inherit;
-		    word-wrap: inherit;
-		}
+    <link
+      href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css"
+      media="all"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css"
+      media="all"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="toc/css/zTreeStyle/zTreeStyle.css"
+      media="all"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      pre {
+        counter-reset: line-numbering;
+        border: solid 1px #d9d9d9;
+        border-radius: 0;
+        background: #fff;
+        padding: 0;
+        line-height: 23px;
+        margin-bottom: 30px;
+        white-space: pre;
+        overflow-x: auto;
+        word-break: inherit;
+        word-wrap: inherit;
+      }
 
-		pre a::before {
-		  content: counter(line-numbering);
-		  counter-increment: line-numbering;
-		  padding-right: 1em; /* space after numbers */
-		  width: 25px;
-		  text-align: right;
-		  opacity: 0.7;
-		  display: inline-block;
-		  color: #aaa;
-		  background: #eee;
-		  margin-right: 16px;
-		  padding: 2px 10px;
-		  font-size: 13px;
-		  -webkit-touch-callout: none;
-		  -webkit-user-select: none;
-		  -khtml-user-select: none;
-		  -moz-user-select: none;
-		  -ms-user-select: none;
-		  user-select: none;
-		}
+      pre a::before {
+        content: counter(line-numbering);
+        counter-increment: line-numbering;
+        padding-right: 1em; /* space after numbers */
+        width: 25px;
+        text-align: right;
+        opacity: 0.7;
+        display: inline-block;
+        color: #aaa;
+        background: #eee;
+        margin-right: 16px;
+        padding: 2px 10px;
+        font-size: 13px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
 
-		pre a:first-of-type::before {
-		  padding-top: 10px;
-		}
+      pre a:first-of-type::before {
+        padding-top: 10px;
+      }
 
-		pre a:last-of-type::before {
-		  padding-bottom: 10px;
-		}
+      pre a:last-of-type::before {
+        padding-bottom: 10px;
+      }
 
-		pre a:only-of-type::before {
-		  padding: 10px;
-		}
+      pre a:only-of-type::before {
+        padding: 10px;
+      }
 
-		.highlight { background-color: #ffffcc } /* RIGHT */
-		</style>
+      .highlight {
+        background-color: #ffffcc;
+      } /* RIGHT */
+    </style>
   </head>
   <body>
-	  <div>
-				<div style='width:25%;'>
-						<ul id="tree" class="ztree" style='width:100%'>
+    <div>
+      <div style="width: 25%;">
+        <ul id="tree" class="ztree" style="width: 100%;"></ul>
+      </div>
+      <div id="readme" style="width: 70%; margin-left: 20%;">
+        <article class="markdown-body">
+          <h1 id="vue-1">
+            vue 响应式布局
+            <a
+              href="https://www.mdui.org/design/layout/responsive-ui.html#responsive-ui-patterns"
+              >1</a
+            >
+          </h1>
+          <p>
+            <img
+              src="https://pic4.zhimg.com/80/v2-5238330b35593079b2ce6451cd1e4f1f_hd.jpg"
+              alt="响应式布局"
+            />
+          </p>
+          <p>
+            可使网站在不同的设备（从桌面计算机显示器到移动电话或其他移动产品设备）上浏览时对应不同分辨率皆有适合的呈现，减少用户进行缩放、平移和滚动等操作行为
+          </p>
+          <h2 id="-">效果图</h2>
+          <ul>
+            <li><a href="https://mediaqueri.es/">media</a></li>
+            <li>
+              <a href="https://material.io/tools/resizer/#device=window"
+                >material.io</a
+              >
+              <img src="./../images/vue/rwd/rwd.gif" alt="演示" />
+              <a href="http://www.liquidapsive.com/">link1</a>
+              <a href="(https://mediaqueri.es/">link2</a>)
+            </li>
+          </ul>
+          <h2 id="-responsive-web-design-rwd-adaptive-web-design-awd-">
+            响应式布局的要求 （Responsive Web Design ＝ RWD， Adaptive Web
+            Design ＝ AWD）
+          </h2>
+          <ul>
+            <li>
+              <p>响应式界面的四个层次</p>
+              <ul>
+                <li>同一页面在不同大小和比例上看起来都应该是舒适的；</li>
+                <li>同一页面在不同分辨率上看起来都应该是合理的；</li>
+                <li>
+                  同一页面在不同操作方式（如鼠标和触屏）下，体验应该是统一的；
+                </li>
+                <li>
+                  同一页面在不同类型的设备（手机、平板、电脑）上，交互方式应该是符合习惯的
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>响应式界面的基本规则</p>
+              <ul>
+                <li>
+                  <p>
+                    内容区块可伸缩：内容区块的在一定程度上能够自动调整，以确保填满整个页面
+                  </p>
+                  <p>
+                    <img
+                      src="https://user-gold-cdn.xitu.io/2018/5/14/1635eff014eba6cb?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"
+                      alt="pic"
+                    />
+                  </p>
+                  <video controls width="100%">
+                    <source
+                      src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptiveUI_grid_01_hero.webm"
+                      type="video/webm"
+                    />
+                    <source
+                      src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptiveUI_grid_01_hero.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </li>
+                <li>
+                  <p>
+                    内容区块可自由排布：当页面尺寸变动较大时，能够减少/增加排布的列数
+                  </p>
+                  <p>
+                    <img
+                      src="https://user-gold-cdn.xitu.io/2018/5/14/1635f008535b1a01?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"
+                      alt="pic"
+                    />
+                    <img
+                      src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptiveUI_patterns_11_reflow.png"
+                      alt="material"
+                    />
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    边距适应：到页面尺寸发生更大变化时，区块的边距也应该变化
+                  </p>
+                  <p>
+                    <img
+                      src="https://user-gold-cdn.xitu.io/2018/5/14/1635f018a956e02e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"
+                      alt="pic"
+                    />
+                  </p>
+                  <video controls width="100%">
+                    <source
+                      src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptiveUI_grid_02_margins.webm"
+                      type="video/webm"
+                    />
+                    <source
+                      src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptiveUI_grid_02_margins.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </li>
+                <li>
+                  <p>
+                    图片适应：对于常见的宽度调整，图片在隐去两侧部分时，依旧保持美观可用
+                  </p>
+                  <p>
+                    <img
+                      src="https://user-gold-cdn.xitu.io/2018/5/14/1635f0251e3d988a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"
+                      alt="pic"
+                    />
+                  </p>
+                  <p>
+                    <img
+                      src="https://www.w3cplus.com/sites/default/files/blogs/2016/1610/art-direction-example-image-large-opt.jpg"
+                      alt="eg1"
+                    />
+                    <img
+                      src="https://www.w3cplus.com/sites/default/files/blogs/2016/1610/smartdumb-uncropped-preview-opt.jpg"
+                      alt="eg2-1"
+                    />
+                    <img
+                      src="https://www.w3cplus.com/sites/default/files/blogs/2016/1610/dumbcrop-example-image-large-opt.jpg"
+                      alt="eg2-2"
+                    />
+                    <img
+                      src="https://www.w3cplus.com/sites/default/files/blogs/2016/1610/smartcrop-example-image-large-opt.jpg"
+                      alt="eg2-3"
+                    />
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    内容能够自动隐藏/部分显示：如在电脑上显示的的大段描述文本，在手机上就只能少量显示或全部隐藏
+                  </p>
+                  <p>
+                    <img
+                      src="https://user-gold-cdn.xitu.io/2018/5/14/1635f03376630dc1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"
+                      alt="pic"
+                    />
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    导航和菜单能自动折叠：展开还是收起，应该根据页面尺寸来判断
+                  </p>
+                  <p>
+                    <img
+                      src="https://pic3.zhimg.com/80/v2-ff281afbee782a94f4c7f58e02d7f05d_hd.jpg"
+                      alt="pic"
+                    />
+                    <img
+                      src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptiveUI_patterns_01_reveal.png"
+                      alt="material"
+                    />
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    放弃使用像素作为尺寸单位(或者说是不同分辨率下px需要进行改变)
+                  </p>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <blockquote>
+            <p>屏幕分割</p>
+          </blockquote>
+          <p>
+            <img src="./../images/vue/rwd/ratio.jpg" alt="分辨率占比" />
+            <a
+              href="http://gs.statcounter.com/screen-resolution-stats/all/china"
+              >link</a
+            >
+          </p>
+          <ul>
+            <li>
+              <a href="https://getbootstrap.com/docs/4.3/layout/overview/"
+                >切割点 -- bootstrap</a
+              >;
+              <a href="https://juejin.im/post/5caaa230e51d452b672f9703">掘金</a>
+              <ul>
+                <li>576px 手机</li>
+                <li>768px 平板</li>
+                <li>992px 桌面</li>
+                <li>1200px 大桌面</li>
+              </ul>
+            </li>
+            <li>
+              <p>
+                <a
+                  href="https://www.mdui.org/design/layout/responsive-ui.html#responsive-ui-breakpoints"
+                  >material desing</a
+                >
+                <img
+                  src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptive_breakpoints_01.png"
+                  alt="marerial"
+                />
+              </p>
 
-						</ul>
-				</div>
-        <div id='readme' style='width:70%;margin-left:20%;'>
-          	<article class='markdown-body'>
-            	<h1 id="vue-1">vue 响应式布局 <a href="https://www.mdui.org/design/layout/responsive-ui.html#responsive-ui-patterns">1</a></h1>
-<p><img src="https://pic4.zhimg.com/80/v2-5238330b35593079b2ce6451cd1e4f1f_hd.jpg" alt="响应式布局"></p>
-<p>可使网站在不同的设备（从桌面计算机显示器到移动电话或其他移动产品设备）上浏览时对应不同分辨率皆有适合的呈现，减少用户进行缩放、平移和滚动等操作行为</p>
-<h2 id="-">效果图</h2>
-<ul>
-<li><a href="https://mediaqueri.es/">media</a></li>
-<li><a href="https://material.io/tools/resizer/#device=window">material.io</a>
-<img src="./../images/vue/rwd/rwd.gif" alt="演示"> <a href="http://www.liquidapsive.com/">link1</a> <a href="(https://mediaqueri.es/">link2</a>)</li>
-</ul>
-<h2 id="-responsive-web-design-rwd-adaptive-web-design-awd-">响应式布局的要求 （Responsive Web Design ＝ RWD， Adaptive Web Design ＝ AWD）</h2>
-<ul>
-<li><p>响应式界面的四个层次</p>
-<ul>
-<li>同一页面在不同大小和比例上看起来都应该是舒适的；</li>
-<li>同一页面在不同分辨率上看起来都应该是合理的；</li>
-<li>同一页面在不同操作方式（如鼠标和触屏）下，体验应该是统一的；</li>
-<li>同一页面在不同类型的设备（手机、平板、电脑）上，交互方式应该是符合习惯的</li>
-</ul>
-</li>
-<li><p>响应式界面的基本规则</p>
-<ul>
-<li><p>内容区块可伸缩：内容区块的在一定程度上能够自动调整，以确保填满整个页面</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/14/1635eff014eba6cb?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="pic"></p>
-<video controls width="100%">
-<source src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptiveUI_grid_01_hero.webm" type="video/webm">
-<source src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptiveUI_grid_01_hero.mp4" type="video/mp4">
-</video>
-</li>
-<li><p>内容区块可自由排布：当页面尺寸变动较大时，能够减少/增加排布的列数</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/14/1635f008535b1a01?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="pic">
-<img src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptiveUI_patterns_11_reflow.png" alt="material"></p>
-</li>
-<li><p>边距适应：到页面尺寸发生更大变化时，区块的边距也应该变化</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/14/1635f018a956e02e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="pic"></p>
-<video controls width="100%">
-<source src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptiveUI_grid_02_margins.webm" type="video/webm">
-<source src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptiveUI_grid_02_margins.mp4" type="video/mp4">
-</video>
-</li>
-<li><p>图片适应：对于常见的宽度调整，图片在隐去两侧部分时，依旧保持美观可用</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/14/1635f0251e3d988a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="pic"></p>
-<p><img src="https://www.w3cplus.com/sites/default/files/blogs/2016/1610/art-direction-example-image-large-opt.jpg" alt="eg1">
-<img src="https://www.w3cplus.com/sites/default/files/blogs/2016/1610/smartdumb-uncropped-preview-opt.jpg" alt="eg2-1">
-<img src="https://www.w3cplus.com/sites/default/files/blogs/2016/1610/dumbcrop-example-image-large-opt.jpg" alt="eg2-2">
-<img src="https://www.w3cplus.com/sites/default/files/blogs/2016/1610/smartcrop-example-image-large-opt.jpg" alt="eg2-3"></p>
-</li>
-<li><p>内容能够自动隐藏/部分显示：如在电脑上显示的的大段描述文本，在手机上就只能少量显示或全部隐藏</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/14/1635f03376630dc1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="pic"></p>
-</li>
-<li><p>导航和菜单能自动折叠：展开还是收起，应该根据页面尺寸来判断</p>
-<p><img src="https://pic3.zhimg.com/80/v2-ff281afbee782a94f4c7f58e02d7f05d_hd.jpg" alt="pic">
-<img src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptiveUI_patterns_01_reveal.png" alt="material"></p>
-</li>
-<li><p>放弃使用像素作为尺寸单位(或者说是不同分辨率下px需要进行改变)</p>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>屏幕分割</p>
-</blockquote>
-<p>  <img src="./../images/vue/rwd/ratio.jpg" alt="分辨率占比"> <a href="http://gs.statcounter.com/screen-resolution-stats/all/china">link</a></p>
-<ul>
-<li><a href="https://getbootstrap.com/docs/4.3/layout/overview/">切割点 -- bootstrap</a>; <a href="https://juejin.im/post/5caaa230e51d452b672f9703">掘金</a><ul>
-<li>576px 手机</li>
-<li>768px 平板</li>
-<li>992px 桌面</li>
-<li>1200px 大桌面</li>
-</ul>
-</li>
-<li><p><a href="https://www.mdui.org/design/layout/responsive-ui.html#responsive-ui-breakpoints">material desing</a>
-<img src="https://mdui-aliyun.cdn.w3cbus.com/design/static/media/layout/responsive-ui/layout_adaptive_breakpoints_01.png" alt="marerial"></p>
-<ul>
-<li>480</li>
-<li>600</li>
-<li>840</li>
-<li>960</li>
-<li>1280</li>
-<li>1440</li>
-<li>1600
-<img src="./../images/vue/rwd/material.gif" alt="展示"> <a href="https://material.io/tools/resizer/">link</a></li>
-</ul>
-<blockquote>
-<p><a href="https://www.zhangxinxu.com/wordpress/2016/08/vw-viewport-responsive-layout-typography/">张鑫旭</a> </p>
-</blockquote>
-</li>
-</ul>
-<h2 id="-">细节</h2>
-<ul>
-<li>图标做成字体</li>
-<li>响应式图片<ul>
-<li><a href="https://www.zhangxinxu.com/wordpress/2015/11/anatomy-of-responsive-images/">张鑫旭</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images">MDN</a></li>
-<li><a href="https://efe.baidu.com/blog/responsive-images-in-practice/">efe</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2019/06/responsive-images.html">阮一峰</a></li>
-<li><a href="https://www.w3cplus.com/responsive/automating-art-direction-with-the-responsive-image-breakpoints-generator.html">大漠</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="-">实现流程</h2>
-<ul>
-<li><a href="http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html">阮一峰2012</a></li>
-</ul>
-<h2 id="-">工具</h2>
-<ul>
-<li><a href="http://www.benjaminkeen.com/">测试各个宽度下的样式</a></li>
-<li><a href="https://cloudinary.com/blog/introducing_intelligent_responsive_image_breakpoints_solutions?utm_source=Smashing_Mag&amp;utm_medium=Byline&amp;utm_campaign=Art_direction_responsive_breakpoints">响应式图片生成器</a></li>
-</ul>
-<h2 id="-1">优缺点 <a href="https://huangxuan.me/2014/11/20/responsive-web-design/">1</a></h2>
-<ul>
-<li>优点<ul>
-<li>只存留单一的网站，对网站进行维护花费的时间就和精力就减轻了不少。一个单一的网站意味着所有设备只存在单一代码，当你需要做出改变的时候，你只做一次就足够了</li>
-<li>SEO 排名，响应式网页设计也很有帮助，因为网站在所有平台和设备上都提供了一个唯一的 URL。</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>对于那些日益复杂的网站来说，是一个巨大的挑战。这意味着你的设计团队将会花费大量的时间在桌面定制和集成各种 JavaScript 序列和 html5 / ccs3 代码，以在本地应用的触摸和桌面网站的感觉之间建立平衡。</li>
-<li>用户体验，但结果并非总是尽人如意。在某些情况下，用户发现自己在平板电脑上拥有更好的体验，而不是智能手机，而在其他情况下，却又会是相反的感受。</li>
-</ul>
-</li>
-</ul>
-<h2 id="-vue-">适合vue的 响应式框架</h2>
-<ul>
-<li><a href="https://vuetifyjs.com">Vuetify</a></li>
-<li><a href="https://quasar.dev/">quasar</a></li>
-<li><a href="https://bootstrap-vue.js.org/">bootstrap-vue</a></li>
-</ul>
-
-          	</article>
-        </div>
-		</div>
+              <ul>
+                <li>480</li>
+                <li>600</li>
+                <li>840</li>
+                <li>960</li>
+                <li>1280</li>
+                <li>1440</li>
+                <li>
+                  1600
+                  <img src="./../images/vue/rwd/material.gif" alt="展示" />
+                  <a href="https://material.io/tools/resizer/">link</a>
+                </li>
+              </ul>
+              <blockquote>
+                <p>
+                  <a
+                    href="https://www.zhangxinxu.com/wordpress/2016/08/vw-viewport-responsive-layout-typography/"
+                    >张鑫旭</a
+                  >
+                </p>
+              </blockquote>
+            </li>
+          </ul>
+          <h2 id="-">细节</h2>
+          <ul>
+            <li>图标做成字体</li>
+            <li>
+              响应式图片
+              <ul>
+                <li>
+                  <a
+                    href="https://www.zhangxinxu.com/wordpress/2015/11/anatomy-of-responsive-images/"
+                    >张鑫旭</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images"
+                    >MDN</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://efe.baidu.com/blog/responsive-images-in-practice/"
+                    >efe</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="http://www.ruanyifeng.com/blog/2019/06/responsive-images.html"
+                    >阮一峰</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.w3cplus.com/responsive/automating-art-direction-with-the-responsive-image-breakpoints-generator.html"
+                    >大漠</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <h2 id="-">实现流程</h2>
+          <ul>
+            <li>
+              <a
+                href="http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html"
+                >阮一峰2012</a
+              >
+            </li>
+          </ul>
+          <h2 id="-">工具</h2>
+          <ul>
+            <li>
+              <a href="http://www.benjaminkeen.com/">测试各个宽度下的样式</a>
+            </li>
+            <li>
+              <a
+                href="https://cloudinary.com/blog/introducing_intelligent_responsive_image_breakpoints_solutions?utm_source=Smashing_Mag&amp;utm_medium=Byline&amp;utm_campaign=Art_direction_responsive_breakpoints"
+                >响应式图片生成器</a
+              >
+            </li>
+          </ul>
+          <h2 id="-1">
+            优缺点
+            <a href="https://huangxuan.me/2014/11/20/responsive-web-design/"
+              >1</a
+            >
+          </h2>
+          <ul>
+            <li>
+              优点
+              <ul>
+                <li>
+                  只存留单一的网站，对网站进行维护花费的时间就和精力就减轻了不少。一个单一的网站意味着所有设备只存在单一代码，当你需要做出改变的时候，你只做一次就足够了
+                </li>
+                <li>
+                  SEO
+                  排名，响应式网页设计也很有帮助，因为网站在所有平台和设备上都提供了一个唯一的
+                  URL。
+                </li>
+              </ul>
+            </li>
+            <li>
+              缺点
+              <ul>
+                <li>
+                  对于那些日益复杂的网站来说，是一个巨大的挑战。这意味着你的设计团队将会花费大量的时间在桌面定制和集成各种
+                  JavaScript 序列和 html5 / ccs3
+                  代码，以在本地应用的触摸和桌面网站的感觉之间建立平衡。
+                </li>
+                <li>
+                  用户体验，但结果并非总是尽人如意。在某些情况下，用户发现自己在平板电脑上拥有更好的体验，而不是智能手机，而在其他情况下，却又会是相反的感受。
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <h2 id="-vue-">适合vue的 响应式框架</h2>
+          <ul>
+            <li><a href="https://vuetifyjs.com">Vuetify</a></li>
+            <li><a href="https://quasar.dev/">quasar</a></li>
+            <li><a href="https://bootstrap-vue.js.org/">bootstrap-vue</a></li>
+          </ul>
+        </article>
+      </div>
+    </div>
   </body>
 </html>
 <script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script
+  type="text/javascript"
+  src="toc/js/jquery.ztree.all-3.5.min.js"
+></script>
 <script type="text/javascript" src="toc/js/ztree_toc.js"></script>
 <script type="text/javascript" src="toc_conf.js"></script>
 
-<SCRIPT type="text/javascript" >
-<!--
-$(document).ready(function(){
-    var css_conf = eval(markdown_panel_style);
-    $('#readme').css(css_conf)
-    
-    var conf = eval(jquery_ztree_toc_opts);
-		$('#tree').ztree_toc(conf);
-});
-//-->
-</SCRIPT>
+<script type="text/javascript">
+  <!--
+  $(document).ready(function(){
+      var css_conf = eval(markdown_panel_style);
+      $('#readme').css(css_conf)
+
+      var conf = eval(jquery_ztree_toc_opts);
+  		$('#tree').ztree_toc(conf);
+  });
+  //-->
+</script>

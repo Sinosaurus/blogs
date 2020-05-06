@@ -1,1 +1,71 @@
-[{"area":""},{"area":"AWS Technical Essentials","id":"AWS培训，标准课时1天","city":"1","resourceAddress":"\"￥ 2"},{"area":"AWS Business Essentials","id":"AWS培训，标准课时1天","city":"1","resourceAddress":"\"￥ 2"},{"area":"Architecting on AWS","id":"AWS培训，标准课时3天","city":"1","resourceAddress":"\"￥ 6"},{"area":"Advanced Architecting on AWS","id":"AWS培训，标准课时3天","city":"1","resourceAddress":"\"￥ 6"},{"area":"Developing on AWS","id":"AWS培训，标准课时3天","city":"1","resourceAddress":"\"￥ 6"},{"area":"DevOps Engineering on AWS ","id":"AWS培训，标准课时3天","city":"1","resourceAddress":"\"￥ 6"},{"area":"Systems Operations on AWS","id":"AWS培训，标准课时3天","city":"1","resourceAddress":"\"￥ 6"},{"area":"Big Data on AWS-Speciality","id":"AWS培训，标准课时3天","city":"1","resourceAddress":"\"￥ 6"},{"area":"Security Operations AWS-Speciality","id":"AWS培训，标准课时3天","city":"1","resourceAddress":"\"￥ 6"},{"area":"Migrating to AWS-Speciality","id":"AWS培训，标准课时2天","city":"1","resourceAddress":"\"￥ 4"},{"area":"Deep Learning on AWS-Speciality","id":"AWS培训，标准课时1天","city":"1","resourceAddress":"\"￥ 2"},{"area":""},{"area":""}]
+;[
+  { area: '' },
+  {
+    area: 'AWS Technical Essentials',
+    id: 'AWS培训，标准课时1天',
+    city: '1',
+    resourceAddress: '"￥ 2',
+  },
+  {
+    area: 'AWS Business Essentials',
+    id: 'AWS培训，标准课时1天',
+    city: '1',
+    resourceAddress: '"￥ 2',
+  },
+  {
+    area: 'Architecting on AWS',
+    id: 'AWS培训，标准课时3天',
+    city: '1',
+    resourceAddress: '"￥ 6',
+  },
+  {
+    area: 'Advanced Architecting on AWS',
+    id: 'AWS培训，标准课时3天',
+    city: '1',
+    resourceAddress: '"￥ 6',
+  },
+  {
+    area: 'Developing on AWS',
+    id: 'AWS培训，标准课时3天',
+    city: '1',
+    resourceAddress: '"￥ 6',
+  },
+  {
+    area: 'DevOps Engineering on AWS ',
+    id: 'AWS培训，标准课时3天',
+    city: '1',
+    resourceAddress: '"￥ 6',
+  },
+  {
+    area: 'Systems Operations on AWS',
+    id: 'AWS培训，标准课时3天',
+    city: '1',
+    resourceAddress: '"￥ 6',
+  },
+  {
+    area: 'Big Data on AWS-Speciality',
+    id: 'AWS培训，标准课时3天',
+    city: '1',
+    resourceAddress: '"￥ 6',
+  },
+  {
+    area: 'Security Operations AWS-Speciality',
+    id: 'AWS培训，标准课时3天',
+    city: '1',
+    resourceAddress: '"￥ 6',
+  },
+  {
+    area: 'Migrating to AWS-Speciality',
+    id: 'AWS培训，标准课时2天',
+    city: '1',
+    resourceAddress: '"￥ 4',
+  },
+  {
+    area: 'Deep Learning on AWS-Speciality',
+    id: 'AWS培训，标准课时1天',
+    city: '1',
+    resourceAddress: '"￥ 2',
+  },
+  { area: '' },
+  { area: '' },
+]

@@ -7,27 +7,24 @@
 // document.body.innerHTML = greeter(user);
 
 class Student {
-    fullName: 'Sinosaurus'
-    constructor(public firstName: String, public middleName: String)  {
-        this.fullName = firstName+ '' + middleName
-    }
+  fullName: 'Sinosaurus'
+  constructor(public firstName: String, public middleName: String) {
+    this.fullName = firstName + '' + middleName
+  }
 }
 
 interface Person {
-    firstName: String   
-    middelName: String
+  firstName: String
+  middelName: String
 }
 
 function typescript(prson: Person) {
-    return peson.firstName + peson.middelName
+  return peson.firstName + peson.middelName
 }
 
-let user = new Student(
-    'long', 'huo'
-)
+let user = new Student('long', 'huo')
 
 document.body.innerHTML = typescript(user)
-
 
 let list: number[] = [1, 2, 3, 4]
 let str: string = ''

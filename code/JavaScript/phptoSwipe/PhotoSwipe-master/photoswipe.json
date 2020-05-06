@@ -16,7 +16,7 @@
     "url": "https://github.com/dimsemenov/PhotoSwipe.git"
   },
   "bugs": "https://github.com/dimsemenov/PhotoSwipe/issues",
-  "keywords": ["photoswipe","gallery","touch","mobile"],
+  "keywords": ["photoswipe", "gallery", "touch", "mobile"],
   "licenses": [
     {
       "type": "MIT",

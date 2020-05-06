@@ -4,7 +4,10 @@
     <section class="item">
       <ol>
         <li>
-          <h3>需要注意，若是 v-enter / v-leave-to 所涉及到样式跟初始样式一致（或者部分一致），会导致动画不会完整地执行</h3>
+          <h3>
+            需要注意，若是 v-enter / v-leave-to
+            所涉及到样式跟初始样式一致（或者部分一致），会导致动画不会完整地执行
+          </h3>
         </li>
         <li>
           <pre>
@@ -16,8 +19,7 @@
           <pre>
             <code>v-enter-active</code>
           </pre>
-          v-enter 删除
-          过渡效果，动画完成前
+          v-enter 删除 过渡效果，动画完成前
         </li>
         <li>
           <pre>
@@ -57,12 +59,8 @@
     <section class="item">
       <div><button @click="show = !show">toggle</button></div>
       <transition name="show">
-        <p
-          v-show="show"
-          class="item-1"
-        >hello word</p>
+        <p v-show="show" class="item-1">hello word</p>
       </transition>
-
     </section>
     <section class="item">
       <p>使用动画 @keyframes</p>
@@ -71,10 +69,7 @@
           <button @click="isShow = !isShow">show</button>
         </div>
         <transition name="show1">
-          <p
-            class="item-2"
-            v-show="isShow"
-          >show1ma</p>
+          <p class="item-2" v-show="isShow">show1ma</p>
         </transition>
       </div>
     </section>
@@ -88,28 +83,29 @@
           enter-active-class="enter-active"
           leave-active-class="leave-active"
         >
-            <div
-              v-height
-              v-show="isItemShow"
-            >当时明月在，<br /> 曾照彩云归</div>
+          <div v-height v-show="isItemShow">
+            当时明月在，<br />
+            曾照彩云归
+          </div>
         </transition>
       </div>
     </section>
     <section class="item">
       <button @click="isItemOther = !isItemOther">isItemShow</button>
       <animateAcco>
-        <div
-          v-height
-          v-show="isItemOther"
-        >当时明月在，<br /> 曾照彩云归</div>
+        <div v-height v-show="isItemOther">
+          当时明月在，<br />
+          曾照彩云归
+        </div>
       </animateAcco>
     </section>
     <section class="item">
       <button @click="isItemOther2 = !isItemOther2">isItemOther2</button>
       <AccordionAnimate>
-        <div
-          v-show="isItemOther2"
-        >当时明月在，<br /> 曾照彩云归</div>
+        <div v-show="isItemOther2">
+          当时明月在，<br />
+          曾照彩云归
+        </div>
       </AccordionAnimate>
     </section>
   </div>
@@ -125,31 +121,31 @@ export default {
   name: 'vue-animate',
   components: {
     AccordionAnimate,
-    animateAcco
+    animateAcco,
   },
-  data () {
+  data() {
     return {
       show: false,
       isShow: true,
       isItemShow: false,
       isItemOther: false,
-      isItemOther2: false
+      isItemOther2: false,
     }
   },
   directives: {
     height: {
-      inserted (el, binding, vnode) {
+      inserted(el, binding, vnode) {
         el.style.display = 'block'
         el.style.marginTop = `-${el.offsetHeight}px`
         el.style.display = 'none'
-      }
-    }
+      },
+    },
   },
   methods: {
-    getHeight (e) {
+    getHeight(e) {
       // console.log(e, 222222)
     },
-    tran (el) {
+    tran(el) {
       // console.log(el, 11111111111111)
     },
     // --------
@@ -175,8 +171,8 @@ export default {
     // 回调函数 done 是可选的
     leave: function (el, done) {
       el.style.marginTop = `-${el.offsetHeight}px`
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="less" scoped>
@@ -243,10 +239,9 @@ export default {
 
 .enter-active,
 .leave-active {
-  transition: margin-top .5s;
+  transition: margin-top 0.5s;
 }
 .overflow {
   overflow: hidden;
 }
-
 </style>

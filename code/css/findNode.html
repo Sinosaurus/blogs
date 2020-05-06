@@ -1,363 +1,395 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Select</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
+      * {
+        box-sizing: border-box;
+      }
 
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
-        .sc-select-content {
-            position: relative;
-            display: inline-block;
-            width: 200px;
-        }
+      .sc-select-content {
+        position: relative;
+        display: inline-block;
+        width: 200px;
+      }
 
-        .sc-input {
-            width: 100%;
-            height: 38px;
-            outline: none;
-            padding: 0 15px;
-            border-radius: 4px;
-            transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
-            border: 1px solid #ccc;
-            padding-right: 34px;
-        }
-        .sc-input--item {
-            position: relative;
-        }
-        .sc-select-icon {
-            position: absolute;
-            right: 8px;
-            top: 16px;
-            box-sizing: content-box;
-            border-right: 10px solid transparent;
-            border-left: 10px solid transparent;
-            border-top: 10px solid #ccc;
-        }
-        .sc-select-icon::after {
-            content: '';
-            position: absolute;
-            right: -10px;
-            bottom: 2px;
-            box-sizing: content-box;
-            border-right: 10px solid transparent;
-            border-left: 10px solid transparent;
-            border-top: 10px solid #fff;
-        }
-    
-        .sc-input:focus {
-            border: 1px solid #FF9310;
-            /* box-shadow: 0 0 0 2px rgba(255, 197, 37, 1); */
-        }
+      .sc-input {
+        width: 100%;
+        height: 38px;
+        outline: none;
+        padding: 0 15px;
+        border-radius: 4px;
+        transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        border: 1px solid #ccc;
+        padding-right: 34px;
+      }
+      .sc-input--item {
+        position: relative;
+      }
+      .sc-select-icon {
+        position: absolute;
+        right: 8px;
+        top: 16px;
+        box-sizing: content-box;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-top: 10px solid #ccc;
+      }
+      .sc-select-icon::after {
+        content: '';
+        position: absolute;
+        right: -10px;
+        bottom: 2px;
+        box-sizing: content-box;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-top: 10px solid #fff;
+      }
 
-        .sc-select-item {
-            width: 100%;
-            display: none;
-        }
+      .sc-input:focus {
+        border: 1px solid #ff9310;
+        /* box-shadow: 0 0 0 2px rgba(255, 197, 37, 1); */
+      }
 
-        .sc-select-item.active {
-            display: block;
-            visibility: hidden;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all .3s cubic-bezier(.55,0,.1,1);
+      .sc-select-item {
+        width: 100%;
+        display: none;
+      }
 
-            position: absolute;
-            padding-top: 10px;
-        }
-        .sc-select-item.active2 {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0);
-        }
+      .sc-select-item.active {
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
 
-        .select-container {
-            position: relative;
-            padding: 6px 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            border-radius: 4px;
-            border: 1px solid #e4e7ed;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
-        }
+        position: absolute;
+        padding-top: 10px;
+      }
+      .sc-select-item.active2 {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-        .sc-select-item .arrow {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-color: transparent;
-            border-style: solid;
-            border-width: 6px;
-            filter: drop-shadow(0 2px 12px rgba(0,0,0,.03));
-            top: 6px;
-            left: 20px;
-            border-bottom-color: #ebeef5;
-            border-top-width: 0;
-        }
-        .sc-select-item .arrow::after {
-            position: absolute;
-            display: block;
-            width: 0;
-            height: 0;
-            border-color: transparent;
-            border-style: solid;
-            content: " ";
-            border-width: 6px;
-            top: 1px;
-            margin-left: -6px;
-            border-bottom-color: #fff;
-            border-top-width: 0;
-        }
+      .select-container {
+        position: relative;
+        padding: 6px 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        border-radius: 4px;
+        border: 1px solid #e4e7ed;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
 
-        .select-item {
-            padding: 0 15px;
-            height: 38px;
-            line-height: 38px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            cursor: pointer;
-        }
+      .sc-select-item .arrow {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 6px;
+        filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.03));
+        top: 6px;
+        left: 20px;
+        border-bottom-color: #ebeef5;
+        border-top-width: 0;
+      }
+      .sc-select-item .arrow::after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        content: ' ';
+        border-width: 6px;
+        top: 1px;
+        margin-left: -6px;
+        border-bottom-color: #fff;
+        border-top-width: 0;
+      }
 
-        .select-item:hover {
-            background-color: #ddd;
-        }
+      .select-item {
+        padding: 0 15px;
+        height: 38px;
+        line-height: 38px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+      }
+
+      .select-item:hover {
+        background-color: #ddd;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- https://www.cnblogs.com/yangzhou33/p/9119596.html -->
     <div class="sc-select-content" id="sc-select" data-toggle="false">
-        <label for="" class="sc-select--label">下拉框</label>
-        <div class="sc-input--item">
-            <input id="input" type="text" class="sc-input" readonly autocomplete="off" placeholder="请选择">
-            <i class="sc-select-icon"></i>
-        </div>
-        <div class="sc-select-item">
-            <ul class="select-container">
-                <li class="select-item select-item--1">1</li>
-                <li class="select-item">2</li>
-                <li class="select-item">3</li>
-                <li class="select-item">4</li>
-                <li class="select-item">5</li>
-            </ul>
-            <div class="arrow"></div>
-        </div>
+      <label for="" class="sc-select--label">下拉框</label>
+      <div class="sc-input--item">
+        <input
+          id="input"
+          type="text"
+          class="sc-input"
+          readonly
+          autocomplete="off"
+          placeholder="请选择"
+        />
+        <i class="sc-select-icon"></i>
+      </div>
+      <div class="sc-select-item">
+        <ul class="select-container">
+          <li class="select-item select-item--1">1</li>
+          <li class="select-item">2</li>
+          <li class="select-item">3</li>
+          <li class="select-item">4</li>
+          <li class="select-item">5</li>
+        </ul>
+        <div class="arrow"></div>
+      </div>
     </div>
     <script>
-        /**
-         * @description: 找到一个符合的parent
-         * @param {Note} node 元素 
-         * @param {string} className 元素class类名 
-         * @return: Node
-         */
-        function findParent(node, className) {
-            let parent = node.parentNode
-            while (parent && parent.classList && [].slice.call(parent.classList).indexOf(className) < 0) {
-                parent = parent.parentNode
-            }
-            if (parent && parent.classList && [].slice.call(parent.classList).indexOf(className) > -1) {
-                return parent
-            }
+      /**
+       * @description: 找到一个符合的parent
+       * @param {Note} node 元素
+       * @param {string} className 元素class类名
+       * @return: Node
+       */
+      function findParent(node, className) {
+        let parent = node.parentNode
+        while (
+          parent &&
+          parent.classList &&
+          [].slice.call(parent.classList).indexOf(className) < 0
+        ) {
+          parent = parent.parentNode
         }
-        const catIn = function (target, parent) {
-            let path = []
-            let parentNode = target
-            while (parentNode && parentNode !== document.body) {
-                path.push(parentNode)
-                parentNode = parentNode.parentNode
-            }
-            return path.indexOf(parent) !== -1
+        if (
+          parent &&
+          parent.classList &&
+          [].slice.call(parent.classList).indexOf(className) > -1
+        ) {
+          return parent
         }
-        /**
-         * @description: 找到所有符合parent
-         * @param {Node} node 元素 
-         * @param {string} className class类名 
-         * @return: Nodes
-         */
-        function findParents(node, className) {
-            let parents = []
-            const parent = node.parentNode
-            if (parent && parent.classList) {
-                if ([].slice.call(parent.classList).indexOf(className) > -1) {
-                    parents.push(parent)
-                }
-                return parents.concat(findParents(parent, className))
-            } else {
-                return []
-            }
+      }
+      const catIn = function (target, parent) {
+        let path = []
+        let parentNode = target
+        while (parentNode && parentNode !== document.body) {
+          path.push(parentNode)
+          parentNode = parentNode.parentNode
         }
+        return path.indexOf(parent) !== -1
+      }
+      /**
+       * @description: 找到所有符合parent
+       * @param {Node} node 元素
+       * @param {string} className class类名
+       * @return: Nodes
+       */
+      function findParents(node, className) {
+        let parents = []
+        const parent = node.parentNode
+        if (parent && parent.classList) {
+          if ([].slice.call(parent.classList).indexOf(className) > -1) {
+            parents.push(parent)
+          }
+          return parents.concat(findParents(parent, className))
+        } else {
+          return []
+        }
+      }
 
-        function findChild(node, className) {
-            const Childrens = [].slice.call(node.children)
-            let children = null
-            if (Childrens.length > 0) {
-                for (let i = 0, leng = Childrens.length; i < leng; i++) {
-                    const item = Childrens[i]
-                    if (item.classList && [].slice.call(item.classList).indexOf(className) > -1) {
-                        children = item
-                        break;
-                    } else {
-                        children = findChild(item, className)
-                        if (children) break
-                    }
-                }
+      function findChild(node, className) {
+        const Childrens = [].slice.call(node.children)
+        let children = null
+        if (Childrens.length > 0) {
+          for (let i = 0, leng = Childrens.length; i < leng; i++) {
+            const item = Childrens[i]
+            if (
+              item.classList &&
+              [].slice.call(item.classList).indexOf(className) > -1
+            ) {
+              children = item
+              break
+            } else {
+              children = findChild(item, className)
+              if (children) break
             }
-            return children
+          }
         }
-        /**
-         * @description: 由于考虑的太多，暂时先不做了
-         * 1. 是不是节点
-         * 2.子元素没有，但是孙元素有，因而也得考虑进去
-         * 3. 当前的做法明显依赖于class类名，若是没有则不显示
-         * @param {type} 
-         * @return: 
-         */
-        function findChilds(node, className) {
-            let childrens = []
-            // const children = node.children
-            // debugger
-            // if (children && children.classList) {
-            //     if ([].slice.call(children.classList).indexOf(className) > -1) {
-            //         childrens.push(children)
-            //     }
-            //     return childrens.concat(findChilds(children, className))
-            // } else {
-            //     return []
-            // }
-        }
+        return children
+      }
+      /**
+       * @description: 由于考虑的太多，暂时先不做了
+       * 1. 是不是节点
+       * 2.子元素没有，但是孙元素有，因而也得考虑进去
+       * 3. 当前的做法明显依赖于class类名，若是没有则不显示
+       * @param {type}
+       * @return:
+       */
+      function findChilds(node, className) {
+        let childrens = []
+        // const children = node.children
+        // debugger
+        // if (children && children.classList) {
+        //     if ([].slice.call(children.classList).indexOf(className) > -1) {
+        //         childrens.push(children)
+        //     }
+        //     return childrens.concat(findChilds(children, className))
+        // } else {
+        //     return []
+        // }
+      }
     </script>
     <script>
-        /*
-         * 点击获取焦点
-        */
-        const input = document.getElementById('input')
-        const item = document.querySelectorAll('.sc-select-item')[0]
-        // input.addEventListener('click', function () {
-        //     item.classList.toggle('active')
-        // })
-        // input.addEventListener('blur', function () {
-        //     item.classList.remove('active')
-        // }, false)
+      /*
+       * 点击获取焦点
+       */
+      const input = document.getElementById('input')
+      const item = document.querySelectorAll('.sc-select-item')[0]
+      // input.addEventListener('click', function () {
+      //     item.classList.toggle('active')
+      // })
+      // input.addEventListener('blur', function () {
+      //     item.classList.remove('active')
+      // }, false)
 
-        // const P = findParent(input, 'sc-select-content')
-        // const Ps = findParents(input, 'sc-select-content')
-        // const c = findChild(item, 'select-item')
-        // console.log(c, 999)
-        // const Cs = findChilds(item, 'select-item')
-        // console.log(Cs, 9999)
+      // const P = findParent(input, 'sc-select-content')
+      // const Ps = findParents(input, 'sc-select-content')
+      // const c = findChild(item, 'select-item')
+      // console.log(c, 999)
+      // const Cs = findChilds(item, 'select-item')
+      // console.log(Cs, 9999)
 
-        // const select = document.getElementById('sc-select')
-        // select.addEventListener('click', function (e) {
+      // const select = document.getElementById('sc-select')
+      // select.addEventListener('click', function (e) {
 
-        //     e.stopPropagation()
-        //     const input = findChild(this, 'sc-input')
-        //     const list = findChild(this, 'sc-select-item')
-        //     // 一进来便清空 因为 使用setTimeout 会导致 先取出了 active2 之后又加进去了
-        //     list.classList.remove('active2', 'active')
+      //     e.stopPropagation()
+      //     const input = findChild(this, 'sc-input')
+      //     const list = findChild(this, 'sc-select-item')
+      //     // 一进来便清空 因为 使用setTimeout 会导致 先取出了 active2 之后又加进去了
+      //     list.classList.remove('active2', 'active')
 
-        //     // animate
-        //     list.classList.add('active')
-        //     setTimeout(function () {
-        //         list.classList.add('active2')
-        //     }, 16)
-        //     if (Array.from(e.target.classList).indexOf('select-item') > -1) {
-        //         input.value = e.target.innerText
-        //         list.classList.remove('active2')
-        //         console.log(999)
-        //         setTimeout(function () {
-        //             list.classList.remove('active')
-        //             // 时间需要与 transition的时间相同为好
-        //         }, 100)
-        //     }
-        // }, false)
-        // document.addEventListener('click', function (e) {
-        //     const select = Array.from(document.querySelectorAll('.sc-select-item'))
-        //     const p1 = findParent(e.target, 'sc-select-content')
-        //     if (!p1) {
-        //         select.forEach(item => {
-        //             item.classList.remove('active')
-        //         })
-        //     }
-        // }, false)
+      //     // animate
+      //     list.classList.add('active')
+      //     setTimeout(function () {
+      //         list.classList.add('active2')
+      //     }, 16)
+      //     if (Array.from(e.target.classList).indexOf('select-item') > -1) {
+      //         input.value = e.target.innerText
+      //         list.classList.remove('active2')
+      //         console.log(999)
+      //         setTimeout(function () {
+      //             list.classList.remove('active')
+      //             // 时间需要与 transition的时间相同为好
+      //         }, 100)
+      //     }
+      // }, false)
+      // document.addEventListener('click', function (e) {
+      //     const select = Array.from(document.querySelectorAll('.sc-select-item'))
+      //     const p1 = findParent(e.target, 'sc-select-content')
+      //     if (!p1) {
+      //         select.forEach(item => {
+      //             item.classList.remove('active')
+      //         })
+      //     }
+      // }, false)
 
-        // document.getElementById('input').addEventListener('focus', function (e) {
-        //     console.log(e.target, 8888)
-        // }, false)
-        // document.getElementById('input').addEventListener('blur', function (e) {
-        //     console.log(e.target, 999)
-        // }, false)
-        // let toggle = false // 放到属性中
-        const Input = document.getElementById('input')
-        // Input.addEventListener('focus', function (e) {
-        //     const P = findParent(this, 'sc-select-content')
-        //     const Select = findChild(P, 'sc-select-item')
-        //     Select.classList.add('active')
-        //     setTimeout(function () {
-        //         Select.classList.add('active2')
-        //     }, 16)
-        // }, false)
-        Input.addEventListener('click', function (e) {
-            const P = findParent(this, 'sc-select-content')
-            const Select = findChild(P, 'sc-select-item')
-            const toggle = P.dataset.toggle
-            if (toggle === 'true') {
+      // document.getElementById('input').addEventListener('focus', function (e) {
+      //     console.log(e.target, 8888)
+      // }, false)
+      // document.getElementById('input').addEventListener('blur', function (e) {
+      //     console.log(e.target, 999)
+      // }, false)
+      // let toggle = false // 放到属性中
+      const Input = document.getElementById('input')
+      // Input.addEventListener('focus', function (e) {
+      //     const P = findParent(this, 'sc-select-content')
+      //     const Select = findChild(P, 'sc-select-item')
+      //     Select.classList.add('active')
+      //     setTimeout(function () {
+      //         Select.classList.add('active2')
+      //     }, 16)
+      // }, false)
+      Input.addEventListener(
+        'click',
+        function (e) {
+          const P = findParent(this, 'sc-select-content')
+          const Select = findChild(P, 'sc-select-item')
+          const toggle = P.dataset.toggle
+          if (toggle === 'true') {
+            Select.classList.remove('active2')
+            setTimeout(function () {
+              Select.classList.remove('active')
+              // toggle = false
+              P.dataset.toggle = false
+            }, 100)
+          } else {
+            console.log(22)
+            Select.classList.add('active')
+            setTimeout(function () {
+              Select.classList.add('active2')
+              // toggle = true
+              P.dataset.toggle = true
+            }, 16)
+          }
+        },
+        false
+      )
+      Input.addEventListener(
+        'blur',
+        function (e) {
+          const that = this
+          const P = findParent(this, 'sc-select-content')
+          const Select = findChild(P, 'sc-select-item')
+          document.addEventListener(
+            'click',
+            function (e) {
+              const isP = findParent(e.target, 'sc-select-content') === P
+              if (!isP) {
                 Select.classList.remove('active2')
                 setTimeout(function () {
-                    Select.classList.remove('active')
-                    // toggle = false
-                    P.dataset.toggle = false
+                  Select.classList.remove('active')
+                  // 时间需要与 transition的时间相同为好
+                  P.dataset.toggle = false
                 }, 100)
-            } else {
-                console.log(22)
-                Select.classList.add('active')
-                setTimeout(function () {
-                    Select.classList.add('active2')
-                    // toggle = true
-                    P.dataset.toggle = true
-                }, 16)
-            }
-        }, false)
-        Input.addEventListener('blur', function (e) {
-            const that = this
-            const P = findParent(this, 'sc-select-content')
-            const Select = findChild(P, 'sc-select-item')
-            document.addEventListener('click', function (e) {
-                const isP = findParent(e.target, 'sc-select-content') === P
-                if (!isP) {
-                    Select.classList.remove('active2')
-                    setTimeout(function () {
-                        Select.classList.remove('active')
-                        // 时间需要与 transition的时间相同为好
-                        P.dataset.toggle = false
-                    }, 100)
-                }
-            }, false)
-            Select.addEventListener('click', function (e) {
-                if (e.target.tagName.toLowerCase() === 'li') {
-                    that.value =  e.target.innerText
-                }
-                Select.classList.remove('active2')
-                setTimeout(function () {
-                    Select.classList.remove('active')
-                    // 时间需要与 transition的时间相同为好
-                    // toggle = false
-                    P.dataset.toggle = false
-                }, 100)
-            }, false)
-        }, false)
+              }
+            },
+            false
+          )
+          Select.addEventListener(
+            'click',
+            function (e) {
+              if (e.target.tagName.toLowerCase() === 'li') {
+                that.value = e.target.innerText
+              }
+              Select.classList.remove('active2')
+              setTimeout(function () {
+                Select.classList.remove('active')
+                // 时间需要与 transition的时间相同为好
+                // toggle = false
+                P.dataset.toggle = false
+              }, 100)
+            },
+            false
+          )
+        },
+        false
+      )
     </script>
-</body>
-
+  </body>
 </html>

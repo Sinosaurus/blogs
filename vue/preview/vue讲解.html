@@ -1,91 +1,112 @@
 <html>
   <head>
-	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>i5ting_ztree_toc:vue讲解</title>
-		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
-		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
-		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
-	  <style>
-		pre {
-		    counter-reset: line-numbering;
-		    border: solid 1px #d9d9d9;
-		    border-radius: 0;
-		    background: #fff;
-		    padding: 0;
-		    line-height: 23px;
-		    margin-bottom: 30px;
-		    white-space: pre;
-		    overflow-x: auto;
-		    word-break: inherit;
-		    word-wrap: inherit;
-		}
+    <link
+      href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css"
+      media="all"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css"
+      media="all"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="toc/css/zTreeStyle/zTreeStyle.css"
+      media="all"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      pre {
+        counter-reset: line-numbering;
+        border: solid 1px #d9d9d9;
+        border-radius: 0;
+        background: #fff;
+        padding: 0;
+        line-height: 23px;
+        margin-bottom: 30px;
+        white-space: pre;
+        overflow-x: auto;
+        word-break: inherit;
+        word-wrap: inherit;
+      }
 
-		pre a::before {
-		  content: counter(line-numbering);
-		  counter-increment: line-numbering;
-		  padding-right: 1em; /* space after numbers */
-		  width: 25px;
-		  text-align: right;
-		  opacity: 0.7;
-		  display: inline-block;
-		  color: #aaa;
-		  background: #eee;
-		  margin-right: 16px;
-		  padding: 2px 10px;
-		  font-size: 13px;
-		  -webkit-touch-callout: none;
-		  -webkit-user-select: none;
-		  -khtml-user-select: none;
-		  -moz-user-select: none;
-		  -ms-user-select: none;
-		  user-select: none;
-		}
+      pre a::before {
+        content: counter(line-numbering);
+        counter-increment: line-numbering;
+        padding-right: 1em; /* space after numbers */
+        width: 25px;
+        text-align: right;
+        opacity: 0.7;
+        display: inline-block;
+        color: #aaa;
+        background: #eee;
+        margin-right: 16px;
+        padding: 2px 10px;
+        font-size: 13px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
 
-		pre a:first-of-type::before {
-		  padding-top: 10px;
-		}
+      pre a:first-of-type::before {
+        padding-top: 10px;
+      }
 
-		pre a:last-of-type::before {
-		  padding-bottom: 10px;
-		}
+      pre a:last-of-type::before {
+        padding-bottom: 10px;
+      }
 
-		pre a:only-of-type::before {
-		  padding: 10px;
-		}
+      pre a:only-of-type::before {
+        padding: 10px;
+      }
 
-		.highlight { background-color: #ffffcc } /* RIGHT */
-		</style>
+      .highlight {
+        background-color: #ffffcc;
+      } /* RIGHT */
+    </style>
   </head>
   <body>
-	  <div>
-				<div style='width:25%;'>
-						<ul id="tree" class="ztree" style='width:100%'>
-
-						</ul>
-				</div>
-        <div id='readme' style='width:70%;margin-left:20%;'>
-          	<article class='markdown-body'>
-            	<h1 id="vue-">vue介绍</h1>
-<h2 id="-">兼容性</h2>
-<blockquote>
-<p>Vue 不支持 IE8 及以下版本，因为 Vue 使用了 IE8 无法模拟的 ECMAScript 5 特性。但它支持所有兼容 ECMAScript 5 的浏览器。</p>
-<ul>
-<li>es5很多api也不支持ie8</li>
-<li><code>Object.defineProperty</code></li>
-<li>css3</li>
-<li>ui组件也不支持</li>
-<li>es6</li>
-</ul>
-</blockquote>
-<h3 id="es6"><a href="http://es6.ruanyifeng.com/">es6</a></h3>
-<ul>
-<li><p>let / const</p>
-<pre><code>let num = 1
+    <div>
+      <div style="width: 25%;">
+        <ul id="tree" class="ztree" style="width: 100%;"></ul>
+      </div>
+      <div id="readme" style="width: 70%; margin-left: 20%;">
+        <article class="markdown-body">
+          <h1 id="vue-">vue介绍</h1>
+          <h2 id="-">兼容性</h2>
+          <blockquote>
+            <p>
+              Vue 不支持 IE8 及以下版本，因为 Vue 使用了 IE8 无法模拟的
+              ECMAScript 5 特性。但它支持所有兼容 ECMAScript 5 的浏览器。
+            </p>
+            <ul>
+              <li>es5很多api也不支持ie8</li>
+              <li><code>Object.defineProperty</code></li>
+              <li>css3</li>
+              <li>ui组件也不支持</li>
+              <li>es6</li>
+            </ul>
+          </blockquote>
+          <h3 id="es6"><a href="http://es6.ruanyifeng.com/">es6</a></h3>
+          <ul>
+            <li>
+              <p>let / const</p>
+              <pre><code>let num = 1
 num = 2
 const n = 1
-</code></pre></li>
-<li><p>箭头函数</p>
-<pre><code>//=================================
+</code></pre>
+            </li>
+            <li>
+              <p>箭头函数</p>
+              <pre><code>//=================================
 setTimeout(function () {
 console.log(this) // window
 }, 1000)
@@ -98,20 +119,22 @@ console.log(_this)
 setTimeout(() =&gt; {
 console.log(this)
 }, 1000)
-</code></pre></li>
-<li>promise  ===&gt; async/await</li>
-</ul>
-<pre><code>$(&#39;.col1&#39;).animate({left: 200}, 2000, function () {
+</code></pre>
+            </li>
+            <li>promise ===&gt; async/await</li>
+          </ul>
+          <pre><code>$(&#39;.col1&#39;).animate({left: 200}, 2000, function () {
    $(&#39;.col2&#39;).animate({left: 300}, 1500, function () {
      $(&#39;.col3&#39;).animate({left: 400}, 2000, function () {
        console.log(34567890)
      })
    })
  })
-</code></pre><blockquote>
-<p><img src="./vueinfo/oldAnimate.gif" /></p>
-</blockquote>
-<pre><code> //======================
+</code></pre>
+          <blockquote>
+            <p><img src="./vueinfo/oldAnimate.gif" /></p>
+          </blockquote>
+          <pre><code> //======================
   function ani(el) {
       return new Promise((resolve, reject) =&gt; {
         $(el).animate({
@@ -128,83 +151,113 @@ console.log(this)
       return ani(&#39;.col3&#39;)
     }).catch(error =&gt; {})
 
-</code></pre><blockquote>
-<p><img src="./vueinfo/newAnimate.gif" /></p>
-</blockquote>
-<h2 id="mvvm">mvvm</h2>
-<blockquote>
-<p>vue是一个渐进式的框架</p>
-<ul>
-<li>可以与既有的项目进行整合，通过简单地引入script即可</li>
-<li>也可以以vue为主，进行开发</li>
-<li><strong>数据驱动</strong> 由于是mvvm模式，因而我们在使用时，更多的是考虑数据如何变化，而不是依DOM进行操作，迫不得已时除外</li>
-</ul>
-</blockquote>
-<h2 id="-">组件分类</h2>
-<ul>
-<li>dump组件<ul>
-<li>展示型 </li>
-</ul>
-</li>
-<li>smart 组件<ul>
-<li>接入型 container （服务器交互）</li>
-<li>交互型 比如各类加强版的表单组件，通常强调复用</li>
-<li>功能型 比如 <code>&lt;router-view&gt;</code>，<code>&lt;transition&gt;</code>，作为一种扩展、抽象机制存在。</li>
-</ul>
-</li>
-</ul>
-<h2 id="-">渲染机制</h2>
-<blockquote>
-<p>主要用来描述 数据与DOM的关系，这样便于后期维护 </p>
-</blockquote>
-<h2 id="-">变化机制</h2>
-<blockquote>
-<p>响应式机制 </p>
-</blockquote>
-<h2 id="-">状态管理</h2>
-<blockquote>
-<p>源事件 --&gt; 映射到状态改变 --&gt; UI DOM变化</p>
-</blockquote>
-<h2 id="-spa">路由 SPA</h2>
-<blockquote>
-<p>路径映射到组件</p>
-<ul>
-<li>web 路由</li>
-<li>桌面路由 （card）</li>
-</ul>
-</blockquote>
-<h2 id="virtual-dom"><a href="https://github.com/livoras/blog/issues/13">Virtual DOM</a></h2>
-<ul>
-<li>用 JavaScript 对象结构表示 DOM 树的结构；然后用这个树构建一个真正的 DOM 树，插到文档当中</li>
-<li>当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异</li>
-<li>把2所记录的差异应用到步骤1所构建的真正的DOM树上，视图就更新了</li>
-</ul>
-<p><img src="./vueinfo/Virtual DOM.png" /></p>
-<h2 id="plugin"><a href="https://github.com/vuejs/awesome-vue">plugin</a></h2>
-<h1 id="vue-start">vue start</h1>
-<ul>
-<li>模板语法 <code>template</code> === react <code>jsx</code></li>
-<li><a href="http://naotu.baidu.com/file/285c831b1f396e24b401cc3f737f019c?token=72f0403c98561e07">基础讲解</a></li>
-</ul>
-
-          	</article>
-        </div>
-		</div>
+</code></pre>
+          <blockquote>
+            <p><img src="./vueinfo/newAnimate.gif" /></p>
+          </blockquote>
+          <h2 id="mvvm">mvvm</h2>
+          <blockquote>
+            <p>vue是一个渐进式的框架</p>
+            <ul>
+              <li>可以与既有的项目进行整合，通过简单地引入script即可</li>
+              <li>也可以以vue为主，进行开发</li>
+              <li>
+                <strong>数据驱动</strong>
+                由于是mvvm模式，因而我们在使用时，更多的是考虑数据如何变化，而不是依DOM进行操作，迫不得已时除外
+              </li>
+            </ul>
+          </blockquote>
+          <h2 id="-">组件分类</h2>
+          <ul>
+            <li>
+              dump组件
+              <ul>
+                <li>展示型</li>
+              </ul>
+            </li>
+            <li>
+              smart 组件
+              <ul>
+                <li>接入型 container （服务器交互）</li>
+                <li>交互型 比如各类加强版的表单组件，通常强调复用</li>
+                <li>
+                  功能型 比如
+                  <code>&lt;router-view&gt;</code
+                  >，<code>&lt;transition&gt;</code>，作为一种扩展、抽象机制存在。
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <h2 id="-">渲染机制</h2>
+          <blockquote>
+            <p>主要用来描述 数据与DOM的关系，这样便于后期维护</p>
+          </blockquote>
+          <h2 id="-">变化机制</h2>
+          <blockquote>
+            <p>响应式机制</p>
+          </blockquote>
+          <h2 id="-">状态管理</h2>
+          <blockquote>
+            <p>源事件 --&gt; 映射到状态改变 --&gt; UI DOM变化</p>
+          </blockquote>
+          <h2 id="-spa">路由 SPA</h2>
+          <blockquote>
+            <p>路径映射到组件</p>
+            <ul>
+              <li>web 路由</li>
+              <li>桌面路由 （card）</li>
+            </ul>
+          </blockquote>
+          <h2 id="virtual-dom">
+            <a href="https://github.com/livoras/blog/issues/13">Virtual DOM</a>
+          </h2>
+          <ul>
+            <li>
+              用 JavaScript 对象结构表示 DOM
+              树的结构；然后用这个树构建一个真正的 DOM 树，插到文档当中
+            </li>
+            <li>
+              当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异
+            </li>
+            <li>
+              把2所记录的差异应用到步骤1所构建的真正的DOM树上，视图就更新了
+            </li>
+          </ul>
+          <p><img src="./vueinfo/Virtual DOM.png" /></p>
+          <h2 id="plugin">
+            <a href="https://github.com/vuejs/awesome-vue">plugin</a>
+          </h2>
+          <h1 id="vue-start">vue start</h1>
+          <ul>
+            <li>模板语法 <code>template</code> === react <code>jsx</code></li>
+            <li>
+              <a
+                href="http://naotu.baidu.com/file/285c831b1f396e24b401cc3f737f019c?token=72f0403c98561e07"
+                >基础讲解</a
+              >
+            </li>
+          </ul>
+        </article>
+      </div>
+    </div>
   </body>
 </html>
 <script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script
+  type="text/javascript"
+  src="toc/js/jquery.ztree.all-3.5.min.js"
+></script>
 <script type="text/javascript" src="toc/js/ztree_toc.js"></script>
 <script type="text/javascript" src="toc_conf.js"></script>
 
-<SCRIPT type="text/javascript" >
-<!--
-$(document).ready(function(){
-    var css_conf = eval(markdown_panel_style);
-    $('#readme').css(css_conf)
-    
-    var conf = eval(jquery_ztree_toc_opts);
-		$('#tree').ztree_toc(conf);
-});
-//-->
-</SCRIPT>
+<script type="text/javascript">
+  <!--
+  $(document).ready(function(){
+      var css_conf = eval(markdown_panel_style);
+      $('#readme').css(css_conf)
+
+      var conf = eval(jquery_ztree_toc_opts);
+  		$('#tree').ztree_toc(conf);
+  });
+  //-->
+</script>

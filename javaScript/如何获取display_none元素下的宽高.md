@@ -1,4 +1,4 @@
-# 如何获取设置display:none元素及子元素的宽高
+# 如何获取设置 display:none 元素及子元素的宽高
 
 由于元素设置了`display:none`时，页面便不会对其渲染，导致无法获取其元素的宽高。目前一般的做法都是先对其设置`display:block`，拿到数据再设置其为`display:none`。如此便可以了
 
@@ -7,6 +7,7 @@
 如何获取 `id="ul"` 元素的宽高？？？
 
 > html
+
 ```
 <section class="section none">
   <div>
@@ -21,7 +22,7 @@
 
 > js
 
-+ 判断元素是否隐藏
+- 判断元素是否隐藏
 
 ```
 function isNone(el) {
@@ -34,7 +35,7 @@ function isNone(el) {
 }
 ```
 
-+ 设置样式
+- 设置样式
 
 ```
 function setStyle(obj = {}, el) {
@@ -44,7 +45,8 @@ function setStyle(obj = {}, el) {
 }
 ```
 
-+ 获取元素的宽高
+- 获取元素的宽高
+
 ```
 function getNoneStyle (el) {
   // 获取隐藏元素
@@ -83,4 +85,5 @@ function getNoneStyle (el) {
 ![效果图](./../images/js/20191018180045.png)
 
 ## 参考链接
-+ [link](http://www.foliotek.com/devblog/getting-the-width-of-a-hidden-element-with-jquery-using-width/)
+
+- [link](http://www.foliotek.com/devblog/getting-the-width-of-a-hidden-element-with-jquery-using-width/)

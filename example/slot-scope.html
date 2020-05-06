@@ -1,106 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>slot-scope</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <style>
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
 
-        li {
-            margin-bottom: 5px;
-            padding-left: 5px;
-            height: 40px;
-            line-height: 40px;
-            border: 1px solid skyblue;
-            background-color: #ccc;
-        }
+      li {
+        margin-bottom: 5px;
+        padding-left: 5px;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid skyblue;
+        background-color: #ccc;
+      }
 
-        .h {
-            font-size: 30px;
-            font-weight: 900;
-            text-align: center;
-        }
+      .h {
+        font-size: 30px;
+        font-weight: 900;
+        text-align: center;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app">
-        <p class="h" v-text="msg"></p>
-        <parent></parent>
+      <p class="h" v-text="msg"></p>
+      <parent></parent>
     </div>
     <!-- 父组件 -->
     <template id="p">
-        <div>
-            <h1 style="color: red">我是父组件标题</h1>
-            <child>
-                <template slot-scope="props">
-                    <div>
-                        <h3>{{props.obj.text}}</h3>
-                        <ul>
-                            <li>{{props.obj.id}}</li>
-                            <li>{{props.obj.name}}</li>
-                            <li>{{props.obj.age}}</li>
-                            <li>{{props.obj.text}}</li>
-                        </ul>
-                        <hr>
-                        <ul>
-                            <li>父组件内容</li>
-                            <li>父组件内容</li>
-                            <li>父组件内容</li> 
-                        </ul>
-                    </div>
-                </template>
-
-            </child>
-        </div>
+      <div>
+        <h1 style="color: red;">我是父组件标题</h1>
+        <child>
+          <template slot-scope="props">
+            <div>
+              <h3>{{props.obj.text}}</h3>
+              <ul>
+                <li>{{props.obj.id}}</li>
+                <li>{{props.obj.name}}</li>
+                <li>{{props.obj.age}}</li>
+                <li>{{props.obj.text}}</li>
+              </ul>
+              <hr />
+              <ul>
+                <li>父组件内容</li>
+                <li>父组件内容</li>
+                <li>父组件内容</li>
+              </ul>
+            </div>
+          </template>
+        </child>
+      </div>
     </template>
     <!-- 子组件 -->
     <template id="s">
+      <div>
+        <h3 style="font-style: inherit;">
+          使用slot-scope时，在vue2.5以上可以不需要添加template
+        </h3>
+        <h2 style="color: blue;">我是子组件内容</h2>
         <div>
-            <h3 style="font-style:inherit">使用slot-scope时，在vue2.5以上可以不需要添加template</h3>
-            <h2 style="color: blue">我是子组件内容</h2>
-            <div>
-                <slot :obj="obj">
-                    <ul>
-                        <li>我曾经存在过---当时明月在，曾照彩云归</li>
-                        <li>我曾经存在过---当时明月在，曾照彩云归</li>
-                        <li>我曾经存在过---当时明月在，曾照彩云归</li>
-                    </ul>
-                </slot>
-            </div>
+          <slot :obj="obj">
+            <ul>
+              <li>我曾经存在过---当时明月在，曾照彩云归</li>
+              <li>我曾经存在过---当时明月在，曾照彩云归</li>
+              <li>我曾经存在过---当时明月在，曾照彩云归</li>
+            </ul>
+          </slot>
         </div>
+      </div>
     </template>
     <script>
-        let child = {
-            template: '#s',
-            data() {
-                return {
-                    obj: {id: 12, name: 'Sinosaurus', age: 18, text:"我是子组件传递过来的，看看是否可以接受的到" }
-                }
-            }
-        }
-        let parent = {
-            template: '#p',
-            components: { child }
-        }
-        new Vue({
-            el: '#app',
-            data: {
-                msg: '作用域插槽--  slot-scope'
+      let child = {
+        template: '#s',
+        data() {
+          return {
+            obj: {
+              id: 12,
+              name: 'Sinosaurus',
+              age: 18,
+              text: '我是子组件传递过来的，看看是否可以接受的到',
             },
-            components: {
-                parent,
-                child,
-            }
-        })
+          }
+        },
+      }
+      let parent = {
+        template: '#p',
+        components: { child },
+      }
+      new Vue({
+        el: '#app',
+        data: {
+          msg: '作用域插槽--  slot-scope',
+        },
+        components: {
+          parent,
+          child,
+        },
+      })
     </script>
-</body>
-
+  </body>
 </html>

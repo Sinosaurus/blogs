@@ -27,13 +27,11 @@ export default {
   components: {
     slot1,
     slot2,
-    TestSlot
+    TestSlot,
   },
-  data () {
-    return {
-
-    }
-  }
+  data() {
+    return {}
+  },
 }
 </script>
 

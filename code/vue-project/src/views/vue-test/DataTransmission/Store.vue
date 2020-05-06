@@ -1,6 +1,8 @@
 <template>
   <div class="store-test">
-    <span style="color: red; font-weight: bold; font-size: 20px">{{count}}</span>
+    <span style="color: red; font-weight: bold; font-size: 20px;">{{
+      count
+    }}</span>
     <pre>
       <el-row :gutter="20">
         <el-col :span="12">
@@ -23,39 +25,35 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-  data () {
+  data() {
     return {
-      code1: 
-      `import { mapState } from 'vuex'
+      code1: `import { mapState } from 'vuex'
         ...
         computed: mapState('module', {
           value: state => state.value
         })
       `,
-      code2:
-      `
+      code2: `
       import { mapState } from 'vuex'
       ...
       computed: mapState('module', [
         count
       ]) 
-      `
+      `,
     }
   },
   computed: {
-    ...mapState('test', [
-      'count'
-    ])
-  }
+    ...mapState('test', ['count']),
+  },
 }
 </script>
 <style lang="less">
-  .store-test {
-    .code-style {
-      padding: 10px;
-      display: inline-block;
-      font-family: Menlo, Monaco, Consolas;
-      background-color: #95de64;
-    }
+.store-test {
+  .code-style {
+    padding: 10px;
+    display: inline-block;
+    font-family: Menlo, Monaco, Consolas;
+    background-color: #95de64;
   }
+}
 </style>

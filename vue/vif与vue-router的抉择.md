@@ -1,12 +1,13 @@
 # vue-router 该如何使用
 
-> 忽然碰到一个常见的问题，明明可以使用 v-if / v-show 可以的解决的问题，有没有必要是使用 vue-router来解决。 比如常见的 tab 切换。一时间，我有些犹豫了，有没有必要滥用 vue-router。那到底何时用才叫合理呢？
+> 忽然碰到一个常见的问题，明明可以使用 v-if / v-show 可以的解决的问题，有没有必要是使用 vue-router 来解决。 比如常见的 tab 切换。一时间，我有些犹豫了，有没有必要滥用 vue-router。那到底何时用才叫合理呢？
 
 > 先上代码，用两种方式实现的效果
 
-##### 使用vue-router
+##### 使用 vue-router
 
 > `router`
+
 ```
 import Tab1 from './components/tab/TabOne'
 import Tab2 from './components/tab/TabTwo'
@@ -24,6 +25,7 @@ const router = new VueRouter({
 ```
 
 > `.vue`文件中
+
 ```
  <div class="tab">
   <router-link to="/tab1">tab1</router-link>
@@ -35,6 +37,7 @@ const router = new VueRouter({
 ```
 
 ##### 使用`v-if/v-show`
+
 > `.vue`
 
 ```
@@ -67,25 +70,25 @@ const router = new VueRouter({
 
 <img src="./../images/v-if_vur-router/v-test.gif" width="800px" />
 
-+ 上方为路由
-+ 下方为v-if
+- 上方为路由
+- 下方为 v-if
 
 > 目前看起来效果一致。那就从另一个角度考虑，页面结构。
 
-+ `vue-router`
+- `vue-router`
 
 <img src="./../images/v-if_vur-router/vue-router.gif" width="800px" />
 
-+ `v-if`
+- `v-if`
 
 <img src="./../images/v-if_vur-router/v-if.gif" width="800px" />
 
-
 > 静态页面没区别，现在考虑传参，进行数据请求渲染
 
-+ `vue-router`  进行参数传递
+- `vue-router` 进行参数传递
+
 ```
-//修改上述代码 
+//修改上述代码
 <!-- router -->
 {path: '/tab1', name: 'tab1', component: Tab1},
 {path: '/tab2', name: 'tab2', component: Tab2},
@@ -101,22 +104,23 @@ const router = new VueRouter({
 jump (n) {
   this.$router.push(
     {
-    name: 'tab'+n, 
+    name: 'tab'+n,
     params: {
-      id: n, 
+      id: n,
       data: {
-        a: 1, 
-        b: 2, 
+        a: 1,
+        b: 2,
         c: 3}
       }
     }
   )
 }
 ```
-> 效果图
-<img src="./../images/v-if_vur-router/v-routeparams.png" />
 
-> 在修改router中代码时，需要修改为**命名式路由**才可以，这样有利于传参而不会在url地址中显示
+> 效果图
+> <img src="./../images/v-if_vur-router/v-routeparams.png" />
+
+> 在修改 router 中代码时，需要修改为**命名式路由**才可以，这样有利于传参而不会在 url 地址中显示
 
 ```
 <!-- demo -->
@@ -131,12 +135,13 @@ this.$router.push({
   }
 })
 ```
+
 > 效果
 
 <img src="./../images/v-if_vur-router/test.png" />
 
+> 使用 v-if 结合 vuex 实现
 
-> 使用v-if结合vuex实现
 ```
 <!-- vuex -->
 import Vue from 'vue'
@@ -188,17 +193,19 @@ computed: mapState({
   tab: state => state.tab.tab1
 })
 ```
+
 > 结果
 
 <img src="./../images/v-if_vur-router/v-ifvuex.gif"/>
 
-> 因而在tab中使用 vue-router的方式进行传参，会相对比较方便，而使用v-if时，则需要借助vuex，每次都需要尽所有指定的参数放到vuex中，在下一个组件中，再去vuex中进行获取。这样而言，导致代码量多一些。当然使用得当也很好。特别是现在有些公司不许使用vuex，只能使用EventBUS 那是不是在使用v-if方式实现时，更加麻烦呢？
+> 因而在 tab 中使用 vue-router 的方式进行传参，会相对比较方便，而使用 v-if 时，则需要借助 vuex，每次都需要尽所有指定的参数放到 vuex 中，在下一个组件中，再去 vuex 中进行获取。这样而言，导致代码量多一些。当然使用得当也很好。特别是现在有些公司不许使用 vuex，只能使用 EventBUS 那是不是在使用 v-if 方式实现时，更加麻烦呢？
 
 > 总结
 
-+ 目前看来可能使用vue-router会更加好一些（但是依旧值得深究）
-+ 使用原生，可能是用索引进行关联，在vue中推荐使用 数据进行驱动
-+ 暂且记录一笔，以待后期继续研究
+- 目前看来可能使用 vue-router 会更加好一些（但是依旧值得深究）
+- 使用原生，可能是用索引进行关联，在 vue 中推荐使用 数据进行驱动
+- 暂且记录一笔，以待后期继续研究
 
 > 补充
-+ 使用 vue-router 组件初始化 直接在页面上引用并不会
+
+- 使用 vue-router 组件初始化 直接在页面上引用并不会

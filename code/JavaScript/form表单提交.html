@@ -1,66 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
+  <body>
+    <h1>使用form表单提交数据</h1>
+    <form
+      id="form"
+      action="http://192.168.200.76:7777/wordpress/sinnet/marketplaceLead/addLeadCache"
+      method="post"
+      target="_blank"
+    >
+      <input hidden type="text" name="json" value="{}" />
+      <div>
+        <label>
+          <input type="text" value="世界" />
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="text" value="世界" />
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="text" value="世界" />
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="text" value="世界" />
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="text" value="世界" />
+        </label>
+      </div>
+    </form>
+    <button id="btn">点击提交</button>
 
-<body>
-  <h1>使用form表单提交数据</h1>
-  <form id="form" action="http://192.168.200.76:7777/wordpress/sinnet/marketplaceLead/addLeadCache" method="post" target="_blank">
-    <input hidden type="text" name="json" value="{}">
-    <div>
-        <label>
-            <input type="text" value="世界">
-          </label>
-    </div>
-    <div>
-        <label>
-            <input type="text" value="世界">
-          </label>
-    </div>
-    <div>
-        <label>
-            <input type="text" value="世界">
-          </label>
-    </div>
-    <div>
-        <label>
-            <input type="text" value="世界">
-          </label>
-    </div>
-    <div>
-        <label>
-            <input type="text" value="世界">
-          </label>
-    </div>
-    
-  </form>
-  <button id="btn">点击提交</button>
+    <script>
+      const form = document.getElementById('form')
+      const btn = document.getElementById('btn')
 
-  <script>
-    const form = document.getElementById('form')
-    const btn = document.getElementById('btn')
+      function submit() {
+        const input = form.querySelector('input')
+        const data = {
+          aa: '1111',
+          b: 222,
+          c: '我是世界的主宰',
+        }
+        input.setAttribute('value', JSON.stringify(data))
 
-    function submit () {
-      const input = form.querySelector('input')
-      const data = {
-        aa: '1111',
-        b: 222,
-        c: '我是世界的主宰'
+        form.submit()
       }
-      input.setAttribute('value', JSON.stringify(data))
 
-      form.submit()
-    }
-
-    btn.onclick = () => {
-      submit()
-    }
-  </script>
-</body>
-
+      btn.onclick = () => {
+        submit()
+      }
+    </script>
+  </body>
 </html>

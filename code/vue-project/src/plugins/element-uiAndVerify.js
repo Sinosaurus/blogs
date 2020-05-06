@@ -19,17 +19,20 @@ Vue.use(elementUIVerify, {
     maxDecimalLength: '该输入项最多接受{maxDecimalLength}位小数',
     phone: '请输入正确的手机号',
     email: '请输入正确的邮箱',
-    verifyCode: '请输入正确的6位数字'
-  }
+    verifyCode: '请输入正确的6位数字',
+  },
 })
 
-elementUIVerify.addRule('maxLength', maxLength => [
+elementUIVerify.addRule('maxLength', (maxLength) => [
   {
-    validator (rule, val, callback) {
+    validator(rule, val, callback) {
       if (val.length > maxLength) {
-        const errorMessage = elementUIVerify.getErrorMessage('maxLength', maxLength)
+        const errorMessage = elementUIVerify.getErrorMessage(
+          'maxLength',
+          maxLength
+        )
         callback(Error(errorMessage))
       } else callback()
-    }
-  }
+    },
+  },
 ])

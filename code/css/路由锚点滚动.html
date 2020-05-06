@@ -1,78 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <style>
-    section {
-      min-height: 100px;
-      background-color: skyblue;
-    }
-    section + section {
-      margin-top: 20px;
-    }
-    section:nth-of-type(even) {
-      background-color: pink;
-    }
-  </style>
-</head>
-<body>
-  <main>
-    <section>
-      <div><a href="#m1">#m1</a></div>
-      <div><a href="#m2">#m2</a></div>
-      <div><a href="#m3">#m3</a></div>
-      <div><a href="#m4">#m4</a></div>
-      <div><a href="#m5">#m5</a></div>
-      <div><a href="#m6">#m6</a></div>
-      <div><a href="#m7">#m7</a></div>
-      <div><a href="#m8">#m8</a></div>
-      <div><a href="#m9">#m9</a></div>
-      <div><a href="#m10">#m10</a></div>
-    </section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      section {
+        min-height: 100px;
+        background-color: skyblue;
+      }
+      section + section {
+        margin-top: 20px;
+      }
+      section:nth-of-type(even) {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <div><a href="#m1">#m1</a></div>
+        <div><a href="#m2">#m2</a></div>
+        <div><a href="#m3">#m3</a></div>
+        <div><a href="#m4">#m4</a></div>
+        <div><a href="#m5">#m5</a></div>
+        <div><a href="#m6">#m6</a></div>
+        <div><a href="#m7">#m7</a></div>
+        <div><a href="#m8">#m8</a></div>
+        <div><a href="#m9">#m9</a></div>
+        <div><a href="#m10">#m10</a></div>
+      </section>
 
-    <section id="m1">
-      m1
-    </section>
-    <section id="m2">
-      m2
-    </section>
-    <section id="m3">
-      m3
-    </section>
-    <section id="m4">
-      m4
-    </section>
-    <section id="m5">
-      m5
-    </section>
-    <section id="m6">
-      m6
-    </section>
-    <section id="m7">
-      m7
-    </section>
-    <section id="m8">
-      m8
-    </section>
-    <section id="m9">
-      m9
-    </section>
-    <section id="m10">
-      m10
-    </section>
-  </main>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    }, false)
-    console.log(document.querySelector(location.hash))
+      <section id="m1">
+        m1
+      </section>
+      <section id="m2">
+        m2
+      </section>
+      <section id="m3">
+        m3
+      </section>
+      <section id="m4">
+        m4
+      </section>
+      <section id="m5">
+        m5
+      </section>
+      <section id="m6">
+        m6
+      </section>
+      <section id="m7">
+        m7
+      </section>
+      <section id="m8">
+        m8
+      </section>
+      <section id="m9">
+        m9
+      </section>
+      <section id="m10">
+        m10
+      </section>
+    </main>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {}, false)
+      console.log(document.querySelector(location.hash))
       document.querySelector(location.hash).scrollIntoView()
       document.querySelector(location.hash).scrollTop = 0
       console.log(1111)
 
       console.log(document.querySelector(location.hash).scrollIntoView)
-  </script>
-</body>
+    </script>
+  </body>
 </html>

@@ -4,5 +4,5 @@ import 'iview/dist/styles/iview.css'
 
 Vue.use(iView, {
   transfer: true,
-  size: 'large'
+  size: 'large',
 })

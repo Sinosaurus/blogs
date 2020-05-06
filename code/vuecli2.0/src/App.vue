@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <router-link :to="{name: 'webpack-test'}">webpack-test</router-link>
-    <router-view/>
+    <router-link :to="{ name: 'webpack-test' }">webpack-test</router-link>
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
   name: 'App',
-  created () {
+  created() {
     // console.log(process.env)
-  }
+  },
 }
 </script>
 

@@ -1,130 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <style>
-    pre {
-      display: inline-block;
-    }
-
-    .section {
-      margin: auto;
-      max-width: 1200px;
-      min-height: 200px;
-      border: 2px dotted #ccc;
-      border-radius: 4px;
-    }
-
-    .section+.section {
-      margin-top: 20px;
-    }
-
-    .none {
-      display: none;
-    }
-
-    .span {
-      font-weight: bold;
-      color: purple;
-    }
-
-    .num {
-      font-size: 30px;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <h1>获取
-      <pre>display:none</pre> 元素的宽高</h1>
-  </header>
-  <main>
-    <section class="section none">
-      <div>
-        <ul id="ul">
-          <li>第 <span class="span">111</span>个</li>
-          <li>第 <span class="span">222</span>个</li>
-          <li>第 <span class="span">333</span>个</li>
-        </ul>
-      </div>
-    </section>
-    <section class="content section">
-      <div class="item">
-        <p>父元素宽高</p>
-        <p>width: <span class="num width"></span></p>
-        <p>hight: <span class="num height"></span></p>
-      </div>
-      <div class="item">
-        <p>子元素宽高</p>
-        <p>width: <span class="num"></span></p>
-        <p>hight: <span class="num"></span></p>
-      </div>
-    </section>
-  </main>
-  <script>
-    "use strict";
-    document.addEventListener('DOMContentLoaded', () => {
-      const ChildUl = document.getElementById('ul')
-      const ParentEl = ChildUl.parentNode
-      const {
-        width,
-        height
-      } = getNoneStyle(ChildUl)
-      document.querySelector('.width').innerText = width
-      document.querySelector('.height').innerText = height
-    }, false)
-
-    function getNoneStyle(el) {
-      // 获取隐藏元素
-      let node = el
-      while (node !== null && !isNone(node)) {
-        node = node.parentNode
-      }
-      if (node === null) throw new Error('居然父元素都没有，这种情况，基本不会出现')
-
-      setStyle({
-        display: 'block',
-        visibility: 'hidden',
-        position: 'absolute'
-      }, node)
-
-      const {
-        clientHeight,
-        clientWidth
-      } = el
-      setStyle({
-        display: '',
-        visibility: '',
-        position: ''
-      }, node)
-
-      return {
-        width: clientWidth,
-        height: clientHeight
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      pre {
+        display: inline-block;
       }
 
-    }
-
-    function isNone(el) {
-      // 判断是否是元素节点
-      if (el.nodeType != 1) return
-      const {
-        display
-      } = window.getComputedStyle(el)
-      return display === 'none'
-    }
-
-    function setStyle(obj = {}, el) {
-      for (let item in obj) {
-        el.style[item] = obj[item]
+      .section {
+        margin: auto;
+        max-width: 1200px;
+        min-height: 200px;
+        border: 2px dotted #ccc;
+        border-radius: 4px;
       }
-    }
-  </script>
-</body>
 
+      .section + .section {
+        margin-top: 20px;
+      }
+
+      .none {
+        display: none;
+      }
+
+      .span {
+        font-weight: bold;
+        color: purple;
+      }
+
+      .num {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        获取
+        <pre>display:none</pre>
+        元素的宽高
+      </h1>
+    </header>
+    <main>
+      <section class="section none">
+        <div>
+          <ul id="ul">
+            <li>第 <span class="span">111</span>个</li>
+            <li>第 <span class="span">222</span>个</li>
+            <li>第 <span class="span">333</span>个</li>
+          </ul>
+        </div>
+      </section>
+      <section class="content section">
+        <div class="item">
+          <p>父元素宽高</p>
+          <p>width: <span class="num width"></span></p>
+          <p>hight: <span class="num height"></span></p>
+        </div>
+        <div class="item">
+          <p>子元素宽高</p>
+          <p>width: <span class="num"></span></p>
+          <p>hight: <span class="num"></span></p>
+        </div>
+      </section>
+    </main>
+    <script>
+      'use strict'
+      document.addEventListener(
+        'DOMContentLoaded',
+        () => {
+          const ChildUl = document.getElementById('ul')
+          const ParentEl = ChildUl.parentNode
+          const { width, height } = getNoneStyle(ChildUl)
+          document.querySelector('.width').innerText = width
+          document.querySelector('.height').innerText = height
+        },
+        false
+      )
+
+      function getNoneStyle(el) {
+        // 获取隐藏元素
+        let node = el
+        while (node !== null && !isNone(node)) {
+          node = node.parentNode
+        }
+        if (node === null)
+          throw new Error('居然父元素都没有，这种情况，基本不会出现')
+
+        setStyle(
+          {
+            display: 'block',
+            visibility: 'hidden',
+            position: 'absolute',
+          },
+          node
+        )
+
+        const { clientHeight, clientWidth } = el
+        setStyle(
+          {
+            display: '',
+            visibility: '',
+            position: '',
+          },
+          node
+        )
+
+        return {
+          width: clientWidth,
+          height: clientHeight,
+        }
+      }
+
+      function isNone(el) {
+        // 判断是否是元素节点
+        if (el.nodeType != 1) return
+        const { display } = window.getComputedStyle(el)
+        return display === 'none'
+      }
+
+      function setStyle(obj = {}, el) {
+        for (let item in obj) {
+          el.style[item] = obj[item]
+        }
+      }
+    </script>
+  </body>
 </html>

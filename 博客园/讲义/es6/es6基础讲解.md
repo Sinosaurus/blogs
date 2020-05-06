@@ -1,18 +1,21 @@
-## const let var 的区别    **作用域**
-+ var 变量提升
-+ let , const 不存在变量提升
-+ const 常量  定义后的值不允许修改
+## const let var 的区别 **作用域**
+
+- var 变量提升
+- let , const 不存在变量提升
+- const 常量 定义后的值不允许修改
 
 ## 变量的解构赋值
-+ 数组的解构赋值
+
+- 数组的解构赋值
+
 ```
   let a = 1,
-      b = 2, 
+      b = 2,
       c = 3
-  //================= 
+  //=================
 
   let [a, b, c] = [1, 2, 3]
-  console.log(a, b, c) // 1, 2, 3   
+  console.log(a, b, c) // 1, 2, 3
 
   //=================
   let [f, ...g] = [1, 2, 3, 4, 5]
@@ -22,13 +25,13 @@
   let [d, h, ...i] = ['one']
   console.log(d, h, i) // one  undefined  []
 
-  //========= 
+  //=========
   let [foo] = null || undefined || {} || 1 || NaN || false
-  // 右侧 不是数组（不可遍历的结构） 
-  // 因而会报错 
+  // 右侧 不是数组（不可遍历的结构）
+  // 因而会报错
 
 
-  // 默认值 
+  // 默认值
   let [aa = 123456] = []
   console.log(aa) // 123456
 
@@ -36,15 +39,17 @@
 
   let [a = 1] = [ undefined ] // a = 1
   let [a = 1] = [ null ] // a = null
-  
+
 ```
-+ 对象的解构赋值
+
+- 对象的解构赋值
+
 ```
  let {obj, o } = {obj: 11, o: 234} // obj = 11, o = 234
 // 可以理解为这样的
  ==> let {obj: obj, o: o} = {obj: 11, o: 234}
 
- let {obj: oo } = {obj: 222} // oo = 222  ;  obj is not defined   
+ let {obj: oo } = {obj: 222} // oo = 222  ;  obj is not defined
 
  let {x, y = 5} = {x:1} // x=1  y=5
  let {x: y=50} = {x: 1} // y=1
@@ -52,7 +57,9 @@
  // 依旧是 严格判断对等   undefined
 
 ```
-+ 字符串的解构赋值
+
+- 字符串的解构赋值
+
 ```
 const [a, b, c, d, e] = 'kekai'
 // a'k';  b 'e';  c 'k'; d 'a' ;e 'i';
@@ -60,9 +67,11 @@ const [a, b, c, d, e] = 'kekai'
 let {length} = 'kekai'
 // length: 5
 ```
-+ 数值和布尔值的解构赋值
 
-+ 函数参数的解构赋值
+- 数值和布尔值的解构赋值
+
+- 函数参数的解构赋值
+
 ```
 function kk([x=1, y=1] = []) {
     return  [x, y]
@@ -73,13 +82,15 @@ kk([22, 33]) // [22, 55]
 ```
 
 ## 字符串的扩展
-+ includes(), startsWith(), endsWith() 
-   - includes()：返回布尔值，表示是否找到了参数字符串。
-   - startsWith()：返回布尔值，表示参数字符串是否在原字符串的头部。
-   - endsWith()：返回布尔值，表示参数字符串是否在原字符串的尾部
 
-+ padStart()，padEnd()
-> 第一个参数用来指定字符串的最小长度，第二个参数是用来补全的字符串。
+- includes(), startsWith(), endsWith()
+
+  - includes()：返回布尔值，表示是否找到了参数字符串。
+  - startsWith()：返回布尔值，表示参数字符串是否在原字符串的头部。
+  - endsWith()：返回布尔值，表示参数字符串是否在原字符串的尾部
+
+- padStart()，padEnd()
+  > 第一个参数用来指定字符串的最小长度，第二个参数是用来补全的字符串。
 
 ```
 let second = 5
@@ -88,8 +99,10 @@ second = second < 10 ? ('0'+second) : second  // 05
 second = second.toString().padStart(2, 0)  // 05
 
 ```
-+ 模板字符串
-> \`\`使用反引号   `${}` 用来放变量
+
+- 模板字符串
+  > \`\`使用反引号 `${}` 用来放变量
+
 ```
 // 原始如此
 
@@ -110,7 +123,8 @@ $('#result').append(`
 
 ```
 
-## 函数参数的默认值 
+## 函数参数的默认值
+
 ```
 // es5
 function log(x, y) {
@@ -137,9 +151,11 @@ foo() // TypeError
 
 ```
 
-## rest参数
-+ 可以取代 arguments    类似数组的对象  `Array.prototype.slice.call`使用这个可以转为真正的数组
-+ rest 是真正的数组  rest必须放在最后 也就是在 `...rest`之后不能再添加 参数了
+## rest 参数
+
+- 可以取代 arguments 类似数组的对象 `Array.prototype.slice.call`使用这个可以转为真正的数组
+- rest 是真正的数组 rest 必须放在最后 也就是在 `...rest`之后不能再添加 参数了
+
 ```
 function add(x ) {
     console.log(arguments)
@@ -153,13 +169,15 @@ ad(1, 2, 3, 4)  // [1, 2, 3, 4]
 ```
 
 # 箭头函数 `=>`
-+ 简化代码，主要用于回调函数
-+ 可以不用考虑`this`的指向问题
+
+- 简化代码，主要用于回调函数
+- 可以不用考虑`this`的指向问题
+
 ```
 const f = v => v
 
 var f = function(v) {
-    return v    
+    return v
 }
 
 // this
@@ -199,7 +217,8 @@ f.long() // Fun  Fun
 ```
 
 ## 数组
-+ 扩展运算符  跟 `rest`相反
+
+- 扩展运算符 跟 `rest`相反
 
 ```
 function foo(...rest) { //将参数合为一个数组
@@ -230,6 +249,7 @@ let arr = [1, 2]
 f(...arr) // 1 2
 
 ```
+
 ```
 //1. 克隆
 //es5
@@ -244,12 +264,11 @@ const a2 = [...a1]
 const [...a2] = a1
 ```
 
-
-+ find  findIndex
+- find findIndex
 
 ```
 // find 用来查找 数组里的某个值，主要用来返回第一个符合条件的
-//findIndex 用来获取符合类型的索引 
+//findIndex 用来获取符合类型的索引
 
 const arr = [77, 44, 55, 66, 23]
 
@@ -263,11 +282,12 @@ arr.find(value, index, arr) => {
 // es6
 arr.findIndex(value => value > 70)  // 0
 //es5
-arr.indexOf(77) // 0  
+arr.indexOf(77) // 0
 
 ```
 
-+ includes  判断数组是否包含某个值  Boolean
+- includes 判断数组是否包含某个值 Boolean
+
 ```
 const arr = [1, 3, 4, 6]
 arr.includes[4]  // true
@@ -288,7 +308,7 @@ for (let item of arr) {
 
 //方法二
 const set = new Set(arr)
-const newArr = [...set] 
+const newArr = [...set]
 
 
 // es5 // 同时可以统计是多少次
@@ -297,17 +317,19 @@ const newArr1 = []
 for (let i = arr.length - 1; i >= 0; i --) {
     let item = arr[i]
     if (obj1[item]) {
-      obj1[item]++  
+      obj1[item]++
     } else {
       obj1[item] = 1
-      newArr1.push(item) 
+      newArr1.push(item)
     }
 }
 
 ```
 
 ## 对象的扩展
-+ 属性，方法 简洁写法 
+
+- 属性，方法 简洁写法
+
 ```
 const name = 'sinosaurus'
 cosnt age = '18'
@@ -334,7 +356,7 @@ var obj = {
 }
 ```
 
-+ 属性名表达式 （计算属性名）
+- 属性名表达式 （计算属性名）
 
 ```
 //es5
@@ -357,17 +379,11 @@ const obj = {
 ```
 
 ## promise
-+ 回调地狱
-<img src="" />
-+ 
+
+- 回调地狱
+  <img src="" />
+-
 
 ```
 
 ```
-
-
-
-
-
-
-

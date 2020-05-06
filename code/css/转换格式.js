@@ -13,7 +13,7 @@ Deep Learning on AWS-Speciality,AWS培训，标准课时1天,1,"￥ 2,100.00 "
 
 `
 const res = []
-data.split('\n').forEach(item => {
+data.split('\n').forEach((item) => {
   const arr = item.split(',')
   const obj = {}
   obj.area = arr[0]
@@ -25,6 +25,4 @@ data.split('\n').forEach(item => {
 console.log(res)
 const fs = require('fs')
 
-fs.writeFile('table.js', JSON.stringify(res), () => {
-
-})
+fs.writeFile('table.js', JSON.stringify(res), () => {})

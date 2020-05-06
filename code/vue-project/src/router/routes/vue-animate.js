@@ -4,6 +4,6 @@ export default {
   component: () => import('@/views/vueAnimate/VueAnimate.vue'),
   meta: {
     title: 'vue 动画',
-    icon: 'md-globe'
-  }
+    icon: 'md-globe',
+  },
 }

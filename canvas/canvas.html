@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>canvas</title>
-	<style>
-		.canvas {
-			border: 1px solid #ccc;
-		}
-	</style>
-</head>
-<body>
-<canvas id="canvas" width="400" height="400" class="canvas"></canvas>
-</body>
-<script>
-	const canvas = document.getElementById('canvas')
-	const ctx = canvas.getContext('2d')
-	// ctx.fillStyle = 'red'
-	// ctx.fillRect(10, 10, 150, 75)
-	// ctx.moveTo(0, 0)
-	// ctx.lineTo(300, 150)
-	// ctx.stroke()
-	// 
+  <head>
+    <meta charset="UTF-8" />
+    <title>canvas</title>
+    <style>
+      .canvas {
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="400" class="canvas"></canvas>
+  </body>
+  <script>
+    const canvas = document.getElementById('canvas')
+    const ctx = canvas.getContext('2d')
+    // ctx.fillStyle = 'red'
+    // ctx.fillRect(10, 10, 150, 75)
+    // ctx.moveTo(0, 0)
+    // ctx.lineTo(300, 150)
+    // ctx.stroke()
+    //
 
-
-	const grd = ctx.createLinearGradient(0, 0, 100, 0)
-	console.dir(grd)
-	grd.addColorStop(0, 'red')
-	grd.addColorStop(1, 'white')
-	ctx.fillStyle = grd
-	ctx.strokeStyle = grd
-	ctx.font = "30px Comic Sans MS";
-	ctx.textAlign = "center";
-	ctx.fillText("Hello World", canvas.width/2, canvas.height/2);
-	ctx.strokeText('Halo World', 200, 100)
-	// ctx.beginPath()
-	// ctx.arc(200, 200, 100, 0, 2 * Math.PI)
-	// ctx.strokeRect()
-</script>
+    const grd = ctx.createLinearGradient(0, 0, 100, 0)
+    console.dir(grd)
+    grd.addColorStop(0, 'red')
+    grd.addColorStop(1, 'white')
+    ctx.fillStyle = grd
+    ctx.strokeStyle = grd
+    ctx.font = '30px Comic Sans MS'
+    ctx.textAlign = 'center'
+    ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2)
+    ctx.strokeText('Halo World', 200, 100)
+    // ctx.beginPath()
+    // ctx.arc(200, 200, 100, 0, 2 * Math.PI)
+    // ctx.strokeRect()
+  </script>
 </html>

@@ -1,44 +1,27 @@
 <template>
   <div>
-    <router-link :to="{name: 'home', params: {test: h}}">home</router-link>
+    <router-link :to="{ name: 'home', params: { test: h } }">home</router-link>
     <!-- <input type="text" v-model="h"> -->
-    <br>
+    <br />
     <p>原生输入框</p>
-    <input
-      v-model="value"
-      type="text"
-      @input="setValue($event.target)"
-    >
+    <input v-model="value" type="text" @input="setValue($event.target)" />
 
     <p>不适用v-model</p>
-    <input
-      type="text"
-      @input="setValueNotWidthVModel($event.target)"
-    >
+    <input type="text" @input="setValueNotWidthVModel($event.target)" />
     <h3>组件化</h3>
     <p>element-ui</p>
-    <el-input
-      v-model="form.accout"
-      @input="changeInputValue"
-    ></el-input>
+    <el-input v-model="form.accout" @input="changeInputValue"></el-input>
     <p>iview</p>
-    <Input
-      v-model="form.accout"
-      @input="changeInputValue"
-    />
+    <Input v-model="form.accout" @input="changeInputValue" />
     <h1>手机归属地查询</h1>
     <p>
       https://www.iteblog.com/archives/1725.html
     </p>
     <ul class="sc-button-groups">
-      <li
-        v-for="(item, index) in PhoneLocationList"
-        :key="index"
-      >
-        <button
-          class="sc-button"
-          @click="getPhoneLocation(item)"
-        >{{item.name}}</button>
+      <li v-for="(item, index) in PhoneLocationList" :key="index">
+        <button class="sc-button" @click="getPhoneLocation(item)">
+          {{ item.name }}
+        </button>
       </li>
     </ul>
 
@@ -52,71 +35,71 @@
     <h2>computed ==> get/set</h2>
     <section>
       输入9和输入a都会输出a
-      <input type="text" v-model="computeValue">
+      <input type="text" v-model="computeValue" />
     </section>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       url: 'http://www.gov.cn/pushinfo/v150203/pushinfo.jsonp',
       h: 111,
       value: '',
       form: {
         accout: 0,
-        computeValue: ''
+        computeValue: '',
       },
       PhoneLocationList: [
         {
           id: '1',
           name: 'iteblog',
-          url: 'https://www.iteblog.com/api/mobile.php?mobile='
+          url: 'https://www.iteblog.com/api/mobile.php?mobile=',
         },
         {
           // 可用
           id: '2',
           name: '淘宝',
-          url: 'http://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel='
+          url: 'http://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=',
         },
         {
           id: '3',
           name: '财付通',
           url:
-            'http://life.tenpay.com/cgi-bin/mobile/MobileQueryAttribution.cgi?chgmobile='
+            'http://life.tenpay.com/cgi-bin/mobile/MobileQueryAttribution.cgi?chgmobile=',
         },
         {
           id: '4',
           name: '360',
-          url: 'http://cx.shouji.360.cn/phonearea.php?number='
+          url: 'http://cx.shouji.360.cn/phonearea.php?number=',
         },
         {
           id: '5',
           name: '百付宝',
           url:
-            'https://www.baifubao.com/callback?cmd=1059&callback=iteblog&phone='
-        }
-      ]
+            'https://www.baifubao.com/callback?cmd=1059&callback=iteblog&phone=',
+        },
+      ],
     }
   },
   computed: {
     computeValue: {
-      get () {
+      get() {
         return this.form.computeValue
       },
-      set (val) {
+      set(val) {
         this.form.computeValue = val.replace(/[9]/g, 'a')
-      }
-    }
+      },
+    },
   },
-  mounted () {
+  mounted() {
     setTimeout(() => {
       this.form.accout = '92309239493'.replace(/(\d{4})(?=\d)/g, '$1 ')
     }, 1500)
   },
   methods: {
-    changeInputValue (val) {
+    changeInputValue(val) {
       // console.log(val)
       // return
       const v = val.toString().replace(/[^0-9]/gi, '')
@@ -126,12 +109,12 @@ export default {
         this.form.accout = v.replace(/(\d{4})(?=\d)/g, '$1 ')
       })
     },
-    setValueNotWidthVModel (target) {
+    setValueNotWidthVModel(target) {
       const v = target.value.toString().replace(/[^0-9]/gi, '')
       this.form.accout = v.replace(/\s/g, '')
       target.value = v.replace(/(\d{4})(?=\d)/g, '$1 ')
     },
-    setValue (target) {
+    setValue(target) {
       // https://blog.csdn.net/wangming520liwei/article/details/53037951
       // https://blog.csdn.net/xutongbao/article/details/79287376
       const v = target.value.toString().replace(/[^0-9]/gi, '')
@@ -142,11 +125,11 @@ export default {
       this.form.accout = v.replace(/\s/g, '')
       this.value = v.replace(/(\d{4})(?=\d)/g, '$1 ')
     },
-    getPhoneLocation (item) {
+    getPhoneLocation(item) {
       console.log(item)
       this.$jsonp(item.url + '15549446040')
-        .then(res => {})
-        .catch(err => {
+        .then((res) => {})
+        .catch((err) => {
           throw new Error(err)
         })
       // this.$fetch.get(item.url + '15549446040').then(res => {
@@ -154,16 +137,16 @@ export default {
       // }).catch(err => {
       //   console.log(err)
       // })
-    }
+    },
   },
-  created () {
+  created() {
     // console.log(this.$jsonp)
     // this.$jsonp(this.url, { callbackQuery: 'callback', callbackName: 'pushInfoJsonpCallBack' }).then(res => {
     //   console.log(res, 111111111111)
     // }).catch(err => {
     //   console.log(err)
     // })
-  }
+  },
 }
 </script>
 <style lang="less">

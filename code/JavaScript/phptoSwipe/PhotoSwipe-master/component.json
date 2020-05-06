@@ -13,14 +13,8 @@
     "swipe",
     "zoom"
   ],
-  "scripts": [
-    "dist/photoswipe.js",
-    "dist/photoswipe-ui-default.js"
-  ],
-  "styles": [
-    "dist/photoswipe.css",
-    "dist/default-skin/default-skin.css"
-  ],
+  "scripts": ["dist/photoswipe.js", "dist/photoswipe-ui-default.js"],
+  "styles": ["dist/photoswipe.css", "dist/default-skin/default-skin.css"],
   "images": [
     "dist/default-skin/default-skin.png",
     "dist/default-skin/default-skin.svg",

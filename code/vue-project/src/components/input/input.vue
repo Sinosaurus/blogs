@@ -1,11 +1,7 @@
 <template>
   <div>
     low的一种方式
-    <input
-      type="text"
-      :value="currentValue"
-      @input="handleInput"
-    >
+    <input type="text" :value="currentValue" @input="handleInput" />
   </div>
 </template>
 
@@ -14,21 +10,20 @@ export default {
   props: {
     value: {
       type: [String, Number],
-      default: ''
-    }
+      default: '',
+    },
   },
-  data () {
+  data() {
     return {
-      currentValue: this.value
+      currentValue: this.value,
     }
   },
   methods: {
-    handleInput (event) {
-      this.$emit('input', event.target.value);
-    }
-  }
+    handleInput(event) {
+      this.$emit('input', event.target.value)
+    },
+  },
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

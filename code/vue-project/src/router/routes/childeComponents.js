@@ -4,7 +4,7 @@ export default {
   component: () => import('@/views/childComponents/ChildContainer.vue'),
   meta: {
     title: 'ChildContainer',
-    icon: 'ios-calendar'
+    icon: 'ios-calendar',
   },
   children: [
     {
@@ -13,8 +13,8 @@ export default {
       component: () => import('@/views/childComponents/ChildContainerOne.vue'),
       meta: {
         title: 'Child',
-        icon: 'md-calendar'
-      }
-    }
-  ]
+        icon: 'md-calendar',
+      },
+    },
+  ],
 }

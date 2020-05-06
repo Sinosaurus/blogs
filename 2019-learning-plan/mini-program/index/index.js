@@ -1,9 +1,7 @@
 const app = getApp()
 const log = require('../log.js')
 Page({
-  data: {
-
-  },
+  data: {},
   onLoad: function () {
     log.info('打一些日志测试一下')
     log.setFilterMsg('filterkeyword')

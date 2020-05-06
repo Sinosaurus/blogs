@@ -1,6 +1,6 @@
 # git 常见问题
 
-+ `master.lock` 
+- `master.lock`
 
 ```
   Rename from 'C:/office/eco_web/.git/refs/remotes/origin/master.lock' to 'C:/office/eco_web/.git/refs/remotes/origin/master' failed. Should I try again? (y/n) n

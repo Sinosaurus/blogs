@@ -2,7 +2,6 @@
 
 :tada: :100:
 
-
 ::: tip
 This is a tip
 :::
@@ -21,11 +20,10 @@ This is a dangerous warning
 Danger zone, do not proceed
 :::
 
-
 > [prism](https://prismjs.com/#languages-list)
 
 ```js {2}
-function aa () {
+function aa() {
   const a = 1
 }
 ```

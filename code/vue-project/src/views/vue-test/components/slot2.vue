@@ -3,7 +3,7 @@
     <h3>slot2</h3>
     <slotCom>
       <ul class="ul">
-        <li v-for="item in ulList" :key="item.id">{{item.name}}</li>
+        <li v-for="item in ulList" :key="item.id">{{ item.name }}</li>
       </ul>
     </slotCom>
   </div>
@@ -13,27 +13,27 @@
 import slotCom from './SlotCommon'
 export default {
   components: {
-    slotCom
+    slotCom,
   },
-  data () {
+  data() {
     return {
       test: '1234567890-',
       ulList: [
         {
           id: 0,
-          name: 'Sinosaurus'
+          name: 'Sinosaurus',
         },
         {
           id: 1,
-          name: 'zhen'
+          name: 'zhen',
         },
         {
           id: 2,
-          name: 'jim'
-        }
-      ]
+          name: 'jim',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 
@@ -46,7 +46,8 @@ export default {
     li {
       padding: 10px;
       font-weight: 700;
-      font-family:  medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
+      font-family: medium-content-sans-serif-font, 'Lucida Grande',
+        'Lucida Sans Unicode', 'Lucida Sans', Geneva, Arial, sans-serif;
     }
   }
 }

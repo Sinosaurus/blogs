@@ -1,7 +1,7 @@
-const gulp = require('gulp');
+const gulp = require('gulp')
 
-const lessChanged = require('gulp-less-changed');
-const less = require('gulp-less');
+const lessChanged = require('gulp-less-changed')
+const less = require('gulp-less')
 
 const autoprefixer = require('gulp-autoprefixer')
 const watchPath = require('gulp-watch-path')
@@ -10,7 +10,7 @@ const gutil = require('gulp-util')
 const combiner = require('stream-combiner2')
 
 const handleError = function (err) {
-  const colors = gutil.colors;
+  const colors = gutil.colors
   console.log('\n')
   gutil.log(colors.red('Error!'))
   gutil.log('fileName: ' + colors.red(err.fileName))
@@ -24,16 +24,16 @@ gulp.task('lesscss', () => {
     gulp.src('less/*.less'),
     lessChanged(),
     autoprefixer({
-      browsers: 'last 2 versions'
+      browsers: 'last 2 versions',
     }),
     less(),
-    gulp.dest('less/')
+    gulp.dest('less/'),
   ])
   combined.on('error', handleError)
 })
 
 gulp.task('wathcless', () => {
-  const watcher = gulp.watch('less/*.less', event => {
+  const watcher = gulp.watch('less/*.less', (event) => {
     const paths = watchPath(event, 'less/', 'less/')
     gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
     gutil.log('Dist' + paths.distPath)
@@ -41,21 +41,22 @@ gulp.task('wathcless', () => {
       gulp.src(paths.srcPath),
       lessChanged(),
       autoprefixer({
-        browsers: 'last 2 versions'
+        browsers: 'last 2 versions',
       }),
       less(),
-      gulp.dest(paths.distDir)
+      gulp.dest(paths.distDir),
     ])
     combined.on('error', handleError)
   })
-  watcher.on('change', event => {
+  watcher.on('change', (event) => {
     console.log('file' + event.path + 'was' + event.type)
     if (event.type === 'changed') {
       console.log(1111111111111111)
-      gulp.src(['less/style.less'])
-      .pipe(lessChanged())
-      .pipe(less())
-      .pipe(gulp.dest('dist/style.css'))
+      gulp
+        .src(['less/style.less'])
+        .pipe(lessChanged())
+        .pipe(less())
+        .pipe(gulp.dest('dist/style.css'))
     }
   })
 })

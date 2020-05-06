@@ -4,6 +4,6 @@ export default {
   component: () => import('$s/vuex-along.vue'),
   meta: {
     title: 'vuex-along 插件',
-    icon: 'ios-basket'
-  }
+    icon: 'ios-basket',
+  },
 }

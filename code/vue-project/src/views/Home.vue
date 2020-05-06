@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
@@ -12,10 +12,10 @@ import HelloWorld from '@/components/HelloWorld.vue'
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    HelloWorld,
   },
-  created () {
+  created() {
     // console.log(this.$route.params)
-  }
+  },
 }
 </script>
