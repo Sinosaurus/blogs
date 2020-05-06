@@ -83,6 +83,11 @@ export default {
       vueTest: state => state.vueTest,
       cachedViews: state => state.cache.cachedViews
     }),
+
+
+
+
+  
     titleName () {
       // return this.$route.matched.length === 1
       //   ? this.$route.matched[0].title
