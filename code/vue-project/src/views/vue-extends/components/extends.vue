@@ -13,7 +13,7 @@ export default {
   name: 'vue-test-extends',
   data () {
     return {
-      msg: "test"
+      msg: 'test'
     }
   }
 }
