@@ -3,7 +3,7 @@
     <a :href="pdfUrl">pdf</a>
     pdf文件
     <div class="canvas-container" v-loading="loading">
-      <div class="canvas-item" v-for="num in total"  :key="num">
+      <div class="canvas-item" v-for="num in total" :key="num">
         <canvas :id="'js_canvas' + num"></canvas>
       </div>
     </div>
@@ -13,7 +13,7 @@
 <script>
 import pdfjs from 'pdfjs-dist'
 // 可以避免报这个未定义错误
-pdfjs.GlobalaWorkerOptions.workerSrc = 'pdfjs-dist/buld.pdf.worker.js'
+// pdfjs.GlobalaWorkerOptions.workerSrc = 'pdfjs-dist/buld.pdf.worker.js'
 export default {
   name: 'pdfjs',
   data () {

@@ -82,3 +82,10 @@ git show v1.0
   ```
     git tag -l -n
   ```
+
+
+
+ ## 版本回退
+
+  + [廖雪峰](https://www.liaoxuefeng.com/wiki/896043488029600/897013573512192)
+  + [csdn](https://blog.csdn.net/Ronaldo_Carry/article/details/49453071)

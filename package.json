@@ -25,6 +25,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "express": "^4.16.4",
+    "lint-staged": "^10.2.2",
     "vue": "^2.6.10",
     "vue-jsonp": "^0.1.8",
     "vue-router": "^3.0.1",
@@ -32,5 +33,19 @@
   },
   "devDependencies": {
     "vuepress": "^1.2.0"
+  },
+  "gitHooks": {
+    "pre-commit": "ls-lint && lint-staged",
+    "commit-msg": "node scripts/verifyCommit.js"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write",
+      "git add"
+    ]
   }
 }
