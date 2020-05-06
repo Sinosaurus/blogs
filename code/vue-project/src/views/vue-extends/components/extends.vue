@@ -10,7 +10,12 @@
 
 <script>
 export default {
-  name: 'vue-test-extends'
+  name: 'vue-test-extends',
+  data () {
+    return {
+      msg: "test"
+    }
+  }
 }
 </script>
 
