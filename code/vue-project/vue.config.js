@@ -23,6 +23,16 @@ module.exports = {
     overlay: {
       warnings: false,
       errors: false
+    },
+    proxy: {
+      '/feed': {
+        target: 'https://www.sinnet-cloud.cn/',
+        secure: false,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/feed': ''
+        }
+      }
     }
   }
 

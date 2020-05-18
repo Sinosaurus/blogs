@@ -96,7 +96,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
-  
+
   data () {
     return {
       btnList: [
@@ -141,15 +141,15 @@ export default {
     }
   },
   beforeUpdate () {
-    console.log(this.tableData,11111111111)
+    // console.log(this.tableData,11111111111)
   },
   updated () {
-    console.log(345678)
+    // console.log(345678)
     // if (this.tableData.length) {
     //   this.isShow = true
     // }
   },
-  created (){
+  created () {
     this.btnList.forEach(item => {
       this.$set(this.load, item.id, false)
     })
@@ -163,14 +163,13 @@ export default {
     ]),
     handleBTN (id) {
       this.$set(this.load, id, 1)
-      console.log(this.load)
+      // console.log(this.load)
     },
     triggerUpdate () {
       this.isShow = !this.isShow
       if (this.isShow) {
         this.$nextTick(() => {
-      this.clearAll()
-
+          this.clearAll()
         })
       }
       this.tableData1.forEach(item => {
@@ -186,7 +185,7 @@ export default {
       this['setFilters_' + key](filter[key])
     },
     handleSort (column, prop, order) {
-      console.log(column, prop, order)
+      // console.log(column, prop, order)
     },
     clearAll () {
       this.isShow = false
@@ -202,7 +201,7 @@ export default {
       const COLUMNS_LIST = this.$refs.tb.columns
       COLUMNS_LIST.forEach(item => {
         if (item.filteredValue && item.filteredValue.length) {
-          console.log(item)
+          // console.log(item)
           this.$refs.tb.store.commit('filterChange', {
             column: item,
             values: []
@@ -224,14 +223,14 @@ export default {
   watch: {
     tableData: {
       handler () {
-        console.log(this.tableData)
-        console.log(this.isShow)
+        // console.log(this.tableData)
+        // console.log(this.isShow)
       },
       immediate: true
     },
     load: {
-      handler() {
-        console.log(this.load, 22222)
+      handler () {
+        // console.log(this.load, 22222)
       },
       deep: true
     }

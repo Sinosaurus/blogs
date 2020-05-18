@@ -10,66 +10,35 @@
       <div class="layout">
         <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}">
           <Menu
-            :active-name="actived"
             theme="dark"
             width="auto"
-            :open-names="[]"
           >
-            <Submenu name="1">
-              <template slot="title">
-                <Icon type="ios-navigate"></Icon>element表单校验
-              </template>
+          <template v-for="item in routes">
+            <template v-if="item.children">
+              <Submenu :key="item.path" :name="item.path">
+                <template slot="title">
+                  <Icon :type="item.meta.icon"></Icon>{{item.meta.title}}
+                </template>
+                <template v-if="item.children">
+                  <MenuItem
+                    v-for="val in item.children"
+                    :key="val.path"
+                    :name="val.path"
+                    :to="{name: val.name}"
+                  >{{val.meta.title}}</MenuItem>
+                </template>
+              </Submenu>
+            </template>
+            <template v-else>
               <MenuItem
-                v-for="item in validateMenuList"
-                :key="item.name"
-                :name="item.name"
-                :to="{name: item.router}"
-              >{{item.title}}</MenuItem>
-            </Submenu>
-            <Submenu name="2">
-              <template slot="title">
-                <Icon type="logo-chrome" />css测试
-              </template>
-              <MenuItem
-                v-for="item in cssMunuList"
-                :key="item.name"
-                :name="item.name"
-                :to="{name: item.router}"
-              >{{item.title}}</MenuItem>
-            </Submenu>
-            <Submenu name="3">
-              <template slot="title">
-                <Icon type="md-briefcase" />webpack测试
-              </template>
-              <MenuItem
-                v-for="item in webpackList"
-                :key="item.name"
-                :name="item.name"
-                :to="{name: item.router}"
-              >{{item.title}}</MenuItem>
-            </Submenu>
-            <Submenu name="4">
-              <template slot="title">
-                <Icon type="md-bonfire" />vue 使用
-              </template>
-              <MenuItem
-                v-for="item in vueSlotList"
-                :key="item.name"
-                :name="item.name"
-                :to="{name: item.router}"
-              >{{item.title}}</MenuItem>
-            </Submenu>
-            <Submenu name="5">
-              <template slot="title">
-                <Icon type="md-bonfire" />vue 动画
-              </template>
-              <MenuItem
-                v-for="item in vueTest"
-                :key="item.name"
-                :name="item.name"
-                :to="{name: item.router}"
-              >{{item.title}}</MenuItem>
-            </Submenu>
+                :key="item.path"
+                :name="item.path"
+                :to="{name: item.name}"
+              >
+                <Icon :type="item.meta.icon"></Icon>{{item.meta.title}}
+              </MenuItem>
+            </template>
+          </template>
           </Menu>
         </Sider>
         <Layout :style="{marginLeft: '200px'}">
@@ -96,8 +65,14 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-
+import { routes } from '@/router'
 export default {
+  name: 'App',
+  data () {
+    return {
+      routes
+    }
+  },
   computed: {
     ...mapState({
       validateMenuList: state => state.validateMenuList,
@@ -109,9 +84,10 @@ export default {
       cachedViews: state => state.cache.cachedViews
     }),
     titleName () {
-      return this.$route.matched.length === 1
-        ? this.$route.matched[0].meta.title
-        : ''
+      // return this.$route.matched.length === 1
+      //   ? this.$route.matched[0].title
+      //   : ''
+      return this.$route.meta && this.$route.meta.title
     },
     actived () {
       let activeRouter = ''
@@ -166,6 +142,7 @@ export default {
     },
     setInitActiveViews () {
       const alives = this.getInitActiveViews(this.$router.options.routes)
+
       alives.forEach(item => {
         this.$store.commit('cache/addCacheViews', item)
       })

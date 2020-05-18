@@ -117,10 +117,10 @@ export default {
   },
   methods: {
     changeInputValue (val) {
-      console.log(val)
+      // console.log(val)
       // return
       const v = val.toString().replace(/[^0-9]/gi, '')
-      console.log(v)
+      // console.log(v)
       this.$nextTick(() => {
         // https://segmentfault.com/q/1010000009840451/a-1020000010449110
         this.form.accout = v.replace(/(\d{4})(?=\d)/g, '$1 ')
@@ -135,7 +135,7 @@ export default {
       // https://blog.csdn.net/wangming520liwei/article/details/53037951
       // https://blog.csdn.net/xutongbao/article/details/79287376
       const v = target.value.toString().replace(/[^0-9]/gi, '')
-      console.log(v, 'old')
+      // console.log(v, 'old')
 
       // console.log(v.replace('/\D/g', ''), 'new')
       // console.log(v.replace(/[^0-9]/ig,""), 'new')
@@ -147,7 +147,7 @@ export default {
       this.$jsonp(item.url + '15549446040')
         .then(res => {})
         .catch(err => {
-          console.log(err)
+          throw new Error(err)
         })
       // this.$fetch.get(item.url + '15549446040').then(res => {
       //   console.log(res)

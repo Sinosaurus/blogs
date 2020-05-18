@@ -227,7 +227,7 @@ export default {
       ]
       Events.forEach(item => {
         node.addEventListener(item, e => {
-          console.log(e.target, item)
+          // console.log(e.target, item)
         }, false)
         // window.addEventListener(item, e => {
         //   console.log(e.target, item, 'window')
@@ -262,7 +262,7 @@ export default {
     },
     submitForm1 () {
       this.$refs['ruleForm'].validate(valid => {
-        console.log(valid)
+        // console.log(valid)
         if (valid) {
 
         } else {
