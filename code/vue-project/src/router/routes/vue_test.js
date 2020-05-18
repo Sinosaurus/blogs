@@ -8,6 +8,11 @@ export default [
     path: 'render',
     name: 'render',
     component: () => import('@/views/vue-test/render.vue')
+  },
+  {
+    path: '/high',
+    name: 'high',
+    component: () => import('@/views/vue-test/High.vue')
   }
 
 ]
