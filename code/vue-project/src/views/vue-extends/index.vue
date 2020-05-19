@@ -5,7 +5,7 @@
 <script>
 import vueExtend from './components/extends'
 export default {
-  extends: vueExtend,
+  extends: vueExtend
 }
 </script>
 
