@@ -1,7 +1,5 @@
 <template>
-  <div>
-
-  </div>
+  <div></div>
 </template>
 
 <script>
@@ -13,31 +11,33 @@ import xmlJs from 'xml-js'
 import ObjTree from 'xml-objtree'
 export default {
   name: 'xmToJson',
-  data () {
+  data() {
     return {
-      xml: '<foo attr="value">bar</foo>'
+      xml: '<foo attr="value">bar</foo>',
     }
   },
-  created () {
+  created() {
     axios({
       url: '/feed/news/feed',
-      method: 'get'
-    }).then(res => {
-      const xml = res.data
-      const json = xmlJs.xml2js(xml)
-      const newObjTree = new ObjTree()
-      const objTreeJson = newObjTree.parseXML(xml)
-      console.log(json, '=======', objTreeJson)
-      const result = json.elements[0].elements[0].elements
-      // console.log(result)
-      const items = result.filter(item => item.name === 'item')
-      console.log(items)
-    }).catch(err => {
-      console.error(err, 2)
+      method: 'get',
     })
+      .then((res) => {
+        const xml = res.data
+        const json = xmlJs.xml2js(xml)
+        const newObjTree = new ObjTree()
+        const objTreeJson = newObjTree.parseXML(xml)
+        console.log(json, '=======', objTreeJson)
+        const result = json.elements[0].elements[0].elements
+        // console.log(result)
+        const items = result.filter((item) => item.name === 'item')
+        console.log(items)
+      })
+      .catch((err) => {
+        console.error(err, 2)
+      })
     // const json = xml.xml2js('https://www.sinnet-cloud.cn/news/feed')
 
     // console.log(json)
-  }
+  },
 }
 </script>

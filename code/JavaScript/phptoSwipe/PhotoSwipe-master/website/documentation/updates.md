@@ -1,5 +1,4 @@
 ---
-
 layout: default
 
 title: PhotoSwipe Update Notifications &amp; Changelog
@@ -15,12 +14,11 @@ canonical_url: http://photoswipe.com/documentation/updates.html
 buildtool: true
 
 markdownpage: true
-
 ---
 
 It's very important to keep PhotoSwipe updated, especially during the beta period.
 
-Each time PhotoSwipe gets an update - [GitHub releases](https://github.com/dimsemenov/PhotoSwipe/releases) page is updated with details about release. 
+Each time PhotoSwipe gets an update - [GitHub releases](https://github.com/dimsemenov/PhotoSwipe/releases) page is updated with details about release.
 Releases page has an [Atom feed](https://github.com/dimsemenov/PhotoSwipe/releases.atom), you may setup email notifications when feed is updated [using IFTTT](https://ifttt.com/recipes/230902-photoswipe-update-notification):
 
 <div>
@@ -42,4 +40,3 @@ Altervatively, you can follow [@PhotoSwipe on Twitter](http://twitter.com/photos
 	  </form>
 	 </div> 
  </div>
-

@@ -26,7 +26,8 @@ var longestCommonPrefix = function (strs) {
   let val = ''
   Object.entries(res).forEach((item, index) => {
     // 保证顺序同步
-    if (item[0] == index && item[1].split('_')[1] == length - 1) val += item[1].split('_')[0]
+    if (item[0] == index && item[1].split('_')[1] == length - 1)
+      val += item[1].split('_')[0]
   })
   return val
-};
+}

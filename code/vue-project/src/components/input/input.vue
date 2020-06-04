@@ -1,11 +1,7 @@
 <template>
   <div>
     low的一种方式
-    <input
-      type="text"
-      :value="currentValue"
-      @input="handleInput"
-    >
+    <input type="text" :value="currentValue" @input="handleInput" />
   </div>
 </template>
 
@@ -30,5 +26,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

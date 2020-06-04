@@ -1,4 +1,3 @@
-
 <template>
   <div id="app">
     <el-scrollbar
@@ -8,47 +7,57 @@
       viewClass="sc-view"
     >
       <div class="layout">
-        <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}">
-          <Menu
-            theme="dark"
-            width="auto"
-          >
-          <template v-for="item in routes">
-            <template v-if="item.children">
-              <Submenu :key="item.path" :name="item.path">
-                <template slot="title">
-                  <Icon :type="item.meta.icon"></Icon>{{item.meta.title}}
-                </template>
-                <template v-if="item.children">
-                  <MenuItem
-                    v-for="val in item.children"
-                    :key="val.path"
-                    :name="val.path"
-                    :to="{name: val.name}"
-                  >{{val.meta.title}}</MenuItem>
-                </template>
-              </Submenu>
+        <Sider
+          :style="{
+            position: 'fixed',
+            height: '100vh',
+            left: 0,
+            overflow: 'auto',
+          }"
+        >
+          <Menu theme="dark" width="auto">
+            <template v-for="item in routes">
+              <template v-if="item.children">
+                <Submenu :key="item.path" :name="item.path">
+                  <template slot="title">
+                    <Icon :type="item.meta.icon"></Icon>{{ item.meta.title }}
+                  </template>
+                  <template v-if="item.children">
+                    <MenuItem
+                      v-for="val in item.children"
+                      :key="val.path"
+                      :name="val.path"
+                      :to="{ name: val.name }"
+                      >{{ val.meta.title }}</MenuItem
+                    >
+                  </template>
+                </Submenu>
+              </template>
+              <template v-else>
+                <MenuItem
+                  :key="item.path"
+                  :name="item.path"
+                  :to="{ name: item.name }"
+                >
+                  <Icon :type="item.meta.icon"></Icon>{{ item.meta.title }}
+                </MenuItem>
+              </template>
             </template>
-            <template v-else>
-              <MenuItem
-                :key="item.path"
-                :name="item.path"
-                :to="{name: item.name}"
-              >
-                <Icon :type="item.meta.icon"></Icon>{{item.meta.title}}
-              </MenuItem>
-            </template>
-          </template>
           </Menu>
         </Sider>
-        <Layout :style="{marginLeft: '200px'}">
-          <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}">
-            <h1>{{handleTilte()}}</h1>
+        <Layout :style="{ marginLeft: '200px' }">
+          <Header
+            :style="{
+              background: '#fff',
+              boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)',
+            }"
+          >
+            <h1>{{ handleTilte() }}</h1>
           </Header>
-          <Content :style="{padding: '0 16px 16px'}">
-            <Breadcrumb :style="{margin: '16px 0'}">
+          <Content :style="{ padding: '0 16px 16px' }">
+            <Breadcrumb :style="{ margin: '16px 0' }">
               <BreadcrumbItem to="/">Home</BreadcrumbItem>
-              <BreadcrumbItem>{{titleName}}</BreadcrumbItem>
+              <BreadcrumbItem>{{ titleName }}</BreadcrumbItem>
             </Breadcrumb>
             <Card>
               <div class="sc-container">
@@ -75,14 +84,15 @@ export default {
   },
   computed: {
     ...mapState({
-      validateMenuList: state => state.validateMenuList,
-      cssMunuList: state => state.cssMunuList,
-      titleType: state => state.titleType,
-      webpackList: state => state.webpackList,
-      vueSlotList: state => state.vueSlotList,
-      vueTest: state => state.vueTest,
-      cachedViews: state => state.cache.cachedViews
+      validateMenuList: (state) => state.validateMenuList,
+      cssMunuList: (state) => state.cssMunuList,
+      titleType: (state) => state.titleType,
+      webpackList: (state) => state.webpackList,
+      vueSlotList: (state) => state.vueSlotList,
+      vueTest: (state) => state.vueTest,
+      cachedViews: (state) => state.cache.cachedViews
     }),
+
     titleName () {
       // return this.$route.matched.length === 1
       //   ? this.$route.matched[0].title
@@ -98,7 +108,7 @@ export default {
         ...this.vueSlotList,
         ...this.vueTest
       ]
-      MENU_LIST.map(item => {
+      MENU_LIST.map((item) => {
         if (this.$route.name === item.router) {
           activeRouter = item.name
         }
@@ -121,13 +131,13 @@ export default {
     handleTilte () {
       if (!this.actived) return ''
       const N = this.actived.slice(0, 1)
-      return this.titleType.filter(item => {
+      return this.titleType.filter((item) => {
         return item.type === N
       })[0].title
     },
     getInitActiveViews (routes) {
       let views = []
-      routes.forEach(route => {
+      routes.forEach((route) => {
         if (route.meta && route.meta.alive) {
           views.push(route.name)
         }
@@ -143,24 +153,23 @@ export default {
     setInitActiveViews () {
       const alives = this.getInitActiveViews(this.$router.options.routes)
 
-      alives.forEach(item => {
+      alives.forEach((item) => {
         this.$store.commit('cache/addCacheViews', item)
       })
     }
-
   }
 }
 </script>
 
 <style lang="less">
-@import url("~@/less/base.less");
+@import url('~@/less/base.less');
 html,
 body {
   // height: 100%;
   // width: 100%;
   // overflow: hidden;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
 }
 
 .sc-scrollbar {

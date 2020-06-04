@@ -4,9 +4,9 @@
   </div>
 </template>
 <style lang="postcss">
-  .about {
-    width: 200px;
-    height: 150px;
-    background-color: red;
-  }
+.about {
+  width: 200px;
+  height: 150px;
+  background-color: red;
+}
 </style>

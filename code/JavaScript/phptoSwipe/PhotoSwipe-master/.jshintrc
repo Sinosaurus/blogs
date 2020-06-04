@@ -18,9 +18,5 @@
   "unused": true,
   "maxlen": 140,
 
-  "predef": [
-    "define",
-    "module",
-    "Element"
-  ]
+  "predef": ["define", "module", "Element"]
 }

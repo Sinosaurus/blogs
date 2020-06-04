@@ -13,20 +13,18 @@ export default {
   name: 'attrsListener',
   components: {
     baseTable,
-    baseInheritAttrs
+    baseInheritAttrs,
   },
-  data () {
+  data() {
     return {
       tableData: [
         {
-          test: 'test'
-        }
-      ]
+          test: 'test',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>

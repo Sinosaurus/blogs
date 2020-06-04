@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <!-- https://juejin.im/post/5cbd29d4f265da03914d608d -->
@@ -9,10 +8,10 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
-      tables: []
+      tables: [],
     }
-  }
+  },
 }
 </script>

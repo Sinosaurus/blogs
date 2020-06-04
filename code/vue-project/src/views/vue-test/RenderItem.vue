@@ -32,28 +32,34 @@
 </script>
 
 <script>
-const getChildrenTextContent = children => children.map(node => node.children ? getChildrenTextContent(node.children) : node.text).join('')
+const getChildrenTextContent = (children) =>
+  children
+    .map((node) =>
+      node.children ? getChildrenTextContent(node.children) : node.text
+    )
+    .join('')
 
 export default {
   name: 'render',
-  render (h) {
+  render(h) {
     // build kebab-case style id
     console.log(this.$slots.default)
     const headingId = getChildrenTextContent(this.$slots.default)
       .toLowerCase()
       .replace(/\W+/g, '-')
       .replace(/(^-|-$)/g, '')
-    return h(
-      'h1',
-      [
-        h('a', {
+    return h('h1', [
+      h(
+        'a',
+        {
           attrs: {
             name: headingId,
-            href: '#'+headingId
-          }
-        }, this.$slots.default)
-      ]
-    )
-  }
+            href: '#' + headingId,
+          },
+        },
+        this.$slots.default
+      ),
+    ])
+  },
 }
 </script>

@@ -1,14 +1,18 @@
 # 个人中心
+
 参考资料如下
-+ [微信--小程序登录](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html)
-+ [union-id](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/union-id.html)
-+ [用户信息](https://www.youtube.com/watch?v=KW1yAGa3d28&list=PLXbU-2B80FvA5bNILAS8-zY3_KkE-PVn0&index=25)
-> 需要知道几个要点
-+ `union-id`和`openid`是两个不同的概念，`union-id`不同小程序公用，`openid`对应唯一小程序
-+ 获取用户信息时，**开发者服务器**需要去调用**微信接口服务**
+
+- [微信--小程序登录](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html)
+- [union-id](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/union-id.html)
+- [用户信息](https://www.youtube.com/watch?v=KW1yAGa3d28&list=PLXbU-2B80FvA5bNILAS8-zY3_KkE-PVn0&index=25)
+  > 需要知道几个要点
+- `union-id`和`openid`是两个不同的概念，`union-id`不同小程序公用，`openid`对应唯一小程序
+- 获取用户信息时，**开发者服务器**需要去调用**微信接口服务**
 
 ## 前后台设计 [微信](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html)
+
 > 前台请求
+
 ```app.js
 // 生命周期函数 onLaunch中进行请求
 wx.login({
@@ -17,7 +21,9 @@ wx.login({
   }
 })
 ```
+
 > 后台请求
+
 ```
 // node hapi.js
 const Config = require('config/config') // 存储一些基础信息
@@ -47,9 +53,11 @@ handler: async (req, res) => {
   })
 }
 ```
->上面是大致效果,由于我使用了 `jsonwebtoken` 因而在请求时还需要依赖 `wx.getUserInfo`中的某些参数，因而需要进行改造
+
+> 上面是大致效果,由于我使用了 `jsonwebtoken` 因而在请求时还需要依赖 `wx.getUserInfo`中的某些参数，因而需要进行改造
 
 > 前端请求
+
 ```
 wx.login({
   success: res => {
@@ -76,7 +84,7 @@ wx.login({
                 encryptedData,
                 iv
               } = res
-              
+
               wx.request({
                 url: baseURL + '/user/wxlogin',
                 header: {
@@ -106,12 +114,14 @@ wx.login({
   }
 })
 ```
+
 后台只需要加对应的需求即可
 
 ## 总结
-+ 很多地方都会进行数据请求，可以进行封装一套
-  + [基础封装版](https://segmentfault.com/a/1190000014789969)
-  + [class类](https://blog.csdn.net/benxiaohai529/article/details/80649296)
-+ 获取数据，可能需要多个`api`，这个没办法，微信已经如此，麻烦
-+ [后台代码](https://gitee.com/love-zhen/learning_program_2019/tree/master/node_hapi/server)
-+ [前端代码](https://gitee.com/love-zhen/learning_program_2019/tree/master/miniprogram/development)
+
+- 很多地方都会进行数据请求，可以进行封装一套
+  - [基础封装版](https://segmentfault.com/a/1190000014789969)
+  - [class 类](https://blog.csdn.net/benxiaohai529/article/details/80649296)
+- 获取数据，可能需要多个`api`，这个没办法，微信已经如此，麻烦
+- [后台代码](https://gitee.com/love-zhen/learning_program_2019/tree/master/node_hapi/server)
+- [前端代码](https://gitee.com/love-zhen/learning_program_2019/tree/master/miniprogram/development)

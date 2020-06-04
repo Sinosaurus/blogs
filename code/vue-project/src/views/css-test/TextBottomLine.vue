@@ -7,10 +7,7 @@
           text-decoration: underline;
         }
       </pre>
-      <a
-        class="link"
-        href="#/"
-      >我是横线</a>
+      <a class="link" href="#/">我是横线</a>
     </section>
     <section class="item">
       <pre class="prettyprint">
@@ -18,10 +15,9 @@
         <code class="lang-html">{{css1}}</code>
       </pre>
       <div class="item-1">
-        <a
-        class="link1"
-        href="#/"
-      >我是横线我是横线我是横线我是横线我是横线我是横线我是横线我是横线我是横线</a>
+        <a class="link1" href="#/"
+          >我是横线我是横线我是横线我是横线我是横线我是横线我是横线我是横线我是横线</a
+        >
       </div>
     </section>
     <section class="item"></section>
@@ -29,7 +25,7 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       item1: `
         <div class="item-1">
@@ -46,14 +42,14 @@ export default {
         .link1 {
           border-bottom: 2px solid #ccc;
         }
-      `
+      `,
     }
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       this.$prettyPrint.prettyPrint()
     })
-  }
+  },
 }
 </script>
 

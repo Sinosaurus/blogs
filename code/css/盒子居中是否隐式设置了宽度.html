@@ -1,51 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      .container {
+        height: 200px;
+        position: relative;
+        margin: 50px auto;
+        border-top: 2px solid #333;
+        border-bottom: 2px solid #333;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <style>
-    body{
-      margin: 0;
-    }
-    .container {
-      height: 200px;
-      position: relative;
-      margin: 50px auto;
-      border-top: 2px solid #333;
-      border-bottom: 2px solid #333;
-    }
-
-    .box {
-      position: absolute;
-      /* left: 50%;
+      .box {
+        position: absolute;
+        /* left: 50%;
       transform: translateX(-50%); */
-      left: 0;
-      top: 0;
-      bottom: 0;
-      right: 0;
-    }
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+      }
+    </style>
+  </head>
 
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <div class="box">
-      <h2>测试 -- 中间换行（相当于添加了空格）</h2>
-      <p>
-       hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-      </p>
+  <body>
+    <div class="container">
+      <div class="box">
+        <h2>测试 -- 中间换行（相当于添加了空格）</h2>
+        <p>
+          hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+          hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+        </p>
+      </div>
     </div>
-  </div>
-  <h2>对比</h2>
-  <p>
+    <h2>对比</h2>
+    <p>
       hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-
       hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-  </p>
-</body>
-
+    </p>
+  </body>
 </html>

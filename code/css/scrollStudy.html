@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>scroll</title>
-  <style>
-    .client-xyz {
-      margin: auto;
-      width: 40vw;
-      margin: 10vw;
-      /* margin-top: 30vh;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>scroll</title>
+    <style>
+      .client-xyz {
+        margin: auto;
+        width: 40vw;
+        margin: 10vw;
+        /* margin-top: 30vh;
       padding: 30px;
       height: 200px;
       border: 20px solid;
       overflow: auto; */
-    }
-    p {
-      margin: 20px;
-      padding: 20px;
-      /* border: 30px solid #333; */
-      /* border: 10vw solid #333; */
-      /* border: calc(100px - 70px) solid #333; */
-      border: 30px solid #333;
-      word-break: keep-all;
-      overflow-y: scroll;
-    }
-    .box {
-      width: 25vw;
-      margin: auto;
-    }
-  </style>
-</head>
-<body>
-    <!-- https://juejin.im/post/5b8905456fb9a01a105966b4 -->
-  <section class="client-xyz">
-    <p>我是很长很长的内容我是很长很长的内容我是很长很长的内容我是很长很长的内容我是很长很长的内容我是很长很长的内容</p>
-  </section>
-  <div class="box">
-    <ul>
-      <li>width: <span data-params="width"></span></li>
-      <li>height: <span data-params="height"></span></li>
-      <li>padding: <span data-params="padding"></span></li>
-      <li>margin: <span data-params="margin"></span></li>
-      <li>border: <span data-params="border"></span></li>
-      <li>scrollbar: <span data-params="scrollbar"></span></li>
-      <li>clientWidth: <span data-params="clientWidth"></span></li>
-      <li>offsetWidth: <span data-params="offsetWidth"></span></li>
-      <li>scrollWidth: <span data-params="scrollWidth"></span></li>
-    </ul>
-  </div>
-  <script>
-    const Box = document.querySelector('p')
-    const needWidth = [
-     'clientWidth',
-     'offsetWidth',
-     'scrollWidth'
-    ]
-    
-    let obj = {}
-    needWidth.forEach(item => {
-      obj[item] = Box[item]
-    })
-
-    let border = 0
-    const style = window.getComputedStyle(Box, null)
-      // 最终获取的都是px
-    border = parseFloat(style['borderRightWidth'].replace('px', '')) + parseFloat(style['borderLeftWidth'].replace('px', ''))
-
-    Array.from(document.querySelectorAll('span')).forEach(item => {
-      const type = item.dataset.params
-      item.innerText = style[type] || obj[type]
-      if (type === 'scrollbar') {
-        item.innerText = obj.offsetWidth - obj.clientWidth - border
       }
-    })
-  </script>
-</body>
+      p {
+        margin: 20px;
+        padding: 20px;
+        /* border: 30px solid #333; */
+        /* border: 10vw solid #333; */
+        /* border: calc(100px - 70px) solid #333; */
+        border: 30px solid #333;
+        word-break: keep-all;
+        overflow-y: scroll;
+      }
+      .box {
+        width: 25vw;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- https://juejin.im/post/5b8905456fb9a01a105966b4 -->
+    <section class="client-xyz">
+      <p>
+        我是很长很长的内容我是很长很长的内容我是很长很长的内容我是很长很长的内容我是很长很长的内容我是很长很长的内容
+      </p>
+    </section>
+    <div class="box">
+      <ul>
+        <li>width: <span data-params="width"></span></li>
+        <li>height: <span data-params="height"></span></li>
+        <li>padding: <span data-params="padding"></span></li>
+        <li>margin: <span data-params="margin"></span></li>
+        <li>border: <span data-params="border"></span></li>
+        <li>scrollbar: <span data-params="scrollbar"></span></li>
+        <li>clientWidth: <span data-params="clientWidth"></span></li>
+        <li>offsetWidth: <span data-params="offsetWidth"></span></li>
+        <li>scrollWidth: <span data-params="scrollWidth"></span></li>
+      </ul>
+    </div>
+    <script>
+      const Box = document.querySelector('p')
+      const needWidth = ['clientWidth', 'offsetWidth', 'scrollWidth']
+
+      let obj = {}
+      needWidth.forEach((item) => {
+        obj[item] = Box[item]
+      })
+
+      let border = 0
+      const style = window.getComputedStyle(Box, null)
+      // 最终获取的都是px
+      border =
+        parseFloat(style['borderRightWidth'].replace('px', '')) +
+        parseFloat(style['borderLeftWidth'].replace('px', ''))
+
+      Array.from(document.querySelectorAll('span')).forEach((item) => {
+        const type = item.dataset.params
+        item.innerText = style[type] || obj[type]
+        if (type === 'scrollbar') {
+          item.innerText = obj.offsetWidth - obj.clientWidth - border
+        }
+      })
+    </script>
+  </body>
 </html>

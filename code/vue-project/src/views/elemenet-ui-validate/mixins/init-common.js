@@ -5,13 +5,13 @@ import { mapState } from 'vuex'
 export default {
   computed: {
     ...mapState('formData', {
-      areaList: state => state.formInitData.areaList,
-      typeList: state => state.formInitData.typeList
-    })
+      areaList: (state) => state.formInitData.areaList,
+      typeList: (state) => state.formInitData.typeList,
+    }),
   },
   methods: {
-    submitForm (formName) {
-      this.$refs[formName].validate(valid => {
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
         if (valid) {
           // this.$Loading.start()
           // const timerId = setTimeout(() => {
@@ -24,8 +24,8 @@ export default {
         }
       })
     },
-    resetForm (formName) {
+    resetForm(formName) {
       this.$refs[formName].resetFields()
-    }
-  }
+    },
+  },
 }

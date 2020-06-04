@@ -1,19 +1,23 @@
 <template>
   <div class="vue-prop-child">
-    <p>prop 只能选择 <span class="code-red">['small', 'middle', 'large', 'default']</span> 这里的值进行传递</p>
+    <p>
+      prop 只能选择
+      <span class="code-red">['small', 'middle', 'large', 'default']</span>
+      这里的值进行传递
+    </p>
     <ul class="box-content">
       <li class="small">small</li>
       <li class="middle">middle</li>
       <li class="large">large</li>
       <li class="default">default</li>
     </ul>
-    <div
-      :class="child"
-      class="prop-child"
-    >
-      传递的参数 <span class="params">{{child}}</span> <span class="p-red" :class="{ 'p-green' : isTrue }">{{!isTrue ? '传参不对' : '传参正确'}}</span>
+    <div :class="child" class="prop-child">
+      传递的参数 <span class="params">{{ child }}</span>
+      <span class="p-red" :class="{ 'p-green': isTrue }">{{
+        !isTrue ? '传参不对' : '传参正确'
+      }}</span>
       <pre v-if="!isTrue">
-        {{error}}
+        {{ error }}
       </pre>
     </div>
   </div>
@@ -29,10 +33,10 @@ export default {
       validator(value) {
         return isOne(value)
       },
-      default: 'default'
-    }
+      default: 'default',
+    },
   },
-  data () {
+  data() {
     return {
       error: `
         <Child> at src/views/vue-test/DataTransmission/PropTestChild.vue
@@ -44,14 +48,14 @@ export default {
                       <ElScrollbar>
                         <App> at src/App.vue
                           <Root>
-      `
+      `,
     }
   },
   computed: {
-    isTrue () {
+    isTrue() {
       return isOne(this.child)
-    }
-  }
+    },
+  },
 }
 </script>
 

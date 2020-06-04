@@ -1,26 +1,31 @@
+# vue-cli 如何添加多种环境变量
 
-# vue-cli如何添加多种环境变量
-> 目前webpack(vue-cli) 打包有两种变量，`development`, `productor`, 如何添加一个 `test`的测试环境呢
+> 目前 webpack(vue-cli) 打包有两种变量，`development`, `productor`, 如何添加一个 `test`的测试环境呢
 
 ### vue-cli 3.0
 
-> vue-cli3.0简化了业务需求，没有那么多额外的配置，目前想改变环境变量，官方[默认如此](https://cli.vuejs.org/zh/guide/mode-and-env.html#%E6%A8%A1%E5%BC%8F), 网友[1](https://segmentfault.com/a/1190000015133974)
+> vue-cli3.0 简化了业务需求，没有那么多额外的配置，目前想改变环境变量，官方[默认如此](https://cli.vuejs.org/zh/guide/mode-and-env.html#%E6%A8%A1%E5%BC%8F), 网友[1](https://segmentfault.com/a/1190000015133974)
 
 > 官方默认两种类型 `develpoment` `production`,而我们实际开发过程中，会有本地开发，测试环境，正式环境等等，因而这两种环境变量是不够的，因而需要第三种乃至多种变量环境
 
-## 基于vue-cli3.0进行配置
+## 基于 vue-cli3.0 进行配置
+
 You can specify env variables by placing the following files in your project root:
+
 ```
 .env                # loaded in all cases
 .env.local          # loaded in all cases, ignored by git
 .env.[mode]         # only loaded in specified mode
 .env.[mode].local   # only loaded in specified mode, ignored by git
 ```
+
 An env file simply contains key=value pairs of environment variables:
+
 ```
 FOO=bar
 VUE_APP_SECRET=secre
 ```
+
 > 上面所述，在根目录配置 `.env`,`.env.[mode]`...的文件，其次需要以`VUE_APP`开头进行变量申明
 
 ## 搭建项目进行测试
@@ -36,7 +41,8 @@ package.json
 
 > 每个文件的具体内容
 
->.env.development
+> .env.development
+
 ```
 /* VUE_APP_CURRENTMODE 当前环境变量 */
 VUE_APP_CURRENTMODE = 'development'
@@ -44,14 +50,16 @@ VUE_APP_ENV = 'development环境'
 VUE_APP_LOGOUT_URL = 'http://l72.16.0.95/logout_development'
 ```
 
->.env.production
+> .env.production
+
 ```
 VUE_APP_CURRENTMODE = 'production'
 VUE_APP_ENV = 'production环境'
 VUE_APP_LOGOUT_URL = 'http://l72.16.0.95/logout_production'
 ```
 
->.env.test
+> .env.test
+
 ```
 /* NODE_ENV 目的用于指定是一开发还是生产形式进行操作 */
 NODE_ENV = 'development'
@@ -61,6 +69,7 @@ VUE_APP_LOGOUT_URL = 'http://baidu.cn/logout_test'
 ```
 
 > package.json
+
 ```
 ...
  "scripts": {
@@ -73,24 +82,25 @@ VUE_APP_LOGOUT_URL = 'http://baidu.cn/logout_test'
  ...
 ```
 
-> `NODE_ENV`,  `VUE_APP_*` ...需要多注意一下
+> `NODE_ENV`, `VUE_APP_*` ...需要多注意一下
 
 通过上面配置，`VUE_APP_LOGOUT_URL` 在不同环境变量生成不同的对应退出链接，
 一下便是具体展示效果
 
 > `yarn serve` // 开发环境
-<img src="./../images/vue_cli_webpack/development.png" />
+> <img src="./../images/vue_cli_webpack/development.png" />
 
 > `yarn test-serve` // 测试环境
-<img src="./../images/vue_cli_webpack/test.png" />
+> <img src="./../images/vue_cli_webpack/test.png" />
 
 > `yarn build` // 生产环境
-<img src="./../images/vue_cli_webpack/production.png" />
+> <img src="./../images/vue_cli_webpack/production.png" />
 
 ## 通过这样配置，只用通过命令行便可以生成不同环境下的项目，如此便可以不用每次都要去改动具体的变量了
 
-## vue-cli2配置
-> 现在vue-cli2的文档被vue-cli3替代了，只能用这种最low但却最简单的办法来解决问题
+## vue-cli2 配置
+
+> 现在 vue-cli2 的文档被 vue-cli3 替代了，只能用这种最 low 但却最简单的办法来解决问题
 
 ```项目结构
 ...
@@ -102,20 +112,22 @@ webpack.prod.conf.js
 ```
 
 > `build`文件夹下 新增一个需要的环境 `webpack.dev.conf.test.js`直接复制 `webpack.dev.conf.js`即可，
-`config`文件夹下，添加一个`dev.env.test.js`
+> `config`文件夹下，添加一个`dev.env.test.js`
 
 > webpack.dev.conf.test.js
+
 ```
 ...
 plugins: [
   new webpack.DefinePlugin({
   // 环境变量  改为自己设定的变量即可
-  'process.env': require('../config/dev.env.test') 
+  'process.env': require('../config/dev.env.test')
 })
 ...
 ```
 
 > dev.env.test.js 依旧复制对应 dev.env.js
+
 ```
 'use strict'
 const merge = require('webpack-merge')
@@ -128,30 +140,33 @@ module.exports = merge(prodEnv, {
   VUE_APP_LOGOUT_URL: '"http://l72.16.0.95/logout_testing"'
 })
 ```
+
 此处注意申明的变量 都需要 `'"var"'`这样定义，不然拿不到值
 
 > 最后在`package.json`
-中添加 `"test-dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.test.js",`即可
+> 中添加 `"test-dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.test.js",`即可
 
 > 最后各种效果图
 
 1. `npm run dev`
-<img src="./../images/vue_cli_webpack/vc2-development.png" />
+   <img src="./../images/vue_cli_webpack/vc2-development.png" />
 
 2. `npm run test-dev`
-<img src="./../images/vue_cli_webpack/vc2-test.png" />
+   <img src="./../images/vue_cli_webpack/vc2-test.png" />
 
 3. `npm run build`
-<img src="./../images/vue_cli_webpack/vc2-production.png" />
-
+   <img src="./../images/vue_cli_webpack/vc2-production.png" />
 
 ## 总结
-+ 开发环境依旧是两种 `development` `production`,只是在这两种基础上进行具体指定不同变量罢了，因而所谓的测试环境只是在生产环境中，另外列出一种变量，这样用于区分生产与测试的不同而已
-+ 目前vue-cli2和vue-cli3就都可以使用了，细节肯定都需要更多优化
-+ 对应的代码[码云](https://gitee.com/private_sheet/blogs/tree/master/code)
+
+- 开发环境依旧是两种 `development` `production`,只是在这两种基础上进行具体指定不同变量罢了，因而所谓的测试环境只是在生产环境中，另外列出一种变量，这样用于区分生产与测试的不同而已
+- 目前 vue-cli2 和 vue-cli3 就都可以使用了，细节肯定都需要更多优化
+- 对应的代码[码云](https://gitee.com/private_sheet/blogs/tree/master/code)
 
 ### vuecli2 补充
+
 > `package.json`
+
 ```
 "scripts": {
   "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -163,22 +178,26 @@ module.exports = merge(prodEnv, {
 }
 ```
 
-
-+ 方式一
-> 查了一些资料，对`package.json`有了更多的一些了解，才发现其实通过环境变量会有更加简洁的方案。[npm_lifecycle_event](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
+- 方式一
+  > 查了一些资料，对`package.json`有了更多的一些了解，才发现其实通过环境变量会有更加简洁的方案。[npm_lifecycle_event](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
 
 修改之前的方案
+
 > prod.env.js
+
 ```
 const env = process.env.npm_lifecycle_event === 'build' ? require('../config/prod.env') : require('../config/prod.env.test')
 ```
-+ 方式二
-> 通过传参模式进行判断 `process.argv` `--`表示传参，我添加`=`是为了表示传参方便，便于识别
+
+- 方式二
+  > 通过传参模式进行判断 `process.argv` `--`表示传参，我添加`=`是为了表示传参方便，便于识别
+
 ```
 "test": "node build/build.js --test=123 --build=12346"
 ```
 
 > 获取参数
+
 ```
 const PARAMS = process.argv.splice(2)
 function getKeyValue (params = []) {
@@ -192,9 +211,7 @@ function getKeyValue (params = []) {
 }
 const r = getKeyValue(PARAMS) // { test: '123', build: '12346' }
 ```
+
 如此便可以在`require`时进行判断，具体选择哪一个即可
 
 ### 总结，这样就又多了几种方式，如此便更好使用
-
-
-

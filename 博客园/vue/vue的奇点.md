@@ -1,12 +1,14 @@
 # vue 的特殊点
 
 ## 子组件调用父组件方法
+
 > 之前只知道 子可以调用父组件的方法是通过其他方式
 > 今天发现可以通过类似传值的方式进行调用 很奇怪
 
-+ 之前的方式 以 **emit**进行调用
+- 之前的方式 以 **emit**进行调用
 
->子组件 `sonComponents`
+> 子组件 `sonComponents`
+
 ```
 // template
 <button @click="sonMethods"></button>
@@ -17,11 +19,13 @@ methods: {
     }
 }
 ```
->父组件
+
+> 父组件
+
 ```
 // template
 <sonComponents @parentMethods="consol">
-//js 
+//js
 methods: {
     consol() {
         console.log('子组件调用父组件的方法')
@@ -29,20 +33,23 @@ methods: {
 }
 ```
 
-+ 以 **props** 的方式 进行调用
+- 以 **props** 的方式 进行调用
 
 > 子组件 `sonComponents`
+
 ```
 // template
 <button @click="parentData"></button>
 //js
 props: ['parentData']
 ```
+
 > 父组件
+
 ```
 //template
 <sonComponents :parentData="parentMethods" />
-//js 
+//js
 methods: {
     parentMethods() {
         console.log('以props进行调用')
@@ -50,9 +57,11 @@ methods: {
 }
 ```
 
-## class的实例方法
+## class 的实例方法
+
 > 一般而言 类的方法直接写在`class`里面的，但是这样却限定了扩展，想额外自定义方法便很难，需要在类中都写好为止，以前`es5`也是如此，可能是我孤陋寡闻了
-> class写法  **this.aa()**
+> class 写法 **this.aa()**
+
 ```
 class Zhen {
     constructor(...params) {
@@ -79,7 +88,8 @@ a1.aa = () => {
 a1.play()
 ```
 
-> es5  **this.aa()**
+> es5 **this.aa()**
+
 ```
 function Zhenone (...params) {
   for (let i = params.length -1; i >= 0; i--) {

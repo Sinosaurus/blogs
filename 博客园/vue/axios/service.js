@@ -1,3 +1,1 @@
-class HttpServer {
-    
-}
+class HttpServer {}

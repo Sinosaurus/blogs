@@ -1,14 +1,16 @@
-## vue项目搭建 （二） axios 封装篇
+## vue 项目搭建 （二） axios 封装篇
 
-## 项目布局 
+## 项目布局
+
 > `vue-cli`构建初始项目后，在`src`中进行增删修改
+
 ```
 // 此处是模仿github上  bailicangdu  的
-├── src   
-|   ├── apis                                    
-|   |   ├── api.js                              // 接口详情配置      
+├── src
+|   ├── apis
+|   |   ├── api.js                              // 接口详情配置
 │   ├── components                              // 组件
-|   |   ├── common                              // 公共组件  
+|   |   ├── common                              // 公共组件
 │   ├── config                                  // 基本配置
 │   │   ├── fetch.js                            // 获取数据
 │   ├── service                                 // 数据交互统一调配
@@ -23,7 +25,7 @@ import axios from 'axios'
 import qs from 'qs'
 import { baseUrl, isFrom } from './../apis/api.js'
 const baseURL = baseUrl
-// 假设 api里定义了一个请求头类型 
+// 假设 api里定义了一个请求头类型
 const isFrom = isFrom
 const headers = isFrom ? {'Content-Type': 'application/x-www-form-urlencoded'} : {'Content-Type': 'application/json', 'Accept': 'application/json'}
 // axios实例
@@ -63,7 +65,7 @@ instance.interceptors.response.use(response => {
     return response.data
 }, error => {
     return Promise.reject(error)
-}) 
+})
 const fetch = {
   post(url, request, status = '0000') {
       return new Promise((resolve, reject) => {
@@ -90,12 +92,12 @@ const fetch = {
       return new Promise((resolve, reject) => {
           instance({
               method: 'get',
-              url: url + '?' + data     
+              url: url + '?' + data
           }).then(response => {
               const res = response.data
               if (res && response.status === status) {
                   response(res)
-              }          
+              }
               resject(res)
           }).catch(error => {
               reject(error)
@@ -106,8 +108,9 @@ const fetch = {
 export default fetchs
 ```
 
-+ **`service`**
+- **`service`**
   - `getData.js`
+
 ```
 // apis getTableList
 import fetch from './../config/fetch.js'
@@ -115,9 +118,10 @@ import { apis } from './../apis/api.js'
 export const  getTableList = data => fetch.post(apis.getTableList, data)
 ```
 
-+ **component**
+- **component**
   - table.vue (某个组件)
-  - *注意 单个请求多个请求*
+  - _注意 单个请求多个请求_
+
 ```
 // js
 import {getTableList, getList} from './../service/getData.js'
@@ -137,7 +141,8 @@ export default {
 }
 ```
 
-> 至此，封装axios差不多完结，这算是花费自己几周的时间，来想的吧
-+ 有的人人为在请求时排除接口相同的请求，但是我碰到过，统一接口，通过传入不同参数，可以拿到不同数据，因而不太建议排除，若是排除还需更加细致为好
-+ **并发**目前是我人为比较好的处理方式，之前考虑`axios.all`感觉封装很麻烦，突然看到有人使用 `await Promise.all()` 甚是喜欢
-+ 若是有问题之处，依旧希望大家多多指正
+> 至此，封装 axios 差不多完结，这算是花费自己几周的时间，来想的吧
+
+- 有的人人为在请求时排除接口相同的请求，但是我碰到过，统一接口，通过传入不同参数，可以拿到不同数据，因而不太建议排除，若是排除还需更加细致为好
+- **并发**目前是我人为比较好的处理方式，之前考虑`axios.all`感觉封装很麻烦，突然看到有人使用 `await Promise.all()` 甚是喜欢
+- 若是有问题之处，依旧希望大家多多指正

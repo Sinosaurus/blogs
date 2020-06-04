@@ -10,14 +10,14 @@
 <script>
 export default {
   methods: {
-    goChild () {
+    goChild() {
       this.$router.push({
-        name: 'one'
+        name: 'one',
       })
-    }
+    },
   },
-  created () {
+  created() {
     alert('created--p')
-  }
+  },
 }
 </script>

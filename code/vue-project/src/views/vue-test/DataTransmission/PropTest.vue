@@ -3,10 +3,10 @@
     <h3>指定prop传递参数</h3>
     <pre>
       https://cn.vuejs.org/v2/guide/components-props.html
-      {{vue_code_example}}
+      {{ vue_code_example }}
     </pre>
     <div class="s-input">
-      <input type="text" v-model="p_prop">
+      <input type="text" v-model="p_prop" />
     </div>
     <Child :child="p_prop" />
   </div>
@@ -18,7 +18,7 @@ import SInput from '@/components/input/input'
 export default {
   components: {
     Child,
-    SInput
+    SInput,
   },
   data() {
     return {
@@ -56,16 +56,16 @@ export default {
               }
             }
           }
-        })`
+        })`,
     }
-  }
+  },
 }
 </script>
 
 <style lang="less">
 code,
 pre {
-  font-family: "Roboto Mono", Monaco, courier, monospace;
+  font-family: 'Roboto Mono', Monaco, courier, monospace;
   font-size: 0.8em;
   background-color: #f8f8f8;
   padding: 1.2em 1.4em;
@@ -74,6 +74,6 @@ pre {
   border-radius: 5px;
 }
 .s-input {
-    margin-top: 10px;
-  }
+  margin-top: 10px;
+}
 </style>

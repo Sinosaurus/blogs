@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>style样式类名</title>
-	<script src="./../node_modules/vue/dist/vue.js"></script>
-	<style>
-		.red {
-			color: red
-		}
-		.blue {
-			color: blue
-		}
-		.bold {
-			font-weight: 900;
-		}
-		.style {
-			font-style: italic;
-		}
-	</style>
-</head>
-<body>
-	<div id="app">
-        <p :class="[{red: isflag, blue: !isflag},bold, style]">{{msg}}</p>
-		<button @click="toggleClass">toggle-class</button>
-		<h1 :class="[isflag? blue: red]">是否变蓝, 三运表达式</h1>
-	</div>
-	<script>
-	    new Vue({
-			el: '#app',
-			data: {
-				msg: '类名使用进行测试',
-				isflag: 1,
-				blue: 'blue',
-				red: 'red',
-				bold: 'bold',
-				style: 'style',
-			},
-			methods: {
-				toggleClass() {
-                  this.isflag = !this.isflag
-				}
-			}
-		})
-	</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>style样式类名</title>
+    <script src="./../node_modules/vue/dist/vue.js"></script>
+    <style>
+      .red {
+        color: red;
+      }
+      .blue {
+        color: blue;
+      }
+      .bold {
+        font-weight: 900;
+      }
+      .style {
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <p :class="[{red: isflag, blue: !isflag},bold, style]">{{msg}}</p>
+      <button @click="toggleClass">toggle-class</button>
+      <h1 :class="[isflag? blue: red]">是否变蓝, 三运表达式</h1>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          msg: '类名使用进行测试',
+          isflag: 1,
+          blue: 'blue',
+          red: 'red',
+          bold: 'bold',
+          style: 'style',
+        },
+        methods: {
+          toggleClass() {
+            this.isflag = !this.isflag
+          },
+        },
+      })
+    </script>
+  </body>
 </html>

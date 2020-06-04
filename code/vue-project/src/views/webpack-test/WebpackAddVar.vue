@@ -10,11 +10,8 @@
     <main class="wb-main">
       <p class="wb-main-title">用来读取环境变量，颜色相同，代表对应的环境</p>
       <section :class="`wb-${envInfo.VUE_APP_CURRENTMODE}`">
-        <p
-          v-for="(item, index) in envInfo"
-          :key="index"
-        >
-          {{index}} : {{item}}
+        <p v-for="(item, index) in envInfo" :key="index">
+          {{ index }} : {{ item }}
         </p>
       </section>
     </main>
@@ -23,11 +20,11 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      envInfo: process.env
+      envInfo: process.env,
     }
-  }
+  },
 }
 </script>
 

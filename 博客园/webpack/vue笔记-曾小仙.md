@@ -1,20 +1,21 @@
 node vscode git vue-cli webpack gulp
 
-## Vue基础
+## Vue 基础
 
-> MVC：对项目的整体把控,M代表的是数据库中的数据,V代表的是前端的视图层，C用于处理M和V之间进行交互的业务逻辑(业务逻辑需要程序员自己控制，自己编写)
+> MVC：对项目的整体把控,M 代表的是数据库中的数据,V 代表的是前端的视图层，C 用于处理 M 和 V 之间进行交互的业务逻辑(业务逻辑需要程序员自己控制，自己编写)
 
-> MVVM:主要用于一些前端的框架,对MVC三层架构中的视图层再次进行层次划分，M是当前一个视图中需要用到的数据,V就是当前视图,VM负责M和V之间的数据调度,内部已经帮你完成了数据的绑定和交互
+> MVVM:主要用于一些前端的框架,对 MVC 三层架构中的视图层再次进行层次划分，M 是当前一个视图中需要用到的数据,V 就是当前视图,VM 负责 M 和 V 之间的数据调度,内部已经帮你完成了数据的绑定和交互
 
-> MVC和MVVM之间的区别:MVC数据流通是单向的,MVVM是双向数据绑定
+> MVC 和 MVVM 之间的区别:MVC 数据流通是单向的,MVVM 是双向数据绑定
 
     M - C - V
     V - C - M
 
     M - VM(不经过VM进行逻辑处理也能直接更新视图) - V
     V - M
+
 > 双向数据绑定的意思就是模型中的数据可以之间更新到视图上,视图中的数据发生改变也可以直接更新到模型中
-能够做到双向数据绑定(通信)的原因:就是因为有VM的存在，VM内部的实现一般是框架已经处理完成,不需要程序员进行控制
+> 能够做到双向数据绑定(通信)的原因:就是因为有 VM 的存在，VM 内部的实现一般是框架已经处理完成,不需要程序员进行控制
 
 ### 系统指令
 
@@ -40,7 +41,7 @@ Vue.filter('过滤器名称',function(value,arg){
 
 ### 自定义指令
 
-> `指令`: 其实就是Vue给我们提供的操作DOM元素的一些方法
+> `指令`: 其实就是 Vue 给我们提供的操作 DOM 元素的一些方法
 
 - 全局指令
 
@@ -117,59 +118,66 @@ new Vue({
 })
 ```
 
-
-## vue-resource发生ajax请求
+## vue-resource 发生 ajax 请求
 
 > vue.studyit.io
 
 ```javascript
 // get请求
-this.$http.get('url').then(function(res){
-    // res.body 里面就是请求回来的数据
+this.$http.get('url').then(function (res) {
+  // res.body 里面就是请求回来的数据
 })
 
 // post 请求 application/x-www-form-urlencode -> name=zs&age=18
 // application/json => {'name':'zs','age':18}
-this.$http.post('url',{name:'zs',age:18},{emulateJSON:true}).then(function(res){
+this.$http
+  .post('url', { name: 'zs', age: 18 }, { emulateJSON: true })
+  .then(function (res) {
     // res.body
-})
+  })
 
 // jsonp请求
-this.$http.jsonp('url').then(function(res){
-    // res.body
+this.$http.jsonp('url').then(function (res) {
+  // res.body
 })
 ```
 
-- **JSONP**:JSON数据格式的一种使用方式,用于解决跨域问题
-- **跨域**: 由于浏览器同源策略的限制,不同源的URL不能互相通信,这种现象叫做跨域
+- **JSONP**:JSON 数据格式的一种使用方式,用于解决跨域问题
+- **跨域**: 由于浏览器同源策略的限制,不同源的 URL 不能互相通信,这种现象叫做跨域
 - **同源策略**: 两个域名只有 **协议** **主机地址** **端口号**完全一致时才能相互通信访问
-- JSONP实现原理：利用script标签的src属性发送请求不受同源策略的限制这个机制去实现跨域资源共享(script标签能够跨域访问是历史遗留问题,并不安全) 
+- JSONP 实现原理：利用 script 标签的 src 属性发送请求不受同源策略的限制这个机制去实现跨域资源共享(script 标签能够跨域访问是历史遗留问题,并不安全)
 
-    1. 动态创建一个script标签,并且将需要请求的URL地址设置给script标签的src属性,同时在URL地址后面拼接上一个回调函数名称
+  1. 动态创建一个 script 标签,并且将需要请求的 URL 地址设置给 script 标签的 src 属性,同时在 URL 地址后面拼接上一个回调函数名称
+
 ```
         function getJson(data){
             console.log(data)
         }
         <script src = 'http://lovegf.cn/jsonp?callback=getJson'> // getJson就是在前端本地定义好的一个方法的方法名
- ```   
+```
+
     2. 后台接收到该请求后,先根据参数判断是否是JSONP请求,如果是,则将客户端请求的数据整理好,和前端发送过来的方法名一起拼接成一个函数调用的字符串,客户端需要的数据就是这个函数调用时传的参数
+
 ```
         // 假设要发送给前端的数据是 'ok'
         'getJson('ok')'
         // 响应给前端
         res.end('getJson('ok')')
- ```   
+```
+
     3. 由于后台响应回来的数据是一个字符串,而且是函数调用,所以前端拿到响应回来的数据相当于调用了该方法,那么前端定义好的方法会自动执行,而且方法内的形参可以接收到实参值,也就是后台拼接的数据
+
 ```
         function getJson(data){
             console.log(data) // ok
         }
 ```
+
     4. 数据拿到之后,一般这个动态创建的script标签会被删除掉
 
-## vue过渡动画
+## vue 过渡动画
 
-### 原生css类实现
+### 原生 css 类实现
 
 ```JavaScript
 // 1. 将需要实现动画的元素使用transition标签包裹起来
@@ -186,7 +194,7 @@ v-enter,v-leave-to {
 }
 
 // v-enter-active: 动画进入期间持续状态
-// v-enter-active: 动画离开期间持续状态 
+// v-enter-active: 动画离开期间持续状态
 v-enter-active,v-leave-active {
 
 }
@@ -200,7 +208,8 @@ v-leave,v-enter-to {
 // 3. 也可以使用transition上面的name属性指定v-前缀
 </style>
 ```
-### animatie.css类库实现
+
+### animatie.css 类库实现
 
 ```JavaScript
 // 1. 将需要实现动画的元素使用transition标签包裹起来
@@ -209,13 +218,14 @@ v-leave,v-enter-to {
 </transition>
 
 // 2. 在transition上设置动画类名
-<transition 
-    enter-active-class="bounceIn" 
-    leave-active-class="bounceOut" 
+<transition
+    enter-active-class="bounceIn"
+    leave-active-class="bounceOut"
     :duration="{ enter: 200, leave: 400 }">
     <div>我是需要过渡动画的元素</div>
 </transition>
 ```
+
 ### 动画钩子函数实现
 
 ```javascript
@@ -225,7 +235,7 @@ v-leave,v-enter-to {
 </transition>
 
 // 2. 在transition上注册实现动画的钩子函数,入场动画三个,出场动画三个
-<transition 
+<transition
 @before-enter = 'beforeEnter'
 @enter = 'enter'
 @after-enter = 'afterEnter'
@@ -275,9 +285,9 @@ new Vue({
 
 ```
 
-### transition-group列表渲染
+### transition-group 列表渲染
 
-> 如果需要渲染的元素是一个列表,则不能使用transition包裹元素,需要使用transition-group
+> 如果需要渲染的元素是一个列表,则不能使用 transition 包裹元素,需要使用 transition-group
 
 - `appear`属性可以使默认出现的元素出现过渡动画
 - `tag`属性可以指定`transition-group`标签被渲染成一个什么元素,默认情况下`transition-group`会被渲染成`span`
@@ -295,7 +305,9 @@ new Vue({
 > https://github.com/UniverseKing/awesome-github-vue
 
 > **注意**:
-> 1. 定义组件时如果使用的是驼峰命名,那么使用组件时需要将驼峰的大写字母转成小写,并且用-连接两个单词 
+>
+> 1. 定义组件时如果使用的是驼峰命名,那么使用组件时需要将驼峰的大写字母转成小写,并且用-连接两个单词
+
 ```javascript
 Vue.component('myCom',{
     template:'<div>我是一个驼峰命名的组件</div>'
@@ -303,37 +315,41 @@ Vue.component('myCom',{
 // 使用
 <my-com></my-com>
 ```
+
 > 2. 组件的`template`属性中的模版内部如果有多个元素,必须被包含在唯一的一个根元素中
+
 ```javascript
 <template>
-    <div>
-        <p>我是p元素</p>
-        <span>我是span元素</span>
-    </div>
+  <div>
+    <p>我是p元素</p>
+    <span>我是span元素</span>
+  </div>
 </template>
 ```
+
 > 3. 私有组件(子组件)使用`components`属性进行定义,定义好的私有组件只能在父组件的模板中使用
+
 ```javascript
-<template id='father'>
-    <div>
-        <son></son>
-    </div>
+;<template id="father">
+  <div>
+    <son></son>
+  </div>
 </template>
 // 父组件
-Vue.component('father',{
-    template:'#father',
-    components:{
-        // 子组件
-        son:{
-            template:'<div>我是son组件</div>'
-        }
-    }
+Vue.component('father', {
+  template: '#father',
+  components: {
+    // 子组件
+    son: {
+      template: '<div>我是son组件</div>',
+    },
+  },
 })
 ```
 
 ### 全局组件的三种定义方式
 
--  `vue.extend()`定义
+- `vue.extend()`定义
 
 ```javascript
 // 1. 使用vue.extend()定义组件模板
@@ -348,7 +364,8 @@ Vue.component('com',dv)
 <com></com>
 
 ```
--  `vue.component()`定义
+
+- `vue.component()`定义
 
 ```javascript
 // 1. 使用Vue.component定义组件
@@ -366,7 +383,7 @@ Vue.component('com',{
 // 1. 使用Vue.component定义组件，并且使用选择器选择模板
 Vue.component('com',{
     template:'#temp'
-}) 
+})
 
 // 2. 使用template标签定义模板,并且给template标签添加id
 <template id='tmpl'>
@@ -379,9 +396,10 @@ Vue.component('com',{
 // 3. 使用组件
 <com></com>
 ```
+
 ### 私有组件的定义方式
 
-> 私有组件使用`components`属性进行定义,该属性可以定义在Vue实例内部,也可以定义在组件内部,私有组件一般也是其他组件的子组件
+> 私有组件使用`components`属性进行定义,该属性可以定义在 Vue 实例内部,也可以定义在组件内部,私有组件一般也是其他组件的子组件
 
 ```javascript
 // Vue实例的私有组件
@@ -422,11 +440,12 @@ Vue.component('account',{
     }
 })
 ```
-### is属性和component实现组件切换
+
+### is 属性和 component 实现组件切换
 
 ```
 // comname 是哪个组件名,则component就会被渲染成哪个组件
-// component 就是一个占位标签 
+// component 就是一个占位标签
 <component :is='comname'></component>
 
 new Vue({
@@ -506,7 +525,8 @@ methods:{
 }
 ```
 
-### ref获取DOM和组件对象
+### ref 获取 DOM 和组件对象
+
 ```javascript
 // 1. 在DOM元素或者组件上面绑定ref属性
 <div ref='mydiv'>我是一个div</div>
@@ -515,19 +535,21 @@ methods:{
 this.$refs.mydiv // DOM对象
 this.$refs.mycom // 组件对象
 ```
-## vur-router路由
 
-> **后端路由**: 服务端对前端请求的URL地址的监听,一个路由地址对应一个资源
+## vur-router 路由
+
+> **后端路由**: 服务端对前端请求的 URL 地址的监听,一个路由地址对应一个资源
 
 > **前端路由**: 浏览器对前端页面实现的跳转方式,一般只在单页应用(SPA)程序中出现
 
-> router  route routes  的区别是?
-- router: 是Vue实例内部的一个属性,是专门用来挂载vue-router对象的
-- route: 表示routers内部的每一个路由对象的引用
-- routes: 是Vue-Router实例内部的一个属性,是用来保存所有的路由规则
+> router route routes 的区别是?
 
+- router: 是 Vue 实例内部的一个属性,是专门用来挂载 vue-router 对象的
+- route: 表示 routers 内部的每一个路由对象的引用
+- routes: 是 Vue-Router 实例内部的一个属性,是用来保存所有的路由规则
 
 ### 基本使用步骤
+
 ```javascript
 1. 创建路由对象并配置路由规则
 // 1.1 创建组件模板对象
@@ -557,14 +579,15 @@ new Vue({
 })
 
 2. 使用<router-view>进行占位
-<div id='app'>  
+<div id='app'>
     <router-view></router-view>
 <div>
 
 3. 使用<router-link>设置跳转路径
 <router-link to='/login'>登录</router-link>
 ```
-### redirect重定向
+
+### redirect 重定向
 
 > 在路由规则中配置`redirect`属性可以使路由进行内部切换,当访问`path`中的路径时,会默认跳转到`redirect`中指定的路径去。
 
@@ -572,7 +595,9 @@ new Vue({
 {path:'/',redirect:'/login'} // 当访问根路径时,会默认跳转到login路径中
 
 ```
-### linkActiveClass路由高亮
+
+### linkActiveClass 路由高亮
+
 > `linkActiveClass` 用来设置被激活路由的样式类,默认类名是`router-link-active`
 
 ```JavaScript
@@ -582,7 +607,8 @@ new VueRouter({
 ```
 
 ### 路由传参
-#### query传参
+
+#### query 传参
 
 ```JavaScript
 // 1. 在跳转路径后面使用查询字符串拼接参数
@@ -592,7 +618,8 @@ new VueRouter({
 this.$route.query.name // zs
 this.$route.query.id // 18
 ```
-#### params传参
+
+#### params 传参
 
 ```JavaScript
 // 1. 更改路由规则用于匹配参数
@@ -613,15 +640,18 @@ var login = {
     }
 }
 ```
+
 ### 嵌套路由
+
 ```JavaScript
-// 1. 在父路由内部使用children属性配置子路由规则,子路由规则对象中的path属性不要 '/' 
+// 1. 在父路由内部使用children属性配置子路由规则,子路由规则对象中的path属性不要 '/'
 // 2. 在父路由规则对应的组件模板中添加router-view用于显示子路由规则对应的组件
 // 3. 在<router-link>中设置跳转路径(将父路由和子路由的path拼接)
 ```
+
 ### 路由命名视图
 
-> 给`<router-view>`添加name属性,用于指定显示哪一个组件
+> 给`<router-view>`添加 name 属性,用于指定显示哪一个组件
 
 ```JavaScript
 // 1. 将路由规则对象中的component改为components,表示一个路由规则下可以显示多个组件,每一个组件用一个名称对应起来,默认显示的组件用default对应
@@ -642,11 +672,12 @@ new VueRouter({
 <router-view name = 'main'></router-view> // 显示mainBox组件
 ```
 
-## watch的使用
+## watch 的使用
 
-> `watch`: 用于监听data中定义的数据的变化,只要被监听的数据发生了变化,就会执行对应的处理函数
+> `watch`: 用于监听 data 中定义的数据的变化,只要被监听的数据发生了变化,就会执行对应的处理函数
 
-### watch监视数据变化
+### watch 监视数据变化
+
 ```
 new Vue({
     el:'#app',
@@ -661,55 +692,57 @@ new Vue({
     }
 })
 ```
-### watch监视路由变化
+
+### watch 监视路由变化
 
 > 通过监听`$route.path`可以监视到路由地址的变化
 
 ```javascript
 new Vue({
-    el:'#app',
-    watch:{
-        '$route.path': function(newVal,oldVal){
-           // newVal 新跳转的路由地址
-           // oldVal 跳转之前的路由地址
-        }
-    }
+  el: '#app',
+  watch: {
+    '$route.path': function (newVal, oldVal) {
+      // newVal 新跳转的路由地址
+      // oldVal 跳转之前的路由地址
+    },
+  },
 })
 ```
-## computed计算属性
 
-> `computed`:计算属性,是指在computed对象中定义属性,属性的值是该属性后面函数的返回值,而且函数内部如果用到了data中定义的其他数据,只要这些数据发生了变化,都会重新触发函数的执行,计算属性的值也会发生变化。
+## computed 计算属性
+
+> `computed`:计算属性,是指在 computed 对象中定义属性,属性的值是该属性后面函数的返回值,而且函数内部如果用到了 data 中定义的其他数据,只要这些数据发生了变化,都会重新触发函数的执行,计算属性的值也会发生变化。
 
 ```javascript
 new Vue({
-    el:'#app',
-    data:{
-        msg:'hello'
+  el: '#app',
+  data: {
+    msg: 'hello',
+  },
+  computed: {
+    info: function () {
+      // 只要msg发生了变化,会重新触发该函数的执行
+      // info的值就是函数的返回值
+      return this.msg + 'world'
     },
-    computed:{
-        'info': function(){
-            // 只要msg发生了变化,会重新触发该函数的执行
-            // info的值就是函数的返回值
-           return this.msg + 'world'
-        }
-    },
-    methods:{},
-    watch:{}
+  },
+  methods: {},
+  watch: {},
 })
 ```
 
-- npm: node package manager node包管理工具
+- npm: node package manager node 包管理工具
 
 - nrm: node registry manager node 镜像地址管理工具
 
 - nvm: node version manager node 版本管理工具
 
-## webpack的学习
+## webpack 的学习
 
-> 什么是webpack? 一个基于Node的前端构建工具,可以实现对项目的打包(构建),主要解决文件(模块)之间的依赖,高级代码的转译,文件(模块)的合并和压缩等问题。
+> 什么是 webpack? 一个基于 Node 的前端构建工具,可以实现对项目的打包(构建),主要解决文件(模块)之间的依赖,高级代码的转译,文件(模块)的合并和压缩等问题。
 
 ### 基本使用
- 
+
 - `webpack3.~`版本安装使用
 
 ```JavaScript
@@ -733,27 +766,27 @@ webpack 入口文件 -o 输出文件 --mode development/production
 webpack ./src/main.js -o ./dist/build.js --mode development
 ```
 
-### webpack配置文件使用
+### webpack 配置文件使用
 
 ```javascript
 // 1. 在项目根目录新建webpack.config.js,并设置 打包的入口文件 和 输出文件
 module.exports = {
-    // 入口文件(绝对路径)
-    entry: path.join(__dirname,'./src/main.js'),
-    // 输出文件
-    output: {
-        path: path.join(__dirname,'./dist'), // 输出文件目录
-        filename: 'build.js' // 输出文件名称
-    }
+  // 入口文件(绝对路径)
+  entry: path.join(__dirname, './src/main.js'),
+  // 输出文件
+  output: {
+    path: path.join(__dirname, './dist'), // 输出文件目录
+    filename: 'build.js', // 输出文件名称
+  },
 }
 
 // 2. 执行打包命令
 webpack
 ```
 
-### webpack-dev-server的使用
+### webpack-dev-server 的使用
 
-> 
+>
 
 #### 命令行方式
 
@@ -777,6 +810,7 @@ npm run dev
 ```
 
 #### 配置文件方式
+
 ```javascript
 // 1. 在webpack.config.js配置文件中添加如下配置
 devServer:{
@@ -801,7 +835,8 @@ plugins: [
 ```
 
 ### `html-webpack-plugin`的使用
-> 可以根据指定的HTML模板文件生成一个HTML页面,并且在HTML页面中自动引入打包好的js文件
+
+> 可以根据指定的 HTML 模板文件生成一个 HTML 页面,并且在 HTML 页面中自动引入打包好的 js 文件
 
 ```javascript
 // 1. 安装html-webpack-plugin
@@ -819,8 +854,9 @@ plugins:[
 ]
 ```
 
-### `css-loader`处理CSS文件
-> 解析处理文件后缀名为.css的文件
+### `css-loader`处理 CSS 文件
+
+> 解析处理文件后缀名为.css 的文件
 
 ```javascript
 // 1. 安装style-loader css-loader
@@ -836,8 +872,10 @@ module:{
     ]
 }
 ```
-### `less-loader`处理less文件
-> 解析处理文件后缀名为.less的文件
+
+### `less-loader`处理 less 文件
+
+> 解析处理文件后缀名为.less 的文件
 
 ```javascript
 // 1. 安装less less-loader
@@ -853,8 +891,10 @@ module:{
     ]
 }
 ```
-### `scss-loader`处理scss文件
-> 解析处理文件后缀名为.scss的文件
+
+### `scss-loader`处理 scss 文件
+
+> 解析处理文件后缀名为.scss 的文件
 
 ```javascript
 // 1. 安装node-sass sass-loader
@@ -870,7 +910,9 @@ module:{
     ]
 }
 ```
+
 ### `url-loader`处理图片等资源文件
+
 > 解析处理项目中引入的图片、字体图标、音视频等资源文件
 
 ```javascript
@@ -895,7 +937,7 @@ module:{
 
 ### `babel`的使用
 
-> 解析webpack默认不能处理的JS
+> 解析 webpack 默认不能处理的 JS
 
 ```JavaScript
 // 1. 安装babel-core babel-loader babel-plugin-transform-runtime
@@ -923,7 +965,7 @@ module:{
 
 ```
 
-## webpack中使用Vue
+## webpack 中使用 Vue
 
 ```JavaScript
 // 1. 安装vue vue-loader vue-template-compiler
@@ -965,7 +1007,7 @@ new Vue({
 
 ```
 
-## webpack 中集成vue-router
+## webpack 中集成 vue-router
 
 ```JavaScript
 // 1. 安装vue-router
@@ -994,9 +1036,11 @@ new Vue({
 <router-link to = "/login">登录<router-link>
 <router-view></router-view>
 ```
---- 
 
-## --save和--save-dev
+---
+
+## --save 和--save-dev
+
 ```
 // 项目开发期间需要安装的依赖
 // --save-dev 会将安装的包名以及版本号记录到package.json文件中的devDependencies节点中
@@ -1016,10 +1060,11 @@ npm i --save 只会下载dependencies中的所有依赖包
 
 npm i cnpm -g
 
-cnpm 
+cnpm
 ```
 
-## VSCode用户代码片段
+## VSCode 用户代码片段
+
 ```json
 "Print to vue": {
 		"prefix": "vuec",
@@ -1043,7 +1088,7 @@ cnpm
 	}
 ```
 
-## yarn的使用
+## yarn 的使用
 
 ```
 // 1. 使用npm全局安装yarn
@@ -1067,7 +1112,7 @@ yarn run dev
 yarn global bin 查看全局包安装的路径
 ```
 
-## vue-cli脚手架的使用
+## vue-cli 脚手架的使用
 
 ```
 // 1. 安装vue-cli脚手架
@@ -1075,7 +1120,7 @@ npm i vue-cli -g
 
 // 2. 初始化项目模板
 vue init webpack 项目名称
-eslint(语法规范化插件) 不要安装 
+eslint(语法规范化插件) 不要安装
 e2e(测试框架) 不要安装
 unit test(单元测试框架) 不要安装
 
@@ -1116,7 +1161,7 @@ git log --oenline
 git reset --hard 版本号
 ```
 
-## vue-loader深度作用选择器
+## vue-loader 深度作用选择器
 
 > 如果希望在父组件中去改变子组件中的样式,有时候通过普通子类选择器无法实现,主要是由于添加了`scoped`属性导致,`vue-loader`中提供了[深度作用选择器](https://vue-loader.vuejs.org/zh-cn/features/scoped-css.html)可以实现
 
@@ -1140,135 +1185,136 @@ git reset --hard 版本号
 
 ### 基本用法
 
-	// 1. 创建promise实例,在实例中执行异步操作(比如发送网络请求)
-	// 2. 异步操作成功时,调用reslove函数传递数据
-	// 3. 异步操作失败时,调用reject函数传递错误信息
-	const promise = new Promise(function(resolve, reject) {
-		// 异步操作
-		// ... 
-		if (/* 异步操作成功 */){
-			resolve(value);
-		} else {
-			reject(error);
-		}
-	});
-	
-	// 4. 使用promise实例then方法接收reslove或reject返回的数据
-	promise.then(function(value) {
-		// 此处数据即为reslove回来的数据
-  		// success
-	}, function(error) {
-		// 此处数据即为reject回来的数据
-		// failure
-	});
-	
+    // 1. 创建promise实例,在实例中执行异步操作(比如发送网络请求)
+    // 2. 异步操作成功时,调用reslove函数传递数据
+    // 3. 异步操作失败时,调用reject函数传递错误信息
+    const promise = new Promise(function(resolve, reject) {
+    	// 异步操作
+    	// ...
+    	if (/* 异步操作成功 */){
+    		resolve(value);
+    	} else {
+    		reject(error);
+    	}
+    });
+
+    // 4. 使用promise实例then方法接收reslove或reject返回的数据
+    promise.then(function(value) {
+    	// 此处数据即为reslove回来的数据
+
+// success
+}, function(error) {
+// 此处数据即为 reject 回来的数据
+// failure
+});
+
 ### 网络请求案例
 
-	// 1. 定义一个使用promise封装的请求函数,函数内部返回一个promise实例
-	function fetch(){
-		// 函数内部返回一个promise实例
-		return new Promise(function(reslove,reject){
-			// 发送异步请求
-			axios.get('http://www.lovegf.cn:8090/api/getlunbo').then(function(res){
-				// 请求正常
-				if(res.status == 1){
-					reslove(res.data)
-				}else{
-					reject(res.error)
-				}
-			})
-		})
-	}
-	
-	// 2. 调用函数发送请求,通过Promise.prototype.then方法获取resolve或reject出来的数据
-	fetch().then(function(res){
-		// res为reslove函数传出的数据
-	},function(err){
-		// err为reject函数传出的错误
-	})
-	
+    // 1. 定义一个使用promise封装的请求函数,函数内部返回一个promise实例
+    function fetch(){
+    	// 函数内部返回一个promise实例
+    	return new Promise(function(reslove,reject){
+    		// 发送异步请求
+    		axios.get('http://www.lovegf.cn:8090/api/getlunbo').then(function(res){
+    			// 请求正常
+    			if(res.status == 1){
+    				reslove(res.data)
+    			}else{
+    				reject(res.error)
+    			}
+    		})
+    	})
+    }
+
+    // 2. 调用函数发送请求,通过Promise.prototype.then方法获取resolve或reject出来的数据
+    fetch().then(function(res){
+    	// res为reslove函数传出的数据
+    },function(err){
+    	// err为reject函数传出的错误
+    })
+
 ### 解决回调地狱
 
-> 假设有三个请求A、B、C,B请求需要依赖A请求的数据,C请求需要依赖B请求的数据.
-> 
+> 假设有三个请求 A、B、C,B 请求需要依赖 A 请求的数据,C 请求需要依赖 B 请求的数据.
+>
 > 传统回调函数式写法如下:
 
-	function dependices_fetch(){
-		// A请求
-		axios.get('A').then(function(res){
-			if(res.status == 1){
-				// B请求
-				axios.get('B').then(function(res){
-					if(res.status == 1){
-						// C请求
-						axios.get('C').then(function(res){
-							// 请求完毕,执行后续逻辑
-						})
-					}
-				})
-			}
-		})
-	}
+    function dependices_fetch(){
+    	// A请求
+    	axios.get('A').then(function(res){
+    		if(res.status == 1){
+    			// B请求
+    			axios.get('B').then(function(res){
+    				if(res.status == 1){
+    					// C请求
+    					axios.get('C').then(function(res){
+    						// 请求完毕,执行后续逻辑
+    					})
+    				}
+    			})
+    		}
+    	})
+    }
 
 > 这种代码虽然能够满足业务,但是代码组织结构非常不便于阅读
-> 
-> 通过Promise可以封装代码,使用链式方式解决这种多个异步依赖的回调
-> 
+>
+> 通过 Promise 可以封装代码,使用链式方式解决这种多个异步依赖的回调
+>
 > 如下:
 
-	function fetch(url){
-		return new Promise(function(reslove,reject){
-			axios.get(url).then(function(res){
-				if(res.status == 1){
-					reslove(res.data)
-				}else{
-					reject(res.error)
-				}
-			})
-		})
-	}
-	
-	//then方法内部返回的promise实例reslove或reject出来的对象会在下一个then方法内部得到
-	fetch('A').then(function(res){
-		// A 请求正常
-		return fetch('B')	// 这里返回一个新的promise实例,在后面的then中可以得到该实例reslove或reject出来的对象
-	}).then(function(res){
-		// B 请求正常
-		return fetch('C')
-	}).then(function(res){
-		// C 请求正常
-		// 请求完毕
-	})
-	
+    function fetch(url){
+    	return new Promise(function(reslove,reject){
+    		axios.get(url).then(function(res){
+    			if(res.status == 1){
+    				reslove(res.data)
+    			}else{
+    				reject(res.error)
+    			}
+    		})
+    	})
+    }
+
+    //then方法内部返回的promise实例reslove或reject出来的对象会在下一个then方法内部得到
+    fetch('A').then(function(res){
+    	// A 请求正常
+    	return fetch('B')	// 这里返回一个新的promise实例,在后面的then中可以得到该实例reslove或reject出来的对象
+    }).then(function(res){
+    	// B 请求正常
+    	return fetch('C')
+    }).then(function(res){
+    	// C 请求正常
+    	// 请求完毕
+    })
+
 ### 多个异步请求结果组合问题
 
-> 假设有A、B、C三个异步请求,需要三个请求的数据都回来之后,将数据整合后再渲染页面,这种需求可以使用`Promise.all()`
-> 
-> Promise.all方法用于将多个 Promise 实例，包装成一个新的 Promise 实例。
+> 假设有 A、B、C 三个异步请求,需要三个请求的数据都回来之后,将数据整合后再渲染页面,这种需求可以使用`Promise.all()`
+>
+> Promise.all 方法用于将多个 Promise 实例，包装成一个新的 Promise 实例。
 
-	function fetch(url){
-			return new Promise(function(reslove,reject){
-				axios.get(url).then(function(res){
-					if(res.status == 1){
-						reslove(res.data)
-					}else{
-						reject(res.error)
-					}
-				})
-			})
-	}
-	
-	const p1 = fetch('A')
-	const p2 = fetch('B')
-	const p3 = fetch('C')
-	const p = Promise.all([p1, p2, p3]);
-	p.then(function(res){
-		// res是一个数组,存放着p1,p2,p3的返回值
-	})
+    function fetch(url){
+    		return new Promise(function(reslove,reject){
+    			axios.get(url).then(function(res){
+    				if(res.status == 1){
+    					reslove(res.data)
+    				}else{
+    					reject(res.error)
+    				}
+    			})
+    		})
+    }
+
+    const p1 = fetch('A')
+    const p2 = fetch('B')
+    const p3 = fetch('C')
+    const p = Promise.all([p1, p2, p3]);
+    p.then(function(res){
+    	// res是一个数组,存放着p1,p2,p3的返回值
+    })
 
 ## async 和 await 的使用
 
-> async 和 await 是ES7中新提供的两个操作异步函数的关键字,本质是对Promise进一步的封装
+> async 和 await 是 ES7 中新提供的两个操作异步函数的关键字,本质是对 Promise 进一步的封装
 
 > await 只能用在 async 定义的函数内部,await 可以等待异步操作,并同步的得到异步操作的返回值
 
@@ -1289,7 +1335,7 @@ function getFileByPath(fpath) {
 // 2. 基于 await 的异步依赖问题(异步操作3依赖异步操作2,异步操作2依赖异步操作1)
 // 2.1 先使用async定义异步操作
 const start = async function(){
-// 2.2 在async内部使用await 同步操作    
+// 2.2 在async内部使用await 同步操作
     const n1 = await getFileByPath('./1.txt')
     const n2 = await getFileByPath('./2.txt')
     const n3 = await getFileByPath('./3.txt')
@@ -1306,7 +1352,7 @@ npm i axios qs --save
 
 2. 在main.js中导入axios,并将axios 挂载到Vue的原型中
 improt axios from 'axios'
-Vue.prototype.$axios = axios 
+Vue.prototype.$axios = axios
 
 3. get请求
 
@@ -1338,7 +1384,7 @@ axios.interceptors.request.use(function (config) {
 });
 ```
 
-## Vue插件开发
+## Vue 插件开发
 
 ```JavaScript
 1. 单独新建一个JS文件,在这个文件中导入需要制作成Vue插件的模块
@@ -1361,9 +1407,9 @@ Vue.use(axios) // 会自动调用axios的install方法
 
 ```
 
-## 去除webpack打包后的严格模式
+## 去除 webpack 打包后的严格模式
 
-> 在使用babel-loader的时候,会将所有转换的代码加上严格模式
+> 在使用 babel-loader 的时候,会将所有转换的代码加上严格模式
 
 ```JavaScript
 // 方法一: .babelrc文件中忽略不需要使用严格模式转换的文件路径
@@ -1372,7 +1418,7 @@ Vue.use(axios) // 会自动调用axios的install方法
   ]
 
 // 方法二: babel-loader配置中排除掉不需要严格模式转换的文件
-{ 
+{
     test: /\.js$/,
     use: 'babel-loader',
     exclude: /mui\.min\.js/
@@ -1388,13 +1434,14 @@ npm install babel-plugin-transform-remove-strict-mode --save-dev
   "plugins": ["transform-remove-strict-mode"]
 }
 ```
+
 ## 路由模式
 
-> 通过给`vue-router`配置`mode`属性,可以指定URL路径的显示方式
+> 通过给`vue-router`配置`mode`属性,可以指定 URL 路径的显示方式
 
-> `mode`属性默认值是`hash`,此时URL中有#,如:http://localhost:8888/#/home,实现方式即`window.location.hash`
+> `mode`属性默认值是`hash`,此时 URL 中有#,如:http://localhost:8888/#/home,实现方式即`window.location.hash`
 
-> 如果`mode`设置成`history`,此时URL路径没有#,如:http://localhost:8888/home,实现方式为`window.history`,这种方式同一个URL不能再其他页面打开,需要服务端配置
+> 如果`mode`设置成`history`,此时 URL 路径没有#,如:http://localhost:8888/home,实现方式为`window.history`,这种方式同一个URL不能再其他页面打开,需要服务端配置
 
 ```JavaScript
 new VueRouter({
@@ -1405,9 +1452,9 @@ new VueRouter({
 })
 ```
 
-## Vuex的使用
+## Vuex 的使用
 
-> Vuex是一个状态管理库,或者说是专为Vue应用程序开发设计的状态管理模式,它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。
+> Vuex 是一个状态管理库,或者说是专为 Vue 应用程序开发设计的状态管理模式,它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。
 
 > 注:所谓状态,可以理解成项目中各个组件需要用到的数据。
 
@@ -1415,7 +1462,7 @@ new VueRouter({
 
 ### 初始化公共状态
 
-``` JavaScript
+```JavaScript
 1. 安装vuex
 npm i vuex --save
 
@@ -1467,7 +1514,7 @@ new Vue({
 
 ### 使用状态
 
-``` JavaScript
+```JavaScript
 1. 使用state中的数据
 JavaScript: this.$store.state.msg
 HTML: $store.state.msg
@@ -1479,9 +1526,9 @@ HTML: $store.getters.msg
 
 ### 变更状态(修改数据)
 
-> 状态的变更必须使用mutations中提供的方法进行修改
+> 状态的变更必须使用 mutations 中提供的方法进行修改
 
-``` JavaScript
+```JavaScript
 1. 提交mutations中的变更方法
 this.$store.commit('change','我是被修改的数据')
 
@@ -1491,11 +1538,11 @@ this.$store.dispatch('asyncchange','我是被异步修改的数据')
 
 ### 使用辅助函数
 
-> 辅助函数可以直接将`state`,`getters`中的数据映射到Vue组件中的计算属性上,可以将`mutations`,`actions`中的方法映射到组件中的`methods`中
+> 辅助函数可以直接将`state`,`getters`中的数据映射到 Vue 组件中的计算属性上,可以将`mutations`,`actions`中的方法映射到组件中的`methods`中
 
-``` JavaScript
+```JavaScript
 import { mapState } from 'vuex'
-import { mapGetters } from 'vuex' 
+import { mapGetters } from 'vuex'
 import { mapMutations } from 'vuex'
 import { mapActions } from 'vuex'
 
@@ -1513,7 +1560,7 @@ new Vue({
 })
 ```
 
-## vue-cli配置代理解决开发阶段跨域问题
+## vue-cli 配置代理解决开发阶段跨域问题
 
 ```JavaScript
 // webpack.config.js配置文件导出对象中加入
@@ -1543,25 +1590,25 @@ proxyTable: {
 },
 ```
 
-## webpack打包优化
+## webpack 打包优化
 
-> 目前项目中所有资源都会被打包到最终生成的一个build.js中,而build.js又被引用到index.html中,当打开index.html时,首先需要从互联网下载build.js,只有build.js全部下载完毕,浏览器的解析引擎才会开始执行该js代码进行代码解析,当解析引擎将代码解析完毕后再交给渲染引擎开始进行渲染,所有工作几乎都是同步执行,当build.js体积非常大时,往往应用的首页加载速度比较慢,而且会看到白屏效果.可以从以下三方面进行优化首页加载速度过慢问题:
+> 目前项目中所有资源都会被打包到最终生成的一个 build.js 中,而 build.js 又被引用到 index.html 中,当打开 index.html 时,首先需要从互联网下载 build.js,只有 build.js 全部下载完毕,浏览器的解析引擎才会开始执行该 js 代码进行代码解析,当解析引擎将代码解析完毕后再交给渲染引擎开始进行渲染,所有工作几乎都是同步执行,当 build.js 体积非常大时,往往应用的首页加载速度比较慢,而且会看到白屏效果.可以从以下三方面进行优化首页加载速度过慢问题:
 
 1. 下载文件速度慢
 
-2. 解析JS比较慢
+2. 解析 JS 比较慢
 
 3. 渲染比较慢
 
 ### 服务端渲染(SSR)
 
-> SEO优化
+> SEO 优化
 
-> 在服务端先将JS进行解析,解析完成之后生成HTML片段,再将HTML返回给前端,前端直接执行渲染界面
+> 在服务端先将 JS 进行解析,解析完成之后生成 HTML 片段,再将 HTML 返回给前端,前端直接执行渲染界面
 
-### 抽取CSS
+### 抽取 CSS
 
-> 将项目中所有CSS抽取到单独的文件中进行加载,减小了build.js的体积,只要build.js下载完成即可开始解析代码
+> 将项目中所有 CSS 抽取到单独的文件中进行加载,减小了 build.js 的体积,只要 build.js 下载完成即可开始解析代码
 
 > https://github.com/webpack-contrib/extract-text-webpack-plugin
 
@@ -1603,7 +1650,7 @@ new ExtractTextPlugin('app.css')
 
 ### 分离第三方包
 
-> 将项目中引用的第三方JS代码抽取到一个单独的文件,也可以减少build.js的体积,还是只需要build.js下载完毕浏览器解析引擎即可开始进行解析,然后浏览器同时再去下载其他JS和CSS
+> 将项目中引用的第三方 JS 代码抽取到一个单独的文件,也可以减少 build.js 的体积,还是只需要 build.js 下载完毕浏览器解析引擎即可开始进行解析,然后浏览器同时再去下载其他 JS 和 CSS
 
 > 一般将发布阶段所需要依赖的包全部进行分离,即`package.json`中`dependencies`中的所有包进行分离
 
@@ -1629,9 +1676,9 @@ new webpack.optimize.CommonsChunkPlugin({
 
 ### 组件按需加载
 
-> vue-router提供的路由懒加载可以按需加载组件。
+> vue-router 提供的路由懒加载可以按需加载组件。
 
-> 特点: 当没有访问到某个页面路由时,不去加载对应的组件代码,节约数据请求量,加快首页DOM渲染速度
+> 特点: 当没有访问到某个页面路由时,不去加载对应的组件代码,节约数据请求量,加快首页 DOM 渲染速度
 
 ```
 将import home from './components/Home.vue' 这种导入方式换成
@@ -1667,13 +1714,13 @@ const router = new VueRouter({
 
 ```JavaScript
 router.beforeEach((to, from, next) => {
-  
+
 })
 ```
 
-## HBuilder打包
+## HBuilder 打包
 
-> HBuilder打包 是将前端开发的HTML/CSS/JS文件进行打包,打包成可以直接安装在手机上面的App,不借助浏览器就可以直接运行
+> HBuilder 打包 是将前端开发的 HTML/CSS/JS 文件进行打包,打包成可以直接安装在手机上面的 App,不借助浏览器就可以直接运行
 
 ```JavaScript
 1. 使用webpack将项目进行打包,打包好的文件会在dist目录
@@ -1688,11 +1735,11 @@ webpack -p
 5. 在项目的`unpackage\release`中可以得到打包完毕的apk文件
 ```
 
-## cordova打包
+## cordova 打包
 
 > 直接在本地进行打包
 
-> 需要电脑配置Java环境和Android环境 `gradle`
+> 需要电脑配置 Java 环境和 Android 环境 `gradle`
 
 ```JavaScript
 // 1. 安装全局cordova
@@ -1710,22 +1757,22 @@ cordova build android
 
 ```
 
-## vue-cli打包完成后
+## vue-cli 打包完成后
 
-1. 错误信息:`postcss-svgo: Error in parsing SVG: Unquoted attribute value`
+1.  错误信息:`postcss-svgo: Error in parsing SVG: Unquoted attribute value`
 
-    - 需要修改mui.css中的 **图片引用** 单引号全部改成双引号
+    - 需要修改 mui.css 中的 **图片引用** 单引号全部改成双引号
 
-2. 提示必须使用服务器的方式打开,即使用localhost方式打开
+2.  提示必须使用服务器的方式打开,即使用 localhost 方式打开
 
         // 1. 安装http-server
         npm i http-server -g
         // 2. 使用hs -o命令打开index.html文件
         hs -o
 
-3. 如果打包完成后希望直接用file协议打开,需要修改config/index.js 中的build下的`assetsPublicPath: '/'`换成`assetsPublicPath: './'`
+3.  如果打包完成后希望直接用 file 协议打开,需要修改 config/index.js 中的 build 下的`assetsPublicPath: '/'`换成`assetsPublicPath: './'`
 
-## Parcel使用
+## Parcel 使用
 
 ```JavaScript
 
@@ -1734,8 +1781,8 @@ npm i parcel-bundler -g
 parcel index.html
 ```
 
-----
+---
 
 > 项目地址:https://gitee.com/UniverseKing/vue_cms
 
-> [Vue组件](https://github.com/UniverseKing/awesome-github-vue#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B)
+> [Vue 组件](https://github.com/UniverseKing/awesome-github-vue#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B)

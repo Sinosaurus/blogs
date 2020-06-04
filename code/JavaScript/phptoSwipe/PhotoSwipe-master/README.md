@@ -1,10 +1,10 @@
-# PhotoSwipe Repository 
+# PhotoSwipe Repository
 
-[![Build Status](https://travis-ci.org/dimsemenov/PhotoSwipe.svg)](https://travis-ci.org/dimsemenov/PhotoSwipe) 
+[![Build Status](https://travis-ci.org/dimsemenov/PhotoSwipe.svg)](https://travis-ci.org/dimsemenov/PhotoSwipe)
 [![devDependency Status](https://david-dm.org/dimsemenov/PhotoSwipe/dev-status.svg)](https://david-dm.org/dimsemenov/PhotoSwipe#info=devDependencies)
 [![Flattr](http://api.flattr.com/button/flattr-badge-large.png)](http://flattr.com/thing/3698358/dimsemenovPhotoSwipe-on-GitHub)
 
-JavaScript image gallery for mobile and desktop. 
+JavaScript image gallery for mobile and desktop.
 
 - [Documentation and getting started guide](http://photoswipe.com/documentation/getting-started.html).
 - [Demo and script home page](http://photoswipe.com).
@@ -14,7 +14,7 @@ JavaScript image gallery for mobile and desktop.
 ## Location of files
 
 - Compiled PhotoSwipe JS and CSS files, SVG and PNG sprites are in the [dist/](https://github.com/dimsemenov/PhotoSwipe/tree/master/dist) folder.
-- Source files (.JS and .SCSS) are in the [src/](https://github.com/dimsemenov/PhotoSwipe/tree/master/src) folder.  Note that PhotoSwipe uses Autoprefixer when compiling SASS files.
+- Source files (.JS and .SCSS) are in the [src/](https://github.com/dimsemenov/PhotoSwipe/tree/master/src) folder. Note that PhotoSwipe uses Autoprefixer when compiling SASS files.
 - Demo website is in the [website/](https://github.com/dimsemenov/PhotoSwipe/tree/master/website) folder.
 - Documentation markdown files are in [website/documentation/](https://github.com/dimsemenov/PhotoSwipe/tree/master/website/documentation).
 
@@ -34,21 +34,21 @@ JavaScript image gallery for mobile and desktop.
 
 Coded something useful? <a href='mailto:diiiimaaaa@gmail.com?subject="PhotoSwipe Plugin"'>Email me</a> and I’ll post a link to it here.
 
-## Build 
+## Build
 
 To compile PhotoSwipe by yourself, make sure that you have [Node.js](http://nodejs.org/), [Grunt.js](https://github.com/cowboy/grunt), [Ruby](http://www.ruby-lang.org/) and [Jekyll](https://github.com/mojombo/jekyll/) installed, then:
 
-1) Clone the repository
+1.  Clone the repository
 
-	git clone https://github.com/dimsemenov/PhotoSwipe.git
+        	git clone https://github.com/dimsemenov/PhotoSwipe.git
 
-2) Go inside the PhotoSwipe folder that you fetched and install Node dependencies
+2.  Go inside the PhotoSwipe folder that you fetched and install Node dependencies
 
-	cd PhotoSwipe && npm install
+        	cd PhotoSwipe && npm install
 
-3) Run `grunt` to generate the JS and CSS files in the `dist` folder and the site in the `_site/` folder
+3.  Run `grunt` to generate the JS and CSS files in the `dist` folder and the site in the `_site/` folder
 
-	grunt
+        	grunt
 
 Optionally:
 
@@ -69,5 +69,3 @@ Attribution is not required, but much appreciated, especially if you’re making
 ## About
 
 PhotoSwipe 4.0+ is developed by [Dmitry Semenov](http://twitter.com/dimsemenov). But initially script was created in 2011 by [Code Computerlove](http://www.codecomputerlove.com/), a digital agency in Manchester, they [passed](https://twitter.com/PhotoSwipe/status/444134042787930113) on development in March 2014. You can view [source and documentation](https://github.com/dimsemenov/PhotoSwipe/tree/v3.0.3) of old PhotoSwipe (<4.0) in history of this repo.
-
-

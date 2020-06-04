@@ -1,5 +1,6 @@
-# vue spn如何做seo优化
-> 突然来了一个需求，对已有的项目做SEO优化，WHAT？ 总所周知，spn对seo不够优化，因而官方考虑到直接使用[ssr](https://vuejs.org/v2/guide/ssr.html)
+# vue spn 如何做 seo 优化
+
+> 突然来了一个需求，对已有的项目做 SEO 优化，WHAT？ 总所周知，spn 对 seo 不够优化，因而官方考虑到直接使用[ssr](https://vuejs.org/v2/guide/ssr.html)
 
 ## 一个不算解决办法的办法[prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin)
 
@@ -43,8 +44,10 @@ new Router({
   routes
 })
 ```
+
 > 参考资料[1](https://www.imooc.com/article/75016)，[2](https://juejin.im/post/59d49d976fb9a00a571d651d)
 
 ##总结
-+ 打包时间真心长，很不适合做seo
-+ 只适合简单处理，若是项目复杂，路由较多，便不是很适合了
+
+- 打包时间真心长，很不适合做 seo
+- 只适合简单处理，若是项目复杂，路由较多，便不是很适合了

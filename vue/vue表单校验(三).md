@@ -1,9 +1,9 @@
-# vue表单校验（三）
+# vue 表单校验（三）
 
-每当看到[heyui](https://www.heyui.top/component/form/form)的这个表单校验，我就一直想将element的校验也做类似的功能，终于有了方式，虽然不是很完美，但是可以使用，能满足要求了
+每当看到[heyui](https://www.heyui.top/component/form/form)的这个表单校验，我就一直想将 element 的校验也做类似的功能，终于有了方式，虽然不是很完美，但是可以使用，能满足要求了
 ![heyui](./../images/validate/heyui.gif)
 
-## 实现方式 *基于`element-ui`实现*
+## 实现方式 _基于`element-ui`实现_
 
 通过表单提交时，触发校验，未通过的表单会添加`is-error`,之后滚动到对应的错误位置即可
 
@@ -12,9 +12,10 @@
 
 > 实现逻辑
 
-+ 触发条件
+- 触发条件
 
-在提交时，若是未通过则开始进行判断，由于是依赖于`is-error`的class类名，因而需要等form表单错误的元素添加完`is-error`类名后再进行判断
+在提交时，若是未通过则开始进行判断，由于是依赖于`is-error`的 class 类名，因而需要等 form 表单错误的元素添加完`is-error`类名后再进行判断
+
 ```
 submitForm1 () {
   this.$refs['ruleForm'].validate(valid => {
@@ -30,7 +31,8 @@ submitForm1 () {
 }
 ```
 
-> js逻辑
+> js 逻辑
+
 ```
 scrollToTop (node) {
   const ChildHasError = Array.from(node.querySelectorAll('.is-error'))
@@ -44,13 +46,15 @@ scrollToTop (node) {
   })
 }
 ```
+
 ![效果](./../images/validate/element2.gif)
 
-上述方式借助了`scrollIntoView`，但是有个小问题，form表单错误信息都是紧贴顶部，不是很符合，因而开始自己写滚动
+上述方式借助了`scrollIntoView`，但是有个小问题，form 表单错误信息都是紧贴顶部，不是很符合，因而开始自己写滚动
 
 > 升级
 
 滚动动画
+
 ```
 const BackToTop = (rate = 2, num = 0) => {
   const doc = document.body.scrollTop ? document.body : document.documentElement
@@ -71,7 +75,8 @@ const BackToTop = (rate = 2, num = 0) => {
 }
 ```
 
-js逻辑升级
+js 逻辑升级
+
 ```
  scrollToTop (node) {
   const ChildHasError = Array.from(node.querySelectorAll('.is-error'))
@@ -86,8 +91,10 @@ js逻辑升级
   scrollTop(2, scrollToTop)
 }
 ```
+
 ![效果图](./../images/validate/element3.gif)
 
 ## 总结
-+ 更多的是考虑是如何实现滚动效果
-+ 还有更进一步的需要，若是使用了`el-scroll`的组件，方式有得再继续改变，这个后期再进行整理
+
+- 更多的是考虑是如何实现滚动效果
+- 还有更进一步的需要，若是使用了`el-scroll`的组件，方式有得再继续改变，这个后期再进行整理

@@ -18,28 +18,27 @@
 <script>
 export default {
   name: 'Keep',
-  data () {
+  data() {
     return {
       form: {
         value1: '',
         value2: '',
-        value3: ''
-      }
+        value3: '',
+      },
     }
   },
-  created () {
-    if (!this.$store.state.cache.cachedViews.includes(this.$options.name)) {}// 数据请求
+  created() {
+    if (!this.$store.state.cache.cachedViews.includes(this.$options.name)) {
+    } // 数据请求
     this.$store.commit('cache/addCacheViews', this.$options.name)
   },
-  activated () {
+  activated() {
     // 数据请求
   },
-  beforeRouteLeave (to, from, next) {
+  beforeRouteLeave(to, from, next) {
     const { name } = to
     // 进入当前路由需要缓存条件
-    const childRouterMap = [
-      'jsonp'
-    ]
+    const childRouterMap = ['jsonp']
     const isCache = childRouterMap.includes(name)
     if (!isCache) {
       // 清空搜索条件
@@ -48,6 +47,6 @@ export default {
       this.$store.commit('cache/deleteViews', this.$options.name)
     }
     next()
-  }
+  },
 }
 </script>
