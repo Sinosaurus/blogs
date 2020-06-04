@@ -1,10 +1,16 @@
+
 module.exports = {
+  // 减少对一些浏览器的支持
+  evergreen: true,
+  // github 仓库
+  repo: '',
+  plugins: ['@vuepress/nprogress', '@vuepress/back-to-top'],
   // 网站的标题，它将会被用作所有页面标题的前缀，同时，默认主题下，它将显示在导航栏（navbar）上。
   title: 'sinnet-cloud',
   // 网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中
   description: '光环云赋能平台',
   // 指定 vuepress build 的输出目录
-  dest: './dist',
+  dest: './docs/.vuepress/dist',
   // 部署站点的基础路径，如果你想让你的网站部署到一个子路径下，你将需要设置它
   base: '/sinnet-cloud/',
   // repo: 'https://qishaoxuan.github.io/js_tricks/',
@@ -54,7 +60,6 @@ module.exports = {
      */
 
     nav: [
-      { text: 'css tricks', link: 'https://qishaoxuan.github.io/css_tricks/' },
       { text: 'blog', link: 'https://qishaoxuan.github.io/blog/' },
       { text: 'GitHub', link: 'https://github.com/QiShaoXuan/js_tricks' },
     ],
@@ -109,9 +114,9 @@ module.exports = {
       }
     ],
     // 自动生成 动态变化，用的几率不大
-    // sidebar: 'auto'
     // 显示所有页面的标题链接
-    // displayAllHeaders: true
+    displayAllHeaders: true,
+    smoothScroll: true
   }
 }
 

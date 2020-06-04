@@ -71,6 +71,12 @@ git tag v1.0 -m '备注'
 git tag --delete v1.0
 ```
 
++ 删除远端tag
+
+```
+git push origin :refs/tags/v1.0
+```
+
 + 查看
 
 ```

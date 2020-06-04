@@ -5,20 +5,6 @@ export default {
     title: 'vue base 使用',
     icon: 'ios-appstore'
   },
-<<<<<<< HEAD
-  {
-    path: 'render',
-    name: 'render',
-    component: () => import('@/views/vue-test/render.vue')
-  },
-  {
-    path: '/high',
-    name: 'high',
-    component: () => import('@/views/vue-test/High.vue')
-  }
-
-]
-=======
   component: () => import('$s/index.vue'),
   children: [
     {
@@ -41,4 +27,3 @@ export default {
     }
   ]
 }
->>>>>>> a40a73124d0048dd4775e9ffd133365d2619912b
