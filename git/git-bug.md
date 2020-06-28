@@ -16,3 +16,9 @@
 ```
 直接将 `master.lock` 覆盖 `master` 的字符串，让两者进行统一，当然是新的覆盖旧的。因而得以解决
 ```
+
++ `The file will have its original line endings in your working directory`
+ ```bash
+  git config --global core.autocrlf false
+ ```
+https://www.cnblogs.com/lovebing/p/7121754.html

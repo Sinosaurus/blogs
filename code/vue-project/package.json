@@ -15,7 +15,7 @@
     "element-ui": "^2.4.11",
     "element-ui-verify": "^1.1.8",
     "iview": "^3.2.1",
-    "pdfjs-dist": "^2.2.228",
+    "pdfjs-dist": "^2.4.456",
     "vue": "^2.6.0",
     "vue-jsonp": "^0.1.8",
     "vue-router": "^3.0.1",

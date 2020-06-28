@@ -3,7 +3,7 @@ export default {
   redirect: '/el-validate-create',
   meta: {
     title: 'element-ui表单校验',
-    icon: 'ios-american-football',
+    icon: 'ios-american-football'
   },
   component: () => import('$e/index.vue'),
   children: [
@@ -13,8 +13,8 @@ export default {
       component: () => import('$e/CreateNewForm.vue'),
       meta: {
         title: '动态创建校验',
-        icon: 'ios-american-football-outline',
-      },
+        icon: 'ios-american-football-outline'
+      }
     },
     {
       path: '/el-validate-has',
@@ -22,8 +22,8 @@ export default {
       component: () => import('$e/HasDataForm.vue'),
       meta: {
         title: '数据回显校验',
-        icon: 'md-american-football',
-      },
+        icon: 'md-american-football'
+      }
     },
     {
       path: '/el-validate-IsR',
@@ -31,8 +31,8 @@ export default {
       component: () => import('$e/IsRequiredForm.vue'),
       meta: {
         title: '数据是否必填校验',
-        icon: 'ios-analytics',
-      },
+        icon: 'ios-analytics'
+      }
     },
     {
       path: '/el-validate-new',
@@ -40,8 +40,17 @@ export default {
       component: () => import('$e/NewForm.vue'),
       meta: {
         title: '录入数据校验',
-        icon: 'ios-analytics-outline',
-      },
+        icon: 'ios-analytics-outline'
+      }
     },
-  ],
+    {
+      path: '/el-on-emit',
+      name: 'on-emit',
+      component: () => import('$e/onEmit.vue'),
+      meta: {
+        title: '测试OnEmit用法',
+        icon: 'ios-analytics-outline'
+      }
+    }
+  ]
 }
