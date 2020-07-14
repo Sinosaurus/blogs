@@ -10,19 +10,19 @@ export default {
   props: {
     value: {
       type: [String, Number],
-      default: '',
-    },
+      default: ''
+    }
   },
-  data() {
+  data () {
     return {
-      currentValue: this.value,
+      currentValue: this.value
     }
   },
   methods: {
-    handleInput(event) {
+    handleInput (event) {
       this.$emit('input', event.target.value)
-    },
-  },
+    }
+  }
 }
 </script>
 

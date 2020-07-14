@@ -84,6 +84,13 @@ git tag v1.0 -m '备注'
 git tag --delete v1.0
 ```
 
++ 删除远端tag
+
+```
+git push origin :refs/tags/v1.0
+```
+
++ 查看
 - 查看
 
 ```
@@ -100,3 +107,8 @@ git show v1.0
 
 - [廖雪峰](https://www.liaoxuefeng.com/wiki/896043488029600/897013573512192)
 - [csdn](https://blog.csdn.net/Ronaldo_Carry/article/details/49453071)
+
+## https://blog.csdn.net/yc1022/article/details/56487680  处理一些敏感信息措施
+
+
+## git 子模块

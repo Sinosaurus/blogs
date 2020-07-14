@@ -55,5 +55,11 @@ common-header: "git+ssh:git@172.16.0.83:devops/InspireHeader.git#v1.0.3",
 ...
 ```
 
-- 参考资料
++ 参考资料
   - [stackoverflow](https://stackoverflow.com/questions/47860772/gitlab-remote-http-basic-access-denied-and-fatal-authentication)
+
+## 2020-05-22 补充
+
+https://blog.csdn.net/sunxiaoju/article/details/86413132
+
+yarn.lock 会锁定版本，因而包升级了无法回退
