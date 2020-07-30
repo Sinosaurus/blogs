@@ -18,6 +18,7 @@ test  测试
   - [ryf](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
   - [zhihu](https://zhuanlan.zhihu.com/p/34223150)
   - [juejin](https://juejin.im/entry/5b429be75188251ac85830ff)
+  - [four](https://www.javazhiyin.com/47234.html)
 
 ## 使用流程
 
@@ -27,6 +28,8 @@ test  测试
   - 生成`change log`
 
     - [`npm install -g conventional-changelog-cli`](https://juejin.im/post/5bd2debfe51d457abc710b57)
+    
+    - `echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc`
 
 - 初步尝试
   - 添加 若是不符合要求便会直接被拒绝提交
