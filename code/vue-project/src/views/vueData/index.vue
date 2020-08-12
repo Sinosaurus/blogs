@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>111111</h1>
-    <baseTable :data="tableData"></baseTable>
+    <baseTable :data="tableData">
+      <el-table-column sortable label="test" prop="test"></el-table-column>
+    </baseTable>
     <baseInheritAttrs :data="tableData" />
   </div>
 </template>
