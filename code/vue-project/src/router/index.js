@@ -15,6 +15,9 @@ Vue.use(Router)
 
 export const routes = [...routesList]
 
+routesList.forEach(item => {
+  console.log(item)
+})
 const router = new Router({
   routes
 })
