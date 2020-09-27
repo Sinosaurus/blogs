@@ -15,11 +15,11 @@ Vue.use(Router)
 
 export const routes = [...routesList]
 
-routesList.forEach(item => {
-  console.log(item)
-})
+// routesList.forEach(item => {
+//   console.log(item)
+// })
 const router = new Router({
-  routes
+  routes,
 })
 
 export default router
@@ -27,7 +27,7 @@ export default router
 LoadingBar.config({
   color: '#FF3D23',
   failedColor: '#D00F60',
-  height: 2
+  height: 2,
 })
 router.beforeEach((to, from, next) => {
   LoadingBar.start()

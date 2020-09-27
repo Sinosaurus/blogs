@@ -4,18 +4,22 @@
     v-on="$listeners"
     v-bind="$attrs"
   >
-    <el-table-column
+    <MyTableColumn
       v-for="(item, key) in columns"
       :key="key"
       v-bind="item"
-    ></el-table-column>
+    ></MyTableColumn>
   </el-table>
 </template>
 
 <script>
+import MyTableColumn from './TableColumn'
 export default {
   name: 'MyTable',
   inheritAttrs: false,
+  components: {
+    MyTableColumn
+  },
   props: {
     columns: {
       default: () => [],
