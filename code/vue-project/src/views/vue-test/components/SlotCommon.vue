@@ -9,11 +9,11 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      test: '',
+      test: ''
     }
-  },
+  }
 }
 </script>
 

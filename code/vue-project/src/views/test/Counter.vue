@@ -7,16 +7,16 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      count: 0,
+      count: 0
     }
   },
 
   methods: {
-    increment() {
+    increment () {
       this.count++
-    },
-  },
+    }
+  }
 }
 </script>

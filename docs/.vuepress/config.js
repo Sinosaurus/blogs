@@ -126,12 +126,7 @@ module.exports = {
     ],
     // 自动生成 动态变化，用的几率不大
     // 显示所有页面的标题链接
-<<<<<<< HEAD
     displayAllHeaders: true,
     smoothScroll: true
   }
-=======
-    // displayAllHeaders: true
-  },
->>>>>>> 631ba472ca8cffc97f1cba016fcba68a6f7fe656
 }

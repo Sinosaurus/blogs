@@ -24,19 +24,19 @@
 </template>
 
 <script>
-function isOne(value) {
+function isOne (value) {
   return ['small', 'middle', 'large', 'default'].includes(value)
 }
 export default {
   props: {
     child: {
-      validator(value) {
+      validator (value) {
         return isOne(value)
       },
-      default: 'default',
-    },
+      default: 'default'
+    }
   },
-  data() {
+  data () {
     return {
       error: `
         <Child> at src/views/vue-test/DataTransmission/PropTestChild.vue
@@ -48,14 +48,14 @@ export default {
                       <ElScrollbar>
                         <App> at src/App.vue
                           <Root>
-      `,
+      `
     }
   },
   computed: {
-    isTrue() {
+    isTrue () {
       return isOne(this.child)
-    },
-  },
+    }
+  }
 }
 </script>
 

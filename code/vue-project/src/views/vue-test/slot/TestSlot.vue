@@ -34,13 +34,13 @@ import slot2 from './SlotTestTwo'
 export default {
   components: {
     slot1,
-    slot2,
+    slot2
   },
-  data() {
+  data () {
     return {
-      parent: '我是套用 slot 的数据',
+      parent: '我是套用 slot 的数据'
     }
-  },
+  }
 }
 </script>
 

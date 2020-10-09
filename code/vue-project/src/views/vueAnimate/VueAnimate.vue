@@ -121,31 +121,31 @@ export default {
   name: 'vue-animate',
   components: {
     AccordionAnimate,
-    animateAcco,
+    animateAcco
   },
-  data() {
+  data () {
     return {
       show: false,
       isShow: true,
       isItemShow: false,
       isItemOther: false,
-      isItemOther2: false,
+      isItemOther2: false
     }
   },
   directives: {
     height: {
-      inserted(el, binding, vnode) {
+      inserted (el, binding, vnode) {
         el.style.display = 'block'
         el.style.marginTop = `-${el.offsetHeight}px`
         el.style.display = 'none'
-      },
-    },
+      }
+    }
   },
   methods: {
-    getHeight(e) {
+    getHeight (e) {
       // console.log(e, 222222)
     },
-    tran(el) {
+    tran (el) {
       // console.log(el, 11111111111111)
     },
     // --------
@@ -171,8 +171,8 @@ export default {
     // 回调函数 done 是可选的
     leave: function (el, done) {
       el.style.marginTop = `-${el.offsetHeight}px`
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="less" scoped>

@@ -115,7 +115,7 @@ import el from './mixins/el/el-new'
 import scrollTop from './../../utils/scrollTop'
 export default {
   mixins: [mix, el],
-  data() {
+  data () {
     const isNum = (rule, value, callback) => {
       let reg = /^[0-9]{5,20}$/
       if (reg.test(value)) {
@@ -131,14 +131,14 @@ export default {
         type: [],
         resource: '',
         desc: '',
-        num: '',
+        num: ''
       },
       isNum,
       area: 'A',
       selectform: {
-        select: '',
+        select: ''
       },
-      selectlist: [],
+      selectlist: []
     }
   },
   methods: {
@@ -151,7 +151,7 @@ export default {
      *
      * mac下 chrome 、 safari 都无法监听
      */
-    addEventToSaveFormData(node = {}) {
+    addEventToSaveFormData (node = {}) {
       const Events = [
         'input',
         'toggle',
@@ -165,7 +165,7 @@ export default {
         'mouseup',
         'mousedown',
         'formchange',
-        'forminput',
+        'forminput'
       ]
       Events.forEach((item) => {
         node.addEventListener(
@@ -180,7 +180,7 @@ export default {
         // }, false)
       })
     },
-    remvoeEvent() {
+    remvoeEvent () {
       window.removeEventListener('input')
       window.removeEventListener('toggle')
     },
@@ -189,7 +189,7 @@ export default {
      * chrome 在 mac下可以同过 performance 下的task查看scroll，通过定位到那个节点在滚动，
      * 但是在window下却无法显示，很奇怪
      */
-    scrollToTop(node) {
+    scrollToTop (node) {
       //  const scrollNode = document.querySelectorAll('div.sc-warp.el-scrollbar__wrap')[0]
       //  const scrollNode = document.body || document.documentElement
       const ChildHasError = Array.from(node.querySelectorAll('.is-error'))
@@ -210,7 +210,7 @@ export default {
       //  https://www.zhangxinxu.com/wordpress/2018/10/scroll-behavior-scrollintoview-%E5%B9%B3%E6%BB%91%E6%BB%9A%E5%8A%A8/
       //  FirstErrorNode.scrollIntoView()
     },
-    submitForm1() {
+    submitForm1 () {
       this.$refs['ruleForm'].validate((valid) => {
         // console.log(valid)
         if (valid) {
@@ -222,14 +222,14 @@ export default {
         }
       })
     },
-    listenFormValueChange() {
+    listenFormValueChange () {
       console.dir(HTMLInputElement, 999)
       // HTMLInputElement.addEventListener('input', function (evt) {
       //   console.log(this.value)
       // })
-    },
+    }
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       const Note = this.$refs.ruleForm.$el
       this.addEventToSaveFormData(Note)
@@ -238,9 +238,9 @@ export default {
     // console.log(this.$refs.ruleForm.$el, 9999)
     // this.addEventToSaveFormData()
   },
-  beforeDestory() {
+  beforeDestory () {
     // this.removeEvent()
-  },
+  }
 }
 </script>
 

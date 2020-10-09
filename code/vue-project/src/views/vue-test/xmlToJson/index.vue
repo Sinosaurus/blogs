@@ -11,15 +11,15 @@ import xmlJs from 'xml-js'
 import ObjTree from 'xml-objtree'
 export default {
   name: 'xmToJson',
-  data() {
+  data () {
     return {
-      xml: '<foo attr="value">bar</foo>',
+      xml: '<foo attr="value">bar</foo>'
     }
   },
-  created() {
+  created () {
     axios({
       url: '/feed/news/feed',
-      method: 'get',
+      method: 'get'
     })
       .then((res) => {
         const xml = res.data
@@ -38,6 +38,6 @@ export default {
     // const json = xml.xml2js('https://www.sinnet-cloud.cn/news/feed')
 
     // console.log(json)
-  },
+  }
 }
 </script>

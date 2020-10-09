@@ -20,25 +20,25 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       infoList: [
         {
           title: '手机系统',
-          info: 'Android',
+          info: 'Android'
         },
         {
           title: '登录方式',
-          info: '',
+          info: ''
         },
         {
           title: '绑定事件',
-          info: new Date().toLocaleTimeString(),
+          info: new Date().toLocaleTimeString()
         },
         {
           title: '绑定状态',
-          info: '',
-        },
+          info: ''
+        }
       ],
       codeList: [
         `
@@ -60,10 +60,10 @@ export default {
           content: "------";
           color: #999;
           background-color: red;
-        }`,
-      ],
+        }`
+      ]
     }
-  },
+  }
 }
 </script>
 

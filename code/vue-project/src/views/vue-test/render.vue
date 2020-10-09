@@ -2,7 +2,7 @@
 import item from './RenderItem'
 export default {
   name: 'render-item',
-  data() {
+  data () {
     return {
       code: `createElement(
           // {String | Object | Function}
@@ -28,13 +28,13 @@ export default {
               }
             })
           ]
-        )`,
+        )`
     }
   },
   components: {
-    item,
+    item
   },
-  render() {
+  render () {
     // jsx
     return (
       <item>
@@ -43,6 +43,6 @@ export default {
         </pre>
       </item>
     )
-  },
+  }
 }
 </script>

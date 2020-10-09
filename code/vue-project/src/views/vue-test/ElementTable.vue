@@ -70,15 +70,15 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       btnList: [
         {
-          id: '1',
+          id: '1'
         },
         {
-          id: '2',
-        },
+          id: '2'
+        }
       ],
       load: {},
       isShow: true,
@@ -94,39 +94,39 @@ export default {
           date: '2016-05-02',
           name: '王小虎',
           address: '上海市普陀区金沙江路 1518 弄',
-          tag: '家',
+          tag: '家'
         },
         {
           date: '2016-05-04',
           name: '王小虎',
           address: '上海市普陀区金沙江路 1517 弄',
-          tag: '公司',
+          tag: '公司'
         },
         {
           date: '2016-05-01',
           name: '王小虎',
           address: '上海市普陀区金沙江路 1519 弄',
-          tag: '家',
+          tag: '家'
         },
         {
           date: '2016-05-03',
           name: '王小虎',
           address: '上海市普陀区金沙江路 1516 弄',
-          tag: '公司',
-        },
-      ],
+          tag: '公司'
+        }
+      ]
     }
   },
-  beforeUpdate() {
+  beforeUpdate () {
     // console.log(this.tableData,11111111111)
   },
-  updated() {
+  updated () {
     // console.log(345678)
     // if (this.tableData.length) {
     //   this.isShow = true
     // }
   },
-  created() {
+  created () {
     this.btnList.forEach((item) => {
       this.$set(this.load, item.id, false)
     })
@@ -136,13 +136,13 @@ export default {
       'setFilters_date',
       'setSort',
       'setFilters_tag',
-      'clear',
+      'clear'
     ]),
-    handleBTN(id) {
+    handleBTN (id) {
       this.$set(this.load, id, 1)
       // console.log(this.load)
     },
-    triggerUpdate() {
+    triggerUpdate () {
       this.isShow = !this.isShow
       if (this.isShow) {
         this.$nextTick(() => {
@@ -153,7 +153,7 @@ export default {
         this.tableData.push(item)
       })
     },
-    handleFilter(filter) {
+    handleFilter (filter) {
       // 拿到 key
       /**
        * 命名技巧罢了，只是关联
@@ -161,10 +161,10 @@ export default {
       const key = Object.keys(filter)[0]
       this['setFilters_' + key](filter[key])
     },
-    handleSort(column, prop, order) {
+    handleSort (column, prop, order) {
       // console.log(column, prop, order)
     },
-    clearAll() {
+    clearAll () {
       this.isShow = false
       this.$refs.tb.clearFilter()
       this.$refs.tb.clearSort()
@@ -174,19 +174,19 @@ export default {
       })
       // this._table()
     },
-    _table() {
+    _table () {
       const COLUMNS_LIST = this.$refs.tb.columns
       COLUMNS_LIST.forEach((item) => {
         if (item.filteredValue && item.filteredValue.length) {
           // console.log(item)
           this.$refs.tb.store.commit('filterChange', {
             column: item,
-            values: [],
+            values: []
           })
           this.$refs.tb.store.updateAllSelected()
         }
       })
-    },
+    }
   },
   computed: {
     ...mapState('elTable', [
@@ -194,24 +194,24 @@ export default {
       'dateList',
       'filtersDate',
       'filtersFlag',
-      'sort',
-    ]),
+      'sort'
+    ])
   },
   watch: {
     tableData: {
-      handler() {
+      handler () {
         // console.log(this.tableData)
         // console.log(this.isShow)
       },
-      immediate: true,
+      immediate: true
     },
     load: {
-      handler() {
+      handler () {
         // console.log(this.load, 22222)
       },
-      deep: true,
-    },
-  },
+      deep: true
+    }
+  }
 }
 </script>
 

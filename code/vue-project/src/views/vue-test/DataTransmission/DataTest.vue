@@ -20,9 +20,9 @@
 <script>
 export default {
   inject: ['data', 'aa'],
-  created() {
+  created () {
     // console.log(this.data)
-  },
+  }
 }
 </script>
 

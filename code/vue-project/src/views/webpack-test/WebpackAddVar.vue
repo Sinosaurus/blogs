@@ -20,11 +20,11 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      envInfo: process.env,
+      envInfo: process.env
     }
-  },
+  }
 }
 </script>
 

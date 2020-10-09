@@ -13,27 +13,27 @@
 import slotCom from './SlotCommon'
 export default {
   components: {
-    slotCom,
+    slotCom
   },
-  data() {
+  data () {
     return {
       test: '1234567890-',
       ulList: [
         {
           id: 0,
-          name: 'Sinosaurus',
+          name: 'Sinosaurus'
         },
         {
           id: 1,
-          name: 'zhen',
+          name: 'zhen'
         },
         {
           id: 2,
-          name: 'jim',
-        },
-      ],
+          name: 'jim'
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 

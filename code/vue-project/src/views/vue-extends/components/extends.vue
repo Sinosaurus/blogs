@@ -11,11 +11,11 @@
 <script>
 export default {
   name: 'vue-test-extends',
-  data() {
+  data () {
     return {
-      msg: 'test',
+      msg: 'test'
     }
-  },
+  }
 }
 </script>
 

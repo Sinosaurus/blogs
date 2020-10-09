@@ -5,6 +5,6 @@ export default {
   meta: {
     alive: true,
     title: 'keep-alive缓存页面',
-    icon: 'md-boat',
-  },
+    icon: 'md-boat'
+  }
 }

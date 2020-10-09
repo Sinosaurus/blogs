@@ -44,19 +44,19 @@
 <script>
 export default {
   name: 'vue-test-el-scrollbar',
-  data() {
+  data () {
     return {
       num: 1,
       backNum: 1,
-      timerId: null,
+      timerId: null
     }
   },
-  created() {
+  created () {
     setTimeout(() => {
       this.backNum = 100
     }, 1000)
   },
-  mounted() {
+  mounted () {
     this.timerId = setInterval(() => {
       if (this.num >= 100) {
         clearInterval(this.timerId)
@@ -65,8 +65,8 @@ export default {
       this.num++
     }, 500)
   },
-  beforeDestory() {
+  beforeDestory () {
     clearInterval(this.timerId)
-  },
+  }
 }
 </script>

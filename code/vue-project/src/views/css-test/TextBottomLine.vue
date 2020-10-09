@@ -25,7 +25,7 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       item1: `
         <div class="item-1">
@@ -42,14 +42,14 @@ export default {
         .link1 {
           border-bottom: 2px solid #ccc;
         }
-      `,
+      `
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       this.$prettyPrint.prettyPrint()
     })
-  },
+  }
 }
 </script>
 

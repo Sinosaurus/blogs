@@ -1,9 +1,9 @@
 module.exports = {
   env: {
-    mocha: true,
+    mocha: true
   },
   // 全局变量
   globals: {
-    expect: false,
-  },
+    expect: false
+  }
 }

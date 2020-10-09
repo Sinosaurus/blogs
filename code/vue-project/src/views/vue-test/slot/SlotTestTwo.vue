@@ -7,11 +7,11 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      footer: '我是底部数据',
+      footer: '我是底部数据'
     }
-  },
+  }
 }
 </script>
 

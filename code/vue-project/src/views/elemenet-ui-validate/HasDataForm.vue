@@ -58,27 +58,27 @@ import mix from './mixins/init-common'
 import el from './mixins/el/el-new'
 export default {
   mixins: [mix, el],
-  data() {
+  data () {
     return {
       ruleForm: {
         name: '',
         region: '',
         type: [],
         resource: '',
-        desc: '',
+        desc: ''
       },
-      timerId: null,
+      timerId: null
     }
   },
   methods: {
-    setFormData() {
+    setFormData () {
       setTimeout(() => {
         this.ruleForm = {
           name: '测试项目',
           region: 2,
           type: [1, 2],
           resource: 1,
-          desc: '测试数据回显时校验颜色变化问题',
+          desc: '测试数据回显时校验颜色变化问题'
         }
 
         this.$nextTick(() => {
@@ -86,11 +86,11 @@ export default {
           this.$refs.ruleForm.validate()
         })
       }, 1500)
-    },
+    }
   },
-  mounted() {
+  mounted () {
     this.setFormData()
-  },
+  }
 }
 </script>
 

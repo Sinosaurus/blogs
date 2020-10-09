@@ -25,7 +25,7 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       code1: `import { mapState } from 'vuex'
         ...
@@ -39,12 +39,12 @@ export default {
       computed: mapState('module', [
         count
       ]) 
-      `,
+      `
     }
   },
   computed: {
-    ...mapState('test', ['count']),
-  },
+    ...mapState('test', ['count'])
+  }
 }
 </script>
 <style lang="less">

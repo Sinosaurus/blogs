@@ -4,6 +4,6 @@ export default {
   component: () => import('@/views/About.vue'),
   meta: {
     title: 'about',
-    icon: 'md-analytics',
-  },
+    icon: 'md-analytics'
+  }
 }

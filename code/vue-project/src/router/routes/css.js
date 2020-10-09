@@ -3,7 +3,7 @@ export default {
   redirect: '/css-zxx',
   meta: {
     title: 'css相关',
-    icon: 'logo-css3',
+    icon: 'logo-css3'
   },
   component: () => import('$c/index.vue'),
   children: [
@@ -13,8 +13,8 @@ export default {
       component: () => import('$c/CssZXX.vue'),
       meta: {
         title: 'css测试',
-        icon: 'ios-cube',
-      },
+        icon: 'ios-cube'
+      }
     },
     {
       path: '/css-line',
@@ -22,8 +22,8 @@ export default {
       component: () => import('$c/TextBottomLine.vue'),
       meta: {
         title: '文字底部横线',
-        icon: 'logo-buffer',
-      },
-    },
-  ],
+        icon: 'logo-buffer'
+      }
+    }
+  ]
 }

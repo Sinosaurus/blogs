@@ -20,12 +20,12 @@ export default {
   name: 'AccordionAnimate',
   directives: {
     height: {
-      inserted(el, binding, vnode) {
+      inserted (el, binding, vnode) {
         el.children[0].style.display = 'block'
         el.children[0].style.marginTop = `-${el.offsetHeight}px`
         el.children[0].style.display = 'none'
-      },
-    },
+      }
+    }
   },
   methods: {
     beforeEnter: function (el) {
@@ -47,8 +47,8 @@ export default {
     // 回调函数 done 是可选的
     leave: function (el, done) {
       el.style.marginTop = `-${el.offsetHeight}px`
-    },
-  },
+    }
+  }
 }
 </script>
 

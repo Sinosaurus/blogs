@@ -12,10 +12,10 @@ import HelloWorld from '@/components/HelloWorld.vue'
 export default {
   name: 'home',
   components: {
-    HelloWorld,
+    HelloWorld
   },
-  created() {
+  created () {
     // console.log(this.$route.params)
-  },
+  }
 }
 </script>

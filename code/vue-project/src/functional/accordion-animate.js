@@ -5,13 +5,13 @@ const DefaultTransition = 'margin-top .5s;'
 // // import { addClass, removeClass } from 'element-ui/src/utils/dom'
 
 const Transition = {
-  beforeEnter(el) {
+  beforeEnter (el) {
     // console.log()
     el.style.transition = DefaultTransition
     el.style.display = 'block'
   },
 
-  enter(el, done) {
+  enter (el, done) {
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => {})
     })
@@ -21,35 +21,35 @@ const Transition = {
     // done()
   },
 
-  afterEnter(el) {
+  afterEnter (el) {
     el.style.transition = ''
     el.style.marginTop = 0
   },
 
-  beforeLeave(el) {
+  beforeLeave (el) {
     el.style.marginTop = 0
   },
-  leave(el, done) {
+  leave (el, done) {
     el.style.transition = DefaultTransition
     el.style.marginTop = `-${el.offsetHeight}px`
     // done()
   },
-  afterLeave(el) {
+  afterLeave (el) {
     el.style.transition = ''
-  },
+  }
 }
 
 export default {
   name: 'AccordionAnimate',
   functional: true,
-  render(h, { children }) {
+  render (h, { children }) {
     const data = {
       on: {
-        ...Transition,
-      },
+        ...Transition
+      }
     }
     return h('transition', data, children)
-  },
+  }
 }
 
 // import { addClass, removeClass } from 'element-ui/src/utils/dom'

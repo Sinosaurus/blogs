@@ -18,9 +18,9 @@ import SInput from '@/components/input/input'
 export default {
   components: {
     Child,
-    SInput,
+    SInput
   },
-  data() {
+  data () {
     return {
       p_prop: 'small',
       vue_code_example: `
@@ -56,9 +56,9 @@ export default {
               }
             }
           }
-        })`,
+        })`
     }
-  },
+  }
 }
 </script>
 

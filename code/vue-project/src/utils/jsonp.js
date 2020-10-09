@@ -18,14 +18,14 @@
 // 别人封装的
 
 const config = {
-  callback: 'callback',
+  callback: 'callback'
 }
 
-function generateCB() {
+function generateCB () {
   return `jsonp${Math.ceil(Math.random() * 1000000)}`
 }
 
-function removeCB(_name) {
+function removeCB (_name) {
   try {
     delete window[_name]
   } catch (e) {
@@ -33,19 +33,19 @@ function removeCB(_name) {
   }
 }
 
-function createScript(_url, _id) {
+function createScript (_url, _id) {
   const script = document.createElement('script')
   script.setAttribute('src', _url)
   script.id = _id
   document.getElementById('app').appendChild(script)
 }
 
-function removeScipt(_id) {
+function removeScipt (_id) {
   const script = document.getElementById(_id)
   document.getElementById('app').removeChild(script)
 }
 
-function fetchJsonp(_url, params = {}, options = {}) {
+function fetchJsonp (_url, params = {}, options = {}) {
   return new Promise((resolve, reject) => {
     const jsonp = options.callback || config.callback
     const cb = generateCB() // get callback function name

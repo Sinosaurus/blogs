@@ -47,22 +47,22 @@ export default {
     STextarea,
     SInput,
     Store,
-    DataTest,
+    DataTest
   },
-  data() {
+  data () {
     return {
       input: '',
       textarea: '',
-      inject_data: '我是通过 provide / inject 的方式进行传递参数的',
+      inject_data: '我是通过 provide / inject 的方式进行传递参数的'
     }
   },
-  provide() {
+  provide () {
     return {
       data: this,
-      aa: this.inject_data,
+      aa: this.inject_data
     }
   },
-  mounted() {
+  mounted () {
     const itemList = Array.from(document.querySelectorAll('.item'))
     itemList.forEach((item) => {
       item.onmouseenter = function () {
@@ -72,7 +72,7 @@ export default {
         item.classList.remove('hover')
       }
     })
-  },
+  }
 }
 </script>
 

@@ -6,8 +6,8 @@
 
 <script>
 export default {
-  created() {
+  created () {
     alert('creared--child')
-  },
+  }
 }
 </script>

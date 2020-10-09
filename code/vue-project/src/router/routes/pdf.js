@@ -4,6 +4,6 @@ export default {
   component: () => import('@/views/vue-test/pdf/index.vue'),
   meta: {
     title: 'pdf文件读取',
-    icon: 'md-basketball',
-  },
+    icon: 'md-basketball'
+  }
 }

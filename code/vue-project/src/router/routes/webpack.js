@@ -4,6 +4,6 @@ export default {
   component: () => import('$w/WebpackAddVar.vue'),
   meta: {
     title: 'webpack添加变量',
-    icon: 'md-briefcase',
-  },
+    icon: 'md-briefcase'
+  }
 }

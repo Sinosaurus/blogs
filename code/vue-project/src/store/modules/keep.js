@@ -2,10 +2,10 @@ export default {
   namespaced: true,
   state: {
     count: 0,
-    params: {},
+    params: {}
   },
   mutations: {
-    deleteParams(state) {
+    deleteParams (state) {
       if (JSON.stringify(state.params) === '{}') return
       for (let item of state.params) {
         switch (type(state.params[item])) {
@@ -29,11 +29,11 @@ export default {
             break
         }
       }
-    },
-  },
+    }
+  }
 }
 
-function type(val) {
+function type (val) {
   // const res = Object.prototype.toString.call(val).slice(8).replace(']', '').toLocaleLowerCase()
   const res = Object.prototype.toString
     .call(val)

@@ -4,6 +4,6 @@ export default {
   component: () => import('@/views/vue-test/xmlToJson/index.vue'),
   meta: {
     title: 'xml转为json',
-    icon: 'md-cafe',
-  },
+    icon: 'md-cafe'
+  }
 }

@@ -6,11 +6,11 @@ export default {
   computed: {
     ...mapState('formData', {
       areaList: (state) => state.formInitData.areaList,
-      typeList: (state) => state.formInitData.typeList,
-    }),
+      typeList: (state) => state.formInitData.typeList
+    })
   },
   methods: {
-    submitForm(formName) {
+    submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           // this.$Loading.start()
@@ -24,8 +24,8 @@ export default {
         }
       })
     },
-    resetForm(formName) {
+    resetForm (formName) {
       this.$refs[formName].resetFields()
-    },
-  },
+    }
+  }
 }

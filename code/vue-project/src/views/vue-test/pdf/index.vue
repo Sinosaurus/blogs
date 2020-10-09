@@ -16,7 +16,7 @@ import pdfjs from 'pdfjs-dist'
 // pdfjs.GlobalaWorkerOptions.workerSrc = 'pdfjs-dist/buld.pdf.worker.js'
 export default {
   name: 'pdfjs',
-  data() {
+  data () {
     return {
       pdfUrl: process.env.BASE_URL + '/光环云网福袋计划服务协议.pdf',
       total: 1,
@@ -24,10 +24,10 @@ export default {
       scale: 1.5,
       pageRendering: false,
       pageNumPending: null,
-      loading: true,
+      loading: true
     }
   },
-  created() {
+  created () {
     this.renderPdf()
   },
   methods: {
@@ -35,7 +35,7 @@ export default {
      * Get page info from document, resize canvas accordingly, and render page.
      * @param num Page number.
      */
-    renderPage(num) {
+    renderPage (num) {
       this.pageRendering = true
       // Using promise to fetch the page
       const canvas = document.getElementById('js_canvas' + num)
@@ -47,7 +47,7 @@ export default {
         // Render PDF page into canvas context
         var renderContext = {
           canvasContext: ctx,
-          viewport: viewport,
+          viewport: viewport
         }
         var renderTask = page.render(renderContext)
         // Wait for rendering to finish
@@ -66,14 +66,14 @@ export default {
      * If another page rendering in progress, waits until the rendering is
      * finised. Otherwise, executes rendering immediately.
      */
-    queueRenderPage(num) {
+    queueRenderPage (num) {
       if (this.pageRendering) {
         this.pageNumPending = num
       } else {
         this.renderPage(num)
       }
     },
-    renderPdf() {
+    renderPdf () {
       /**
        * Asynchronously downloads PDF.
        */
@@ -88,8 +88,8 @@ export default {
           })
         }
       })
-    },
-  },
+    }
+  }
 }
 </script>
 

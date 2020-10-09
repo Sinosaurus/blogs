@@ -1,7 +1,7 @@
 <template>
   <div class="el-validate">
     <!--
-      https://blog.csdn.net/xiaxiangyun/article/details/80404768 
+      https://blog.csdn.net/xiaxiangyun/article/details/80404768
       https://cn.vuejs.org/v2/guide/components-custom-events.html#%E5%B0%86%E5%8E%9F%E7%94%9F%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E5%88%B0%E7%BB%84%E4%BB%B6
       TODO:
       监听键盘事件
@@ -98,7 +98,7 @@
 import mix from './mixins/init-common'
 export default {
   mixins: [mix],
-  data() {
+  data () {
     return {
       ruleForm: {
         name: '',
@@ -109,36 +109,36 @@ export default {
         contactList: [
           {
             family_name: '',
-            contact_name: '',
-          },
-        ],
+            contact_name: ''
+          }
+        ]
       },
       rules: {
         name: [
           { required: true, message: '请输入活动名称', trigger: 'blur' },
-          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' },
+          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
         ],
         region: [
-          { required: true, message: '请选择活动区域', trigger: 'change' },
+          { required: true, message: '请选择活动区域', trigger: 'change' }
         ],
         type: [
           {
             type: 'array',
             required: true,
             message: '请至少选择一个活动性质',
-            trigger: 'change',
-          },
+            trigger: 'change'
+          }
         ],
         resource: [
-          { required: true, message: '请选择活动资源', trigger: 'change' },
+          { required: true, message: '请选择活动资源', trigger: 'change' }
         ],
-        desc: [{ required: true, message: '请填写活动形式', trigger: 'blur' }],
+        desc: [{ required: true, message: '请填写活动形式', trigger: 'blur' }]
       },
-      timerId: null,
+      timerId: null
     }
   },
   methods: {
-    setFormData() {
+    setFormData () {
       this.timerId = setTimeout(() => {
         this.ruleForm = {
           name: '测试项目',
@@ -149,34 +149,34 @@ export default {
           contactList: [
             {
               family_name: '111',
-              contact_name: '222',
+              contact_name: '222'
               // id: Date.now() // 第一次不用绑定吗？
-            },
-          ],
+            }
+          ]
         }
       }, 1500)
     },
-    addConcats() {
+    addConcats () {
       this.ruleForm.contactList.push({
         family_name: '',
         contact_name: '',
-        id: Date.now(), //  还是需要使用，这样可以 避免校验触发时，删除后却没有变化
+        id: Date.now() //  还是需要使用，这样可以 避免校验触发时，删除后却没有变化
       })
     },
-    deleteConcats(item) {
+    deleteConcats (item) {
       const List = this.ruleForm.contactList
       const index = List.findIndex((val) => {
         return item === val
       })
       List.splice(index, 1)
-    },
+    }
   },
-  beforeDestroy() {
+  beforeDestroy () {
     clearTimeout(this.timerId)
   },
-  mounted() {
+  mounted () {
     this.setFormData()
-  },
+  }
 }
 </script>
 
