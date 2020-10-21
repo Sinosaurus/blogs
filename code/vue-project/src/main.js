@@ -6,6 +6,16 @@ import './plugins/element-uiAndVerify'
 import './plugins/iview'
 import './plugins/axios'
 import './plugins/code-prettify'
+
+// test
+import Input from './views/test-components/input.vue'
+import Select from './views/test-components/select.vue'
+import Test from './views/test-components/test.vue'
+
+Vue.component(Input.name, Input)
+Vue.component(Select.name, Select)
+Vue.component(Test.name, Test)
+
 /**
  * 使用方案 jsonp
  */
@@ -15,8 +25,9 @@ Vue.use(VueJsonp)
 
 Vue.config.productionTip = false
 
-new Vue({
+const vm = new Vue({
   router,
   store,
   render: (h) => h(App)
 }).$mount('#app')
+console.log(vm, 'vm')
