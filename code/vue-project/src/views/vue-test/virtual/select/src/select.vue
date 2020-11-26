@@ -138,36 +138,21 @@
 
         <virtual
           v-show="options.length > 0 && !loading"
-          tag="ul"
-          wrap-class="el-select-dropdown__wrap"
-          view-class="el-select-dropdown__list"
           ref="scrollbar"
           :class="{
             'is-empty': !allowCreate && query && filteredOptionsCount === 0,
           }"
-          :items="options"
+          :items="items"
+          :buffer="buffer"
           :item-size="itemSize"
-          :buffer="50"
           key-field="value"
+          :style="scrollerStyle"
+          itemTag="el-option"
         >
-          <template v-slot="{ item }">
-            <el-option :value="item.value" :label="item.label"></el-option>
-          </template>
+          <!-- <template v-slot="{ item, index }">
+            <el-option :key="index"  :value="item.value" :label="item.label"></el-option>
+          </template> -->
         </virtual>
-        <!-- <el-scrollbar
-          tag="ul"
-          wrap-class="el-select-dropdown__wrap"
-          view-class="el-select-dropdown__list"
-          ref="scrollbar"
-          :class="{ 'is-empty': !allowCreate && query && filteredOptionsCount === 0 }"
-          v-show="options.length > 0 && !loading">
-          <el-option
-            :value="query"
-            created
-            v-if="showNewOption">
-          </el-option>
-          <slot></slot>
-        </el-scrollbar> -->
         <template
           v-if="
             emptyText &&
@@ -210,6 +195,7 @@ import {
 import NavigationMixin from './navigation-mixin'
 import { isKorean } from 'element-ui/src/utils/shared'
 import virtual from './../../virtual'
+const hasOwn = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key)
 export default {
   mixins: [Emitter, Locale, Focus('reference'), NavigationMixin],
 
@@ -311,6 +297,11 @@ export default {
     collapseTagSize() {
       return ['small', 'mini'].indexOf(this.selectSize) > -1 ? 'mini' : 'small'
     },
+    scrollerStyle() {
+      const count = Math.min(this.list.length, 5)
+      const height = this.itemSize * count
+      return `height: ${height}px`
+    }
   },
 
   components: {
@@ -327,11 +318,11 @@ export default {
   props: {
     itemSize: {
       type: Number,
-      default: null,
+      default: 32,
     },
     buffer: {
       type: Number,
-      default: 200,
+      default: 32,
     },
     name: String,
     id: String,
@@ -392,12 +383,16 @@ export default {
     list: {
       type: Array,
       default: () => [],
+    },
+    filterKey: {
+      type: String,
+      default: 'value'
     }
   },
 
   data() {
     return {
-      options: this.list,
+      options: [],
       cachedOptions: [],
       createdLabel: null,
       createdSelected: false,
@@ -419,6 +414,7 @@ export default {
       menuVisibleOnFocus: false,
       isOnComposition: false,
       isSilentBlur: false,
+      items: [...this.list]
     }
   },
 
@@ -517,8 +513,15 @@ export default {
             }
           }
         }
+        this.items = [...this.list]
       }
       this.$emit('visible-change', val)
+
+    },
+
+    list(val) {
+      this.items = [...val]
+
     },
 
     options() {
@@ -554,12 +557,65 @@ export default {
         this.isOnComposition = !isKorean(lastCharacter)
       }
     },
-    handleQueryChange(val) {
+    // handleQueryChange(val) {
+    //   if (this.previousQuery === val || this.isOnComposition) return
+    //   if (
+    //     this.previousQuery === null &&
+    //     (typeof this.filterMethod === 'function' ||
+    //       typeof this.remoteMethod === 'function')
+    //   ) {
+    //     this.previousQuery = val
+    //     return
+    //   }
+    //   this.previousQuery = val
+    //   this.$nextTick(() => {
+    //     if (this.visible) this.broadcast('ElSelectDropdown', 'updatePopper')
+    //   })
+    //   this.hoverIndex = -1
+    //   if (this.multiple && this.filterable) {
+    //     this.$nextTick(() => {
+    //       const length = this.$refs.input.value.length * 15 + 20
+    //       this.inputLength = this.collapseTags ? Math.min(50, length) : length
+    //       this.managePlaceholder()
+    //       this.resetInputHeight()
+    //     })
+    //   }
+    //   if (this.remote && typeof this.remoteMethod === 'function') {
+    //     this.hoverIndex = -1
+    //     this.remoteMethod(val)
+    //   } else if (typeof this.filterMethod === 'function') {
+    //     this.filterMethod(val)
+    //     this.broadcast('ElOptionGroup', 'queryChange')
+    //   } else {
+    //     this.filteredOptionsCount = this.optionsCount
+    //     this.broadcast('ElOption', 'queryChange', val)
+    //     this.broadcast('ElOptionGroup', 'queryChange')
+    //   }
+    //   if (
+    //     this.defaultFirstOption &&
+    //     (this.filterable || this.remote) &&
+    //     this.filteredOptionsCount
+    //   ) {
+    //     this.checkDefaultFirstOption()
+    //   }
+    // },
+
+    // scrollToOption(option) {
+    //   const target =
+    //     Array.isArray(option) && option[0] ? option[0].$el : option.$el
+    //   if (this.$refs.popper && target) {
+    //     const menu = this.$refs.popper.$el.querySelector(
+    //       '.el-select-dropdown__wrap'
+    //     )
+    //     scrollIntoView(menu, target)
+    //   }
+    //   this.$refs.scrollbar && this.$refs.scrollbar.$refs.scrollbar.handleScrollEl()
+    // },
+     handleQueryChange(val) {
       if (this.previousQuery === val || this.isOnComposition) return
       if (
-        this.previousQuery === null &&
-        (typeof this.filterMethod === 'function' ||
-          typeof this.remoteMethod === 'function')
+        this.previousQuery === null
+        && (typeof this.filterMethod === 'function' || typeof this.remoteMethod === 'function')
       ) {
         this.previousQuery = val
         return
@@ -583,30 +639,35 @@ export default {
       } else if (typeof this.filterMethod === 'function') {
         this.filterMethod(val)
         this.broadcast('ElOptionGroup', 'queryChange')
-      } else {
+      } else if (this.filterKey) {
+        console.log('queryChanged...', 'query', this.query)
+        if (val) {
+          console.log(this.items, 'items')
+          this.options = this.items.filter((item) => {
+            const { filterKey } = this
+            return hasOwn(item, filterKey) && item[filterKey].indexOf(val) > -1
+          })
+          console.log(this.options, 'options')
+
+        } else {
+          this.options = [...this.items]
+        }
         this.filteredOptionsCount = this.optionsCount
         this.broadcast('ElOption', 'queryChange', val)
         this.broadcast('ElOptionGroup', 'queryChange')
+      } else {
+        // do nothing
       }
-      if (
-        this.defaultFirstOption &&
-        (this.filterable || this.remote) &&
-        this.filteredOptionsCount
-      ) {
+      if (this.defaultFirstOption && (this.filterable || this.remote) && this.filteredOptionsCount) {
         this.checkDefaultFirstOption()
       }
     },
-
     scrollToOption(option) {
-      const target =
-        Array.isArray(option) && option[0] ? option[0].$el : option.$el
-      if (this.$refs.popper && target) {
-        const menu = this.$refs.popper.$el.querySelector(
-          '.el-select-dropdown__wrap'
-        )
-        scrollIntoView(menu, target)
+      const $option = Array.isArray(option) ? option[0] : option
+      if ($option && $option.$vnode) {
+        const { key } = $option.$vnode
+        this.$refs.scrollbar.scrollToItem(key)
       }
-      this.$refs.scrollbar && this.$refs.scrollbar.$refs.scrollbar.handleScrollEl()
     },
 
     handleMenuEnter() {

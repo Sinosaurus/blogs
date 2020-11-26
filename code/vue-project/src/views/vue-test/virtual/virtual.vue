@@ -4,6 +4,8 @@
     v-bind="$attrs"
     v-observe-visibility="handleVisibilityChange"
     class="vue-recycle-scroller"
+    wrap-class="el-select-dropdown__wrap"
+    view-class="el-select-dropdown__list"
     :class="{
       ready,
       'page-mode': pageMode,
@@ -11,14 +13,15 @@
     }"
     @scroll="handleScroll"
   >
-    <div
+    <ul
       ref="wrapper"
       :style="{
         [direction === 'vertical' ? 'minHeight' : 'minWidth']: totalSize + 'px',
       }"
       class="vue-recycle-scroller__item-wrapper"
     >
-      <div
+      <component
+        :is="itemTag"
         v-for="view of pool"
         :key="view.nr.id"
         :style="
@@ -32,18 +35,22 @@
         "
         class="vue-recycle-scroller__item-view"
         :class="{ hover: hoverKey === view.nr.key }"
+        :item="view.item"
+        :index="view.nr.index"
+        :active="view.nr.used"
+        :label="view.item.label"
+        :value="view.item.value"
+        v-on="$listeners"
         @mouseenter="hoverKey = view.nr.key"
         @mouseleave="hoverKey = null"
       >
-        <slot :item="view.item" :index="view.nr.index" :active="view.nr.used" />
-      </div>
-    </div>
+      </component>
+    </ul>
     <!-- <ResizeObserver @notify="handleResize" /> -->
   </Scrollbar>
 </template>
 
 <script>
-
 import Scrollbar from './scrollbar'
 import { ResizeObserver } from 'vue-resize'
 import { ObserveVisibility } from 'vue-observe-visibility'
@@ -55,16 +62,16 @@ if (typeof window !== 'undefined') {
   supportsPassive = false
   try {
     var opts = Object.defineProperty({}, 'passive', {
-      get () {
+      get() {
         supportsPassive = true
-      }
+      },
     })
     window.addEventListener('test', null, opts)
   } catch (e) {}
 }
 
 const config = {
-  itemsLimit: 1000
+  itemsLimit: 1000,
 }
 
 let uid = 0
@@ -75,17 +82,20 @@ export default {
   components: {
     ResizeObserver,
     // Option,
-    Scrollbar
+    Scrollbar,
     // Select,
   },
 
   directives: {
-    ObserveVisibility
+    ObserveVisibility,
   },
 
   props: {
     ...props,
-
+    itemTag: {
+      type: String,
+      default: 'div',
+    },
     itemSize: {
       type: Number,
       default: null,
@@ -168,6 +178,7 @@ export default {
 
   watch: {
     items() {
+      console.log('update')
       this.updateVisibleItems(true)
     },
 
@@ -257,9 +268,9 @@ export default {
     },
 
     handleScroll(event) {
-      console.log(event, '3333333333333')
+      // console.log(event, '3333333333333')
       if (!this.$_scrollDirty) {
-        console.log(11111111)
+        // console.log(11111111)
         this.$_scrollDirty = true
         requestAnimationFrame(() => {
           this.$_scrollDirty = false
@@ -293,7 +304,6 @@ export default {
     },
 
     updateVisibleItems(checkItem, checkPositionDiff = false) {
-      console.log('updateVisibleItems')
       const itemSize = this.itemSize
       const minItemSize = this.$_computedMinItemSize
       const typeField = this.typeField
@@ -315,7 +325,7 @@ export default {
         totalSize = null
       } else {
         const scroll = this.getScroll()
-        console.log(scroll, 'scroll')
+        // console.log(scroll, 'scroll')
 
         // Skip update if use hasn't scrolled enough
         if (checkPositionDiff) {
@@ -391,8 +401,6 @@ export default {
         }
       }
 
-      console.log(endIndex, 'endIndex, startIndex' ,startIndex)
-
       if (endIndex - startIndex > config.itemsLimit) {
         this.itemsLimitError()
       }
@@ -403,7 +411,6 @@ export default {
 
       const continuous =
         startIndex <= this.$_endIndex && endIndex >= this.$_startIndex
-
       if (this.$_continuous !== continuous) {
         if (continuous) {
           views.clear()
@@ -523,9 +530,12 @@ export default {
       }
     },
 
+    getScrollTarget() {
+      return this.$el.querySelector('.el-scrollbar__wrap')
+    },
+
     getListenerTarget() {
       let target = ScrollParent(this.$el)
-      console.log(target, 'target')
       // Fix global scroll target for Chrome and Safari
       if (
         window.document &&
@@ -539,9 +549,8 @@ export default {
 
     // TODO: 需要将其copy过来进行定制处理即可
     getScroll() {
-      const { $el, direction } = this
-      const el = $el.querySelector('.el-scrollbar__wrap')
-      console.dir($el)
+      const { direction } = this
+      const el = this.getScrollTarget()
       const isVertical = direction === 'vertical'
       let scrollState
 
@@ -562,7 +571,7 @@ export default {
           end: start + size,
         }
       } else if (isVertical) {
-        console.log(el.scrollTop, 'scollTop')
+        // console.log(el.scrollTop, 'scollTop')
         scrollState = {
           start: el.scrollTop,
           end: el.scrollTop + el.clientHeight,
@@ -621,10 +630,12 @@ export default {
     },
 
     scrollToPosition(position) {
+      const el = this.getScrollTarget()
+      // 滚动元素不对
       if (this.direction === 'vertical') {
-        this.$el.scrollTop = position
+        el.scrollTop = position
       } else {
-        this.$el.scrollLeft = position
+        el.scrollLeft = position
       }
     },
 
@@ -649,14 +660,15 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 .vue-recycle-scroller {
   position: relative;
   /* height: 600px !important; */
-}
+  .el-select-dropdown__wrap {
+    overflow-y: scroll;
+    overflow-x: hidden;
 
-.vue-recycle-scroller.direction-vertical:not(.page-mode) {
-  overflow-y: auto;
+  }
 }
 
 .vue-recycle-scroller.direction-horizontal:not(.page-mode) {
@@ -680,27 +692,13 @@ export default {
 
 .vue-recycle-scroller.ready .vue-recycle-scroller__item-view {
   position: absolute;
+  width: 100%;
   top: 0;
   left: 0;
   will-change: transform;
 }
 
-.vue-recycle-scroller.direction-vertical .vue-recycle-scroller__item-wrapper {
-  width: 100%;
-}
-
 .vue-recycle-scroller.direction-horizontal .vue-recycle-scroller__item-wrapper {
   height: 100%;
 }
-
-.vue-recycle-scroller.ready.direction-vertical
-  .vue-recycle-scroller__item-view {
-  width: 100%;
-}
-
-.vue-recycle-scroller.ready.direction-horizontal
-  .vue-recycle-scroller__item-view {
-  height: 100%;
-}
-
 </style>
