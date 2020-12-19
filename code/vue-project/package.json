@@ -10,17 +10,23 @@
     "test:unit": "vue-cli-service test:unit --require tests/setup.js --include tests/setup.js"
   },
   "dependencies": {
+    
     "axios": "^0.19.0",
     "clusterize.js": "^0.18.1",
     "code-prettify": "git://github.com/google/code-prettify.git#master",
     "element-ui": "^2.4.11",
     "element-ui-verify": "^1.1.8",
+    "faker": "^5.1.0",
     "html5sortable": "^0.9.18",
     "iview": "^3.2.1",
     "pdfjs-dist": "^2.4.456",
+    "scrollparent": "^2.0.1",
     "vue": "2.6.12",
     "vue-jsonp": "^0.1.8",
+    "vue-observe-visibility": "^0.4.6",
+    "vue-resize": "^0.5.0",
     "vue-router": "^3.0.1",
+    "vue-virtual-scroll-list": "^2.3.1",
     "vuedraggable": "^2.24.1",
     "vuex": "^3.0.1",
     "vuex-along": "^1.2.5",
@@ -28,6 +34,13 @@
     "xml-objtree": "^0.24.2"
   },
   "devDependencies": {
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
+    "@vue/babel-preset-jsx": "^1.2.4",
+    "@babel/core": "^7.1.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-eslint": "^3.0.1",
     "@vue/cli-plugin-unit-mocha": "^3.10.0",

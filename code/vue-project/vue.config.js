@@ -15,6 +15,8 @@ module.exports = {
       .set('$c', resolve('src/views/css-test'))
       .set('$w', resolve('src/views/webpack-test'))
       .set('$s', resolve('src/views/vue-test'))
+
+    config.module.rule('jsx').test(/\.(jsx?|babel|es6)$/).include.add(path.resolve(__dirname, './src')).add(path.resolve(__dirname, './node_modules/element-ui/packages')).end().use('babel').loader('babel-loader')
   },
   // eslint
   lintOnSave: process.env.NODE_ENV !== 'production',

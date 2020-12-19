@@ -42,6 +42,15 @@ export default {
         title: 'attr&listener',
         icon: 'md-cash'
       }
+    },
+    {
+      path: '/vue-virtual',
+      name: 'vue-virtual',
+      component: () => import('@/views/vue-test/virtual/index.vue'),
+      meta: {
+        title: 'virtual-list',
+        icon: 'md-cash'
+      }
     }
   ]
 }
