@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'my-input',
+  name: 'my-select',
   inheritAttrs: false,
   props: {
     options: {
